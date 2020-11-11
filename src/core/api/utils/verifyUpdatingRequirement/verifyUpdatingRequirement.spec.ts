@@ -1,5 +1,5 @@
-import { RequestMethod } from 'api/constants'
-import MissingRequestBodyError from 'api/errors/MissingRequestBodyError'
+import { RequestMethod } from 'core/api/constants'
+import MissingRequestBodyError from 'core/api/errors/MissingRequestBodyError'
 
 import * as verifyUpdatingRequirementType from '.'
 

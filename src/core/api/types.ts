@@ -1,5 +1,6 @@
-import { RequestType, RequestMethod } from 'api/constants'
 import { CancelToken } from 'axios'
+
+import { RequestType, RequestMethod } from 'core/api/constants'
 
 export interface ClientConfig {
 	apiEndpoint: string
