@@ -1,0 +1,60 @@
+{
+    "auto.languages": {
+        "ruby": {
+            "symbol": "#",
+            "stringWrapper": "\""
+        },
+        "elixir": {
+            "symbol": "#",
+            "stringWrapper": "\""
+        },
+        "javascript": {
+            "symbol": "$",
+            "stringWrapper": "`"
+        },
+        "vue": {
+            "symbol": "$",
+            "stringWrapper": "`"
+        },
+        "javascriptreact": {
+            "symbol": "$",
+            "stringWrapper": "`"
+        },
+        "typescript": {
+            "symbol": "$",
+            "stringWrapper": "`"
+        },
+        "typescriptreact": {
+            "symbol": "$",
+            "stringWrapper": "`"
+        },
+        "coffeescript": {
+            "symbol": "#",
+            "stringWrapper": "\""
+        },
+        "erb": {
+            "symbol": "#",
+            "stringWrapper": "\""
+        },
+        "haml": {
+            "symbol": "#",
+            "stringWrapper": "\""
+        },
+        "slim": {
+            "symbol": "#",
+            "stringWrapper": "\""
+        },
+        "groovy": {
+            "symbol": "$",
+            "stringWrapper": "\""
+        },
+        "crystal": {
+            "symbol": "#",
+            "stringWrapper": "\""
+        },
+        "ecr": {
+            "symbol": "#",
+            "stringWrapper": "\""
+        }
+    }
+}
