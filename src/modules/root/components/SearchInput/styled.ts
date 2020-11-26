@@ -12,7 +12,7 @@ export const InputWrapper = styled.div`
 	}
 `
 
-const DROP_DOWN_WIDTH = '180px'
+const DROP_DOWN_WIDTH = '140px'
 
 export const DropDownWrapper = styled.div`
 	width: ${DROP_DOWN_WIDTH};
