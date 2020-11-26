@@ -26,6 +26,8 @@ const FieldStyles = styled.input<FieldProps>`
 	padding: ${spaces(8)} ${spaces(12)};
 	background-color: ${white};
 	color: ${gray[900]};
+	box-sizing: border-box;
+	outline: none;
 	transition: all 0.1s linear;
 
 	&::placeholder {

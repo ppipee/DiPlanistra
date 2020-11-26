@@ -1,9 +1,9 @@
 import React from 'react'
 
-import TextAreaField from 'components/field/TextAreaField'
-import { TextAreaFieldProps } from 'components/field/TextAreaField/types'
-import FormTemplate from 'components/form/FormTemplate'
-import { FormTemplateProps } from 'components/form/FormTemplate/types'
+import TextAreaField from 'common/components/field/TextAreaField'
+import { TextAreaFieldProps } from 'common/components/field/TextAreaField/types'
+import FormTemplate from 'common/components/form/FormTemplate'
+import { FormTemplateProps } from 'common/components/form/FormTemplate/types'
 
 export type TextAreaFormProps = TextAreaFieldProps & FormTemplateProps
 

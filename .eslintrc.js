@@ -57,7 +57,7 @@ module.exports = {
 		'no-restricted-globals': [0],
 		'no-restricted-syntax': [0],
 		'function-paren-newline': [0], // Unexpected newline after '(' or before ')' of function -> maybe conflict with prettier
-		'arrow-parens': [2, 'as-needed'],
+		'arrow-parens': [0],
 		'one-var': [0], // Split 'const' declarations into multiple statements
 		'prefer-promise-reject-errors': [0], // Expected the Promise rejection reason to be an Error eg. in ApiManager.js
 		'no-sequences': [0],
@@ -79,6 +79,7 @@ module.exports = {
 		'semi-style': [0],
 		'no-extra-semi': [0],
 		'generator-star-spacing': [0],
+		'implicit-arrow-linebreak': [0],
 
 		// react
 		'react/prop-types': [0], // fiexd by flow
@@ -104,6 +105,7 @@ module.exports = {
 		'react/jsx-indent': [0, 'tab'], // after git commit it failed
 		'react/jsx-indent-props': [2, 'tab'],
 		'react/jsx-closing-tag-location': [0], // can fix by --fix but after git commit it failed
+		'react/jsx-wrap-multilines': [0],
 		'react/no-unused-state': [1],
 		'react/no-unused-prop-types': [1],
 		'react/react-in-jsx-scope': [0],

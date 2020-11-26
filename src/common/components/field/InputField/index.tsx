@@ -1,20 +1,28 @@
 import React from 'react'
 
-import { InputWrapper, IconWrapper, InputFieldStyles } from './styled'
+import { InputWrapper, PrefixWrapper, SuffixWrapper, InputFieldStyles } from './styled'
 import { InputFieldProps } from './types'
 
 const ICON_SIZE = 20
 
-const InputField = ({ $width, $onIconClick, ...props }: InputFieldProps) => {
-	const Icon = props.$icon
+const InputField = ({ $width, $prefixClickable, $suffixClickable, $iconColor, ...props }: InputFieldProps) => {
+	const PrefixIcon = props.$prefixIcon
+	const SuffixIcon = props.$suffixIcon
 
 	return (
 		<InputWrapper $width={$width}>
+			{(SuffixIcon || props.$suffix) && (
+				<SuffixWrapper $clickable={!!$suffixClickable}>
+					{SuffixIcon && <SuffixIcon color={$iconColor} size={ICON_SIZE} />}
+					{props.$suffix}
+				</SuffixWrapper>
+			)}
 			<InputFieldStyles {...props} />
-			{Icon && (
-				<IconWrapper $clickable={!!$onIconClick}>
-					<Icon size={ICON_SIZE} onClick={$onIconClick} />
-				</IconWrapper>
+			{(PrefixIcon || props.$prefix) && (
+				<PrefixWrapper $clickable={!!$prefixClickable}>
+					{PrefixIcon && <PrefixIcon color={$iconColor} size={ICON_SIZE} />}
+					{props.$prefix}
+				</PrefixWrapper>
 			)}
 		</InputWrapper>
 	)

@@ -2,7 +2,7 @@ export enum BreakPoints {
 	xxs = 342,
 	xs = 575,
 	sm = 767,
-	md = 991,
+	md = 984,
 	lg = 1199,
 }
 

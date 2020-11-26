@@ -1,10 +1,11 @@
-enum borders {
-	small = '2px',
-	default = '4px',
-	normal = '6px',
-	large = '8px',
-	extra = '16px',
-	circle = '50%',
+enum Borders {
+	Small = '2px',
+	Default = '4px',
+	Normal = '6px',
+	Large = '8px',
+	Extra = '16px',
+	HalfCircle = '50px',
+	Circle = '50%',
 }
 
-export default borders
+export default Borders

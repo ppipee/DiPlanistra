@@ -52,7 +52,7 @@ module.exports = {
 		'no-restricted-globals': [0],
 		'no-restricted-syntax': [0],
 		'function-paren-newline': [0], // Unexpected newline after '(' or before ')' of function -> maybe conflict with prettier
-		'arrow-parens': [2, 'as-needed'],
+		'arrow-parens': [0],
 		'one-var': [0], // Split 'const' declarations into multiple statements
 		'prefer-promise-reject-errors': [0], // Expected the Promise rejection reason to be an Error eg. in ApiManager.js
 		'no-sequences': [0],
@@ -79,6 +79,7 @@ module.exports = {
 		'no-lonely-if': 'off',
 		'no-else-return': 'off',
 		'operator-linebreak': [0],
+		'implicit-arrow-linebreak': [0],
 
 		// typescript
 		'@typescript-eslint/explicit-function-return-type': 'off',
@@ -150,6 +151,7 @@ module.exports = {
 		'react/jsx-one-expression-per-line': 'off',
 		'react/jsx-props-no-spreading': 'off',
 		'react/jsx-curly-brace-presence': 'off',
+		'react/jsx-wrap-multilines': [0],
 		'react/no-danger': 'off',
 		'react/jsx-boolean-value': 'off',
 

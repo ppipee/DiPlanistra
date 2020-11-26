@@ -15,7 +15,7 @@ export const main = {
 	200: '#72BAD4',
 	300: '#51ADCF',
 	500: '#329D9C',
-	700: '1D7675',
+	700: '#1D7675',
 }
 
 export const green = {

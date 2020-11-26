@@ -1,10 +1,11 @@
 enum ZIndexes {
-	normalPriorityModal = 100,
+	NormalPriorityModal = 100,
 	TransparentOverlay = 5,
 	BottomBar = 4,
-	Dropdown = 2,
+	DropDown = 2,
 	Local = 1,
 	Normal = 0,
+	Nav = 20,
 }
 
 export default ZIndexes

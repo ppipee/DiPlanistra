@@ -23,7 +23,7 @@ const mediaVariant = ({ $variant = Variant.TABLET, $paddingMobile }: ResponsiveB
 const ResponsiveBlock = styled(BlockShadow)`
 	width: 100%;
 	background: ${white};
-	border-radius: ${({ $borderRadius = borders.large }) => $borderRadius};
+	border-radius: ${({ $borderRadius = borders.Large }) => $borderRadius};
 	padding: ${({ $padding = 0 }) => $padding};
 
 	${mediaVariant}
