@@ -29,7 +29,7 @@ const SearchInput = () => {
 					<DropDownItem value={CategoryPlace.Attraction} name={I18n.t(SelectorAttraction)} />
 					<DropDownItem value={CategoryPlace.Restaurant} name={I18n.t(SelectorRestaurant)} />
 					<DropDownItem value={CategoryPlace.Hotel} name={I18n.t(SelectorHotel)} />
-					<DropDownItem value={CategoryPlace.Tr} name={I18n.t(SelectorTrip)} />
+					<DropDownItem value={CategoryPlace.Trip} name={I18n.t(SelectorTrip)} />
 				</DropDown>
 			</DropDownWrapper>
 			<InputWrapper>
