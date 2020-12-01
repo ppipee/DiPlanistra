@@ -5,11 +5,12 @@ import useI18n from 'core/locale/hooks/useI18n'
 import { Shadow } from 'common/components/BlockShadow/types'
 import Gap from 'common/components/Gap'
 import ClockIcon from 'common/components/icons/ClockIcon'
+import HeartEmptyIcon from 'common/components/icons/HeartEmptyIcon'
 import HeartIcon from 'common/components/icons/HeartIcon'
 import TagIcon from 'common/components/icons/TagIcon'
 import Rating from 'common/components/Rating'
 import Text from 'common/components/Text'
-import { gray, green, red, white } from 'common/styles/colors'
+import { gray, green, red } from 'common/styles/colors'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
 import { Business } from 'common/types/wongnai'
@@ -22,7 +23,7 @@ import { CardContainer, CardImage, CardDetail, CardTitle } from './styled'
 
 type Props = {
 	place: Business
-	favorite: boolean
+	favorite?: boolean
 }
 
 const FAV_ICON_SIZE = 20
@@ -38,7 +39,6 @@ const RecommendCard = ({ place, favorite }: Props) => {
 		categories,
 		priceRange,
 	} = place
-	const iconColor = favorite ? red[500] : white
 	const reviewAndPriceRange = filterArrayExistingValue([
 		`${I18n.t(REVIEW_UNIT, { review: numberOfReviews })}`,
 		priceRange,
@@ -47,6 +47,8 @@ const RecommendCard = ({ place, favorite }: Props) => {
 	const shopStatus = I18n.t(workingHoursStatus?.open ? OPENED_STATUS : CLOSED_STATUS)
 	const workingHour = getWorkingHour(place.hours)
 	const categoryTags = getCategoryTag(categories)
+
+	const FavIcon = favorite ? HeartIcon : HeartEmptyIcon
 
 	return (
 		<CardContainer $variant={Shadow.Hard}>
@@ -59,7 +61,7 @@ const RecommendCard = ({ place, favorite }: Props) => {
 								<CardTitle size={fontSizes(16)} ellipsis={1}>
 									{name}
 								</CardTitle>
-								<HeartIcon color={iconColor} size={FAV_ICON_SIZE} />
+								<FavIcon cursor="pointer" size={FAV_ICON_SIZE} color={favorite ? red[500] : gray[200]} />
 							</Gap>
 							<Gap $size={spaces(4)} $alignCenter>
 								{rating && <Rating rating={rating} />}
