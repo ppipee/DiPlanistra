@@ -9,7 +9,7 @@ import ZIndexes from 'common/styles/mixins/zIndexes'
 import { media } from 'common/styles/utils/viewport'
 
 export const NavTemplate = styled.div`
-	width: 100vw;
+	width: 100%;
 	height: ${NAV_HEIGHT};
 	background-color: ${main[500]};
 `

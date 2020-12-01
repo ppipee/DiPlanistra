@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 
 export type JustifyContentType = 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around'
 
@@ -19,13 +19,13 @@ function defineProps({ $margin: margin, $padding: padding }: FlexProps) {
 	let styled = ''
 
 	if (margin) {
-		styled += css`
+		styled += `
 			margin: ${margin};
 		`
 	}
 
 	if (padding) {
-		styled += css`
+		styled += `
 			padding: ${padding};
 		`
 	}

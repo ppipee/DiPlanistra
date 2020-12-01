@@ -1,10 +1,11 @@
 import { CancelToken } from 'axios'
 
 import { RequestType, RequestMethod } from 'core/api/constants'
+import { LocaleType } from 'core/locale/types'
 
 export interface ClientConfig {
 	apiEndpoint: string
-	locale: string
+	locale: LocaleType
 	defaultRetryTimes?: number
 	defaultThrottleTime?: number
 	defaultTimeout?: number

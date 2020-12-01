@@ -1,15 +1,10 @@
 {
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "jsx": "react",
-    "target": "es5",
-    "outDir": "./dist",
-    "noEmit": false,
-  },
-  "exclude": [
-		"src/**/*.spec.tsx",
-		"src/**/*.spec.ts",
-		"src/**/*.test.tsx",
-		"src/**/*.test.ts"
-	]
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"noEmit": false,
+		"declaration": true,
+		"emitDeclarationOnly": true,
+		"outDir": "./dist"
+	},
+	"exclude": ["src/**/*.spec.tsx", "src/**/*.spec.ts", "src/**/*.test.tsx", "src/**/*.test.ts"]
 }

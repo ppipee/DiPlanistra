@@ -12,6 +12,11 @@ const GlobalStyles = createGlobalStyle`
 		margin: 0;
 		font-family: 'Lexend Deca', sans-serif;
 		color: ${gray[900]}; 
+		background-color: ${gray[50]};
+	}
+
+	#root{
+		min-height:100vh;
 	}
 
 	a {

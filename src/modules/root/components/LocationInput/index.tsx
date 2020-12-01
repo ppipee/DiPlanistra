@@ -8,7 +8,7 @@ import Text from 'common/components/Text'
 import { red, white } from 'common/styles/colors'
 import fontSizes from 'common/styles/mixins/fontSizes'
 
-import { LocationSuffixText } from './locales'
+import { LocationSuffixText } from './locale'
 import { InputWrapper } from './styled'
 
 const LocationInput = () => {

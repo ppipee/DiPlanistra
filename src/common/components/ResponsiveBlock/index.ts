@@ -25,6 +25,7 @@ const ResponsiveBlock = styled(BlockShadow)`
 	background: ${white};
 	border-radius: ${({ $borderRadius = borders.Large }) => $borderRadius};
 	padding: ${({ $padding = 0 }) => $padding};
+	box-sizing: border-box;
 
 	${mediaVariant}
 `

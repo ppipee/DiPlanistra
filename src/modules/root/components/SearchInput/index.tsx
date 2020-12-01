@@ -11,7 +11,7 @@ import { white } from 'common/styles/colors'
 import spaces from 'common/styles/mixins/spaces'
 import { CategoryPlace } from 'common/types/place/index'
 
-import { SelectorAttraction, SelectorHotel, SelectorRestaurant, SelectorTrip } from './locales'
+import { SelectorAttraction, SelectorHotel, SelectorRestaurant, SelectorTrip } from './locale'
 import { DropDownWrapper, InputWrapper } from './styled'
 
 const SearchInput = () => {
