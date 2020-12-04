@@ -1,16 +1,16 @@
 import { createGlobalStyle } from 'styled-components'
 
 import { gray } from 'common/styles/colors'
-import { setupFont } from 'common/styles/fonts/setupFont'
+import { setup } from 'common/styles/fonts/setup'
 
 const GlobalStyles = createGlobalStyle`
-	${setupFont}
+	${setup}
 
 	body {
 		box-sizing: border-box;
 		padding: 0;
 		margin: 0;
-		font-family: 'Lexend Deca', sans-serif;
+		font-family: 'DB Heavent Now', sans-serif;
 		color: ${gray[900]}; 
 		background-color: ${gray[50]};
 	}
@@ -22,6 +22,8 @@ const GlobalStyles = createGlobalStyle`
 	a {
 		color: inherit;
 		text-decoration: none;
+		width:fit-content;
+		height:fit-content;
 	}
 
 
