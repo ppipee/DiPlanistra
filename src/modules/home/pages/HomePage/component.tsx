@@ -12,7 +12,7 @@ import spaces from 'common/styles/mixins/spaces'
 
 import RecommendForYou from 'modules/home/components/RecommendForYou'
 import NearByPosition from 'modules/place/components/NearByPosition'
-import { YOU } from 'modules/profile/locale'
+import { YOU } from 'modules/user/locale'
 
 const HomePageComponent = () => {
 	const { isDesktop } = useResponsive()

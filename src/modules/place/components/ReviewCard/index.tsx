@@ -12,11 +12,12 @@ import Rating from 'common/components/Rating'
 import SeparatorLine from 'common/components/SeparatorLine'
 import Text from 'common/components/Text'
 import { black, gray } from 'common/styles/colors'
+import useResponsive from 'common/styles/hooks/useResponsive'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
 import { Review } from 'common/types/wongnai/review'
 
-import AccountPhoto from 'modules/profile/components/AccountPhoto'
+import AccountPhoto from 'modules/user/components/AccountPhoto'
 
 import { ACTIVITY_RECOMMEND, SPENDING_TIME } from './locale'
 import { Card, PreviewPhoto } from './styled'
@@ -29,6 +30,7 @@ const ICON_SIZE = 20
 
 const ReviewCard = ({ review }: Props) => {
 	const I18n = useI18n()
+	const { isDesktop } = useResponsive()
 
 	const previewPhotos = review.previewPhotos?.slice(0, 3) || []
 
@@ -36,10 +38,14 @@ const ReviewCard = ({ review }: Props) => {
 		<Card $variant="hard">
 			<Gap $type="vertical" $size={spaces(24)}>
 				<Gap $type="vertical" $size={spaces(8)}>
-					<Gap $type="vertical" $size={spaces(4)}>
-						<Text size={fontSizes(18)}>{`“${review.summary}”`}</Text>
+					<Flex $direction={isDesktop ? 'row' : 'column'} $justifyContent="space-between">
+						<Text
+							size={fontSizes(18)}
+							responsive
+							margin={`0 ${spaces(12)} ${spaces(4)} 0`}
+						>{`“${review.summary}”`}</Text>
 						<Rating rating={review.rating} />
-					</Gap>
+					</Flex>
 					<Text size={fontSizes(14)} color={gray[700]}>
 						{review.description}
 					</Text>
