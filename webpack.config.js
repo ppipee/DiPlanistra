@@ -1,11 +1,10 @@
 const path = require('path')
 
-const BrotliPlugin = require('brotli-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const LoadablePlugin = require('@loadable/webpack-plugin')
-const { RetryChunkLoadPlugin } = require('webpack-retry-chunk-load-plugin')
+const BrotliPlugin = require('brotli-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
-
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { RetryChunkLoadPlugin } = require('webpack-retry-chunk-load-plugin')
 
 function generateRequiredPaths(rootPath) {
 	const src = path.resolve(rootPath, 'src')
@@ -23,9 +22,7 @@ function generateRequiredPaths(rootPath) {
 
 const both = (config, { dev }, webpack, pathConfig) => {
 	config.resolve.modules = [pathConfig.src, 'node_modules']
-	config.plugins.push(
-		new LodashModuleReplacementPlugin({ collections: true, paths: true }),
-	)
+	config.plugins.push(new LodashModuleReplacementPlugin({ collections: true, paths: true }))
 
 	config.resolve.extensions = ['.js', '.json', '.jsx', '.ts', '.tsx']
 
@@ -57,7 +54,6 @@ const both = (config, { dev }, webpack, pathConfig) => {
 	}
 }
 
-
 const client = (config, { target, dev }, webpack, pathConfig) => {
 	if (target !== 'web') return
 
@@ -65,43 +61,39 @@ const client = (config, { target, dev }, webpack, pathConfig) => {
 
 	const cacheLoader = {
 		loader: 'cache-loader',
-		options: { cacheIdentifier: `${target} ${dev}` }
+		options: { cacheIdentifier: `${target} ${dev}` },
 	}
 	const cssLoader = {
 		loader: 'css-loader',
-		options: { importLoaders: 2 }
+		options: { importLoaders: 2 },
 	}
 
 	config.plugins.push(
 		new RetryChunkLoadPlugin({
-			maxRetries: 5
-		}))
+			maxRetries: 5,
+		}),
+	)
 
 	config.plugins.push(
 		new MiniCssExtractPlugin({
 			filename: '[name].css',
-			chunkFilename: '[id].css'
-		}))
+			chunkFilename: '[id].css',
+		}),
+	)
 
 	config.plugins.push(
 		new LoadablePlugin({
-			writeToDisk: true
-		}))
-
+			writeToDisk: true,
+		}),
+	)
 
 	if (dev) {
-		config.plugins.push(
-			new webpack.WatchIgnorePlugin(['./build/public/loadable-stats.json']),
-		)
+		config.plugins.push(new webpack.WatchIgnorePlugin(['./build/public/loadable-stats.json']))
 
 		config.module.rules.push({
 			test: /\.css?$/,
 			exclude: /node_modules/,
-			use: [
-				{ loader: 'style-loader' },
-				cacheLoader,
-				cssLoader,
-			]
+			use: [{ loader: 'style-loader' }, cacheLoader, cssLoader],
 		})
 	} else {
 		config.plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
@@ -110,16 +102,11 @@ const client = (config, { target, dev }, webpack, pathConfig) => {
 		config.module.rules.push({
 			test: /\.css?$/,
 			exclude: /node_modules/,
-			use: [
-				MiniCssExtractPlugin.loader,
-				cacheLoader,
-				cssLoader
-			]
+			use: [MiniCssExtractPlugin.loader, cacheLoader, cssLoader],
 		})
 
 		config.output.publicPath = process.env.PUBLIC_PATH || '/'
 	}
-
 }
 
 module.exports = (config, env, webpack) => {

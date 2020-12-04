@@ -1,7 +1,8 @@
-import { Business } from 'common/types/wongnai/index'
+import { Business } from 'common/types/wongnai/business/index'
 
 export const PLACE_HIGHLIGHT: Business = {
 	id: 378083,
+	publicId: '587657ci',
 	eid: null,
 	gid: '09VwpBTRYJa9TAyYiHRF8Zws3K7YvE',
 	url:
@@ -293,9 +294,10 @@ export const PLACE_HIGHLIGHT: Business = {
 	hotelInformation: null,
 	attractionInformation: {
 		entryFee: {
-			adult: 0,
+			adult: 100,
 			children: 0,
-			feeCondition: null,
+			feeCondition:
+				'จุดชมวิว มหานคร สกายวอล์ค ผู้ใหญ่ราคา 880 บาท เด็ก (ต่ำกว่า 12 ปี) และผู้สูงอายุ 60 ปีขึ้นไป ราคา 250 บาท',
 			currency: '฿',
 		},
 		workingHours: [

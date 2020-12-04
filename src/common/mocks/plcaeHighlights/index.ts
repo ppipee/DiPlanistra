@@ -1,4 +1,4 @@
-import { Business } from 'common/types/wongnai'
+import { Business } from 'common/types/wongnai/business'
 
 export const PLACE_HIGHLIGHTS = ([
 	{

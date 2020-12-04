@@ -14,4 +14,5 @@ export interface TextProps {
 	textAlign?: 'left' | 'right' | 'center' | 'justify' | 'initial' | 'inherit'
 	wordWrap?: boolean
 	wordBreak?: 'break-word' | 'break-all' | 'unset' | 'initial' | 'inherit' | 'keep-all' | 'normal' | 'revert'
+	responsive?: boolean
 }

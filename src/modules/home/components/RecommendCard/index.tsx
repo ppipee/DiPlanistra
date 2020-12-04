@@ -13,12 +13,13 @@ import Text from 'common/components/Text'
 import { gray, green, red } from 'common/styles/colors'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
-import { Business } from 'common/types/wongnai'
+import { Business } from 'common/types/wongnai/business'
 import filterArrayExistingValue from 'common/utils/filterArrayExistingValue'
-import getCategoryTag from 'common/utils/getCategoryTags'
-import getWorkingHour from 'common/utils/getWorkingHour'
 
-import { CLOSED_STATUS, OPENED_STATUS, REVIEW_UNIT } from './locale'
+import { CLOSED_STATUS, OPENED_STATUS, REVIEW_UNIT } from 'modules/place/locale'
+import getCategoryTag from 'modules/place/utils/getCategoryTags'
+import getWorkingHour from 'modules/place/utils/getWorkingHour'
+
 import { CardContainer, CardImage, CardDetail, CardTitle } from './styled'
 
 type Props = {
@@ -27,7 +28,7 @@ type Props = {
 }
 
 const FAV_ICON_SIZE = 20
-const ICON_SIZE = 14
+const ICON_SIZE = 16
 
 const RecommendCard = ({ place, favorite }: Props) => {
 	const I18n = useI18n()
@@ -71,7 +72,7 @@ const RecommendCard = ({ place, favorite }: Props) => {
 						<div>
 							<Gap $size={spaces(8)} $alignCenter>
 								{workingHour && (
-									<Gap $size={spaces(4)}>
+									<Gap $size={spaces(4)} $alignCenter>
 										<ClockIcon size={ICON_SIZE} color={gray[700]} />
 										<span>{workingHour}</span>
 									</Gap>

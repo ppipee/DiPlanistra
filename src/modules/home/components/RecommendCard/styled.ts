@@ -21,6 +21,7 @@ export const CardImage = styled.img`
 	width: 100%;
 	height: ${IMG_HEIGHT};
 	object-fit: cover;
+	display: block;
 `
 
 export const CardDetail = styled.div`

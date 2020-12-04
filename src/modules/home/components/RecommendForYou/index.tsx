@@ -6,6 +6,7 @@ import Text from 'common/components/Text'
 import { PLACE_HIGHLIGHTS } from 'common/mocks/plcaeHighlights'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
+import LinkToPlace from 'common/utils/url/LinkToPlace'
 
 import RecommendCard from '../RecommendCard'
 
@@ -21,10 +22,12 @@ const RecommendForYou = () => {
 				{I18n.t(RECOMMEND_TITLE)}
 			</Text>
 			<CardsContainer $size={spaces(4)}>
-				{PLACE_HIGHLIGHTS.map((place, index) => (
-					<CardWrapper key={`recommend-place-${index}`}>
-						<RecommendCard place={place} favorite />
-					</CardWrapper>
+				{PLACE_HIGHLIGHTS.map((place) => (
+					<LinkToPlace placeId={place.publicId} key={`recommend-place-${place.gid}`}>
+						<CardWrapper>
+							<RecommendCard place={place} favorite />
+						</CardWrapper>
+					</LinkToPlace>
 				))}
 			</CardsContainer>
 		</RecommendContainer>

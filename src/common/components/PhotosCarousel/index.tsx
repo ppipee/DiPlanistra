@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react'
 import { white } from 'common/styles/colors'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import fontSizes from 'common/styles/mixins/fontSizes'
-import { Business } from 'common/types/wongnai'
+import { Business } from 'common/types/wongnai/business'
 
 import Carousel from '../Carousel'
 import { SlickProps } from '../Carousel/types'

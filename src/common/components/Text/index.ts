@@ -34,6 +34,7 @@ const Text = styled.span<TextProps>`
 		textAlign,
 		wordWrap,
 		wordBreak,
+		responsive,
 	}: TextProps) => css`
 		word-break: ${wordBreak || 'initial'};
 		${size &&
@@ -89,6 +90,11 @@ const Text = styled.span<TextProps>`
 		css`
 			text-align: ${textAlign};
 		`};
+		${responsive &&
+		css`
+			width: 100%;
+			flex: 1;
+		`}
 	`};
 `
 
