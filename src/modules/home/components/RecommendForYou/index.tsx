@@ -11,7 +11,7 @@ import LinkToPlace from 'common/utils/url/LinkToPlace'
 import RecommendCard from '../RecommendCard'
 
 import { RECOMMEND_TITLE } from './locale'
-import { RecommendContainer, CardsContainer, CardWrapper } from './styled'
+import { RecommendContainer, CardsContainer } from './styled'
 
 const RecommendForYou = () => {
 	const I18n = useI18n()
@@ -24,9 +24,7 @@ const RecommendForYou = () => {
 			<CardsContainer $size={spaces(4)}>
 				{PLACE_HIGHLIGHTS.map((place) => (
 					<LinkToPlace placeId={place.publicId} key={`recommend-place-${place.gid}`}>
-						<CardWrapper>
-							<RecommendCard place={place} favorite />
-						</CardWrapper>
+						<RecommendCard place={place} favorite />
 					</LinkToPlace>
 				))}
 			</CardsContainer>

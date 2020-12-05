@@ -60,7 +60,7 @@ const NearByPosition = ({ nearby, places }: Props) => {
 	return (
 		<ResponsiveBlock $padding={`${spaces(16)} 0 0`}>
 			<Text margin={`0 ${spaces(16)}`} size={fontSizes(20)}>
-				{`${I18n.t(NEAR_BY_POSITION_TITLE)} ${nearby}`}
+				{`${I18n.t(NEAR_BY_POSITION_TITLE)}${nearby}`}
 			</Text>
 			<TabsProvider tabs={tabs}>
 				<NearByCardContainer places={places} />

@@ -30,7 +30,7 @@ const PlaceHeader = ({ place }: Props) => {
 	const workingHourStatus = place.workingHoursStatus?.open
 	const shopStatus = I18n.t(workingHourStatus ? OPENED_STATUS : CLOSED_STATUS)
 	const shopMessage = place.workingHoursStatus?.message
-	const coverPhoto = place.coverPhoto?.largeUrl || place.mainPhoto?.largeUrl
+	const coverPhoto = place.coverPhoto?.largeUrl || place.defaultPhoto?.largeUrl
 
 	return (
 		<div>

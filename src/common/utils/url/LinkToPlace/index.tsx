@@ -1,8 +1,8 @@
 import React, { ReactNode } from 'react'
 
-import { Link } from 'react-router-dom'
-
 import { PLACE_PATH } from 'modules/place/routes/paths'
+
+import { LinkStyled } from './styled'
 
 type Props = {
 	placeId: string
@@ -10,7 +10,7 @@ type Props = {
 }
 
 const LinkToPlace = ({ children, placeId }: Props) => {
-	return <Link to={`${PLACE_PATH}/${placeId}`}>{children}</Link>
+	return <LinkStyled to={`${PLACE_PATH}/${placeId}`}>{children}</LinkStyled>
 }
 
 export default LinkToPlace

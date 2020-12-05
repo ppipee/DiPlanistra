@@ -53,7 +53,7 @@ const RecommendCard = ({ place, favorite }: Props) => {
 
 	return (
 		<CardContainer $variant={Shadow.Hard}>
-			<CardImage src={(place.mainPhoto || place.defaultPhoto).smallUrl} />
+			<CardImage src={(place.defaultPhoto || place.mainPhoto).smallUrl} />
 			<CardDetail>
 				<Text size={fontSizes(14)}>
 					<Gap $size={spaces(8)} $type="vertical">

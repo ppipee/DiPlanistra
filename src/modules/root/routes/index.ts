@@ -8,7 +8,7 @@ import RootPage from '../pages/RootPage'
 const rootRoute = {
 	path: '/',
 	component: RootPage,
-	routes: [HomeRoute, FavoriteRoute, TripsRoute, PlaceRoute],
+	routes: [HomeRoute, FavoriteRoute, TripsRoute, ...PlaceRoute],
 }
 
 export default [rootRoute]

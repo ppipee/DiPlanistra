@@ -11,6 +11,7 @@ import HeartEmptyIcon from 'common/components/icons/HeartEmptyIcon'
 import Rating from 'common/components/Rating'
 import SeparatorLine from 'common/components/SeparatorLine'
 import Text from 'common/components/Text'
+import { HOUR } from 'common/locale'
 import { black, gray } from 'common/styles/colors'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import fontSizes from 'common/styles/mixins/fontSizes'
@@ -62,7 +63,7 @@ const ReviewCard = ({ review }: Props) => {
 							{review.spendingHour && (
 								<Text size={fontSizes(14)}>
 									<span>{`${I18n.t(SPENDING_TIME)} : `}</span>
-									<Text color={gray[700]}>{review.spendingHour.value}</Text>
+									<Text color={gray[700]}>{I18n.t(HOUR, { hour: review.spendingHour.value })}</Text>
 								</Text>
 							)}
 						</Gap>

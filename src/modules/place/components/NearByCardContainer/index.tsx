@@ -15,11 +15,11 @@ const NearByCardContainer = ({ places }: Props) => {
 	return (
 		<Container>
 			{places.map((place) => (
-				<LinkToPlace key={place.id} placeId={place.publicId}>
-					<CardWrapper>
+				<CardWrapper key={place.id}>
+					<LinkToPlace placeId={place.publicId}>
 						<NearByCard place={place} />
-					</CardWrapper>
-				</LinkToPlace>
+					</LinkToPlace>
+				</CardWrapper>
 			))}
 		</Container>
 	)

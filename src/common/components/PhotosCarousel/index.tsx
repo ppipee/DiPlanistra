@@ -31,7 +31,7 @@ const PhotosCarousel = ({ places, defaultIndex = 0, ...props }: Props) => {
 			<Carousel afterChange={afterChange} {...props} autoplay arrows={isDesktop} dots={isDesktop}>
 				{places.map((place, index) => (
 					<div key={index}>
-						<PhotoWrapper src={place.mainPhoto.largeUrl} />
+						<PhotoWrapper src={place.defaultPhoto.largeUrl} />
 					</div>
 				))}
 			</Carousel>

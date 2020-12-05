@@ -2,6 +2,7 @@ export const REVIEW_UNIT = [
 	'{review} รีวิว',
 	`{review} {review,plural,
     =0 {review}
+    =1 {review}
     other {reviews}}`,
 ]
 

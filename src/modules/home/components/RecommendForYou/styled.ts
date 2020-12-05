@@ -12,7 +12,3 @@ export const CardsContainer = styled(Gap)`
 	overflow-x: auto;
 	padding: ${spaces(8)} 0 ${spaces(8)} ${spaces(8)};
 `
-
-export const CardWrapper = styled.div`
-	display: flex;
-`

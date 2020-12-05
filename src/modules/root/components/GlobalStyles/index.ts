@@ -22,8 +22,6 @@ const GlobalStyles = createGlobalStyle`
 	a {
 		color: inherit;
 		text-decoration: none;
-		width:fit-content;
-		height:fit-content;
 	}
 
 

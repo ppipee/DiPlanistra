@@ -12,7 +12,7 @@ import spaces from 'common/styles/mixins/spaces'
 
 import RecommendForYou from 'modules/home/components/RecommendForYou'
 import NearByPosition from 'modules/place/components/NearByPosition'
-import { YOU } from 'modules/user/locale'
+import { ME } from 'modules/user/locale'
 
 const HomePageComponent = () => {
 	const { isDesktop } = useResponsive()
@@ -23,7 +23,7 @@ const HomePageComponent = () => {
 			<Gap $type="vertical" $size={isDesktop ? spaces(24) : '0'}>
 				<PhotosCarousel places={PLACE_HIGHLIGHTS} dotColor={white} />
 				<RecommendForYou />
-				<NearByPosition places={PLACE_HIGHLIGHTS} nearby={I18n.t(YOU)} />
+				<NearByPosition places={PLACE_HIGHLIGHTS} nearby={I18n.t(ME)} />
 			</Gap>
 		</ContentContainer>
 	)
