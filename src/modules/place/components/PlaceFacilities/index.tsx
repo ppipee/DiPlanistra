@@ -21,8 +21,9 @@ import { gray, green } from 'common/styles/colors'
 import useFontSizeResponsive from 'common/styles/hooks/useFontSizeResponsive'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
-import { FacilitiesProps } from 'common/types/place/index'
-import { PlaceFacility } from 'common/types/place/index'
+
+import { FacilitiesProps } from 'modules/place/types'
+import { PlaceFacility } from 'modules/place/types'
 
 import {
 	ATM_TEXT,

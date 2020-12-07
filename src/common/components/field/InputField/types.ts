@@ -8,8 +8,8 @@ export interface InputFieldProps extends FieldProps, InputHTMLAttributes<HTMLInp
 	$suffixIcon?: IconComponent
 	$prefix?: ReactNode
 	$prefixIcon?: IconComponent
-	$suffixClickable?: boolean
-	$prefixClickable?: boolean
+	$onSuffixClick?: () => void
+	$onPrefixClick?: () => void
 	$width?: string
 	$iconColor?: string
 }

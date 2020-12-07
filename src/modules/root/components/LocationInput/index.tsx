@@ -8,7 +8,8 @@ import Text from 'common/components/Text'
 import { red, white } from 'common/styles/colors'
 import fontSizes from 'common/styles/mixins/fontSizes'
 
-import { LocationSuffixText } from './locale'
+import { LOCATION_SUFFIX_TEXT } from 'modules/search/locale'
+
 import { InputWrapper } from './styled'
 
 const LocationInput = () => {
@@ -19,12 +20,11 @@ const LocationInput = () => {
 			<InputField
 				$suffix={
 					<Text size={fontSizes(14)} color={white}>
-						{I18n.t(LocationSuffixText)}
+						{I18n.t(LOCATION_SUFFIX_TEXT)}
 					</Text>
 				}
 				$prefixIcon={MyLocationIcon}
 				$iconColor={red[500]}
-				$prefixClickable
 			/>
 		</InputWrapper>
 	)

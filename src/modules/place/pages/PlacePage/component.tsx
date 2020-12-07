@@ -4,11 +4,11 @@ import { isEmpty, isNil } from 'lodash'
 
 import ContentContainer from 'common/components/ContentContainer'
 import Gap from 'common/components/Gap'
+import StickyContainer from 'common/components/StickyContainer'
 import { PLACE_HIGHLIGHT } from 'common/mocks/placeHighlight'
 import { PLACE_HIGHLIGHTS } from 'common/mocks/plcaeHighlights'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
-import { FacilitiesProps } from 'common/types/place/index'
 import filterObjectExistingValues from 'common/utils/filterObjectExistingValue'
 
 import NearByPosition from 'modules/place/components/NearByPosition'
@@ -19,8 +19,9 @@ import PlaceHeader from 'modules/place/components/PlaceHeader'
 import PlaceReviewer from 'modules/place/components/PlaceReviewer'
 import PlaceTraveling from 'modules/place/components/PlaceTraveling'
 import PlaceWorkingHour from 'modules/place/components/PlaceWorkingHour'
+import { FacilitiesProps } from 'modules/place/types'
 
-import { Container, StickyContainer } from './styled'
+import { Container } from './styled'
 
 const PlacePageComponent = () => {
 	const { isDesktop } = useResponsive()

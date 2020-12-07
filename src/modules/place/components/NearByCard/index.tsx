@@ -1,13 +1,16 @@
 import React from 'react'
 
+import useI18n from 'core/locale/hooks/useI18n'
+
 import Gap from 'common/components/Gap'
 import Text from 'common/components/Text'
+import { KM } from 'common/locale/index'
 import { white } from 'common/styles/colors'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
 import { Business } from 'common/types/wongnai/business'
-import convertDistance from 'common/utils/convertDistance'
+import convertDistanceToKM from 'common/utils/convertDistanceToKM'
 
 import { DistanceWrapper, PlaceContainer, PlaceImage, PlaceName } from './styled'
 
@@ -17,6 +20,7 @@ type Props = {
 
 const NearByCard = ({ place }: Props) => {
 	const { isDesktop } = useResponsive()
+	const I18n = useI18n()
 
 	return (
 		<PlaceContainer>
@@ -26,7 +30,7 @@ const NearByCard = ({ place }: Props) => {
 					{place.distance && (
 						<DistanceWrapper $alignItems="center" $padding={`${spaces(8)}`}>
 							<Text color={white} size={isDesktop ? fontSizes(12) : fontSizes(10)}>
-								{convertDistance(place.distance)}
+								{I18n.t(KM, { distance: convertDistanceToKM(place.distance) })}
 							</Text>
 						</DistanceWrapper>
 					)}

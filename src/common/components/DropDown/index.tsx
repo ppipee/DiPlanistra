@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactText, useCallback, useMemo, useState } from 'react'
+import React, { ReactElement, ReactText, useCallback, useEffect, useMemo, useState } from 'react'
 
 import { isArray } from 'lodash'
 
@@ -17,13 +17,20 @@ const ICON_SIZE = 16
 
 type Props = {
 	children: ReactElement<DropDownItemProps> | ReactElement<DropDownItemProps>[]
+	value?: ReactText
 	defaultValue?: ReactText
 	onChange?: (value: ReactText) => void
 }
 
-const DropDown = ({ children, defaultValue, onChange }: Props) => {
-	const [value, setValue] = useState<ReactText>(defaultValue)
+const DropDown = ({ children, defaultValue, onChange, value }: Props) => {
+	const [dropDownValue, setValue] = useState<ReactText>(defaultValue)
 	const { isOpen, close, toggle } = useToggle()
+
+	useEffect(() => {
+		if (!value) return
+
+		setValue(value)
+	}, [value])
 
 	const setItem = useCallback(
 		(value: ReactText) => {
@@ -44,15 +51,15 @@ const DropDown = ({ children, defaultValue, onChange }: Props) => {
 		props: {
 			...options.props,
 			setItem,
-			active: value === options.props.value,
+			active: dropDownValue === options.props.value,
 		},
 	}))
 
 	return (
 		<DropDownWrapper $direction="column">
 			<DropDownContainer $isOpen={isOpen} $alignCenter $size={spaces(8)} onClick={toggle}>
-				<DisplayText as="div" textAlign="center" size={fontSizes(16)}>
-					{items[value] || 'select...'}
+				<DisplayText as="div" size={fontSizes(16)}>
+					{items[dropDownValue] || 'select...'}
 				</DisplayText>
 				<ArrowDownIcon size={ICON_SIZE} color={black} />
 			</DropDownContainer>

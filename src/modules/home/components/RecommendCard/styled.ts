@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
 import { BlockShadow } from 'common/components/BlockShadow'
-import Text from 'common/components/Text'
-import { white } from 'common/styles/colors'
 import Borders from 'common/styles/mixins/borders'
 import spaces from 'common/styles/mixins/spaces'
 
@@ -24,14 +22,6 @@ export const CardImage = styled.img`
 	display: block;
 `
 
-export const CardDetail = styled.div`
+export const CardDetailWrapper = styled.div`
 	padding: ${spaces(10)} ${spaces(12)};
-	background-color: ${white};
-	height: fit-content;
-	border-radius: 0 0 ${Borders.Extra} ${Borders.Extra};
-`
-
-export const CardTitle = styled(Text)`
-	flex: 1;
-	min-width: 0;
 `

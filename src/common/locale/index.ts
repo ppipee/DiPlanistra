@@ -5,3 +5,7 @@ export const HOUR = [
     =1 {hour}
     other {hours}}`,
 ]
+
+export const LOCALE_ALL = ['ทั้งหมด', 'All']
+
+export const KM = ['{distance} กม.', '{distance} km.']

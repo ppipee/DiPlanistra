@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-import { NAV_HEIGHT } from 'common/styles/constants'
 import { media } from 'common/styles/utils/viewport'
 
 const MAIN_SECTION_WIDTH = '70%'
@@ -17,10 +16,4 @@ export const Container = styled.div<ContainerProps>`
 	${media.md`
     width:100%;
   `};
-`
-
-export const StickyContainer = styled.div`
-	position: -webkit-sticky; /* Safari */
-	position: sticky;
-	top: ${NAV_HEIGHT};
 `

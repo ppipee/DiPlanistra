@@ -1,11 +1,12 @@
+import { isEmpty } from 'lodash'
+
 import { Hour } from 'common/types/wongnai/business'
 
 export default function getWorkingHour(hours: Hour[]) {
 	const dayNumber = new Date().getDay()
-
-	if (dayNumber > hours.length) return null
-
 	const currentDay = hours[dayNumber]
+
+	if (isEmpty(hours) || dayNumber > hours.length || currentDay === undefined) return null
 
 	return `${currentDay.from} - ${currentDay.to}`
 }

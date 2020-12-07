@@ -6,6 +6,7 @@ import getColorWithAlpha from 'common/styles/utils/getColorWithAlpha'
 
 export const InputWrapper = styled.div`
 	input {
+		color: ${white};
 		border-color: transparent;
 		border-radius: 0 ${Borders.HalfCircle} ${Borders.HalfCircle} 0;
 		background-color: ${getColorWithAlpha(white, 0.33)};

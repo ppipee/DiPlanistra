@@ -38,7 +38,7 @@ const LinkNavigates = () => {
 				<Link to={FAVORITES_PATH}>
 					<Gap $size={spaces(4)} $alignCenter>
 						<HeartIcon size={NAV_ICON_SIZE} color={white} />
-						{isDesktop && <span>Home</span>}
+						{isDesktop && <span>Favorite</span>}
 					</Gap>
 				</Link>
 			</Gap>

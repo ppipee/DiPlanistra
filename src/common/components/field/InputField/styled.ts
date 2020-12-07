@@ -52,6 +52,8 @@ export const SuffixWrapper = styled(PrefixWrapper)`
 
 export const InputWrapper = styled.label<InputFieldProps>`
 	position: relative;
+	display: flex;
+	align-items: center;
 
 	${({ $width }) =>
 		$width &&
