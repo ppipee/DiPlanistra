@@ -11,7 +11,7 @@ import Text from 'common/components/Text'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
 
-import { PlaceDomain, FoodCategory, HotelCategory, AttractionCategory } from '../../constants'
+import { PlaceDomain, FoodCategory, HotelCategory, AttractionCategory } from 'modules/search/constants'
 
 import { LOCALE_FOODS, LOCALE_PLACE_CATEGORY, LOCALE_HOTELS, LOCALE_ATTRACTIONS } from './locale'
 

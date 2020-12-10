@@ -2,16 +2,10 @@ import styled from 'styled-components'
 
 import { main } from 'common/styles/colors'
 import Borders from 'common/styles/mixins/borders'
-import { media } from 'common/styles/utils/viewport'
 
-const MOBILE_SIZE = {
+const MAP_SIZE = {
 	width: '100%',
 	height: '240px',
-}
-
-const DESKTOP_SIZE = {
-	width: '400px',
-	height: '300px',
 }
 
 export const MapWrapper = styled.div`
@@ -23,11 +17,8 @@ export const MapWrapper = styled.div`
 		border-radius: ${Borders.Large};
 	}
 
-	width: ${DESKTOP_SIZE.width};
-	height: ${DESKTOP_SIZE.height};
-
-	${media.md`
-    width:${MOBILE_SIZE.width};
-    height:${MOBILE_SIZE.height};
-  `}
+	width: ${MAP_SIZE.width};
+	height: ${MAP_SIZE.height};
+	max-width: 400px;
+	margin: auto;
 `

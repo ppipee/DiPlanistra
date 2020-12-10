@@ -49,7 +49,6 @@ const PlacePageComponent = () => {
 						{isDesktop && (
 							<Container $isMain>
 								<Gap $type="vertical" $size={spaces(24)}>
-									<PlaceTraveling />
 									<PlaceReviewer />
 								</Gap>
 							</Container>
@@ -58,7 +57,7 @@ const PlacePageComponent = () => {
 							<StickyContainer>
 								<Gap $type="vertical" $size={isDesktop ? spaces(8) : spaces(4)}>
 									<PlaceEntryFee />
-									{!isDesktop && <PlaceTraveling />}
+									<PlaceTraveling />
 									{place.hours && <PlaceWorkingHour hours={place.hours} />}
 									{!isEmpty(filterObjectExistingValues(facilities)) && <PlaceFacilities facilities={facilities} />}
 									<PlaceContact />
