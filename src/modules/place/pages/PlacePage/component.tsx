@@ -2,6 +2,8 @@ import React from 'react'
 
 import { isEmpty, isNil } from 'lodash'
 
+import asRoute from 'core/router/hoc/asRoute'
+
 import ContentContainer from 'common/components/ContentContainer'
 import Gap from 'common/components/Gap'
 import StickyContainer from 'common/components/StickyContainer'
@@ -11,6 +13,7 @@ import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
 import filterObjectExistingValues from 'common/utils/filterObjectExistingValue'
 
+import HomeStoreConfig from 'modules/home/stores/HomeStore'
 import NearByPosition from 'modules/place/components/NearByPosition'
 import PlaceContact from 'modules/place/components/PlaceContact'
 import PlaceEntryFee from 'modules/place/components/PlaceEntryFee'
@@ -19,6 +22,7 @@ import PlaceHeader from 'modules/place/components/PlaceHeader'
 import PlaceReviewer from 'modules/place/components/PlaceReviewer'
 import PlaceTraveling from 'modules/place/components/PlaceTraveling'
 import PlaceWorkingHour from 'modules/place/components/PlaceWorkingHour'
+import PlaceStoreConfig from 'modules/place/stores/PlaceStore'
 import { FacilitiesProps } from 'modules/place/types'
 
 import { Container } from './styled'
@@ -73,4 +77,6 @@ const PlacePageComponent = () => {
 	)
 }
 
-export default PlacePageComponent
+export default asRoute(PlacePageComponent, {
+	stores: { placeStore: PlaceStoreConfig, homeStore: HomeStoreConfig },
+})

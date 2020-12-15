@@ -1,35 +1,22 @@
 import { useEffect } from 'react'
 
-import { isEmpty } from 'lodash'
+import useMountStores from 'core/mobx/hooks/useMountStores'
+import useUnMountStores from 'core/mobx/hooks/useUnMountStores/index'
+import { StoreMapper } from 'core/mobx/types'
+import initStores from 'core/mobx/utils/initStores'
 
-import useUnInitializedStoreKeys from 'core/mobx/hooks/useUnInitializedStoreKeys'
-import { StoreConstructorMapper } from 'core/mobx/types'
-import connectStores from 'core/mobx/utils/connectStores'
-import initializeStoreFromMapperByKey from 'core/mobx/utils/initializeStoreFromMapperByKey'
-import useRouteStoresState from 'core/router/hooks/useRouteStoresState'
-
-function useInitializeRouteStores(storeMapper: StoreConstructorMapper) {
-	const [stores, setStores] = useRouteStoresState()
-	const unInitializedStoreKeys = useUnInitializedStoreKeys(stores, storeMapper)
-	const isInitialized = isEmpty(unInitializedStoreKeys)
+function useInitializeRouteStores(stores: StoreMapper) {
+	const mountStores = useMountStores(stores)
+	const unMountStores = useUnMountStores(stores)
 
 	useEffect(() => {
-		if (!isInitialized) {
-			const newInitializedStores = initializeStoreFromMapperByKey(
-				storeMapper,
-				unInitializedStoreKeys,
-			)
+		initStores(stores)
+		mountStores()
 
-			const mergedStores = connectStores(newInitializedStores, stores)
-
-			setStores(mergedStores)
+		return () => {
+			unMountStores()
 		}
-	}, [isInitialized])
-
-	return {
-		stores,
-		isInitialized,
-	}
+	}, [])
 }
 
 export default useInitializeRouteStores

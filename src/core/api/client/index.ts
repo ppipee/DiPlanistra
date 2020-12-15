@@ -3,7 +3,6 @@ import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 import { RequestType } from 'core/api/constants'
 import { ClientConfig, RequestConfig } from 'core/api/types'
 import getDefaultAPIClientAdapter from 'core/api/utils/getDefaultAPIClientAdapter'
-import preprocessRequest from 'core/api/utils/preprocessRequest'
 import serializeParams from 'core/api/utils/serializeParams'
 import verifyUpdatingRequirement from 'core/api/utils/verifyUpdatingRequirement'
 
@@ -55,10 +54,10 @@ class APIClient {
 		}
 
 		if (verifyUpdatingRequirement(method, request)) {
-			preprocessRequest(type, request, body)
+			request.data = body
 		}
 
-		return this.client.request<Response>(request).then(response => {
+		return this.client.request<Response>(request).then((response) => {
 			return response.data
 		})
 	}

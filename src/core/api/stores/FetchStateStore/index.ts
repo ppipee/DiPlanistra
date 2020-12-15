@@ -1,3 +1,4 @@
+import { omit } from 'lodash'
 import { observable, action, computed } from 'mobx'
 
 import { FetchState } from 'core/api/constants'
@@ -7,6 +8,12 @@ class FetchStateStore {
 	state: FetchState = FetchState.Never
 
 	@observable
+	actionsState: Record<string, FetchState> = {}
+
+	@observable
+	loadingTimes = 0
+
+	@observable
 	loadedTimes = 0
 
 	@observable
@@ -14,6 +21,7 @@ class FetchStateStore {
 
 	@action.bound
 	load() {
+		this.loadingTimes++
 		this.state = FetchState.Fetching
 		this.error = undefined
 	}
@@ -34,17 +42,34 @@ class FetchStateStore {
 	reset() {
 		this.state = FetchState.Never
 		this.error = undefined
+		this.loadingTimes = 0
 		this.loadedTimes = 0
 	}
 
 	@computed
-	get loading() {
-		return this.state === FetchState.Fetching
+	get isLoading() {
+		return this.state === FetchState.Fetching || this.loadingTimes > this.loadedTimes
 	}
 
 	@computed
-	get fresh() {
+	get isFresh() {
 		return this.loadedTimes === 0
+	}
+
+	@action.bound
+	actionLoad(methodName: string) {
+		this.actionsState[methodName] = FetchState.Fetching
+		this.error = undefined
+	}
+
+	@action.bound
+	actionDone(methodName: string) {
+		this.actionsState = omit(this.actionsState, methodName)
+	}
+
+	@action.bound
+	isActionLoading(methodName: string) {
+		return this.actionsState[methodName] === FetchState.Fetching
 	}
 }
 

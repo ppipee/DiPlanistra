@@ -1,9 +1,7 @@
 export const DEFAULT_RETRY_TIMES = 3
 
 export enum RequestType {
-	Form = 'form',
 	Json = 'json',
-	Multipart = 'multipart',
 }
 
 export enum RequestMethod {

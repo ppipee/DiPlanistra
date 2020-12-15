@@ -20,6 +20,7 @@ describe('FetchStateStore', () => {
 
 			fetchStateStore.load()
 			expect(fetchStateStore.state).toBe(FetchState.Fetching)
+			expect(fetchStateStore.loadingTimes).toBe(1)
 		})
 
 		it('should reset error', () => {
@@ -42,6 +43,21 @@ describe('FetchStateStore', () => {
 
 			expect(fetchStateStore.state).toBe(FetchState.Fetched)
 			expect(fetchStateStore.loadedTimes).toBe(1)
+		})
+	})
+
+	describe('actionDone', () => {
+		it('should set state to fetched', () => {
+			const methodName = 'fetchData'
+			const fetchStateStore = new FetchStateStore()
+
+			runInAction(() => {
+				fetchStateStore.actionsState[methodName] = FetchState.Fetched
+			})
+
+			fetchStateStore.actionDone(methodName)
+
+			expect(fetchStateStore.actionsState[methodName]).toBe(undefined)
 		})
 	})
 
@@ -74,7 +90,30 @@ describe('FetchStateStore', () => {
 		})
 	})
 
-	describe('loading', () => {
+	describe('actionLoad', () => {
+		const methodName = 'fetchData'
+
+		it('should set state to fetching', () => {
+			const fetchStateStore = new FetchStateStore()
+
+			fetchStateStore.actionLoad(methodName)
+
+			expect(fetchStateStore.actionsState[methodName]).toBe(FetchState.Fetching)
+		})
+
+		it('should reset error', () => {
+			const fetchStateStore = new FetchStateStore()
+			runInAction(() => {
+				fetchStateStore.error = new Error()
+			})
+
+			fetchStateStore.actionLoad(methodName)
+
+			expect(fetchStateStore.error).toBeUndefined()
+		})
+	})
+
+	describe('isLoading', () => {
 		it('should be true if fetching', () => {
 			const fetchStateStore = new FetchStateStore()
 
@@ -82,7 +121,18 @@ describe('FetchStateStore', () => {
 				fetchStateStore.state = FetchState.Fetching
 			})
 
-			expect(fetchStateStore.loading).toBe(true)
+			expect(fetchStateStore.isLoading).toBe(true)
+		})
+
+		it('should be true when more method is fetching although some method was fetched', () => {
+			const fetchStateStore = new FetchStateStore()
+
+			runInAction(() => {
+				fetchStateStore.loadingTimes = 2
+				fetchStateStore.state = FetchState.Fetched
+			})
+
+			expect(fetchStateStore.isLoading).toBe(true)
 		})
 
 		it('should be false if state is not fetching', () => {
@@ -92,27 +142,27 @@ describe('FetchStateStore', () => {
 				fetchStateStore.state = FetchState.Error
 			})
 
-			expect(fetchStateStore.loading).toBe(false)
+			expect(fetchStateStore.isLoading).toBe(false)
 
 			runInAction(() => {
 				fetchStateStore.state = FetchState.Fetched
 			})
 
-			expect(fetchStateStore.loading).toBe(false)
+			expect(fetchStateStore.isLoading).toBe(false)
 
 			runInAction(() => {
 				fetchStateStore.state = FetchState.Never
 			})
 
-			expect(fetchStateStore.loading).toBe(false)
+			expect(fetchStateStore.isLoading).toBe(false)
 		})
 	})
 
-	describe('fresh', () => {
+	describe('isFresh', () => {
 		it('should be true if loadedTimes is 0', () => {
 			const fetchStateStore = new FetchStateStore()
 
-			expect(fetchStateStore.fresh).toBe(true)
+			expect(fetchStateStore.isFresh).toBe(true)
 		})
 
 		it('should be false if loadedTimes is not 0', () => {
@@ -122,7 +172,43 @@ describe('FetchStateStore', () => {
 				fetchStateStore.loadedTimes = 2
 			})
 
-			expect(fetchStateStore.fresh).toBe(false)
+			expect(fetchStateStore.isFresh).toBe(false)
+		})
+	})
+
+	describe('isActionLoading', () => {
+		const methodName = 'fetchData'
+
+		it('should be true if fetching', () => {
+			const fetchStateStore = new FetchStateStore()
+
+			runInAction(() => {
+				fetchStateStore.actionsState[methodName] = FetchState.Fetching
+			})
+
+			expect(fetchStateStore.isActionLoading(methodName)).toBe(true)
+		})
+
+		it('should be false if state is not fetching', () => {
+			const fetchStateStore = new FetchStateStore()
+
+			runInAction(() => {
+				fetchStateStore.state = FetchState.Error
+			})
+
+			expect(fetchStateStore.isLoading).toBe(false)
+
+			runInAction(() => {
+				fetchStateStore.state = FetchState.Fetched
+			})
+
+			expect(fetchStateStore.isLoading).toBe(false)
+
+			runInAction(() => {
+				fetchStateStore.state = FetchState.Never
+			})
+
+			expect(fetchStateStore.isLoading).toBe(false)
 		})
 	})
 })

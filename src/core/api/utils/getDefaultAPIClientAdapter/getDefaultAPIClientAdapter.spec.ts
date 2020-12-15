@@ -16,7 +16,7 @@ describe('getDefaultAPIClientAdapter', () => {
 	const combineAdaptersSpy = jest.fn()
 	const MOCK_COMBINED_ADAPTER = 'adapter'
 
-	jest.doMock('api/utils/combineAdapters', () => combineAdaptersSpy)
+	jest.doMock('core/api/utils/combineAdapters', () => combineAdaptersSpy)
 
 	const { default: getDefaultAPIClientAdapter } = require('.') as typeof getDefaultAPIClientAdapterType
 

@@ -2,7 +2,7 @@ import HomeContextStore from './context'
 import HomeStore from './store'
 
 const HomeStoreConfig = {
-	class: HomeStore,
+	store: HomeStore,
 	StoreContext: HomeContextStore,
 }
 

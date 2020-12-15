@@ -1,40 +1,25 @@
 import React, { ComponentType } from 'react'
 
+import buildStores from 'core/mobx/utils/buildStores'
 import combineContextProviders from 'core/mobx/utils/combineContextProviders'
-import RouteStoresContext from 'core/router/contexts/RouteStoresContext'
-import useInitializeContextStoreMapper from 'core/router/hooks/useInitializeContextStoreMapper'
+import mapStoreConstructorToStoreContextValues from 'core/mobx/utils/mapStoreConstructorToStoreContextValues'
+// import RouteStoresContext from 'core/router/contexts/RouteStoresContext'
 import useInitializeRouteStores from 'core/router/hooks/useInitializeRouteStores'
 import { RouteStoreMapper } from 'core/router/types'
-import convertRouteStoreMapperToStoreConstructorMapper from 'core/router/utils/convertRouteStoreMapperToStoreConstructorMapper'
 
 interface RouteConfig {
 	stores: RouteStoreMapper
-	Loading?: ComponentType<{}>
 }
 
-function asRoute<Props>(Component: ComponentType<Props>, { stores: storeMapper, Loading }: RouteConfig) {
-	const storeConstructorMapper = convertRouteStoreMapperToStoreConstructorMapper(storeMapper)
-
+function asRoute<Props>(Component: ComponentType<Props>, { stores: storeMapper }: RouteConfig) {
 	const WrappedRoute = (props: Props) => {
-		const { stores, isInitialized } = useInitializeRouteStores(storeConstructorMapper)
-		const storeContextValues = useInitializeContextStoreMapper(storeMapper, stores)
+		const storeConstructor = buildStores(storeMapper)
+		const storeContextValues = mapStoreConstructorToStoreContextValues(storeConstructor, storeMapper)
 
-		if (!isInitialized) {
-			if (Loading) {
-				return <Loading />
-			}
+		useInitializeRouteStores(storeConstructor)
 
-			return null
-		}
-
-		return (
-			<RouteStoresContext.Provider value={stores}>
-				{combineContextProviders(storeContextValues, <Component {...props} />)}
-			</RouteStoresContext.Provider>
-		)
+		return <div>{combineContextProviders(storeContextValues, <Component {...props} />)}</div>
 	}
-
-	WrappedRoute.storeClasses = storeConstructorMapper
 
 	return WrappedRoute
 }

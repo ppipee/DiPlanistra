@@ -5,7 +5,7 @@ import * as verifyUpdatingRequirementType from '.'
 
 describe('verifyUpdatingRequirement', () => {
 	const isUpdatingMethodSpy = jest.fn()
-	jest.doMock('api/utils/isUpdatingMethod', () => isUpdatingMethodSpy)
+	jest.doMock('core/api/utils/isUpdatingMethod', () => isUpdatingMethodSpy)
 
 	const { default: verifyUpdatingRequirement } = require('.') as typeof verifyUpdatingRequirementType
 

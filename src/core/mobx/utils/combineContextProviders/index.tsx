@@ -1,16 +1,8 @@
-import React, { Context, ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
-import { Store } from 'core/mobx/types'
+import { RouteStoreContextMapper } from 'core/router/types'
 
-interface ContextMapper {
-	StoreContext: Context<Store>
-	value: Store
-}
-
-function combineContextProviders(
-	contextMapper: Record<string, ContextMapper>,
-	children: ReactNode,
-) {
+function combineContextProviders(contextMapper: RouteStoreContextMapper, children: ReactNode) {
 	return Object.values(contextMapper).reduce(
 		(currentWrapper, { StoreContext, value }) => (
 			<StoreContext.Provider value={value}>{currentWrapper}</StoreContext.Provider>

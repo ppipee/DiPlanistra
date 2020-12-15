@@ -1,9 +1,10 @@
 import { Context } from 'react'
 
+// eslint-disable-next-line import/no-cycle
 import { StoreConstructor, Store } from 'core/mobx/types'
 
 export interface RouteStore {
-	class: StoreConstructor
+	store: StoreConstructor
 	StoreContext: Context<any>
 }
 
@@ -21,3 +22,6 @@ export enum HistoryActionType {
 	Pop = 'POP',
 	Replace = 'REPLACE',
 }
+
+export type Params = Record<string, string>
+export type Query = Record<string, string>
