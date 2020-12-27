@@ -8,7 +8,7 @@ export const InputWrapper = styled.div`
 	input {
 		color: ${white};
 		border-color: transparent;
-		border-radius: 0 ${Borders.HalfCircle} ${Borders.HalfCircle} 0;
+		border-radius: 0 ${Borders.Curve} ${Borders.Curve} 0;
 		background-color: ${getColorWithAlpha(white, 0.33)};
 	}
 `
@@ -20,11 +20,11 @@ export const DropDownWrapper = styled.div`
 	& > div {
 		color: ${white};
 		background-color: ${getColorWithAlpha(white, 0.3)};
-		border-radius: ${Borders.HalfCircle} 0 0 ${Borders.HalfCircle};
+		border-radius: ${Borders.Curve} 0 0 ${Borders.Curve};
 
 		& > :first-child {
 			border-color: transparent;
-			border-radius: ${Borders.HalfCircle} 0 0 ${Borders.HalfCircle};
+			border-radius: ${Borders.Curve} 0 0 ${Borders.Curve};
 		}
 
 		& > :nth-child(2) {

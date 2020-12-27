@@ -1,6 +1,6 @@
-import { RequestMethod, UPDATING_METHODS } from 'core/api/constants'
+import { RequestMethodType, UPDATING_METHODS } from 'core/api/constants'
 
-function isUpdatingMethod(method: RequestMethod) {
+function isUpdatingMethod(method: RequestMethodType) {
 	return UPDATING_METHODS.includes(method)
 }
 

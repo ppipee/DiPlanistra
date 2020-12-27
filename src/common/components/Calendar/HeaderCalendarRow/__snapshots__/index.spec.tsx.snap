@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`HeaderCalendarRow should render HeaderCalendarRow correctly 1`] = `
+.c2 {
+  width: inherit;
+  height: inherit;
+  margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  position: absolute;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+  color: #7D8391;
+}
+
+.c2:hover {
+  background-color: #CEF4CE;
+}
+
+.c1 {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  padding: 0 4px;
+  box-sizing: content-box;
+}
+
+.c1 > div {
+  pointer-events: none;
+}
+
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 heading4"
+    >
+      Su
+    </div>
+  </div>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 heading4"
+    >
+      Mo
+    </div>
+  </div>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 heading4"
+    >
+      Tu
+    </div>
+  </div>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 heading4"
+    >
+      We
+    </div>
+  </div>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 heading4"
+    >
+      Th
+    </div>
+  </div>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 heading4"
+    >
+      Fr
+    </div>
+  </div>
+  <div
+    class="c1"
+  >
+    <div
+      class="c2 heading4"
+    >
+      Sa
+    </div>
+  </div>
+</div>
+`;

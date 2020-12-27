@@ -8,7 +8,8 @@
 		"test": "razzle test --env=jsdom",
 		"start:prod": "NODE_ENV=production node build/server.js",
 		"lint": "eslint --ext .tsx,.ts,.js --quiet",
-		"lint:fix": "eslint --ext .tsx,.ts,.js --quiet --fix"
+		"lint:fix": "eslint --ext .tsx,.ts,.js --quiet --fix",
+		"type-check": "tsc --noEmit"
 	},
 	"main": "index.js",
 	"dependencies": {
@@ -25,8 +26,8 @@
 		"hex-rgb": "^4.2.0",
 		"intl-messageformat": "^9.3.15",
 		"lodash": "^4.17.20",
-		"mobx": "5.15.5",
-		"mobx-react": "^7.0.4",
+		"mobx": "^5.15.5",
+		"mobx-react": "^6.2.5",
 		"qs": "^6.9.4",
 		"razzle": "^3.1.5",
 		"react": "^17.0.1",
@@ -88,7 +89,9 @@
 		"eslint-plugin-unused-imports": "^1.0.0",
 		"husky": "^4.3.5",
 		"intersection-observer": "^0.11.0",
+		"jest": "^26.6.3",
 		"jest-styled-components": "^7.0.3",
+		"jest-transform-stub": "^2.0.0",
 		"lint-staged": "^10.5.3",
 		"loadable-ts-transformer": "^1.0.0-alpha.3",
 		"lodash-webpack-plugin": "^0.11.5",
@@ -98,6 +101,7 @@
 		"razzle-plugin-typescript": "^3.3.7",
 		"standard-version": "^9.0.0",
 		"style-loader": "^1.2.1",
+		"timemachine": "^0.3.2",
 		"ts-loader": "^8.0.11",
 		"typescript-plugin-styled-components": "^1.4.4",
 		"webpack": "^5.4.0",
@@ -123,10 +127,17 @@
 			"tsx"
 		],
 		"collectCoverageFrom": [
-			"src/**/*.{js,jsx,ts,tsx}",
+			"src/**/*.{ts,tsx}",
 			"!src/**/*.d.ts",
-			"!src/**/styled.{js,jsx,ts,tsx}",
-			"!src/**/types.ts"
+			"!src/**/types.ts",
+			"!src/**/styled.{ts,tsx}",
+			"!src/**/constants.{ts,tsx}",
+			"!src/types/index.ts",
+			"!src/**/mocks/*.{ts,tsx}",
+			"!src/common/styles/colors/**/*",
+			"!src/common/styles/mixins/**/*",
+			"!src/common/styles/fonts/**/*",
+			"!src/**/locale.ts"
 		],
 		"globals": {
 			"ts-jest": {
@@ -136,6 +147,14 @@
 		"coverageReporters": [
 			"cobertura",
 			"text"
-		]
+		],
+		"coverageThreshold": {
+			"global": {
+				"statements": 80,
+				"branches": 80,
+				"functions": 80,
+				"lines": 80
+			}
+		}
 	}
 }

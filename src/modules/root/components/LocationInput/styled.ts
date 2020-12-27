@@ -9,7 +9,8 @@ export const InputWrapper = styled.div`
 	input {
 		border-color: transparent;
 		padding-left: ${spaces(48)};
-		border-radius: ${Borders.HalfCircle};
+		border-radius: ${Borders.Curve};
 		background-color: ${getColorWithAlpha(white, 0.33)};
+		color: ${white};
 	}
 `

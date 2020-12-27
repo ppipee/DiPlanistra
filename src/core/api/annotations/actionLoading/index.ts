@@ -1,33 +1,29 @@
 import FetchStateStore from 'core/api/stores/FetchStateStore'
 
-function actionLoading<Target extends FetchStateStore, Args extends any[]>() {
-	return function (target: object, methodName: string, descriptor: PropertyDescriptor) {
-		const originalMethod = descriptor.value
+function actionLoading<Target extends FetchStateStore, Args extends any[]>(
+	target: object,
+	methodName: string,
+	descriptor: PropertyDescriptor,
+) {
+	const originalMethod = descriptor.value
 
-		descriptor.value = async function (this: Target, ...args: Args) {
-			this.actionLoad(methodName)
+	descriptor.value = async function (this: Target, ...args: Args) {
+		this.actionLoad(methodName)
 
-			try {
-				const result = originalMethod.call(this, ...args)
+		try {
+			const result = await originalMethod.call(this, ...args)
 
-				if (result) {
-					this.actionDone(methodName)
+			this.actionDone(methodName)
 
-					return [result, false]
-				}
+			return result
+		} catch (error) {
+			this.setError(error)
 
-				const isLoading = this.isActionLoading(methodName)
-
-				return [undefined, isLoading]
-			} catch (error) {
-				this.setError(error)
-
-				throw error
-			}
+			throw error
 		}
-
-		return descriptor
 	}
+
+	return descriptor
 }
 
 export default actionLoading

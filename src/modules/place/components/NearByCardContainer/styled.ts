@@ -5,13 +5,14 @@ import spaces from 'common/styles/mixins/spaces'
 import { media } from 'common/styles/utils/viewport'
 
 export const Container = styled(Flex)`
+	padding: ${spaces(12)} 0 ${spaces(12)} ${spaces(12)};
 	flex-wrap: wrap;
+	box-sizing: border-box;
 
 	${media.md`
   	overflow-x: scroll;
     flex-wrap: nowrap;
   `}
-	padding:${spaces(12)} 0 ${spaces(12)} ${spaces(12)};
 
 	& > div:last-child {
 		padding-right: 0;

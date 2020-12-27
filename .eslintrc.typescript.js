@@ -156,6 +156,7 @@ module.exports = {
 		'react/jsx-boolean-value': 'off',
 
 		// import
+		'import/no-cycle': 'off',
 		'import/no-duplicates': [0], // drain performance
 		'import/no-extraneous-dependencies': [0], // Forbid the import of external modules that are not declared in the package.json's dependencies, devDependencies, optionalDependencies or peerDependencies.
 		'import/no-unresolved': [0],

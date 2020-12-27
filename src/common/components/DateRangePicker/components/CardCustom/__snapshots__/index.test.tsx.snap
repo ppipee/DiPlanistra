@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test CardCustom should render with active styled 1`] = `
+.c0 {
+  width: 140px;
+  height: 40px;
+  padding: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #E9EAEC;
+  color: #7D8391;
+}
+
+.c1 {
+  cursor: default;
+}
+
+<div
+  class="c0 c1 heading4"
+>
+  Custom
+</div>
+`;
+
+exports[`Test CardCustom should render without active styled 1`] = `
+.c0 {
+  width: 140px;
+  height: 40px;
+  padding: 8px;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 4px;
+  background-color: #E9EAEC;
+  color: #7D8391;
+}
+
+.c1 {
+  cursor: default;
+}
+
+<div
+  class="c0 c1 heading4"
+>
+  Custom
+</div>
+`;

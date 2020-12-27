@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test CardController should render CardController with active style 1`] = `
+<div
+  class="styled__Card-grAINz bMQvBF heading4 align-center"
+>
+  เมื่อวานนี้
+</div>
+`;
+
+exports[`Test CardController should render CardController without active style 1`] = `
+<div
+  class="styled__Card-grAINz idryPy heading4 align-center"
+>
+  เมื่อวานนี้
+</div>
+`;

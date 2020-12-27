@@ -1,8 +1,11 @@
 export const DEFAULT_RETRY_TIMES = 3
+export const TOKEN_KEY = 'token.di-planistra'
 
 export enum RequestType {
 	Json = 'json',
 }
+
+export type RequestMethodType = RequestMethod | 'get' | 'post' | 'put' | 'patch' | 'delete'
 
 export enum RequestMethod {
 	Get = 'get',
@@ -12,7 +15,7 @@ export enum RequestMethod {
 	Delete = 'delete',
 }
 
-export const UPDATING_METHODS = [RequestMethod.Post, RequestMethod.Put, RequestMethod.Patch]
+export const UPDATING_METHODS: RequestMethodType[] = [RequestMethod.Post, RequestMethod.Put, RequestMethod.Patch]
 
 export enum Header {
 	ContentType = 'content-type',

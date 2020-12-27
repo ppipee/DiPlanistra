@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Calendar should render Calendar with default date 1`] = `
+.c0 {
+  padding: 4px;
+  display: inline-block;
+  width: 280px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div>
+      CalendarHeader
+    </div>
+    <div>
+      CalendarTable
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test Calendar should render Calendar with out default date 1`] = `
+.c0 {
+  padding: 4px;
+  display: inline-block;
+  width: 280px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+<div>
+  <div
+    class="c0"
+  >
+    <div>
+      CalendarHeader
+    </div>
+    <div>
+      CalendarTable
+    </div>
+    children
+  </div>
+</div>
+`;

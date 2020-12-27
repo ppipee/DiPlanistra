@@ -8,7 +8,7 @@ export default function useUnMountStores(stores: Record<string, Store>) {
 			const onUnMount = store.onUnMount
 
 			if (onUnMount) {
-				onUnMount()
+				store.onUnMount()
 			}
 		})
 	}, [stores])

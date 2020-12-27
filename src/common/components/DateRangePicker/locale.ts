@@ -1,0 +1,6 @@
+export const PICKER_YESTERDAY = ['เมื่อวาน', 'Yesterday']
+export const PICKER_LAST_7_DAYS = ['7 วันที่แล้ว', 'Last 7 Days']
+export const PICKER_LAST_14_DAYS = ['14 วันที่แล้ว', 'Last 14 Days']
+export const PICKER_LAST_30_DAYS = ['30 วันที่แล้ว', 'Last 30 Days']
+export const PICKER_THIS_MONTH = ['เดือนนี้', 'This Month']
+export const CUSTOM_PICKER = ['กำหนดเอง', 'Custom']

@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test DateRangeProvider should render DateRangeProvider with style correctly 1`] = `
+<div
+  value="[object Object]"
+>
+  <div />
+</div>
+`;

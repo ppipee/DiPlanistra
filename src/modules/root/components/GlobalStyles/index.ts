@@ -13,6 +13,7 @@ const GlobalStyles = createGlobalStyle`
 		font-family: 'DB Heavent Now', sans-serif;
 		color: ${gray[900]}; 
 		background-color: ${gray[50]};
+		min-height:100vh;
 	}
 
 	#root{

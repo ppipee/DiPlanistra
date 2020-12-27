@@ -41,6 +41,7 @@ const STYLE_MAPPER = {
 
 const Gap = styled.div<GapProps>`
 	display: flex;
+	padding: ${({ $padding = '0' }) => $padding};
 	flex-wrap: ${({ $wrap: wrap = 'nowrap' }) => wrap};
 	${({ $type: type = 'horizontal' }) => STYLE_MAPPER[type]};
 	${positionCenter}

@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Calendar > CalendarRow should render CalendarRow width Dates 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+<div
+  class="c0"
+>
+  <div
+    date="Mon Dec 30 2019 00:00:00 GMT+0700 (Indochina Time)"
+    index="0"
+  />
+  <div
+    date="Tue Dec 31 2019 00:00:00 GMT+0700 (Indochina Time)"
+    index="1"
+  />
+  <div
+    date="Wed Jan 01 2020 00:00:00 GMT+0700 (Indochina Time)"
+    index="2"
+  />
+  <div
+    date="Thu Jan 02 2020 00:00:00 GMT+0700 (Indochina Time)"
+    index="3"
+  />
+  <div
+    date="Fri Jan 03 2020 00:00:00 GMT+0700 (Indochina Time)"
+    index="4"
+  />
+  <div
+    date="Sat Jan 04 2020 00:00:00 GMT+0700 (Indochina Time)"
+    index="5"
+  />
+  <div
+    date="Sun Jan 05 2020 00:00:00 GMT+0700 (Indochina Time)"
+    index="6"
+  />
+</div>
+`;

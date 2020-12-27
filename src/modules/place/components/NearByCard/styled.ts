@@ -34,7 +34,7 @@ export const PlaceImage = styled.img`
 `
 
 export const DistanceWrapper = styled(Flex)`
-	border-radius: ${Borders.HalfCircle};
+	border-radius: ${Borders.Curve};
 	height: ${DISTANCE_TAG_HEIGHT};
 	position: absolute;
 	box-sizing: border-box;

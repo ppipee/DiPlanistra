@@ -1,7 +1,9 @@
 import { CancelToken } from 'axios'
 
-import { RequestType, RequestMethod } from 'core/api/constants'
+import { RequestType } from 'core/api/constants'
 import { LocaleType } from 'core/locale/types'
+
+import { RequestMethodType } from './constants'
 
 export interface ClientConfig {
 	apiEndpoint: string
@@ -14,7 +16,7 @@ export interface ClientConfig {
 
 export interface RequestConfig<Headers extends object, Body extends object, Params extends object> {
 	path: string
-	method: RequestMethod
+	method: RequestMethodType
 	body?: Body
 	cancelToken?: CancelToken
 	headers?: Headers

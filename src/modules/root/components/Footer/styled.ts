@@ -5,6 +5,8 @@ import spaces from 'common/styles/mixins/spaces'
 import { media } from 'common/styles/utils/viewport'
 
 export const FooterContainer = styled(ContentContainer)`
+	width: 100%;
+	box-sizing: border-box;
 	position: relative;
 	padding: ${spaces(32)} ${spaces(16)} ${spaces(24)};
 

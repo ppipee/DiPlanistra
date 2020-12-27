@@ -14,7 +14,7 @@ export default function useMountStores(stores: Record<string, Store>) {
 			const onMount = store.onMount
 
 			if (onMount) {
-				onMount({ params, query })
+				store.onMount({ params, query })
 			}
 		})
 	}, [stores])

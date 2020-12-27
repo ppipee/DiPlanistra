@@ -6,17 +6,17 @@ describe('loading', () => {
 	const argsSpy = jest.fn()
 
 	class MockStore extends FetchStateStore {
-		@loading()
+		@loading
 		getSomething() {
 			return Promise.resolve('something')
 		}
 
-		@loading()
+		@loading
 		async doSomethingWrong() {
 			throw new Error('Something Wrong')
 		}
 
-		@loading()
+		@loading
 		callWithMultipleArgs(arg1: string, arg2: number) {
 			argsSpy(arg1, arg2)
 		}

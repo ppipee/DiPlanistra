@@ -1,5 +1,6 @@
 enum ZIndexes {
 	NormalPriorityModal = 100,
+	ModalOverlay = 99,
 	TransparentOverlay = 5,
 	BottomBar = 4,
 	DropDown = 2,

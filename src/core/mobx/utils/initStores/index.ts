@@ -6,7 +6,7 @@ export default function initStores(stores: StoreMapper) {
 		const onInit = store.onInit
 
 		if (onInit) {
-			onInit(stores)
+			store.onInit(stores)
 		}
 	})
 }

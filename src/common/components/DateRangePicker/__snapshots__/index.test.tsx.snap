@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test DateRangePicker should render DateRangePicker correctly 1`] = `
+<div
+  date="Mock Date"
+>
+  <div />
+  <div />
+</div>
+`;

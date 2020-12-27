@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test CalendarProvider should render CalendarProvider correctly 1`] = `
+<div
+  value="[object Object]"
+>
+  <div />
+</div>
+`;
+
+exports[`Test CalendarProvider should render CalendarProvider with defaultDate 1`] = `
+<div
+  value="[object Object]"
+>
+  <div />
+</div>
+`;
+
+exports[`Test CalendarProvider should render CalendarProvider with defaultDate but not container endDate 1`] = `
+<div
+  value="[object Object]"
+>
+  <div />
+</div>
+`;

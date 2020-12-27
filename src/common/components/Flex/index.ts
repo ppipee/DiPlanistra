@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { css } from 'styled-components'
 
 export type JustifyContentType = 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around'
 
@@ -13,20 +14,30 @@ export interface FlexProps {
 	$wrap?: 'nowrap' | 'wrap'
 	$margin?: string
 	$padding?: string
+	$responsive?: boolean
 }
 
-function defineProps({ $margin: margin, $padding: padding }: FlexProps) {
-	let styled = ''
+function defineProps({ $margin: margin, $padding: padding, $responsive: responsive }: FlexProps) {
+	let styled = css``
 
 	if (margin) {
-		styled += `
+		styled = css`
+			${styled}
 			margin: ${margin};
 		`
 	}
 
 	if (padding) {
-		styled += `
+		styled = css`
+			${styled}
 			padding: ${padding};
+		`
+	}
+
+	if (responsive) {
+		styled = css`
+			${styled}
+			width: 100%;
 		`
 	}
 

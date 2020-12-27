@@ -4,7 +4,7 @@ enum Borders {
 	Normal = '6px',
 	Large = '8px',
 	Extra = '16px',
-	HalfCircle = '50px',
+	Curve = '50px',
 	Circle = '50%',
 }
 

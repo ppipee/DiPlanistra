@@ -1,14 +1,12 @@
 import { useState, ChangeEvent } from 'react'
 
-const useOnChange = (defaultValue: string | number = '', functions?: ((value?: any) => void)[]) => {
+const useOnChange = (defaultValue: string = '', functions?: ((value?: string) => void)[]) => {
 	const [keyword, setKeyword] = useState(defaultValue)
 
-	const onChange = ({
-		target,
-	}: ChangeEvent<HTMLInputElement | HTMLSelectElement | { name?: string | undefined; value: unknown }>) => {
-		const value = target.value as string | number
+	const onChange = ({ target }: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+		const value = target.value
 		setKeyword(value)
-		functions && functions.forEach(callbackFunction => callbackFunction(value))
+		functions && functions.forEach((callbackFunction) => callbackFunction(value))
 	}
 
 	return { keyword, setKeyword, onChange }

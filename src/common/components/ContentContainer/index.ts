@@ -9,7 +9,7 @@ const MEDIUM_CONTENT_WIDTH = `${BreakPoints.sm}px`
 const ContentContainer = styled.div`
 	display: block;
 	max-width: ${CONTENT_WIDTH};
-	margin: auto;
+	margin: 0 auto;
 
 	${media.md`
 		max-width: ${MEDIUM_CONTENT_WIDTH};

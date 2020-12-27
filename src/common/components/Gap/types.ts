@@ -5,6 +5,7 @@ export interface GapProps {
 	$type?: GapType
 	$responsive?: boolean
 	$wrap?: 'nowrap' | 'wrap'
+	$padding?: string
 }
 
 export enum GapTypeProps {

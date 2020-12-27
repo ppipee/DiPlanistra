@@ -1,11 +1,19 @@
+import PlannerPage from '../pages/PlannerPage'
 import TripsPage from '../pages/TripsPage'
 
-import { TRIP_PATH } from './paths'
+import { PLANNER_PATH, TRIP_PATH } from './paths'
 
-const tripsRoute = {
-	path: TRIP_PATH,
-	exact: true,
-	component: TripsPage,
-}
+const tripsRoutes = [
+	{
+		path: TRIP_PATH,
+		exact: true,
+		component: TripsPage,
+	},
+	{
+		path: PLANNER_PATH,
+		exact: true,
+		component: PlannerPage,
+	},
+]
 
-export default tripsRoute
+export default tripsRoutes

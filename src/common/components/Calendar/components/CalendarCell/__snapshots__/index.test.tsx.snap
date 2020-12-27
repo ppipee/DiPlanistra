@@ -1,0 +1,414 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test CalendarCell should render CalendarCell with currentDate date variant 1`] = `
+.c1 {
+  width: inherit;
+  height: inherit;
+  margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  position: absolute;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+  color: #00A600;
+}
+
+.c1:hover {
+  background-color: #CEF4CE;
+}
+
+.c0 {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  padding: 0 4px;
+  box-sizing: content-box;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1 heading4"
+  >
+    1
+  </div>
+</div>
+`;
+
+exports[`Test CalendarCell should render CalendarCell with currentMonth variant 1`] = `
+.c1 {
+  width: inherit;
+  height: inherit;
+  margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  position: absolute;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+  color: #7D8391;
+}
+
+.c1:hover {
+  background-color: #CEF4CE;
+}
+
+.c0 {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  padding: 0 4px;
+  box-sizing: content-box;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1 heading4"
+  >
+    1
+  </div>
+</div>
+`;
+
+exports[`Test CalendarCell should render CalendarCell with hover and inBetween styled 1`] = `
+.c1 {
+  width: inherit;
+  height: inherit;
+  margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  position: absolute;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+  color: #515A6C;
+}
+
+.c1:hover {
+  background-color: #CEF4CE;
+}
+
+.c0 {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  padding: 0 4px;
+  box-sizing: content-box;
+}
+
+.c0::before {
+  content: '';
+  width: 100%;
+  position: absolute;
+  height: inherit;
+  background-color: #EEFBEE;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1 heading4"
+  >
+    1
+  </div>
+</div>
+`;
+
+exports[`Test CalendarCell should render CalendarCell with hover styled for first cell on row 1`] = `
+.c1 {
+  width: inherit;
+  height: inherit;
+  margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  position: absolute;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+  color: #515A6C;
+}
+
+.c1:hover {
+  background-color: #CEF4CE;
+}
+
+.c0 {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  padding: 0 4px;
+  box-sizing: content-box;
+}
+
+.c0::before {
+  content: '';
+  width: 100%;
+  position: absolute;
+  height: inherit;
+  background-color: #EEFBEE;
+  border-radius: 4px 0 0 4px;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1 heading4"
+  >
+    1
+  </div>
+</div>
+`;
+
+exports[`Test CalendarCell should render CalendarCell with hover styled for last cell on row 1`] = `
+.c1 {
+  width: inherit;
+  height: inherit;
+  margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  position: absolute;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+  color: #515A6C;
+}
+
+.c1:hover {
+  background-color: #CEF4CE;
+}
+
+.c0 {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  padding: 0 4px;
+  box-sizing: content-box;
+}
+
+.c0::before {
+  content: '';
+  width: 100%;
+  position: absolute;
+  height: inherit;
+  background-color: #EEFBEE;
+  border-radius: 0 4px 4px 0;
+  width: calc(100% - 8px);
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1 heading4"
+  >
+    1
+  </div>
+</div>
+`;
+
+exports[`Test CalendarCell should render CalendarCell with null value 1`] = `
+.c1 {
+  width: inherit;
+  height: inherit;
+  margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  position: absolute;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+  color: #7D8391;
+}
+
+.c1:hover {
+  background-color: #CEF4CE;
+}
+
+.c0 {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  padding: 0 4px;
+  box-sizing: content-box;
+}
+
+.c0 > div {
+  pointer-events: none;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1 heading4"
+  />
+</div>
+`;
+
+exports[`Test CalendarCell should render CalendarCell with number value 1`] = `
+.c1 {
+  width: inherit;
+  height: inherit;
+  margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  position: absolute;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+  color: #7D8391;
+}
+
+.c1:hover {
+  background-color: #CEF4CE;
+}
+
+.c0 {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  padding: 0 4px;
+  box-sizing: content-box;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1 heading4"
+  >
+    1
+  </div>
+</div>
+`;
+
+exports[`Test CalendarCell should render CalendarCell with otherMonth variant 1`] = `
+.c1 {
+  width: inherit;
+  height: inherit;
+  margin: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-radius: 4px;
+  position: absolute;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+  color: #9298A3;
+}
+
+.c1:hover {
+  background-color: #CEF4CE;
+}
+
+.c0 {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  padding: 0 4px;
+  box-sizing: content-box;
+}
+
+<div
+  class="c0"
+>
+  <div
+    class="c1 heading4"
+  >
+    1
+  </div>
+</div>
+`;

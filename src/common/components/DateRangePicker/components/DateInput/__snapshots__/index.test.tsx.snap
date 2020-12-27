@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test DateInput should render DateInput correctly 1`] = `
+<div
+  class="styled__DateInputWrapper-vaoKq capbpl"
+>
+  <div
+    value="Mock Display Date"
+  />
+</div>
+`;
