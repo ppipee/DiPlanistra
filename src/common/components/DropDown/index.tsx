@@ -6,23 +6,47 @@ import ArrowDownIcon from 'common/components/icons/ArrowDownIcon'
 import useToggle from 'common/hooks/useToggle'
 import { black } from 'common/styles/colors'
 import fontSizes from 'common/styles/mixins/fontSizes'
-import spaces from 'common/styles/mixins/spaces'
+import spaces, { AvailableSpaceSizes } from 'common/styles/mixins/spaces'
 
 import Overlay from '../Overlay'
 
 import { DropDownItemProps } from './components/DropDownItem/types'
 import { DropDownContainer, DisplayText, DropDownWrapper, DropDownItemContainer } from './styled'
-
-const ICON_SIZE = 16
+import { DropdownVariant, DropdownVariants } from './types'
 
 type Props = {
 	children: ReactElement<DropDownItemProps> | ReactElement<DropDownItemProps>[]
 	value?: ReactText
 	defaultValue?: ReactText
 	onChange?: (value: ReactText) => void
+	maxHeight?: string
+	withOutlined?: boolean
+	placeholder?: string
+	variant?: DropdownVariant
+	displayCenter?: boolean
 }
 
-const DropDown = ({ children, defaultValue, onChange, value }: Props) => {
+const GAP_SIZE: Record<DropdownVariants, AvailableSpaceSizes> = {
+	small: 4,
+	default: 8,
+}
+
+const ICON_SIZE: Record<DropdownVariants, number> = {
+	small: 12,
+	default: 16,
+}
+
+const DropDown = ({
+	children,
+	defaultValue,
+	onChange,
+	value,
+	maxHeight,
+	withOutlined,
+	placeholder,
+	displayCenter,
+	variant = DropdownVariants.Default,
+}: Props) => {
 	const [dropDownValue, setValue] = useState<ReactText>(defaultValue)
 	const { isOpen, close, toggle } = useToggle()
 
@@ -57,13 +81,24 @@ const DropDown = ({ children, defaultValue, onChange, value }: Props) => {
 
 	return (
 		<DropDownWrapper $direction="column">
-			<DropDownContainer $isOpen={isOpen} $alignCenter $size={spaces(8)} onClick={toggle}>
-				<DisplayText as="div" size={fontSizes(16)}>
-					{items[dropDownValue] || 'select...'}
+			<DropDownContainer
+				$isOpen={isOpen}
+				$alignCenter
+				$size={spaces(GAP_SIZE[variant])}
+				onClick={toggle}
+				$withOutlined={withOutlined}
+				$variant={variant}
+			>
+				<DisplayText as="div" size={fontSizes(16)} textAlign={displayCenter ? 'center' : 'left'}>
+					{items[dropDownValue] || placeholder || 'select...'}
 				</DisplayText>
-				<ArrowDownIcon size={ICON_SIZE} color={black} />
+				<ArrowDownIcon size={ICON_SIZE[variant]} color={black} />
 			</DropDownContainer>
-			{isOpen && <DropDownItemContainer $direction="column">{ItemComponents}</DropDownItemContainer>}
+			{isOpen && (
+				<DropDownItemContainer $variant={variant} $maxHeight={maxHeight} $direction="column">
+					{ItemComponents}
+				</DropDownItemContainer>
+			)}
 			<Overlay isOpen={isOpen} onClick={close} transparent />
 		</DropDownWrapper>
 	)

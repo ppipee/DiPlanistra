@@ -7,7 +7,7 @@ import spaces from 'common/styles/mixins/spaces'
 
 import { BadgeProps, BadgeVariant } from './types'
 
-const BADGE_HEIGHT = '20px'
+const BADGE_HEIGHT = '24px'
 
 function applyBadgeVariant({ $variant, $color, $secondColor }: BadgeProps) {
 	if ($variant === BadgeVariant.Outlined) {
@@ -30,7 +30,7 @@ export const Badge = styled.div`
 	display: flex;
 	align-items: center;
 	padding: ${spaces(4)} ${spaces(8)};
-	font-size: ${fontSizes(10)};
+	font-size: ${fontSizes(12)};
 
 	${applyBadgeVariant}
 `

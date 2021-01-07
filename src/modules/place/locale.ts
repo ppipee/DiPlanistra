@@ -38,3 +38,14 @@ export const CHILD_ENTRY_FEE = [
     other {{fee}{currency}  /person}
     }`,
 ]
+
+export const ENTRY_FEE = [
+	`{fee,plural,
+    =0 {ไม่เสียค่าเข้าชม}
+    other {ค่าเข้าชม {fee}{currency}}
+    }`,
+	`{fee,plural,
+    =0 {Fee-Free}
+    other {Fee: {fee}{currency} /person}
+    }`,
+]

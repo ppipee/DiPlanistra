@@ -7,13 +7,13 @@ import spaces from 'common/styles/mixins/spaces'
 import { ItemWrapper } from './styled'
 import { DropDownItemProps } from './types'
 
-const DropDownItem = ({ setItem, value, active, children, name }: DropDownItemProps) => {
+const DropDownItem = ({ setItem, value, active, children, name, center = false }: DropDownItemProps) => {
 	const onClickItem = useCallback(() => {
 		setItem(value)
 	}, [value])
 
 	return (
-		<ItemWrapper $active={active} onClick={onClickItem} $alignCenter $size={spaces(8)}>
+		<ItemWrapper $active={active} onClick={onClickItem} $alignCenter $justifyCenter={center} $size={spaces(8)}>
 			{children}
 			<Text color={active ? gray[700] : gray[900]}>{name}</Text>
 		</ItemWrapper>

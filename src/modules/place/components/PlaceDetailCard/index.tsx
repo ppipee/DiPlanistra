@@ -15,10 +15,11 @@ import { gray, green, red } from 'common/styles/colors'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
 import { Business } from 'common/types/wongnai/business'
+import convertCurrency from 'common/utils/convertCurrency'
 import convertDistanceToKM from 'common/utils/convertDistanceToKM'
 import filterArrayExistingValue from 'common/utils/filterArrayExistingValue'
 
-import { CLOSED_STATUS, OPENED_STATUS, REVIEW_UNIT } from 'modules/place/locale'
+import { CLOSED_STATUS, ENTRY_FEE, OPENED_STATUS, REVIEW_UNIT } from 'modules/place/locale'
 import getCategoryTag from 'modules/place/utils/getCategoryTags'
 import getWorkingHour from 'modules/place/utils/getWorkingHour'
 
@@ -37,15 +38,20 @@ const PlaceDetailCard = ({ place, favorite, showDistance }: Props) => {
 	const I18n = useI18n()
 
 	const {
-		name,
-		statistic: { rating, numberOfReviews },
+		displayName,
+		rating,
+		statistic: { numberOfReviews },
 		workingHoursStatus,
 		categories,
-		priceRange,
+		attractionInformation,
 	} = place
+
+	const entryFee = attractionInformation?.entryFee
+
+	const currency = convertCurrency(entryFee.currency) ? I18n.t(convertCurrency(entryFee.currency)) : entryFee.currency
 	const reviewAndPriceRange = filterArrayExistingValue([
-		`${I18n.t(REVIEW_UNIT, { review: numberOfReviews })}`,
-		priceRange,
+		numberOfReviews ? `${I18n.t(REVIEW_UNIT, { review: numberOfReviews })}` : null,
+		entryFee ? `${I18n.t(ENTRY_FEE, { fee: entryFee.adult, currency })}` : null,
 	]).join(' | ')
 
 	const shopStatus = I18n.t(workingHoursStatus?.open ? OPENED_STATUS : CLOSED_STATUS)
@@ -58,27 +64,25 @@ const PlaceDetailCard = ({ place, favorite, showDistance }: Props) => {
 		<CardDetail>
 			<Text as="div" size={fontSizes(14)}>
 				<Gap $size={spaces(8)} $type="vertical">
-					<div>
-						<Flex $justifyContent="space-between">
-							<div>
-								<CardTitle size={fontSizes(16)} ellipsis={1} margin={`0 ${spaces(4)} 0 0`}>
-									{name}
-								</CardTitle>
-								<Gap $size={spaces(4)} $alignCenter>
-									{rating && <Rating rating={rating} />}
-									{(numberOfReviews || priceRange) && <span>{reviewAndPriceRange}</span>}
-								</Gap>
-							</div>
-							<Gap $size={spaces(4)} $type="vertical">
-								<FavIcon cursor="pointer" size={FAV_ICON_SIZE} color={favorite ? red[500] : gray[200]} />
-								{showDistance && distance && (
-									<Text size={fontSizes(12)} color={gray[700]}>
-										{distance}
-									</Text>
-								)}
+					<Flex $justifyContent="space-between" $responsive>
+						<Flex $direction="column">
+							<CardTitle size={fontSizes(16)} ellipsis={2} margin={`0 ${spaces(4)} 0 0`}>
+								{displayName}
+							</CardTitle>
+							<Gap $size={spaces(4)} $alignCenter>
+								{rating && <Rating rating={rating} />}
+								{(numberOfReviews || entryFee) && <Text color={gray[700]}>{reviewAndPriceRange}</Text>}
 							</Gap>
 						</Flex>
-					</div>
+						<Gap $size={spaces(4)} $type="vertical">
+							<FavIcon cursor="pointer" size={FAV_ICON_SIZE} color={favorite ? red[500] : gray[200]} />
+							{showDistance && distance && (
+								<Text size={fontSizes(12)} color={gray[700]} whiteSpace="nowrap">
+									{distance}
+								</Text>
+							)}
+						</Gap>
+					</Flex>
 					<div>
 						<Gap $size={spaces(8)} $alignCenter>
 							{workingHour && (

@@ -1,15 +1,18 @@
 import React from 'react'
 
+import { Link } from 'react-router-dom'
+
 import asRoute from 'core/router/hoc/asRoute'
 
 import Gap from 'common/components/Gap'
+import StickyContainer from 'common/components/StickyContainer'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
 
 import CountDownCover from 'modules/trips/components/CountDownCover'
 import CreatePlanner from 'modules/trips/components/CreatePlanner'
 import TripTicket from 'modules/trips/components/TripTicket'
-import PlannerStoreConfig from 'modules/trips/stores/PlannerStore'
+import { TRIP_PATH } from 'modules/trips/routes/paths'
 import TripStoreConfig from 'modules/trips/stores/TripStore'
 import { useTripStore } from 'modules/trips/stores/TripStore/context'
 
@@ -35,10 +38,14 @@ const TripsPageComponent = () => {
 						<Gap $type="vertical" $size={spaces(32)}>
 							<Gap $type="vertical" $size={isDesktop ? spaces(16) : spaces(12)}>
 								{trips.map((trip) => (
-									<TripTicket key={trip.id} trip={trip} />
+									<Link to={`${TRIP_PATH}/${trip.id}`} key={trip.id}>
+										<TripTicket trip={trip} />
+									</Link>
 								))}
 							</Gap>
-							<CreatePlanner />
+							<StickyContainer>
+								<CreatePlanner />
+							</StickyContainer>
 						</Gap>
 					</MainContainer>
 				</Gap>
@@ -50,6 +57,5 @@ const TripsPageComponent = () => {
 export default asRoute(TripsPageComponent, {
 	stores: {
 		tripStore: TripStoreConfig,
-		plannerStore: PlannerStoreConfig,
 	},
 })

@@ -9,46 +9,92 @@ import Flex from '../Flex'
 import Gap from '../Gap'
 import Text from '../Text'
 
-const DROP_DOWN_HEIGHT = '40px'
+import { DropdownVariant, DropdownVariants } from './types'
+
+const DROP_DOWN_HEIGHT: Record<DropdownVariants, string> = {
+	small: '32px',
+	default: '40px',
+}
+
+const MIN_WIDTH = '50px'
 
 type DropDownProps = {
 	$isOpen: boolean
+	$withOutlined?: boolean
+	$variant: DropdownVariant
+}
+
+type ItemContainerProps = {
+	$variant: DropdownVariant
+	$maxHeight?: string
+}
+
+function applyVariant({ $variant }: DropDownProps) {
+	return css`
+		height: ${DROP_DOWN_HEIGHT[$variant]};
+	`
+}
+
+function applyContainerStyles({ $isOpen, $withOutlined }: DropDownProps) {
+	let styles = css``
+
+	if ($isOpen) {
+		styles = css`
+			${styles}
+			border-radius: ${Borders.Normal} ${Borders.Normal} 0 0;
+		`
+	}
+
+	if ($withOutlined) {
+		styles = css`
+			${styles}
+			padding: 0 ${spaces(12)};
+			border-radius: ${Borders.Normal};
+			border: 1px solid ${gray[200]};
+		`
+	} else {
+		styles = css`
+			${styles}
+			padding: 0 ${spaces(4)} 0 ${spaces(8)};
+			border-bottom: 1px solid ${gray[200]};
+		`
+	}
+
+	return styles
 }
 
 export const DropDownContainer = styled(Gap)<DropDownProps>`
 	width: inherit;
-	height: ${DROP_DOWN_HEIGHT};
-	border: 1px solid ${gray[700]};
-	padding: 0 ${spaces(12)};
 	box-sizing: border-box;
-	border-radius: ${Borders.Normal};
+	cursor: pointer;
 
-	${({ $isOpen }) =>
-		$isOpen &&
-		css`
-			border-radius: ${Borders.Normal} ${Borders.Normal} 0 0;
-		`}
+	${applyVariant}
+	${applyContainerStyles}
 `
 
 export const DropDownWrapper = styled(Flex)`
 	position: relative;
 	width: 100%;
+	min-width: ${MIN_WIDTH};
 `
 
-export const DropDownItemContainer = styled(Flex)`
+export const DropDownItemContainer = styled(Flex)<ItemContainerProps>`
 	position: absolute;
 	z-index: ${ZIndexes.DropDown};
-	top: 40px;
+	top: ${({ $variant }) => DROP_DOWN_HEIGHT[$variant]};
 	width: inherit;
 	background-color: ${white};
-	border: 1px solid ${gray[700]};
+	border: 1px solid ${gray[200]};
 	border-top: none;
 	box-sizing: border-box;
 	border-radius: 0 0 ${Borders.Normal} ${Borders.Normal};
 	transition: all 0.2s;
 
+	overflow-y: auto;
+	max-height: ${({ $maxHeight = 'auto' }) => $maxHeight};
+
 	& > *:not(:last-child) {
-		border-bottom: 1px solid ${gray[300]};
+		border-bottom: 1px solid ${gray[200]};
 	}
 
 	& > :last-child {

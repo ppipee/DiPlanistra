@@ -6,4 +6,5 @@ export interface DropDownItemProps {
 	value: ReactText
 	name: string
 	setItem?: (value: ReactText) => void
+	center?: boolean
 }

@@ -9,7 +9,8 @@ import getColorWithAlpha from 'common/styles/utils/getColorWithAlpha'
 import { ButtonBorders, ButtonProps, ButtonSizes, ButtonVariants } from './types'
 
 enum ButtonHeight {
-	Default = '28px',
+	Small = '24px',
+	Default = '32px',
 	Large = '40px',
 }
 
@@ -31,7 +32,7 @@ function applySize({ $size }: ButtonProps) {
 	return defaultStyle
 }
 
-function applyVaraint({ $color, $secondaryColor, $variant }: ButtonProps) {
+function applyVariant({ $color, $secondaryColor, $variant }: ButtonProps) {
 	if ($variant === ButtonVariants.Outlined) {
 		return css`
 			background: ${white};
@@ -84,17 +85,20 @@ function applyBorderRadius({ $border }: ButtonProps) {
 }
 
 function applyShadow({ $shadow }: ButtonProps) {
-	if (!$shadow) return null
-
-	return css`
-		box-shadow: 0px 2px 2px ${getColorWithAlpha(black, 0.1)};
-
+	const style = css`
 		&:hover {
 			box-shadow: 0px 3px 3px ${getColorWithAlpha(black, 0.1)};
 		}
 		&:active {
 			box-shadow: 0px 3px 3px ${getColorWithAlpha(black, 0.2)};
 		}
+	`
+
+	if (!$shadow) return style
+
+	return css`
+		${style}
+		box-shadow: 0px 2px 2px ${getColorWithAlpha(black, 0.1)};
 	`
 }
 
@@ -135,7 +139,7 @@ const Button = styled.div<ButtonProps>`
 	justify-content: center;
 
 	${applySize};
-	${applyVaraint};
+	${applyVariant};
 	${applyResponsive};
 	${applyBorderRadius};
 	${applyHover}

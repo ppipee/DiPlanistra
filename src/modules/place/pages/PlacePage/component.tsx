@@ -59,7 +59,7 @@ const PlacePageComponent = () => {
 						)}
 						<Container>
 							<StickyContainer>
-								<Gap $type="vertical" $size={isDesktop ? spaces(8) : spaces(4)}>
+								<Gap $type="vertical" $size={isDesktop ? spaces(16) : spaces(4)}>
 									<PlaceEntryFee />
 									<PlaceTraveling />
 									{place.hours && <PlaceWorkingHour hours={place.hours} />}

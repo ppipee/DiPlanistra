@@ -6,15 +6,9 @@ export const ellipsisText = (line: number) => css`
 	word-break: break-word;
 	overflow: hidden;
 	text-overflow: ellipsis;
-	${line > 1
-		? css`
-				display: -webkit-box;
-				-webkit-line-clamp: ${line};
-				-webkit-box-orient: vertical;
-		  `
-		: css`
-				white-space: nowrap;
-		  `};
+	display: -webkit-box;
+	-webkit-line-clamp: ${line};
+	-webkit-box-orient: vertical;
 `
 
 const Text = styled.span<TextProps>`

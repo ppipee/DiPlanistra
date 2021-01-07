@@ -15,6 +15,10 @@ const GlobalStyles = createGlobalStyle`
 		background-color: ${gray[50]};
 		min-height:100vh;
 	}
+	
+	input,textarea {
+		font-family: 'DB Heavent Now', sans-serif;
+	}
 
 	#root{
 		min-height:100vh;

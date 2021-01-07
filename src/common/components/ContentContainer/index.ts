@@ -10,6 +10,8 @@ const ContentContainer = styled.div`
 	display: block;
 	max-width: ${CONTENT_WIDTH};
 	margin: 0 auto;
+	width: 100%;
+	box-sizing: border-box;
 
 	${media.md`
 		max-width: ${MEDIUM_CONTENT_WIDTH};

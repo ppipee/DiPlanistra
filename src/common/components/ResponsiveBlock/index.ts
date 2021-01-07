@@ -1,32 +1,37 @@
 import styled, { css } from 'styled-components'
 
-import { white } from 'common/styles/colors'
-import borders from 'common/styles/mixins/borders'
 import { media } from 'common/styles/utils/viewport'
 
-import { BlockShadow } from '../BlockShadow'
+import Block from '../Block'
 
 import { ResponsiveBlockProps, Variant } from './types'
 
-const mediaVariant = ({ $variant = Variant.TABLET, $paddingMobile }: ResponsiveBlockProps) => media[$variant]`
+const mediaVariant = ({
+	$variant = Variant.TABLET,
+	$paddingMobile,
+	$marginMobile = 'auto',
+}: ResponsiveBlockProps) => media[$variant]`
 		border-radius: 0;
 		box-shadow: none;
 
 		${
-			$paddingMobile &&
-			css`
-				padding: ${$paddingMobile};
-			`
+			$paddingMobile
+				? css`
+						padding: ${$paddingMobile};
+				  `
+				: ''
+		}
+
+		${
+			$marginMobile
+				? css`
+						margin: ${$marginMobile};
+				  `
+				: ''
 		}
 	`
 
-const ResponsiveBlock = styled(BlockShadow)`
-	width: 100%;
-	background: ${white};
-	border-radius: ${({ $borderRadius = borders.Large }) => $borderRadius};
-	padding: ${({ $padding = 0 }) => $padding};
-	box-sizing: border-box;
-
+const ResponsiveBlock = styled(Block)`
 	${mediaVariant}
 `
 

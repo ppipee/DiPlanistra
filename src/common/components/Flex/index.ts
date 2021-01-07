@@ -15,9 +15,10 @@ export interface FlexProps {
 	$margin?: string
 	$padding?: string
 	$responsive?: boolean
+	$grow?: string
 }
 
-function defineProps({ $margin: margin, $padding: padding, $responsive: responsive }: FlexProps) {
+function defineProps({ $margin: margin, $padding: padding, $responsive: responsive, $grow: grow }: FlexProps) {
 	let styled = css``
 
 	if (margin) {
@@ -38,6 +39,13 @@ function defineProps({ $margin: margin, $padding: padding, $responsive: responsi
 		styled = css`
 			${styled}
 			width: 100%;
+		`
+	}
+
+	if (grow) {
+		styled = css`
+			${styled}
+			flex-grow:${grow};
 		`
 	}
 

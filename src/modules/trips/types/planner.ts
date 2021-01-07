@@ -1,3 +1,4 @@
+import { AttractionInformation, Category, WorkingHourStatus } from 'common/types/wongnai/business'
 import { LatLng } from 'common/types/wongnai/common'
 import { BasicPhoto } from 'common/types/wongnai/image'
 
@@ -10,9 +11,9 @@ export interface InitPlanner {
 export interface Planner extends InitPlanner {
 	id?: string
 	dateLength: number
-	planner: PlannerInfo[]
+	planners: PlannerInfo[]
 	style: PlannerStyle
-	writer: string
+	writer: string // should replace with User
 	rating: number
 	shared: number
 	isPublic?: boolean
@@ -20,7 +21,7 @@ export interface Planner extends InitPlanner {
 	updateAt?: Date
 }
 
-export type PlannerPreview = Omit<Planner, 'planner' | 'style'>
+export type PlannerPreview = Omit<Planner, 'planners' | 'style'>
 
 export interface PlannerInfo {
 	day: number
@@ -30,16 +31,31 @@ export interface PlannerInfo {
 }
 
 export interface ActivityPlan {
+	id?: string
 	hour: ActivityHour
-	place: PlannerPlace
+	place: ActivityPlace
+	memo?: string
+	distance?: number
 }
 
-export interface PlannerPlace {
-	placeId: string
+export interface EditActivity {
+	hour: ActivityHour
+	placeId: string // publicId
+	memo?: string
+	distance?: number
+}
+
+export interface ActivityPlace {
+	publicId: string
 	name: string
 	coordinate: LatLng
 	defaultPhoto: BasicPhoto
 	mainPhoto: BasicPhoto
+	categories: Category[]
+	rating: number
+	priceRange?: number // phase3
+	workingHoursStatus: WorkingHourStatus
+	entryFee?: AttractionInformation['entryFee']
 }
 
 export interface ActivityHour {
@@ -50,4 +66,9 @@ export interface ActivityHour {
 export interface PlannerStyle {
 	coverPhoto?: string
 	showCover?: boolean
+}
+
+export enum PlannerMode {
+	Edit = 'edit',
+	View = 'view',
 }

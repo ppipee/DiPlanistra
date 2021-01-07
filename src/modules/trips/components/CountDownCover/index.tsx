@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 
 import useI18n from 'core/locale/hooks/useI18n'
 
+import CoverBackground from 'common/components/CoverBackground'
 import Gap from 'common/components/Gap'
 import Text from 'common/components/Text'
 import useCountDown from 'common/hooks/useCountDown'
@@ -16,7 +17,7 @@ import { PlannerPreview } from 'modules/trips/types/planner'
 import displayTimeLeft from 'modules/trips/utils/displayTimeLeft'
 
 import { LOCALE_STARTING_TRIP } from './locale'
-import { CoverBackground, CoverContainer } from './styled'
+import { CoverContainer } from './styled'
 
 const MAX_LENGTH = 2
 
@@ -47,7 +48,7 @@ const CountDownCover = ({ trip }: Props) => {
 		![days, minutes, secs, hours].every((value) => value <= 0)
 
 	return (
-		<CoverBackground>
+		<CoverBackground $shadow>
 			<CoverContainer>
 				{shouldShowCountDown && (
 					<Gap $type="vertical" $alignCenter $justifyCenter $size={spaces(16)} $responsive>

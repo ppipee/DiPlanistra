@@ -69,3 +69,8 @@ export interface NameValue<T> {
 	name: string
 	value: T
 }
+
+export interface IdName {
+	id: number
+	name: string
+}

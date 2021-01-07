@@ -14,7 +14,7 @@ import { LOCALE_CANCEL, LOCALE_SAVE } from 'common/locale'
 import spaces from 'common/styles/mixins/spaces'
 
 import { TRIP_NAME } from 'modules/trips/locale'
-import { usePlannerStore } from 'modules/trips/stores/PlannerStore/context'
+import { useTripStore } from 'modules/trips/stores/TripStore/context'
 
 type Props = {
 	close: () => void
@@ -25,7 +25,7 @@ const CreatePlannerModalComponent = ({ close }: Props) => {
 	const [date, setDate] = useState<CalenderDateProps>({})
 	const { keyword: plannerName, onChange } = useOnChange()
 
-	const { isLoading, createPlanner } = usePlannerStore((store) => ({
+	const { isLoading, createPlanner } = useTripStore((store) => ({
 		isLoading: store.isActionLoading('createPlanner'),
 		createPlanner: store.createPlanner,
 	}))

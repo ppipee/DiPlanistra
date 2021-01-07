@@ -1,3 +1,5 @@
+import { BlockProps } from '../Block/types'
+
 export enum Variant {
 	TABLET = 'md',
 	MOBILE = 'sm',
@@ -5,9 +7,8 @@ export enum Variant {
 
 export type VariantType = Variant | 'md' | 'sm'
 
-export interface ResponsiveBlockProps {
+export interface ResponsiveBlockProps extends BlockProps {
 	$variant?: VariantType
-	$padding?: string
 	$paddingMobile?: string
-	$borderRadius?: string
+	$marginMobile?: string
 }

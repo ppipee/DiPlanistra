@@ -4,8 +4,8 @@ export enum FadeKey {
 }
 
 export const COLLAPSE_ANIMATION_VARIANT = {
-	[FadeKey.Open]: { opacity: 1, height: 'auto' },
-	[FadeKey.Close]: { opacity: 0, height: 0 },
+	[FadeKey.Open]: { opacity: 1, height: 'auto', width: '100%' },
+	[FadeKey.Close]: { opacity: 0, height: 0, width: '100%' },
 }
 
 export const FADE_ANIMATION_VARIANT = {

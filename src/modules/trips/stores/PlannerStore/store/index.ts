@@ -1,44 +1,43 @@
-import { action } from 'mobx'
+import { action, observable } from 'mobx'
 
-import actionLoading from 'core/api/annotations/actionLoading'
-import loading from 'core/api/annotations/loading'
-import FetchStateStore from 'core/api/stores/FetchStateStore'
-import { MountParams } from 'core/mobx/types'
+import { DEFAULT_DAY_PLANNER } from 'modules/trips/constants'
+import PlannerApiStore from 'modules/trips/stores/PlannerApiStore/store'
+import { Planner, PlannerMode } from 'modules/trips/types/planner'
 
-import { createPlanner, getPlanner } from 'modules/trips/api'
-import { Planner, InitPlanner } from 'modules/trips/types/planner'
-
-export enum PlannerActionState {
-	CreatePlanner = 'createPlanner',
+type Stores = {
+	plannerApiStore: PlannerApiStore
 }
 
-class PlannerStore extends FetchStateStore {
+class PlannerStore {
+	@observable
+	plannerApiStore: PlannerApiStore
+
+	@observable
+	mode = PlannerMode.Edit
+
+	@observable
 	planner: Planner
 
-	// actionsState: Record<PlannerActionState, FetchState>
+	@observable
+	plannerDay = DEFAULT_DAY_PLANNER
 
-	onMount({ params: { plannerId } }: MountParams) {
-		if (plannerId) {
-			this.getPlanner(plannerId)
-		}
-	}
-
-	onUnMount() {
-		this.planner = undefined
+	@action
+	onInit({ plannerApiStore }: Stores) {
+		this.plannerApiStore = plannerApiStore
+		this.planner = plannerApiStore.planner
 	}
 
 	@action
-	@loading
-	async getPlanner(plannerId: string) {
-		this.planner = await getPlanner(plannerId)
+	onUnMount() {
+		this.plannerDay = DEFAULT_DAY_PLANNER
+		this.plannerApiStore = undefined
+		this.mode = PlannerMode.Edit
+		this.planner = undefined
 	}
 
 	@action.bound
-	@actionLoading
-	async createPlanner(data: InitPlanner) {
-		this.planner = await createPlanner(data)
-
-		return this.planner
+	setPlannerDay(day: number) {
+		this.plannerDay = this.plannerDay === day ? DEFAULT_DAY_PLANNER : day
 	}
 }
 

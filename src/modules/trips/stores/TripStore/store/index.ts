@@ -1,16 +1,16 @@
 import { action } from 'mobx'
 
+import actionLoading from 'core/api/annotations/actionLoading'
 import loading from 'core/api/annotations/loading'
 import FetchStateStore from 'core/api/stores/FetchStateStore'
-import { MountParams } from 'core/mobx/types'
 
-import { getPlanners } from 'modules/trips/api'
-import { PlannerPreview } from 'modules/trips/types/planner'
+import { getPlanners, createPlanner } from 'modules/trips/api'
+import { PlannerPreview, InitPlanner } from 'modules/trips/types/planner'
 
 class TripStore extends FetchStateStore {
 	trips: PlannerPreview[]
 
-	async onMount({ params, query }: MountParams) {
+	async onMount() {
 		this.getTrips()
 	}
 
@@ -22,6 +22,14 @@ class TripStore extends FetchStateStore {
 	@loading
 	async getTrips() {
 		this.trips = await getPlanners()
+	}
+
+	@action.bound
+	@actionLoading
+	async createPlanner(data: InitPlanner) {
+		const trip = await createPlanner(data)
+
+		this.trips = [...this.trips, trip]
 	}
 }
 

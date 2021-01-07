@@ -3,20 +3,30 @@ import styled from 'styled-components'
 import Flex from 'common/components/Flex'
 import { green } from 'common/styles/colors'
 import Borders from 'common/styles/mixins/borders'
-import { blockShadow, shadow } from 'common/styles/shadows'
+import { hardShadow, shadow } from 'common/styles/shadows'
+import { media } from 'common/styles/utils/viewport'
 
-const BUTTON_SIZE = '108px'
+const BUTTON_SIZE = {
+	desktop: '108px',
+	mobile: '80px',
+}
 
 export const CreatePlannerButton = styled(Flex)`
 	cursor: pointer;
 	border-radius: ${Borders.Circle};
-	height: ${BUTTON_SIZE};
-	width: ${BUTTON_SIZE};
+	height: ${BUTTON_SIZE.desktop};
+	width: ${BUTTON_SIZE.desktop};
 	background: linear-gradient(225deg, ${green[700]} 0%, ${green[500]} 100%);
 	margin: 0 auto;
 
-	${blockShadow};
 	&:hover {
-		${shadow}
+		${hardShadow}
 	}
+
+	${shadow}
+
+	${media.md`
+		height: ${BUTTON_SIZE.mobile};
+		width: ${BUTTON_SIZE.mobile};
+	`}
 `

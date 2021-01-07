@@ -18,6 +18,7 @@ export const TabContainer = styled.div`
 `
 
 export const MainContainer = styled.div`
+	position: relative;
 	flex: 1;
 
 	${media.md`

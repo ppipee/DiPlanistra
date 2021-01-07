@@ -1,4 +1,4 @@
-import { Category } from 'common/types/wongnai/business'
+import { Category } from 'modules/place/types'
 
 export default function getCategoryTag(categories?: Category[]) {
 	if (!categories) return null

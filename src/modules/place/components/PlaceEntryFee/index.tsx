@@ -22,7 +22,7 @@ const PlaceEntryFee = () => {
 	const { titleSize, detailSize } = useFontSizeResponsive()
 
 	const entryFee = PLACE_HIGHLIGHT.attractionInformation?.entryFee
-	const currency = I18n.t(convertCurrency(entryFee.currency)) || entryFee.currency
+	const currency = convertCurrency(entryFee.currency) ? I18n.t(convertCurrency(entryFee.currency)) : entryFee.currency
 
 	if (!entryFee) return null
 	return (
