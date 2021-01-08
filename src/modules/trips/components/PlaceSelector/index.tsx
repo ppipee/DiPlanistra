@@ -30,10 +30,10 @@ const PlaceSelector = (props: PlaceSelectorProps) => {
 	const placeSelected = props.places[props.placeSelectedIndex]
 
 	return (
-		<Flex $direction="column">
+		<div>
 			<ClickableBlock onClick={open}>
 				<Flex $alignItems="stretch">
-					<PlaceSelectedContainer $padding={spaces(8)} $isOpen={isOpen}>
+					<PlaceSelectedContainer $padding={spaces(10)} $isOpen={isOpen}>
 						<PlacePreviewCard place={placeSelected} />
 					</PlaceSelectedContainer>
 					<ArrowContainer $alignItems="center" $isOpen={isOpen}>
@@ -49,7 +49,7 @@ const PlaceSelector = (props: PlaceSelectorProps) => {
 				</Position>
 			)}
 			<Overlay isOpen={isOpen} onClick={close} transparent />
-		</Flex>
+		</div>
 	)
 }
 

@@ -15,6 +15,7 @@ import useFontSizeResponsive from 'common/styles/hooks/useFontSizeResponsive'
 import spaces from 'common/styles/mixins/spaces'
 import getDateTimeFormat from 'common/utils/datetime/getDateTimeFormat'
 
+import useSwitchPlannerSetting from 'modules/trips/hooks/useSwitchPlannerSetting'
 import { TRIP_PATH } from 'modules/trips/routes/paths'
 import { usePlannerStore } from 'modules/trips/stores/PlannerStore/context'
 
@@ -25,6 +26,7 @@ const DATE_FORMAT = 'D MMM YYYY'
 
 const PlannerCover = () => {
 	const planner = usePlannerStore((store) => store.planner)
+	const { openSetting } = useSwitchPlannerSetting()
 
 	const locale = useLocale()
 	const { largeSize, titleSize } = useFontSizeResponsive()
@@ -37,7 +39,7 @@ const PlannerCover = () => {
 	return (
 		<Background $shadow>
 			<Container>
-				<Flex $responsive $direction="column" $justifyContent="space-between">
+				<Flex $responsive $direction="column" $justifyContent="space-between" $alignItems="stretch">
 					<Flex $responsive $justifyContent="space-between">
 						<Link to={tripUrl}>
 							<ArrowWrapper>
@@ -45,7 +47,7 @@ const PlannerCover = () => {
 							</ArrowWrapper>
 						</Link>
 						<IconWrapper>
-							<ClickableIcon icon={SettingIcon} size={ICON_SIZE} color={white} />
+							<ClickableIcon icon={SettingIcon} size={ICON_SIZE} color={white} onClick={openSetting} />
 						</IconWrapper>
 					</Flex>
 					<Gap $type="vertical" $size={spaces(4)}>

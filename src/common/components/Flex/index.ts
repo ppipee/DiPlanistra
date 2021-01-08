@@ -18,7 +18,13 @@ export interface FlexProps {
 	$grow?: string
 }
 
-function defineProps({ $margin: margin, $padding: padding, $responsive: responsive, $grow: grow }: FlexProps) {
+function defineProps({
+	$margin: margin,
+	$padding: padding,
+	$responsive: responsive,
+	$grow: grow,
+	$direction: direction,
+}: FlexProps) {
 	let styled = css``
 
 	if (margin) {
@@ -32,6 +38,7 @@ function defineProps({ $margin: margin, $padding: padding, $responsive: responsi
 		styled = css`
 			${styled}
 			padding: ${padding};
+			box-sizing: border-box;
 		`
 	}
 
@@ -39,6 +46,12 @@ function defineProps({ $margin: margin, $padding: padding, $responsive: responsi
 		styled = css`
 			${styled}
 			width: 100%;
+		`
+	}
+	if (responsive && (direction === 'column' || direction === 'column-reverse')) {
+		styled = css`
+			${styled}
+			height: 100%;
 		`
 	}
 

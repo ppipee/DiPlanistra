@@ -8,6 +8,7 @@ import { red } from 'common/styles/colors'
 import spaces from 'common/styles/mixins/spaces'
 
 import usePlannerMode from 'modules/trips/hooks/usePlannerMode'
+import useSetActivityMode from 'modules/trips/hooks/useSetActivityMode'
 import { useActivityStore } from 'modules/trips/stores/ActivityStore/context'
 import { PlannerMode } from 'modules/trips/types/planner'
 
@@ -16,21 +17,23 @@ import { EditButton } from './styled'
 const ICON_SIZE = 18
 
 type Props = {
-	activityIndex: number
+	activityId: string
 }
 
-const ActivityController = ({ activityIndex }: Props) => {
-	const mode = usePlannerMode()
+const ActivityController = ({ activityId }: Props) => {
+	const plannerMode = usePlannerMode()
 	const selectActivity = useActivityStore((store) => store.selectActivity)
+	const { setUpdaterMode } = useSetActivityMode()
 
-	const setActivityIndex = useCallback(() => {
-		selectActivity(activityIndex)
-	}, [activityIndex])
+	const setActivity = useCallback(() => {
+		selectActivity(activityId)
+		setUpdaterMode()
+	}, [activityId])
 
-	if (mode === PlannerMode.Edit) {
+	if (plannerMode === PlannerMode.Edit) {
 		return (
 			<Flex $justifyContent="flex-end">
-				<EditButton $variant="outlined" $color={red[500]} $border="curve" $size="small" onClick={setActivityIndex}>
+				<EditButton $variant="outlined" $color={red[500]} $border="curve" $size="small" onClick={setActivity}>
 					<Gap $size={spaces(4)} $alignCenter>
 						<EditIcon size={ICON_SIZE} />
 						<Text>แก้ไข</Text>
@@ -39,7 +42,7 @@ const ActivityController = ({ activityIndex }: Props) => {
 			</Flex>
 		)
 	}
-	if (mode === PlannerMode.View) {
+	if (plannerMode === PlannerMode.View) {
 		return <div>ดูสถานที่/ดูเส้นทาง</div>
 	}
 

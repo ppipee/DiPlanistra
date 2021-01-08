@@ -8,6 +8,7 @@ import Rating from 'common/components/Rating'
 import Text from 'common/components/Text'
 import { black, gray } from 'common/styles/colors'
 import fontSizes from 'common/styles/mixins/fontSizes'
+import lineHeights from 'common/styles/mixins/lineHeights'
 import spaces from 'common/styles/mixins/spaces'
 
 import { PlacePreview } from 'modules/place/types'
@@ -31,7 +32,14 @@ const PlacePreviewCard = ({ place }: Props) => {
 			<PlaceImage src={defaultPhoto.smallUrl} />
 			<Flex $direction="column" $justifyContent="space-between">
 				<div>
-					<Text size={fontSizes(16)} weight="bold" color={black}>
+					<Text
+						size={fontSizes(14)}
+						lineHeight={lineHeights(18)}
+						weight="bold"
+						color={black}
+						ellipsis={2}
+						whiteSpace="initial"
+					>
 						{displayName}
 					</Text>
 					<Rating rating={rating} />

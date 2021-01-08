@@ -6,18 +6,15 @@ import Footer from 'modules/root/components/Footer'
 import GlobalStyles from 'modules/root/components/GlobalStyles'
 import NavigationBar from 'modules/root/components/NavigationBar'
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { RootContainer, MainContainer } from './styled'
 
 const RootPage = ({ route: { routes } }: RouteConfigComponentProps) => (
-	<>
-		{/* <RootContainer> */}
+	<RootContainer>
 		<NavigationBar />
 		<GlobalStyles />
 		<MainContainer>{renderRoutes(routes)}</MainContainer>
 		<Footer />
-		{/* </RootContainer> */}
-	</>
+	</RootContainer>
 )
 
 export default RootPage

@@ -87,12 +87,14 @@ const PLANNER = ({
 			title: 'Gooo~~~~~',
 			activities: [
 				{
+					id: '1234',
 					hour: { from: '10:00', to: '12:00' },
 					place: ACTIVITY_PLACE,
 					memo: '',
 					distance: '3000',
 				},
 				{
+					id: '567',
 					hour: { from: '6:00', to: '10:00' },
 					place: ACTIVITY_PLACE,
 					memo:
@@ -100,6 +102,7 @@ const PLANNER = ({
 					distance: '2000',
 				},
 				{
+					id: '8910',
 					hour: { from: '12:00', to: '14:00' },
 					place: ACTIVITY_PLACE,
 					memo: '',

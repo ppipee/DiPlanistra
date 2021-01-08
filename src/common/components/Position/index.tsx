@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components'
 
+import { NAV_HEIGHT } from 'common/styles/constants'
+
 import { PositionProps, ScaleTypes } from './types'
 
 function applyCenter({ $verticalCenter, $horizontalCenter, $center }: PositionProps) {
@@ -67,10 +69,21 @@ function applyScale({ $scale }: PositionProps) {
 	return ''
 }
 
+function applyPositionWithNav({ $withNav }: PositionProps) {
+	if (!$withNav) return null
+
+	return css`
+		top: ${NAV_HEIGHT};
+	`
+}
+
 const Position = styled.div`
 	${applyPosition}
 	${applyCenter}
   ${applyScale}
+
+	/* position nav will override top position */
+	${applyPositionWithNav}
 `
 
 export default Position

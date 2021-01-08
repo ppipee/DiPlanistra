@@ -15,3 +15,10 @@ export const hardShadow = css`
 export const blockShadow = css`
 	box-shadow: 0px 2px 2px ${getColorWithAlpha(black, 0.1)};
 `
+
+export const svgShadow = css`
+	svg path {
+		-webkit-filter: drop-shadow(0px -3px -3px ${getColorWithAlpha(black, 0.24)});
+		filter: drop-shadow(0px -3px -3px ${getColorWithAlpha(black, 0.24)});
+	}
+`

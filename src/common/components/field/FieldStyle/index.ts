@@ -16,7 +16,20 @@ const validatingState = ({ variant }: FieldProps) => {
 	}
 
 	return css`
-		border: 1px solid ${borderColor};
+		border-color: ${borderColor};
+		border-style: solid;
+	`
+}
+
+const applyBorder = ({ borderVariant = 'outlined' }: FieldProps) => {
+	if (borderVariant === 'default') {
+		return css`
+			border-bottom-width: 1px;
+		`
+	}
+
+	return css`
+		border-width: 1px;
 	`
 }
 
@@ -44,6 +57,7 @@ const FieldStyles = styled.input<FieldProps>`
 	}
 
 	${validatingState}
+	${applyBorder}
 `
 
 export default FieldStyles

@@ -25,7 +25,7 @@ function applyTransparent() {
 }
 
 export const PlaceItemContainer = styled(BaseContainer).attrs({
-	$padding: spaces(12),
+	$padding: spaces(10),
 })<ContainerProps>`
 	&:hover {
 		${applyTransparent}

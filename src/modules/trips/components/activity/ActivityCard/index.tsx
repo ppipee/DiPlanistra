@@ -3,7 +3,6 @@ import React from 'react'
 import Gap from 'common/components/Gap'
 import spaces from 'common/styles/mixins/spaces'
 
-import useActivityIndex from 'modules/trips/hooks/useActivityIndex'
 import { ActivityPlan } from 'modules/trips/types/planner'
 
 import ActivityController from '../ActivityController'
@@ -18,8 +17,6 @@ type Props = {
 }
 
 const ActivityCard = ({ activityPlan }: Props) => {
-	const activityIndex = useActivityIndex(activityPlan.place.publicId)
-
 	return (
 		<CardContainer>
 			<Gap $type="vertical" $size={spaces(16)}>
@@ -28,7 +25,7 @@ const ActivityCard = ({ activityPlan }: Props) => {
 					<ActivityPlace place={activityPlan.place} />
 					{activityPlan.memo && <ActivityMemo memo={activityPlan.memo} />}
 				</Gap>
-				<ActivityController activityIndex={activityIndex} />
+				<ActivityController activityId={activityPlan.id} />
 			</Gap>
 		</CardContainer>
 	)

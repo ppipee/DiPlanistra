@@ -4,10 +4,9 @@ import useI18n from 'core/locale/hooks/useI18n'
 
 import Gap from 'common/components/Gap'
 import Text from 'common/components/Text'
+import { LOCALE_MEMO } from 'common/locale'
 import { black, gray } from 'common/styles/colors'
 import spaces from 'common/styles/mixins/spaces'
-
-import { LOCALE_MEMO } from '../locale'
 
 type Props = {
 	memo: string

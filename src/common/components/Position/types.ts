@@ -27,4 +27,5 @@ export interface PositionProps {
 	$left?: string
 	$right?: string
 	$scale?: ScaleType
+	$withNav?: boolean
 }

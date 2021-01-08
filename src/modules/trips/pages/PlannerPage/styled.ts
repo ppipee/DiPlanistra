@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 import BaseContainer from 'common/components/BaseContainer'
-import Block from 'common/components/Block'
 import { gray } from 'common/styles/colors'
 import spaces from 'common/styles/mixins/spaces'
 
@@ -13,10 +12,6 @@ export const MainContainer = styled(BaseContainer)`
 
 export const SubContainer = styled.div`
 	width: ${SUB_CONTAINER_WIDTH};
-`
-
-export const EditorBlock = styled(Block)`
-	height: fit-content;
 `
 
 export const ButtonContainer = styled(BaseContainer)`

@@ -5,7 +5,7 @@ import { PLACE_HIGHLIGHTS } from 'common/mocks/plcaeHighlights'
 import { PlacePreview } from 'modules/place/types'
 import PlannerApiStore from 'modules/trips/stores/PlannerApiStore/store'
 import PlannerStore from 'modules/trips/stores/PlannerStore/store'
-import { ActivityHour } from 'modules/trips/types/planner'
+import { ActivityHour, EditorMode } from 'modules/trips/types/planner'
 
 type Stores = {
 	plannerApiStore: PlannerApiStore
@@ -13,11 +13,12 @@ type Stores = {
 }
 
 class ActivityStore {
-	@observable
 	plannerApiStore: PlannerApiStore
 
-	@observable
 	plannerStore: PlannerStore
+
+	@observable
+	mode = EditorMode.Create
 
 	@observable
 	placeId: string
@@ -29,10 +30,15 @@ class ActivityStore {
 	memo = ''
 
 	@observable
-	favoritePlaces: PlacePreview[] = PLACE_HIGHLIGHTS as any // mock
+	favoritePlaces: PlacePreview[]
 
 	@observable
-	activityIndex: number = -1
+	activityId: string
+
+	@action
+	onMount() {
+		this.favoritePlaces = PLACE_HIGHLIGHTS as any // remove
+	}
 
 	@action
 	onInit({ plannerApiStore, plannerStore }: Stores) {
@@ -40,36 +46,33 @@ class ActivityStore {
 		this.plannerStore = plannerStore
 	}
 
+	onUnMount() {
+		this.resetActivityStore()
+	}
+
 	@action.bound
-	selectActivity(activityIndex: number) {
+	selectActivity(activityId: string) {
 		const { planner, plannerDay } = this.plannerInfo
 
 		const planners = planner?.planners || []
-		const dayPlanner = { ...planners[plannerDay - 1].activities[activityIndex] }
+		const activity = planners[plannerDay - 1].activities.find((activity) => activity.id === activityId)
 
-		this.activityIndex = activityIndex
-		this.placeId = dayPlanner.place.publicId
-		this.hour = dayPlanner.hour
-		this.memo = dayPlanner.memo
+		this.activityId = activityId
+		this.placeId = activity.place.publicId
+		this.hour = activity.hour
+		this.memo = activity.memo
 	}
 
 	@action.bound
 	setActivity({ hour, memo, placeId }: { hour?: ActivityHour; memo?: string; placeId?: string }) {
-		if (hour) {
-			this.hour = hour
-		}
-		if (memo) {
-			this.memo = memo
-		}
-		if (placeId) {
-			this.placeId = placeId
-		}
+		this.hour = hour || this.hour
+		this.memo = memo || this.memo
+		this.placeId = placeId || this.placeId
 	}
 
 	@action.bound
 	async saveActivity() {
-		const { planner, plannerDay } = this.plannerInfo
-		const plannerId = planner.id
+		const { plannerDay } = this.plannerInfo
 
 		const activityPlan = {
 			memo: this.memo,
@@ -77,14 +80,17 @@ class ActivityStore {
 			placeId: this.placeId,
 		}
 
-		await this.plannerApiStore.updateActivity(plannerId, plannerDay, activityPlan)
+		if (this.mode === EditorMode.Create) {
+			await this.plannerApiStore.createActivity(plannerDay, activityPlan)
+		} else {
+			await this.plannerApiStore.updateActivity(plannerDay, activityPlan)
+		}
 	}
 
 	async deleteActivity() {
-		const { planner, plannerDay } = this.plannerInfo
-		const plannerId = planner.id
+		const { plannerDay } = this.plannerInfo
 
-		await this.plannerApiStore.deleteActivity(plannerId, plannerDay, this.placeId)
+		await this.plannerApiStore.deleteActivity(plannerDay, this.activityId)
 		this.resetActivityStore()
 	}
 
@@ -93,7 +99,13 @@ class ActivityStore {
 		this.placeId = undefined
 		this.hour = undefined
 		this.memo = undefined
-		this.activityIndex = -1
+		this.activityId = undefined
+		this.mode = EditorMode.Create
+	}
+
+	@action.bound
+	setActivityMode(mode: EditorMode) {
+		this.mode = mode
 	}
 
 	@computed
@@ -104,8 +116,9 @@ class ActivityStore {
 		return { planner, plannerDay }
 	}
 
-	onUnMount() {
-		this.resetActivityStore()
+	@computed
+	get showActivityEditor() {
+		return !!this.activityId
 	}
 }
 

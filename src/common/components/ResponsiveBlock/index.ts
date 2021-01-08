@@ -9,7 +9,7 @@ import { ResponsiveBlockProps, Variant } from './types'
 const mediaVariant = ({
 	$variant = Variant.TABLET,
 	$paddingMobile,
-	$marginMobile = 'auto',
+	$marginMobile = '0',
 }: ResponsiveBlockProps) => media[$variant]`
 		border-radius: 0;
 		box-shadow: none;

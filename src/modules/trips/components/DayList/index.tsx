@@ -38,9 +38,9 @@ const DayList = ({ planner }: Props) => {
 	return (
 		<Gap $type="vertical" $size={spaces(16)}>
 			<DayHeader onClick={setOpen} isOpen={shouldShowPlanner} day={planner.day} title={planner.title} />
-			{shouldShowPlanner &&
-				(!isEmpty(activities) ? (
-					<Collapse>
+			{shouldShowPlanner && (
+				<Collapse>
+					{!isEmpty(activities) ? (
 						<BaseContainer $padding={`0 ${spaces(16)}`} $paddingMobile={`0 ${spaces(8)}`}>
 							<ActivityCardsContainer
 								$padding={`${spaces(16)} ${spaces(16)} ${spaces(20)}`}
@@ -53,14 +53,13 @@ const DayList = ({ planner }: Props) => {
 								))}
 							</ActivityCardsContainer>
 						</BaseContainer>
-					</Collapse>
-				) : (
-					<Collapse>
+					) : (
 						<BaseContainer $margin="0" $padding={`0 ${spaces(16)}`} $paddingMobile={`0 ${spaces(8)}`}>
 							<ActivityEmpty />
 						</BaseContainer>
-					</Collapse>
-				))}
+					)}
+				</Collapse>
+			)}
 		</Gap>
 	)
 }

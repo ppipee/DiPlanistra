@@ -27,7 +27,7 @@ export interface PlannerInfo {
 	day: number
 	title?: string
 	description?: string
-	activities: ActivityPlan[]
+	activities?: ActivityPlan[]
 }
 
 export interface ActivityPlan {
@@ -39,10 +39,10 @@ export interface ActivityPlan {
 }
 
 export interface EditActivity {
+	id?: string
 	hour: ActivityHour
 	placeId: string // publicId
 	memo?: string
-	distance?: number
 }
 
 export interface ActivityPlace {
@@ -71,4 +71,9 @@ export interface PlannerStyle {
 export enum PlannerMode {
 	Edit = 'edit',
 	View = 'view',
+}
+
+export enum EditorMode {
+	Create = 'create',
+	Update = 'update',
 }

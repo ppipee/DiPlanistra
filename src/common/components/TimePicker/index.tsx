@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback } from 'react'
+
+import { isNumber } from 'lodash'
 
 import spaces from 'common/styles/mixins/spaces'
 import setPrefixToDigi from 'common/utils/setPrefixToDigi'
@@ -17,17 +19,32 @@ type Props = {
 }
 
 const TimePicker = ({ setTime, time }: Props) => {
-	const [hour, setHour] = useState<string | number>(time?.getHours().toString())
-	const [minute, setMinute] = useState<string | number>(time?.getMinutes().toString())
+	const hour = time?.getHours().toString()
+	const minute = time?.getMinutes().toString()
 
-	useEffect(() => {
-		if (!isNaN(+hour) && !isNaN(+minute)) {
-			const newTime = new Date()
+	const setHour = useCallback(
+		(hour: string | number) => {
+			if (isNumber(+hour)) {
+				const newTime = time
 
-			newTime.setHours(+hour, +minute)
-			setTime(newTime)
-		}
-	}, [hour, minute])
+				newTime.setHours(+hour)
+				setTime(newTime)
+			}
+		},
+		[time],
+	)
+
+	const setMinute = useCallback(
+		(minute: string | number) => {
+			if (isNumber(+minute)) {
+				const newTime = time
+
+				newTime.setMinutes(+minute)
+				setTime(newTime)
+			}
+		},
+		[time],
+	)
 
 	return (
 		<Gap $size={spaces(4)} $alignCenter $responsive>
@@ -41,7 +58,7 @@ const TimePicker = ({ setTime, time }: Props) => {
 				displayCenter
 			>
 				{HOURS_PICKER.map((hour) => (
-					<DropDownItem key={`hour-${hour}`} value={hour} name={setPrefixToDigi(hour)} center />
+					<DropDownItem key={`hour-${hour}`} value={hour.toString()} name={setPrefixToDigi(hour)} center />
 				))}
 			</DropDown>
 			<span>:</span>
@@ -55,7 +72,7 @@ const TimePicker = ({ setTime, time }: Props) => {
 				displayCenter
 			>
 				{MINUTES_PICKER.map((minute) => (
-					<DropDownItem key={`minute-${minute}`} value={minute} name={setPrefixToDigi(minute)} center />
+					<DropDownItem key={`minute-${minute}`} value={minute.toString()} name={setPrefixToDigi(minute)} center />
 				))}
 			</DropDown>
 		</Gap>
