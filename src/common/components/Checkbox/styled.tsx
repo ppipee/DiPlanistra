@@ -59,8 +59,8 @@ export const CheckboxInput = styled.div<CheckboxProps>`
 		background-color: ${$checked ? main[300] : white};
 
 		&:hover {
-			background-color: ${$checked ? main[200] : white};
-			border: 1px solid ${$checked ? main[200] : main[300]};
+			background-color: ${$checked ? main[100] : white};
+			border: 1px solid ${$checked ? main[100] : main[300]};
 		}
 	`}
 `

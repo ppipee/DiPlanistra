@@ -4,7 +4,7 @@ import { Badge } from 'common/components/Badge'
 import { BadgeVariant } from 'common/components/Badge/types'
 import Flex from 'common/components/Flex'
 import { PLACE_HIGHLIGHT } from 'common/mocks/placeHighlight'
-import { green } from 'common/styles/colors'
+import { green, main } from 'common/styles/colors'
 
 import getCategoryTag from 'modules/place/utils/getCategoryTags'
 
@@ -26,7 +26,7 @@ const PlaceTags = () => {
 		<Flex>
 			{categoryTags.map((category, index) => (
 				<BadgeWrapper key={`category-place-${index}`}>
-					<Badge $color={green[700]} $secondColor={green[500]} $variant={categoryVariant(category)}>
+					<Badge $color={main[500]} $secondColor={green[500]} $variant={categoryVariant(category)}>
 						{category}
 					</Badge>
 				</BadgeWrapper>

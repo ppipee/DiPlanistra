@@ -11,7 +11,7 @@ import { media } from 'common/styles/utils/viewport'
 export const NavTemplate = styled.div`
 	width: 100%;
 	height: ${NAV_HEIGHT};
-	background-color: ${main[500]};
+	background-color: ${main[700]};
 `
 export const NavWrapper = styled(NavTemplate)`
 	position: fixed;

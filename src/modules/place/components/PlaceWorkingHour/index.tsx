@@ -7,7 +7,7 @@ import Gap from 'common/components/Gap'
 import ClockIcon from 'common/components/icons/ClockIcon'
 import ResponsiveBlock from 'common/components/ResponsiveBlock'
 import Text from 'common/components/Text'
-import { black, gray, green, main } from 'common/styles/colors'
+import { black, gray, main } from 'common/styles/colors'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
 import { Hour } from 'common/types/wongnai/business'
@@ -38,7 +38,7 @@ const PlaceWorkingHour = ({ hours }: Props) => {
 				return gray[200]
 			}
 			if (workingHour.day - 1 === today) {
-				return green[700]
+				return main[500]
 			}
 
 			return black

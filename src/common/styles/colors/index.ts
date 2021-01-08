@@ -11,11 +11,10 @@ export const gray = {
 }
 
 export const main = {
-	100: '#A7D4E4',
-	200: '#72BAD4',
-	300: '#51ADCF',
+	100: '#A8E1E1',
+	300: '#66BDBC',
 	500: '#329D9C',
-	700: '#1D7675',
+	700: '#1A8887',
 }
 
 export const green = {

@@ -3,10 +3,11 @@ import styled from 'styled-components'
 import Flex from 'common/components/Flex'
 import Gap from 'common/components/Gap'
 import Text from 'common/components/Text'
-import { gray, green, white } from 'common/styles/colors'
+import { gray, green, main, white } from 'common/styles/colors'
 import Borders from 'common/styles/mixins/borders'
 import spaces from 'common/styles/mixins/spaces'
 import { blockShadow } from 'common/styles/shadows'
+import getColorWithAlpha from 'common/styles/utils/getColorWithAlpha'
 import { media } from 'common/styles/utils/viewport'
 
 const DESKTOP_TICKET_HEIGHT = '148px'
@@ -47,7 +48,7 @@ export const TicketDetail = styled(Flex)`
 	flex: 1;
 	border-radius: ${Borders.Default};
 	color: ${white};
-	background: linear-gradient(238.64deg, ${green[700]} 13.57%, ${green[500]} 90.33%);
+	background: linear-gradient(238.64deg, ${getColorWithAlpha(main[500], 0.8)} 13.57%, ${green[500]} 90.33%);
 
 	${media.md`
 		padding: ${spaces(8)} ${spaces(8)} ${spaces(8)} ${spaces(12)};

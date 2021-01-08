@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 import Flex from 'common/components/Flex'
 import Gap from 'common/components/Gap'
-import { green, white } from 'common/styles/colors'
+import { green, main, white } from 'common/styles/colors'
 import Borders from 'common/styles/mixins/borders'
 import { shadow } from 'common/styles/shadows'
 import { media } from 'common/styles/utils/viewport'
@@ -28,7 +28,7 @@ export const HeaderContainer = styled(Gap)`
 export const CircleBlock = styled(Flex)`
 	box-sizing: border-box;
 	border: 2px solid ${white};
-	background: linear-gradient(198.25deg, ${green[700]} 12.76%, ${green[500]} 110.73%);
+	background: linear-gradient(198.25deg, ${main[500]} 12.76%, ${green[500]} 110.73%);
 	border-radius: ${Borders.Circle};
 
 	width: ${CONTAINER_HEIGHT.desktop};

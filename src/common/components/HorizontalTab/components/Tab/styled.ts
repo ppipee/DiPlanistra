@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 
 import Flex from 'common/components/Flex'
-import { gray, green, main } from 'common/styles/colors'
+import { gray, main } from 'common/styles/colors'
 import Borders from 'common/styles/mixins/borders'
 import { media } from 'common/styles/utils/viewport'
 
@@ -18,9 +18,9 @@ export const TabContainer = styled.div<TabStyleProps>`
 	cursor: pointer;
 
 	&:hover {
-		color: ${green[700]};
+		color: ${main[500]};
 		svg {
-			color: ${green[700]};
+			color: ${main[500]};
 		}
 	}
 

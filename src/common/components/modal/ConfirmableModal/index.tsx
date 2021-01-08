@@ -6,7 +6,7 @@ import Gap from 'common/components/Gap'
 import CloseIcon from 'common/components/icons/CloseIcon'
 import SeparatorLine from 'common/components/SeparatorLine'
 import Text from 'common/components/Text'
-import { gray, green } from 'common/styles/colors'
+import { gray, green, main } from 'common/styles/colors'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import lineHeights from 'common/styles/mixins/lineHeights'
 import spaces from 'common/styles/mixins/spaces'
@@ -60,10 +60,10 @@ const ConfirmableModal = ({
 				</div>
 				<Text size={fontSizes(16)}>{description}</Text>
 				<ButtonContainer $size={spaces(8)}>
-					<Button $color={green[700]} $variant="outlined" onClick={onCancel} $responsive>
+					<Button $color={main[500]} $variant="outlined" onClick={onCancel} $responsive>
 						<span>{cancelText}</span>
 					</Button>
-					<Button $color={green[700]} $secondaryColor={green[500]} onClick={onConfirm} $responsive>
+					<Button $color={main[500]} $secondaryColor={green[500]} onClick={onConfirm} $responsive>
 						<span>{confirmText}</span>
 					</Button>
 				</ButtonContainer>

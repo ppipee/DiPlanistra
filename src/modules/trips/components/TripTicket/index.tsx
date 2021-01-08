@@ -8,7 +8,7 @@ import ShareIcon from 'common/components/icons/ShareIcon'
 import StarIcon from 'common/components/icons/StarIcon'
 import TriangleIcon from 'common/components/icons/TriangleIcon'
 import Text from 'common/components/Text'
-import { gray, green, white } from 'common/styles/colors'
+import { gray, main, white } from 'common/styles/colors'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
@@ -78,7 +78,7 @@ const TripTicket = ({ trip }: Props) => {
 				<IdText size={isDesktop ? fontSizes(12) : fontSizes(10)} color={gray[500]}>
 					{id.slice(0, 8)}
 				</IdText>
-				<TriangleIcon size={ICON_SIZE} color={green[700]} />
+				<TriangleIcon size={ICON_SIZE} color={main[500]} />
 			</SubTicketArea>
 		</TicketContainer>
 	)

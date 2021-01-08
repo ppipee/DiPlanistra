@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 import Flex from 'common/components/Flex'
-import { green } from 'common/styles/colors'
+import { green, main } from 'common/styles/colors'
 import Borders from 'common/styles/mixins/borders'
 import { hardShadow, shadow } from 'common/styles/shadows'
 import { media } from 'common/styles/utils/viewport'
@@ -16,7 +16,7 @@ export const CreatePlannerButton = styled(Flex)`
 	border-radius: ${Borders.Circle};
 	height: ${BUTTON_SIZE.desktop};
 	width: ${BUTTON_SIZE.desktop};
-	background: linear-gradient(225deg, ${green[700]} 0%, ${green[500]} 100%);
+	background: linear-gradient(225deg, ${main[500]} 0%, ${green[500]} 100%);
 	margin: 0 auto;
 
 	&:hover {

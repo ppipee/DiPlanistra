@@ -80,7 +80,7 @@ function applyBorderRadius({ $border }: ButtonProps) {
 	}
 
 	return css`
-		border-radius: ${Borders.Default};
+		border-radius: ${Borders.Normal};
 	`
 }
 

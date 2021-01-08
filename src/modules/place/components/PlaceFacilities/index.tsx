@@ -17,7 +17,7 @@ import WifiIcon from 'common/components/icons/WifiIcon'
 import ResponsiveBlock from 'common/components/ResponsiveBlock'
 import Text from 'common/components/Text'
 import { TextProps } from 'common/components/Text/types'
-import { gray, green } from 'common/styles/colors'
+import { gray, main } from 'common/styles/colors'
 import useFontSizeResponsive from 'common/styles/hooks/useFontSizeResponsive'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
@@ -79,7 +79,7 @@ const PlaceFacilities = ({ facilities }: Props) => {
 
 	const getFacilitiesStatus = useCallback((exist: boolean) => {
 		let fontProps: TextProps = {}
-		const iconProps: IconProps = { color: green[700], size: isDesktop ? DESKTOP_ICON_SIZE : MOBILE_ICON_SIZE }
+		const iconProps: IconProps = { color: main[500], size: isDesktop ? DESKTOP_ICON_SIZE : MOBILE_ICON_SIZE }
 
 		if (!exist) {
 			iconProps.color = gray[200]
