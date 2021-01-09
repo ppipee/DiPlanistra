@@ -10,7 +10,7 @@ import spaces from 'common/styles/mixins/spaces'
 import usePlannerMode from 'modules/trips/hooks/usePlannerMode'
 import useSetActivityMode from 'modules/trips/hooks/useSetActivityMode'
 import { useActivityStore } from 'modules/trips/stores/ActivityStore/context'
-import { PlannerMode } from 'modules/trips/types/planner'
+import { PlannerMode } from 'modules/trips/types/store'
 
 import { EditButton } from './styled'
 

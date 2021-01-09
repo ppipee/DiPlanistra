@@ -5,7 +5,8 @@ import { PLACE_HIGHLIGHTS } from 'common/mocks/plcaeHighlights'
 import { PlacePreview } from 'modules/place/types'
 import PlannerApiStore from 'modules/trips/stores/PlannerApiStore/store'
 import PlannerStore from 'modules/trips/stores/PlannerStore/store'
-import { ActivityHour, EditorMode } from 'modules/trips/types/planner'
+import { ActivityHour } from 'modules/trips/types/planner'
+import { EditorMode } from 'modules/trips/types/store'
 
 type Stores = {
 	plannerApiStore: PlannerApiStore

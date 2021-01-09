@@ -15,7 +15,7 @@ import DeletePlaceButton from 'modules/trips/components/DeletePlaceButton'
 import PlaceSelector from 'modules/trips/components/PlaceSelector'
 import useActivityState from 'modules/trips/hooks/useActivityState'
 import { useActivityStore } from 'modules/trips/stores/ActivityStore/context'
-import { EditorMode } from 'modules/trips/types/planner'
+import { EditorMode } from 'modules/trips/types/store'
 import convertActivityHourToTime from 'modules/trips/utils/convertActivityTimeToTime/index'
 
 import { ContainerWrapper } from './styled'

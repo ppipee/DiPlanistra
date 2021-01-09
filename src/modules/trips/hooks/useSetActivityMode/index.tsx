@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
 import { useActivityStore } from 'modules/trips/stores/ActivityStore/context'
-import { EditorMode } from 'modules/trips/types/planner'
+import { EditorMode } from 'modules/trips/types/store'
 
 export default function useSetActivityMode() {
 	const setActivityMode = useActivityStore((store) => store.setActivityMode)

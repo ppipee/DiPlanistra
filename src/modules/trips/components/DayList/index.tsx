@@ -10,7 +10,8 @@ import spaces from 'common/styles/mixins/spaces'
 
 import usePlannerActivities from 'modules/trips/hooks/usePlannerActivities'
 import { usePlannerStore } from 'modules/trips/stores/PlannerStore/context'
-import { PlannerInfo, PlannerMode } from 'modules/trips/types/planner'
+import { PlannerInfo } from 'modules/trips/types/planner'
+import { PlannerMode } from 'modules/trips/types/store'
 
 import ActivityCard from '../activity/ActivityCard'
 import ActivityEmpty from '../activity/ActivityEmpty'

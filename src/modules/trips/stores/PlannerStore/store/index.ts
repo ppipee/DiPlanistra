@@ -2,7 +2,7 @@ import { action, computed, observable } from 'mobx'
 
 import { DEFAULT_PLANNER_DAY } from 'modules/trips/constants'
 import PlannerApiStore from 'modules/trips/stores/PlannerApiStore/store'
-import { PlannerMode } from 'modules/trips/types/planner'
+import { PlannerMode } from 'modules/trips/types/store'
 
 type Stores = {
 	plannerApiStore: PlannerApiStore
