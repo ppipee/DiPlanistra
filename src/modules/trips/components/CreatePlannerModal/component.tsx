@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react'
 
 import { isEmpty } from 'lodash'
+import { useHistory } from 'react-router-dom'
 
 import useI18n from 'core/locale/hooks/useI18n'
 
@@ -14,6 +15,7 @@ import { LOCALE_CANCEL, LOCALE_SAVE } from 'common/locale'
 import spaces from 'common/styles/mixins/spaces'
 
 import { TRIP_NAME } from 'modules/trips/locale'
+import { TRIP_PATH } from 'modules/trips/routes/paths'
 import { useTripStore } from 'modules/trips/stores/TripStore/context'
 
 type Props = {
@@ -22,6 +24,7 @@ type Props = {
 
 const CreatePlannerModalComponent = ({ close }: Props) => {
 	const I18n = useI18n()
+	const history = useHistory()
 	const [date, setDate] = useState<CalenderDateProps>({})
 	const { keyword: plannerName, onChange } = useOnChange()
 
@@ -38,12 +41,16 @@ const CreatePlannerModalComponent = ({ close }: Props) => {
 	const onCreate = useCallback(async () => {
 		if (isEmpty(plannerName) || !date?.startDate || !date?.endDate) return
 
-		await createPlanner({
+		const planner = await createPlanner({
 			name: plannerName,
 			startDate: date.startDate,
 			endDate: date.endDate,
 		})
-		close()
+
+		if (planner) {
+			history.push(`${TRIP_PATH}/${planner.id}`)
+			close()
+		}
 	}, [date, plannerName, isLoading])
 
 	return (

@@ -1,11 +1,12 @@
 import { useCallback, useState } from 'react'
 
 import useOnChange from 'common/hooks/useOnChange'
+import setPrefixToDigi from 'common/utils/setPrefixToDigi'
 
 import { useActivityStore } from 'modules/trips/stores/ActivityStore/context'
 
 export default function useActivityState() {
-	const [placeSelectedIndex, setPlaceIndex] = useState<number>(0)
+	const [placeSelectedIndex, setPlaceIndex] = useState<number>(-1)
 	const { setActivity, favoritePlaces, ...activityInfo } = useActivityStore((store) => ({
 		memo: store.memo,
 		activityHour: store.hour,
@@ -15,8 +16,8 @@ export default function useActivityState() {
 
 	const setTime = useCallback(
 		(time: Date, stateKey: 'to' | 'from') => {
-			const minute = time.getMinutes()
-			const hour = time.getHours()
+			const minute = setPrefixToDigi(time.getMinutes())
+			const hour = setPrefixToDigi(time.getHours())
 
 			const newTime = `${hour}:${minute}`
 			setActivity({

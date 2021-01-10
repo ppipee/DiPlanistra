@@ -1,11 +1,14 @@
 import React from 'react'
 
+import { isNumber } from 'lodash'
+
 import Collapse from 'common/components/animation/Collapse'
 import ClickableBlock from 'common/components/ClickableBlock'
 import Flex from 'common/components/Flex'
 import ArrowDownIcon from 'common/components/icons/ArrowDownIcon'
 import Overlay from 'common/components/Overlay'
 import Position from 'common/components/Position'
+import Text from 'common/components/Text'
 import useSwitch from 'common/hooks/useSwitch'
 import { gray } from 'common/styles/colors'
 import spaces from 'common/styles/mixins/spaces'
@@ -27,14 +30,23 @@ const ICON_ARROW_SIZE = 24
 
 const PlaceSelector = (props: PlaceSelectorProps) => {
 	const { isOpen, open, close } = useSwitch()
-	const placeSelected = props.places[props.placeSelectedIndex]
+	const { placeSelectedIndex } = props
+
+	const placeSelected =
+		isNumber(placeSelectedIndex) && placeSelectedIndex >= 0 ? props.places[props.placeSelectedIndex] : null
 
 	return (
 		<div>
 			<ClickableBlock onClick={open}>
 				<Flex $alignItems="stretch">
 					<PlaceSelectedContainer $padding={spaces(10)} $isOpen={isOpen}>
-						<PlacePreviewCard place={placeSelected} />
+						{placeSelected ? (
+							<PlacePreviewCard place={placeSelected} />
+						) : (
+							<Text as="div" margin="auto" color={gray[300]}>
+								{'Select Place'}
+							</Text>
+						)}
 					</PlaceSelectedContainer>
 					<ArrowContainer $alignItems="center" $isOpen={isOpen}>
 						<ArrowDownIcon color={gray[700]} size={ICON_ARROW_SIZE} />

@@ -14,18 +14,23 @@ type Stores = {
 }
 
 class ActivityStore {
+	@observable
 	plannerApiStore: PlannerApiStore
 
+	@observable
 	plannerStore: PlannerStore
 
 	@observable
-	mode = EditorMode.Create
+	mode = EditorMode.View
 
 	@observable
 	placeId: string
 
 	@observable
-	hour: ActivityHour
+	hour: ActivityHour = {
+		from: '',
+		to: '',
+	}
 
 	@observable
 	memo = ''
@@ -84,7 +89,7 @@ class ActivityStore {
 		if (this.mode === EditorMode.Create) {
 			await this.plannerApiStore.createActivity(plannerDay, activityPlan)
 		} else {
-			await this.plannerApiStore.updateActivity(plannerDay, activityPlan)
+			await this.plannerApiStore.updateActivity(plannerDay, { ...activityPlan, id: this.activityId })
 		}
 	}
 
@@ -98,10 +103,13 @@ class ActivityStore {
 	@action.bound
 	resetActivityStore() {
 		this.placeId = undefined
-		this.hour = undefined
-		this.memo = undefined
+		this.memo = ''
 		this.activityId = undefined
-		this.mode = EditorMode.Create
+		this.mode = EditorMode.View
+		this.hour = {
+			from: '',
+			to: '',
+		}
 	}
 
 	@action.bound
@@ -119,7 +127,7 @@ class ActivityStore {
 
 	@computed
 	get showActivityEditor() {
-		return !!this.activityId
+		return this.mode !== EditorMode.View
 	}
 }
 

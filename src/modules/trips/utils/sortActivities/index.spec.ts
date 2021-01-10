@@ -51,5 +51,22 @@ describe('sortActivities', () => {
 
 	it('should sort activities by startTime of activity correctly', () => {
 		expect(sortActivities(MOCK_ACTIVITIES)).toEqual(EXPECT_ACTIVITIES)
+		expect(
+			sortActivities([
+				{
+					hour: {
+						from: '14:50',
+						to: '15:20',
+					},
+				},
+			] as any),
+		).toEqual([
+			{
+				hour: {
+					from: '14:50',
+					to: '15:20',
+				},
+			},
+		])
 	})
 })

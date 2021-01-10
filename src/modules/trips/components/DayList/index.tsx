@@ -15,6 +15,7 @@ import { PlannerMode } from 'modules/trips/types/store'
 
 import ActivityCard from '../activity/ActivityCard'
 import ActivityEmpty from '../activity/ActivityEmpty'
+import AddPlaceButton from '../AddPlaceButton'
 import DayHeader from '../DayHeader'
 
 import { ActivityCardsContainer } from './styled'
@@ -50,8 +51,11 @@ const DayList = ({ planner }: Props) => {
 								$spacingBottom={spaces(12)}
 							>
 								{activities.map((activity) => (
-									<ActivityCard activityPlan={activity} key={activity.place.publicId} />
+									<ActivityCard activityPlan={activity} key={activity.id} />
 								))}
+								<div>
+									<AddPlaceButton />
+								</div>
 							</ActivityCardsContainer>
 						</BaseContainer>
 					) : (

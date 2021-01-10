@@ -20,8 +20,14 @@ type Props = {
 
 const ICON_SIZE = 24
 
+enum ActionState {
+	Update = 'update',
+	Delete = 'delete',
+	None = '',
+}
+
 const DayCardController = ({ day, dayTitle, isEditMode, setEditMode, setViewMode }: Props) => {
-	const [action, setAction] = useState<() => void>()
+	const [state, setState] = useState<ActionState>(ActionState.None)
 	const { updateDay, deleteDay } = usePlannerSettingStore((store) => ({
 		updateDay: store.updateDay,
 		deleteDay: store.deleteDay,
@@ -34,28 +40,47 @@ const DayCardController = ({ day, dayTitle, isEditMode, setEditMode, setViewMode
 	}
 
 	const onDelete = useCallback(() => {
-		setAction(() => deleteDay(day))
+		setState(ActionState.Delete)
 		setEditMode()
-	}, [day])
+	}, [])
 
 	const onEdit = useCallback(() => {
-		setAction(() => updateDay(day, dayTitle))
+		setState(ActionState.Update)
 		setEditMode()
-	}, [day, dayTitle])
+	}, [])
+
+	const onAction = useCallback(async () => {
+		if (state === ActionState.Delete) {
+			await deleteDay(day)
+		} else if (state === ActionState.Update) {
+			await updateDay(day, dayTitle)
+		}
+
+		setViewMode()
+		setState(ActionState.None)
+	}, [state, day, dayTitle])
 
 	if (isEditMode) {
 		return (
 			<Gap $size={spaces(4)}>
-				<CorrectIcon {...iconProps} onClick={action} />
-				<CloseIcon {...iconProps} onClick={setViewMode} />
+				<div onClick={onAction}>
+					<CorrectIcon {...iconProps} />
+				</div>
+				<div onClick={setViewMode}>
+					<CloseIcon {...iconProps} />
+				</div>
 			</Gap>
 		)
 	}
 
 	return (
 		<Gap $size={spaces(4)}>
-			<EditIcon {...iconProps} onClick={onEdit} />
-			<DeleteIcon {...iconProps} onClick={onDelete} />
+			<div onClick={onEdit}>
+				<EditIcon {...iconProps} />
+			</div>
+			<div onClick={onDelete}>
+				<DeleteIcon {...iconProps} onClick={onDelete} />
+			</div>
 		</Gap>
 	)
 }

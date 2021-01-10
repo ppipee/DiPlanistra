@@ -19,7 +19,7 @@ const ActivityHeader = ({ activityPlan }: Props) => {
 	const I18n = useI18n()
 
 	const { place, hour } = activityPlan
-	const shopStatus = I18n.t(place.workingHoursStatus?.open ? OPENED_STATUS : CLOSED_STATUS)
+	const shopStatus = place?.workingHoursStatus && I18n.t(place.workingHoursStatus.open ? OPENED_STATUS : CLOSED_STATUS)
 
 	return (
 		<Gap $size={spaces(8)} $responsive $alignCenter>
@@ -28,7 +28,7 @@ const ActivityHeader = ({ activityPlan }: Props) => {
 				<Text color={black} size={fontSizes(18)}>
 					{place.name}
 				</Text>
-				{place.workingHoursStatus && (
+				{shopStatus && (
 					<Text margin={`0 0 0 ${spaces(8)}`} color={place.workingHoursStatus.open ? green[500] : red[500]}>
 						{shopStatus}
 					</Text>

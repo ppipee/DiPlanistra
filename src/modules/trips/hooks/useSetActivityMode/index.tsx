@@ -14,5 +14,9 @@ export default function useSetActivityMode() {
 		setActivityMode(EditorMode.Update)
 	}, [])
 
-	return { setCreatorMode, setUpdaterMode }
+	const setViewerMode = useCallback(() => {
+		setActivityMode(EditorMode.View)
+	}, [])
+
+	return { setCreatorMode, setUpdaterMode, setViewerMode }
 }

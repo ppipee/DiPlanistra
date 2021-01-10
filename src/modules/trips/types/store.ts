@@ -6,4 +6,5 @@ export enum PlannerMode {
 export enum EditorMode {
 	Create = 'create',
 	Update = 'update',
+	View = 'view',
 }

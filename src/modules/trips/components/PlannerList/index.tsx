@@ -12,8 +12,8 @@ const PlannerList = () => {
 
 	return (
 		<Gap $type="vertical" $size={spaces(16)}>
-			{planners.map((plannerInfo) => (
-				<DayList planner={plannerInfo} key={`planner-day-${plannerInfo.day}`} />
+			{planners.map((plannerInfo, index) => (
+				<DayList planner={plannerInfo} key={`planner-day-${plannerInfo.day}-${index}`} />
 			))}
 		</Gap>
 	)

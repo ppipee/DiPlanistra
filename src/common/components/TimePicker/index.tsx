@@ -18,9 +18,10 @@ type Props = {
 	time: Date
 }
 
-const TimePicker = ({ setTime, time }: Props) => {
-	const hour = time?.getHours().toString()
-	const minute = time?.getMinutes().toString()
+const TimePicker = ({ setTime, time: defaultTime }: Props) => {
+	const time = defaultTime || new Date()
+	const hour = defaultTime?.getHours().toString()
+	const minute = defaultTime?.getMinutes().toString()
 
 	const setHour = useCallback(
 		(hour: string | number) => {

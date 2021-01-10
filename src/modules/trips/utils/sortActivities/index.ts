@@ -1,3 +1,5 @@
+import { isEmpty } from 'lodash'
+
 import { ActivityPlan } from 'modules/trips/types/planner'
 
 function convertHourToNumber(hour: string) {
@@ -5,5 +7,7 @@ function convertHourToNumber(hour: string) {
 }
 
 export default function sortActivities(activities: ActivityPlan[]) {
+	if (isEmpty(activities) || activities.length < 2) return [...activities]
+
 	return activities.sort((a, b) => convertHourToNumber(a.hour.from) - convertHourToNumber(b.hour.from))
 }

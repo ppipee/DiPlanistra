@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 
 import Block from 'common/components/Block'
 import FieldStyles from 'common/components/field/FieldStyle'
@@ -24,6 +24,10 @@ type Props = {
 const DayCard = ({ day, title }: Props) => {
 	const { keyword: dayTitle, onChange, setKeyword } = useOnChange(title)
 	const { isOpen: isEditMode, open: setEditMode, close } = useSwitch()
+
+	useEffect(() => {
+		setKeyword(title)
+	}, [title])
 
 	const setViewMode = useCallback(() => {
 		setKeyword(title)

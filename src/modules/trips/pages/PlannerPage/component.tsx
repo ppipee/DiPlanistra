@@ -18,7 +18,7 @@ import TripOverviewButton from 'modules/trips/components/TripOverviewButton'
 import ActivityStoreConfig from 'modules/trips/stores/ActivityStore'
 import { useActivityStore } from 'modules/trips/stores/ActivityStore/context'
 import PlannerApiStoreConfig from 'modules/trips/stores/PlannerApiStore'
-// import { usePlannerApiStore } from 'modules/trips/stores/PlannerApiStore/context'
+import { usePlannerApiStore } from 'modules/trips/stores/PlannerApiStore/context'
 import PlannerSettingStoreConfig from 'modules/trips/stores/PlannerSettingStore'
 import { usePlannerSettingStore } from 'modules/trips/stores/PlannerSettingStore/context'
 import PlannerStoreConfig from 'modules/trips/stores/PlannerStore'
@@ -29,9 +29,9 @@ const PlannerPageComponent = () => {
 	const { isDesktop } = useResponsive()
 	const showActivityEditor = useActivityStore((store) => store.showActivityEditor)
 	const isOpenSetting = usePlannerSettingStore((store) => store.isOpenSetting)
-	// const { isLoading, isFresh } = usePlannerApiStore((store) => ({ isLoading: store.isLoading, isFresh: store.isFresh }))
+	const { isLoading, isFresh } = usePlannerApiStore((store) => ({ isLoading: store.isLoading, isFresh: store.isFresh }))
 
-	// if (isLoading || isFresh) return null
+	if (isLoading || isFresh) return null
 	return (
 		<>
 			<Gap $type="vertical" $size={spaces(24)}>

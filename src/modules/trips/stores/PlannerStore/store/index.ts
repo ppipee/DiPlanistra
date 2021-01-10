@@ -9,8 +9,10 @@ type Stores = {
 }
 
 class PlannerStore {
+	@observable
 	plannerApiStore: PlannerApiStore
 
+	@observable
 	mode = PlannerMode.Edit
 
 	@observable
@@ -24,7 +26,6 @@ class PlannerStore {
 	@action
 	onUnMount() {
 		this.plannerDay = DEFAULT_PLANNER_DAY
-		this.plannerApiStore = undefined
 		this.mode = PlannerMode.Edit
 	}
 

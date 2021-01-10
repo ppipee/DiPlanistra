@@ -1,4 +1,4 @@
-import { action } from 'mobx'
+import { action, observable, runInAction } from 'mobx'
 
 import actionLoading from 'core/api/annotations/actionLoading'
 import loading from 'core/api/annotations/loading'
@@ -8,20 +8,23 @@ import { getPlanners, createPlanner } from 'modules/trips/api'
 import { PlannerPreview, InitPlanner } from 'modules/trips/types/planner'
 
 class TripStore extends FetchStateStore {
+	@observable
 	trips: PlannerPreview[]
 
 	async onMount() {
 		this.getTrips()
 	}
 
-	onUnMount() {
-		this.trips = undefined
-	}
-
 	@action.bound
 	@loading
 	async getTrips() {
-		this.trips = await getPlanners()
+		const trips = await getPlanners()
+
+		if (!this.error) {
+			runInAction(async () => {
+				this.trips = trips
+			})
+		}
 	}
 
 	@action.bound
@@ -29,7 +32,13 @@ class TripStore extends FetchStateStore {
 	async createPlanner(data: InitPlanner) {
 		const trip = await createPlanner(data)
 
-		this.trips = [...this.trips, trip]
+		if (!this.error) {
+			runInAction(() => {
+				this.trips = [...this.trips, trip]
+			})
+			return trip
+		}
+		return null
 	}
 }
 

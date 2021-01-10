@@ -12,8 +12,10 @@ interface Stores {
 }
 
 class PlannerSettingStore {
+	@observable
 	plannerStore: PlannerStore
 
+	@observable
 	plannerApiStore: PlannerApiStore
 
 	@observable

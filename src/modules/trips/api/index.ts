@@ -2,7 +2,7 @@ import apiClient from 'core/api'
 
 import plannerEndpoints from 'common/endpoints/planner'
 
-import { ActivityPlan, EditActivity, InitPlanner, Planner, PlannerPreview } from 'modules/trips/types/planner'
+import { EditActivity, InitPlanner, Planner, PlannerPreview } from 'modules/trips/types/planner'
 
 export const getPlanners = () =>
 	apiClient.fetch<PlannerPreview[]>({
@@ -40,7 +40,7 @@ export const deletePlanner = (plannerId: string) =>
 	})
 
 export const createActivity = (plannerId: string, day: number, activityInfo: EditActivity) =>
-	apiClient.fetch<ActivityPlan>({
+	apiClient.fetch<Planner>({
 		method: 'post',
 		path: plannerEndpoints.plannerActivities(plannerId),
 		params: {
@@ -50,7 +50,7 @@ export const createActivity = (plannerId: string, day: number, activityInfo: Edi
 	})
 
 export const updateActivity = (plannerId: string, day: number, activityId: string, activityInfo: EditActivity) =>
-	apiClient.fetch<ActivityPlan>({
+	apiClient.fetch<Planner>({
 		method: 'put',
 		path: plannerEndpoints.plannerActivity(plannerId, activityId),
 		params: {

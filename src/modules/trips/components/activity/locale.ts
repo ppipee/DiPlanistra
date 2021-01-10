@@ -1,1 +1,1 @@
-export const PLANNER_EMPTY = ['ไม่มีกิจกรรม', 'No plan']
+export const PLANNER_EMPTY = ['ยังไม่ได้แพลน', 'No plan']
