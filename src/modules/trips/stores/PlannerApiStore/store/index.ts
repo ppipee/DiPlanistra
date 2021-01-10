@@ -38,7 +38,7 @@ class PlannerApiStore extends FetchStateStore {
 		}
 	}
 
-	@action
+	@action.bound
 	@actionLoading
 	async updatePlanner(planner: Partial<Planner>) {
 		const plannerUpdated = await updatePlanner(this.planner.id, planner)
@@ -48,7 +48,7 @@ class PlannerApiStore extends FetchStateStore {
 		}
 	}
 
-	@action
+	@action.bound
 	@actionLoading
 	async createActivity(day: number, activity: EditActivity) {
 		const activityUpdated = await createActivity(this.planner.id, day, activity)
@@ -61,7 +61,7 @@ class PlannerApiStore extends FetchStateStore {
 		}
 	}
 
-	@action
+	@action.bound
 	@actionLoading
 	async updateActivity(day: number, activity: EditActivity) {
 		const activityId = activity.id
@@ -79,7 +79,7 @@ class PlannerApiStore extends FetchStateStore {
 		}
 	}
 
-	@action
+	@action.bound
 	@actionLoading
 	async deleteActivity(day: number, activityId: string) {
 		await deleteActivity(this.planner.id, day, activityId)

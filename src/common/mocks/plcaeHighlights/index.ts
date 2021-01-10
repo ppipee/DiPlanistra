@@ -1,4 +1,4 @@
-import { Business } from 'common/types/wongnai/business'
+import { Place } from 'modules/place/types/place'
 
 export const PLACE_HIGHLIGHTS = ([
 	{
@@ -8365,4 +8365,4 @@ export const PLACE_HIGHLIGHTS = ([
 		},
 		newToThemeCard: null,
 	},
-] as unknown) as Business[]
+] as unknown) as Place[]

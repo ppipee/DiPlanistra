@@ -1,5 +1,5 @@
 import loadable from 'core/loadable'
 
-const PlacesgPage = loadable(() => import('./component'))
+const PlacesPage = loadable(() => import('./component'))
 
-export default PlacesgPage
+export default PlacesPage

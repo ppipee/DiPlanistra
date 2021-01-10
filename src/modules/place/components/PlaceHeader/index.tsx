@@ -10,16 +10,16 @@ import { gray, green, red } from 'common/styles/colors'
 import useFontSizeResponsive from 'common/styles/hooks/useFontSizeResponsive'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
-import { Business } from 'common/types/wongnai/business'
 
 import { CLOSED_STATUS, OPENED_STATUS } from 'modules/place/locale'
+import { Place } from 'modules/place/types/place'
 
 import PlaceTags from '../PlaceTags'
 
 import { Container, CoverPhoto } from './styled'
 
 type Props = {
-	place: Business
+	place: Place
 }
 
 const PlaceHeader = ({ place }: Props) => {

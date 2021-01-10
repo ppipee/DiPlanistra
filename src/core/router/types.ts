@@ -23,5 +23,5 @@ export enum HistoryActionType {
 	Replace = 'REPLACE',
 }
 
-export type Params = Record<string, string>
+export type Params = Record<string, any>
 export type Query = Record<string, string>

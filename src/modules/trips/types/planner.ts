@@ -1,6 +1,7 @@
-import { AttractionInformation, Category, WorkingHourStatus } from 'common/types/wongnai/business'
 import { LatLng } from 'common/types/wongnai/common'
 import { BasicPhoto } from 'common/types/wongnai/image'
+
+import { AttractionInformation, Category, WorkingHourStatus } from 'modules/place/types/place'
 
 export interface InitPlanner {
 	name: string

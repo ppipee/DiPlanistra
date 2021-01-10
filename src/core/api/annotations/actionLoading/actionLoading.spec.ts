@@ -31,16 +31,18 @@ describe('actionLoading', () => {
 		const loadSpy = jest.spyOn(store, 'actionLoad')
 		const doneSpy = jest.spyOn(store, 'actionDone')
 
+		expect(store.isActionLoading['getSomething']).toBe(undefined)
+
 		const promise = store.getSomething()
 		expect(loadSpy).toBeCalledTimes(1)
 		expect(doneSpy).not.toBeCalled()
-		expect(store.isActionLoading('getSomething')).toBe(true)
+		expect(store.isActionLoading['getSomething']).toBe(true)
 
 		const result = await promise
 
 		expect(loadSpy).toBeCalledTimes(1)
 		expect(doneSpy).toBeCalledTimes(1)
-		expect(store.isActionLoading('getSomething')).toBe(false)
+		expect(store.isActionLoading['getSomething']).toBe(undefined)
 		expect(result).toBe('something')
 	})
 

@@ -58,18 +58,27 @@ class FetchStateStore {
 
 	@action.bound
 	actionLoad(methodName: string) {
-		this.actionsState[methodName] = FetchState.Fetching
+		this.actionsState = { ...this.actionsState, [methodName]: FetchState.Fetching }
 		this.error = undefined
 	}
 
 	@action.bound
 	actionDone(methodName: string) {
+		this.actionsState = { ...this.actionsState, [methodName]: FetchState.Fetched }
 		this.actionsState = omit(this.actionsState, methodName)
 	}
 
-	@action.bound
-	isActionLoading(methodName: string) {
-		return this.actionsState[methodName] === FetchState.Fetching
+	@computed
+	get isActionLoading() {
+		const actionsLoading = Object.keys(this.actionsState).reduce(
+			(actionsLoading, state) => ({
+				...actionsLoading,
+				[state]: this.actionsState[state] === FetchState.Fetching,
+			}),
+			{},
+		)
+
+		return actionsLoading
 	}
 }
 

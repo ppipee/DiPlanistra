@@ -5,7 +5,7 @@ import ResponsiveBlock from 'common/components/ResponsiveBlock'
 import spaces from 'common/styles/mixins/spaces'
 
 import DistanceFilter from '../DistanceFilter'
-import PlaceCategoryFilter from '../PlaceCategoryFilter'
+import PlaceCategoriesFilter from '../PlaceCategoriesFilter'
 import PlaceDomainSelector from '../PlaceDomainSelector'
 import RatingFilter from '../RatingFilter'
 
@@ -19,7 +19,7 @@ const PlacesFilter = () => {
 				<Gap $type="vertical" $size={spaces(12)}>
 					<DistanceFilter />
 					<RatingFilter />
-					<PlaceCategoryFilter />
+					<PlaceCategoriesFilter />
 				</Gap>
 			</ResponsiveBlock>
 		</Gap>

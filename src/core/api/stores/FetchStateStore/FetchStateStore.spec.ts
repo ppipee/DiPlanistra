@@ -5,7 +5,7 @@ import FetchStateStore from 'core/api/stores/FetchStateStore'
 
 describe('FetchStateStore', () => {
 	describe('initial', () => {
-		it('should inital store with state as never and error is undefined and loaded times is 0', () => {
+		it('should initial store with state as never and error is undefined and loaded times is 0', () => {
 			const fetchStateStore = new FetchStateStore()
 
 			expect(fetchStateStore.state).toBe(FetchState.Never)
@@ -186,7 +186,7 @@ describe('FetchStateStore', () => {
 				fetchStateStore.actionsState[methodName] = FetchState.Fetching
 			})
 
-			expect(fetchStateStore.isActionLoading(methodName)).toBe(true)
+			expect(fetchStateStore.isActionLoading[methodName]).toBe(true)
 		})
 
 		it('should be false if state is not fetching', () => {

@@ -10,4 +10,5 @@ export interface CheckboxGroupProps {
 	values: string[]
 	withAllSelector?: boolean
 	allValue?: string
+	label?: string
 }

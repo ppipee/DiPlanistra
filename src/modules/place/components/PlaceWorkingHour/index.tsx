@@ -10,10 +10,10 @@ import Text from 'common/components/Text'
 import { black, gray, main } from 'common/styles/colors'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
-import { Hour } from 'common/types/wongnai/business'
 
 import { DAYS } from 'modules/place/constants'
 import { CLOSED_DAY } from 'modules/place/locale'
+import { Hour } from 'modules/place/types/place'
 import mappingWorkingHours from 'modules/place/utils/mappingWorkingHours'
 
 const ICON_SIZE = 64

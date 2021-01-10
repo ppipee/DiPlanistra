@@ -2,7 +2,7 @@ import { action, computed, observable } from 'mobx'
 
 import { PLACE_HIGHLIGHTS } from 'common/mocks/plcaeHighlights'
 
-import { PlacePreview } from 'modules/place/types'
+import { PlacePreview } from 'modules/place/types/place'
 import PlannerApiStore from 'modules/trips/stores/PlannerApiStore/store'
 import PlannerStore from 'modules/trips/stores/PlannerStore/store'
 import { ActivityHour } from 'modules/trips/types/planner'

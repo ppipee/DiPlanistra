@@ -1,1 +1,1 @@
-export const NEAR_BY_POSITION_TITLE = ['สถานที่ ใกล้', 'Near by ']
+export const NEAR_BY_POSITION_TITLE = ['สถานที่ใกล้', 'Near by']

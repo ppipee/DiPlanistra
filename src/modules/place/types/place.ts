@@ -1,7 +1,5 @@
-import { NameValue } from 'common/types/wongnai/common'
+import { NameValue, IdName } from 'common/types/wongnai/common'
 import { BasicPhoto } from 'common/types/wongnai/image'
-
-import { IdName } from '../../common/types/wongnai/common/index'
 
 export type FacilitiesProps = Record<PlaceFacility, boolean | null | undefined>
 
@@ -36,13 +34,9 @@ export interface Place extends PlacePreview {
 		remark: string
 	}
 	creditCardAccepted?: boolean
-	attractionInformation?: AttractionInformation
 }
 
 export interface PlacePreview {
-	favorite: boolean
-
-	// resolve
 	id: string
 	publicId: string
 	displayName: string
@@ -55,20 +49,21 @@ export interface PlacePreview {
 	workingHoursStatus?: WorkingHourStatus
 	hours?: Hour[]
 	categories: Category[]
+	attractionInformation?: AttractionInformation
 }
 
-interface PlaceStatistic {
+export interface PlaceStatistic {
 	rating: number
 	numberOfReviews: number
 }
 
-interface Hour {
+export interface Hour {
 	day: number
 	from: string
 	to: string
 }
 
-interface WorkingHourStatus {
+export interface WorkingHourStatus {
 	open: boolean
 	message?: string
 	closingSoon?: boolean
@@ -77,9 +72,11 @@ interface WorkingHourStatus {
 export interface Category {
 	id: number
 	name: string
+	numberOfBusinesses?: number
+	categories?: Category[]
 }
 
-interface AttractionInformation {
+export interface AttractionInformation {
 	atm?: boolean
 	attractionRestaurant?: string
 	wheelchairAccess?: boolean
@@ -93,7 +90,7 @@ interface AttractionInformation {
 	}
 }
 
-interface Contact {
+export interface Contact {
 	address: {
 		street: string
 		hint: string

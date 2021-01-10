@@ -19,6 +19,7 @@ const CheckboxGroup = ({
 	onChange,
 	withAllSelector,
 	allValue = ALL_VALUE,
+	label,
 }: CheckboxGroupProps) => {
 	const radioValues = children.map((option) => option.props.value)
 
@@ -43,7 +44,7 @@ const CheckboxGroup = ({
 				<Checkbox
 					checked={checkActiveState(allValue) || radioValues.length === values.length}
 					onChange={selectRadio}
-					label={I18n.t(LOCALE_ALL)}
+					label={label || I18n.t(LOCALE_ALL)}
 					value={allValue}
 				/>
 			)}

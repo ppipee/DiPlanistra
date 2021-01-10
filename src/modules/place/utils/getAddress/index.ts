@@ -1,5 +1,6 @@
-import { Contact } from 'common/types/wongnai/business'
 import filterArrayExistingValue from 'common/utils/filterArrayExistingValue'
+
+import { Contact } from 'modules/place/types/place'
 
 const getAddress = ({ address }: Contact) => {
 	if (!address) return null

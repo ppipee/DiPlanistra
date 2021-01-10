@@ -11,7 +11,7 @@ import { gray } from 'common/styles/colors'
 import spaces from 'common/styles/mixins/spaces'
 import ZIndexes from 'common/styles/mixins/zIndexes'
 
-import { PlacePreview } from 'modules/place/types'
+import { PlacePreview } from 'modules/place/types/place'
 
 import PlaceList from './components/PlaceList'
 import PlacePreviewCard from './components/PlacePreviewCard'

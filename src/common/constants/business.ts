@@ -4,6 +4,7 @@ export enum DomainValue {
 	BEAUTY = 2,
 	HOTEL = 3,
 	ATTRACTION = 4,
+	TRIP = 99,
 }
 
 export enum DealCollectionGroupValue {
@@ -11,8 +12,6 @@ export enum DealCollectionGroupValue {
 	NEIGHBORHOOD = 2,
 	WELCOME_EVOUCHER_CATEGORIES = 4,
 }
-
-export type Domain = 1 | 2 | 3 | 4
 
 export const DomainName = {
 	[DomainValue.UNKNOWN]: 'ALL',

@@ -1,17 +1,33 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 
-import { Business } from 'common/types/wongnai/business'
+import useHorizontalTabContext from 'common/components/HorizontalTab/hooks/useHorizontalTabContext'
+import { DomainValue } from 'common/constants/business'
 import LinkToPlace from 'common/utils/url/LinkToPlace'
+
+import { PlacePreview } from 'modules/place/types/place'
+import { NearbyPositionType } from 'modules/place/types/store'
 
 import NearByCard from '../NearByCard'
 
 import { Container, CardWrapper } from './styled'
 
 type Props = {
-	places: Business[]
+	nearbyPlace: NearbyPositionType
+	loading: boolean
+	getPlaces: (domain: DomainValue) => void
 }
 
-const NearByCardContainer = ({ places }: Props) => {
+const NearByCardContainer = ({ nearbyPlace, loading, getPlaces }: Props) => {
+	const { activeTab } = useHorizontalTabContext()
+
+	useEffect(() => {
+		getPlaces(activeTab as DomainValue)
+	}, [activeTab])
+
+	if (loading) return null
+
+	const places: PlacePreview[] = nearbyPlace[activeTab]
+
 	return (
 		<Container>
 			{places.map((place) => (

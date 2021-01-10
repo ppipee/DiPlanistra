@@ -22,8 +22,8 @@ import useFontSizeResponsive from 'common/styles/hooks/useFontSizeResponsive'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
 
-import { FacilitiesProps } from 'modules/place/types'
-import { PlaceFacility } from 'modules/place/types'
+import { FacilitiesProps } from 'modules/place/types/place'
+import { PlaceFacility } from 'modules/place/types/place'
 
 import {
 	ATM_TEXT,

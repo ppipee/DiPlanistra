@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
+import asRoute from 'core/router/hoc/asRoute'
+import useQuery from 'core/router/hooks/useQuery'
 
 import ContentContainer from 'common/components/ContentContainer'
 import Gap from 'common/components/Gap'
 import StickyContainer from 'common/components/StickyContainer'
-import { PLACE_HIGHLIGHTS } from 'common/mocks/plcaeHighlights'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
 import LinkToPlace from 'common/utils/url/LinkToPlace'
@@ -11,12 +13,27 @@ import LinkToPlace from 'common/utils/url/LinkToPlace'
 import PlaceCard from 'modules/place/components/PlaceCard'
 import PlacesFilter from 'modules/search/components/PlacesFilter'
 import SearchingText from 'modules/search/components/SearchingText'
+import SearchStoreConfig from 'modules/search/stores/SearchStore'
+import { useSearchStore } from 'modules/search/stores/SearchStore/context'
 
 import { ContainerWrapper } from './styled'
 
 const PlacesPageComponent = () => {
 	const { isDesktop } = useResponsive()
-	const places = PLACE_HIGHLIGHTS
+
+	const { distance, domain, rating, categories, search } = useQuery()
+	const { places, isLoading, isFresh, getPlaces } = useSearchStore((store) => ({
+		places: store.places,
+		isLoading: store.isLoading,
+		isFresh: store.isFresh,
+		getPlaces: store.getPlaces,
+	}))
+
+	useEffect(() => {
+		getPlaces({ distance, domain, rating, categories, search })
+	}, [distance, domain, rating, categories, search])
+
+	if (isFresh) return null
 
 	return (
 		<ContentContainer>
@@ -31,11 +48,13 @@ const PlacesPageComponent = () => {
 				)}
 				<ContainerWrapper type="main">
 					<Gap $type="vertical" $size={spaces(12)}>
-						{places.map((place) => (
-							<LinkToPlace key={place.id} placeId={place.publicId}>
-								<PlaceCard place={place} />
-							</LinkToPlace>
-						))}
+						{!isLoading
+							? places.map((place) => (
+									<LinkToPlace key={place.id} placeId={place.publicId}>
+										<PlaceCard place={place} />
+									</LinkToPlace>
+							  ))
+							: null}
 					</Gap>
 				</ContainerWrapper>
 				{isDesktop && <ContainerWrapper type="sub" />}
@@ -44,4 +63,8 @@ const PlacesPageComponent = () => {
 	)
 }
 
-export default PlacesPageComponent
+export default asRoute(PlacesPageComponent, {
+	stores: {
+		searchStore: SearchStoreConfig,
+	},
+})

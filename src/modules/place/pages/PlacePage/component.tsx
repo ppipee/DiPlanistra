@@ -7,14 +7,11 @@ import asRoute from 'core/router/hoc/asRoute'
 import ContentContainer from 'common/components/ContentContainer'
 import Gap from 'common/components/Gap'
 import StickyContainer from 'common/components/StickyContainer'
-import { PLACE_HIGHLIGHT } from 'common/mocks/placeHighlight'
-import { PLACE_HIGHLIGHTS } from 'common/mocks/plcaeHighlights'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
 import filterObjectExistingValues from 'common/utils/filterObjectExistingValue'
 
-import HomeStoreConfig from 'modules/home/stores/HomeStore'
-import NearByPosition from 'modules/place/components/NearByPosition'
+import NearbyPlace from 'modules/place/components/NearbyPlace'
 import PlaceContact from 'modules/place/components/PlaceContact'
 import PlaceEntryFee from 'modules/place/components/PlaceEntryFee'
 import PlaceFacilities from 'modules/place/components/PlaceFacilities'
@@ -22,26 +19,35 @@ import PlaceHeader from 'modules/place/components/PlaceHeader'
 import PlaceReviewer from 'modules/place/components/PlaceReviewer'
 import PlaceTraveling from 'modules/place/components/PlaceTraveling'
 import PlaceWorkingHour from 'modules/place/components/PlaceWorkingHour'
+import NearbyPositionStoreConfig from 'modules/place/stores/NearbyPositionStore'
 import PlaceStoreConfig from 'modules/place/stores/PlaceStore'
-import { FacilitiesProps } from 'modules/place/types'
+import { usePlaceStore } from 'modules/place/stores/PlaceStore/context'
+import { FacilitiesProps } from 'modules/place/types/place'
 
 import { Container } from './styled'
 
 const PlacePageComponent = () => {
 	const { isDesktop } = useResponsive()
 
-	const place = PLACE_HIGHLIGHT
+	const { isLoading, isFresh, place } = usePlaceStore((store) => ({
+		isLoading: store.isLoading,
+		isFresh: store.isFresh,
+		place: store.place,
+	}))
+
+	if (isLoading || isFresh) return null
+
 	const facilities: FacilitiesProps = {
-		wifi: isNil(PLACE_HIGHLIGHT.wifi) ? null : true,
-		attractionRestaurant: isNil(PLACE_HIGHLIGHT.attractionInformation?.attractionRestaurant) ? null : true,
-		parkingType: isNil(PLACE_HIGHLIGHT.parkingType) ? null : true,
-		toilet: PLACE_HIGHLIGHT.attractionInformation?.toilet,
-		atm: PLACE_HIGHLIGHT.attractionInformation?.atm,
-		souvenir: PLACE_HIGHLIGHT.attractionInformation?.souvenir,
-		petFriendly: PLACE_HIGHLIGHT.petFriendly,
-		wheelchairAccess: PLACE_HIGHLIGHT.attractionInformation?.wheelchairAccess,
-		trueMoneyWallet: PLACE_HIGHLIGHT.trueMoneyWallet,
-		creditCardAccept: PLACE_HIGHLIGHT.creditCardAccepted,
+		wifi: isNil(place.wifi) ? null : true,
+		attractionRestaurant: isNil(place.attractionInformation?.attractionRestaurant) ? null : true,
+		parkingType: isNil(place.parkingType) ? null : true,
+		toilet: place.attractionInformation?.toilet,
+		atm: place.attractionInformation?.atm,
+		souvenir: place.attractionInformation?.souvenir,
+		petFriendly: place.petFriendly,
+		wheelchairAccess: place.attractionInformation?.wheelchairAccess,
+		trueMoneyWallet: place.trueMoneyWallet,
+		creditCardAccept: place.creditCardAccepted,
 	}
 
 	return (
@@ -71,12 +77,15 @@ const PlacePageComponent = () => {
 					</Gap>
 				</Gap>
 				{!isDesktop && <PlaceReviewer />}
-				<NearByPosition places={PLACE_HIGHLIGHTS} nearby={place.displayName} />
+				<NearbyPlace />
 			</Gap>
 		</ContentContainer>
 	)
 }
 
 export default asRoute(PlacePageComponent, {
-	stores: { placeStore: PlaceStoreConfig, homeStore: HomeStoreConfig },
+	stores: {
+		nearbyPositionStore: NearbyPositionStoreConfig,
+		placeStore: PlaceStoreConfig,
+	},
 })

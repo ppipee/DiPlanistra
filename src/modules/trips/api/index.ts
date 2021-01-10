@@ -1,6 +1,6 @@
 import apiClient from 'core/api'
 
-import plannerEndpoints from 'common/endpoints/planners'
+import plannerEndpoints from 'common/endpoints/planner'
 
 import { ActivityPlan, EditActivity, InitPlanner, Planner, PlannerPreview } from 'modules/trips/types/planner'
 

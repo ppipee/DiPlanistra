@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { isEmpty } from 'lodash'
+
 import useI18n from 'core/locale/hooks/useI18n'
 
 import Flex from 'common/components/Flex'
@@ -14,19 +16,19 @@ import { KM } from 'common/locale'
 import { gray, green, red } from 'common/styles/colors'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
-import { Business } from 'common/types/wongnai/business'
 import convertCurrency from 'common/utils/convertCurrency'
 import convertDistanceToKM from 'common/utils/convertDistanceToKM'
 import filterArrayExistingValue from 'common/utils/filterArrayExistingValue'
 
 import { CLOSED_STATUS, ENTRY_FEE, OPENED_STATUS, REVIEW_UNIT } from 'modules/place/locale'
+import { PlacePreview } from 'modules/place/types/place'
 import getCategoryTag from 'modules/place/utils/getCategoryTags'
 import getWorkingHour from 'modules/place/utils/getWorkingHour'
 
 import { CardDetail, CardTitle } from './styled'
 
 type Props = {
-	place: Business
+	place: PlacePreview
 	favorite?: boolean
 	showDistance?: boolean
 }
@@ -48,14 +50,16 @@ const PlaceDetailCard = ({ place, favorite, showDistance }: Props) => {
 
 	const entryFee = attractionInformation?.entryFee
 
-	const currency = convertCurrency(entryFee.currency) ? I18n.t(convertCurrency(entryFee.currency)) : entryFee.currency
+	const currency =
+		!isEmpty(entryFee) &&
+		(convertCurrency(entryFee.currency) ? I18n.t(convertCurrency(entryFee.currency)) : entryFee.currency)
 	const reviewAndPriceRange = filterArrayExistingValue([
 		numberOfReviews ? `${I18n.t(REVIEW_UNIT, { review: numberOfReviews })}` : null,
 		entryFee ? `${I18n.t(ENTRY_FEE, { fee: entryFee.adult, currency })}` : null,
 	]).join(' | ')
 
 	const shopStatus = I18n.t(workingHoursStatus?.open ? OPENED_STATUS : CLOSED_STATUS)
-	const workingHour = getWorkingHour(place.hours)
+	const workingHour = !isEmpty(place.hours) && getWorkingHour(place.hours)
 	const categoryTags = getCategoryTag(categories)
 	const FavIcon = favorite ? HeartIcon : HeartEmptyIcon
 	const distance = place.distance ? I18n.t(KM, { distance: convertDistanceToKM(place.distance) }) : null

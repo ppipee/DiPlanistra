@@ -26,7 +26,7 @@ const CreatePlannerModalComponent = ({ close }: Props) => {
 	const { keyword: plannerName, onChange } = useOnChange()
 
 	const { isLoading, createPlanner } = useTripStore((store) => ({
-		isLoading: store.isActionLoading('createPlanner'),
+		isLoading: store.isActionLoading['createPlanner'],
 		createPlanner: store.createPlanner,
 	}))
 

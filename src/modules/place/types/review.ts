@@ -1,5 +1,5 @@
-import { NameValue, Time } from '../common'
-import { BasicPhoto } from '../image'
+import { NameValue, Time } from 'common/types/wongnai/common'
+import { BasicPhoto } from 'common/types/wongnai/image'
 
 export interface Review {
 	id: number

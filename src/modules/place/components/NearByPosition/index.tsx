@@ -9,34 +9,28 @@ import FoodIcon from 'common/components/icons/FoodIcon'
 import HotelIcon from 'common/components/icons/HotelIcon'
 import ResponsiveBlock from 'common/components/ResponsiveBlock'
 import Text from 'common/components/Text'
+import { DomainValue } from 'common/constants/business'
 import { gray } from 'common/styles/colors'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
-import { Business } from 'common/types/wongnai/business'
 
 import NearByCardContainer from 'modules/place/components/NearByCardContainer'
+import { NearbyPositionType } from 'modules/place/types/store'
 
 import { NEAR_BY_POSITION_TITLE } from './locale'
 
 const ICON_SIZE = 24
 
 type Props = {
-	places: Business[]
+	nearbyPlace: NearbyPositionType
 	nearby?: string
+	loading?: boolean
+	getPlaces: (domain: DomainValue) => void
 }
 
-const NearByPosition = ({ nearby, places }: Props) => {
+const NearByPosition = ({ nearby, nearbyPlace, loading, getPlaces }: Props) => {
 	const I18n = useI18n()
 	const tabs = [
-		{
-			tab: (
-				<Gap $size={spaces(4)} $alignCenter>
-					<HotelIcon size={ICON_SIZE} color={gray[700]} />
-					<Text size={fontSizes(16)}>Hotel</Text>
-				</Gap>
-			),
-			value: 'hotel',
-		},
 		{
 			tab: (
 				<Gap $size={spaces(4)} $alignCenter>
@@ -44,7 +38,16 @@ const NearByPosition = ({ nearby, places }: Props) => {
 					<Text size={fontSizes(16)}>Attraction</Text>
 				</Gap>
 			),
-			value: 'attraction',
+			value: DomainValue.ATTRACTION,
+		},
+		{
+			tab: (
+				<Gap $size={spaces(4)} $alignCenter>
+					<HotelIcon size={ICON_SIZE} color={gray[700]} />
+					<Text size={fontSizes(16)}>Hotel</Text>
+				</Gap>
+			),
+			value: DomainValue.HOTEL,
 		},
 		{
 			tab: (
@@ -53,17 +56,17 @@ const NearByPosition = ({ nearby, places }: Props) => {
 					<Text size={fontSizes(16)}>Food</Text>
 				</Gap>
 			),
-			value: 'attraction',
+			value: DomainValue.FOOD,
 		},
 	]
 
 	return (
 		<ResponsiveBlock $padding={`${spaces(16)} 0 0`}>
 			<Text margin={`0 ${spaces(16)}`} size={fontSizes(20)}>
-				{`${I18n.t(NEAR_BY_POSITION_TITLE)}${nearby}`}
+				{`${I18n.t(NEAR_BY_POSITION_TITLE)} ${nearby}`}
 			</Text>
 			<TabsProvider tabs={tabs}>
-				<NearByCardContainer places={places} />
+				<NearByCardContainer {...{ loading, nearbyPlace, getPlaces }} />
 			</TabsProvider>
 		</ResponsiveBlock>
 	)

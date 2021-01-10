@@ -3,14 +3,15 @@ import React from 'react'
 import Gap from 'common/components/Gap'
 import ResponsiveBlock from 'common/components/ResponsiveBlock'
 import spaces from 'common/styles/mixins/spaces'
-import { Business } from 'common/types/wongnai/business'
+
+import { PlacePreview } from 'modules/place/types/place'
 
 import PlaceDetailCard from '../PlaceDetailCard'
 
 import { PlaceCardContainer, PlaceCoverImage, PlaceImage } from './styled'
 
 type Props = {
-	place: Business
+	place: PlacePreview
 	favorite?: boolean
 }
 

@@ -11,7 +11,7 @@ import fontSizes from 'common/styles/mixins/fontSizes'
 import lineHeights from 'common/styles/mixins/lineHeights'
 import spaces from 'common/styles/mixins/spaces'
 
-import { PlacePreview } from 'modules/place/types'
+import { PlacePreview } from 'modules/place/types/place'
 import getCategoryTag from 'modules/place/utils/getCategoryTags'
 
 import { PlaceImage } from './styled'

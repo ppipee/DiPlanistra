@@ -3,7 +3,8 @@ import React, { useCallback, useState } from 'react'
 import { white } from 'common/styles/colors'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import fontSizes from 'common/styles/mixins/fontSizes'
-import { Business } from 'common/types/wongnai/business'
+
+import { PlacePreview } from 'modules/place/types/place'
 
 import Carousel from '../Carousel'
 import { SlickProps } from '../Carousel/types'
@@ -12,7 +13,7 @@ import Text from '../Text'
 import { CarouselContainer, PhotoWrapper, PhotoTitleWrapper } from './styled'
 
 interface Props extends SlickProps {
-	places?: Business[]
+	places?: PlacePreview[]
 	defaultIndex?: number
 }
 

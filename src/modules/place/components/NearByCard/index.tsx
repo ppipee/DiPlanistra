@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { isNumber } from 'lodash'
+
 import useI18n from 'core/locale/hooks/useI18n'
 
 import Gap from 'common/components/Gap'
@@ -9,13 +11,14 @@ import { white } from 'common/styles/colors'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
-import { Business } from 'common/types/wongnai/business'
 import convertDistanceToKM from 'common/utils/convertDistanceToKM'
+
+import { PlacePreview } from 'modules/place/types/place'
 
 import { DistanceWrapper, PlaceContainer, PlaceImage, PlaceName } from './styled'
 
 type Props = {
-	place: Business
+	place: PlacePreview
 }
 
 const NearByCard = ({ place }: Props) => {
@@ -27,7 +30,7 @@ const NearByCard = ({ place }: Props) => {
 			<Gap $type="vertical" $size={isDesktop ? spaces(4) : spaces(8)} $alignCenter $responsive>
 				<div>
 					<PlaceImage src={place.defaultPhoto.smallUrl} />
-					{place.distance && (
+					{isNumber(place.distance) && (
 						<DistanceWrapper $alignItems="center" $padding={`${spaces(8)}`}>
 							<Text color={white} size={isDesktop ? fontSizes(12) : fontSizes(10)}>
 								{I18n.t(KM, { distance: convertDistanceToKM(place.distance) })}

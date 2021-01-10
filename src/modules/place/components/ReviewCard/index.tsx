@@ -16,8 +16,8 @@ import { black, gray } from 'common/styles/colors'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
-import { Review } from 'common/types/wongnai/review'
 
+import { Review } from 'modules/place/types/review'
 import AccountPhoto from 'modules/user/components/AccountPhoto'
 
 import { ACTIVITY_RECOMMEND, SPENDING_TIME } from './locale'

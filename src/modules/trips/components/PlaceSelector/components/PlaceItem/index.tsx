@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { PlacePreview } from 'modules/place/types'
+import { PlacePreview } from 'modules/place/types/place'
 
 import PlacePreviewCard from '../PlacePreviewCard'
 

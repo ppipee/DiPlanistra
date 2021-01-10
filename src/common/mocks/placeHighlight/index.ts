@@ -1,6 +1,6 @@
-import { Business } from 'common/types/wongnai/business/index'
+import { Place } from 'modules/place/types/place'
 
-export const PLACE_HIGHLIGHT: Business = {
+export const PLACE_HIGHLIGHT: Place = ({
 	id: 378083,
 	publicId: '587657ci',
 	eid: null,
@@ -349,4 +349,4 @@ export const PLACE_HIGHLIGHT: Business = {
 			closingSoon: false,
 		},
 	},
-}
+} as unknown) as Place

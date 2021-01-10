@@ -13,7 +13,7 @@ import { KM } from 'common/locale'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
 
-import { DEFAULT_DISTANCE } from 'modules/search/constants'
+import { DEFAULT_DISTANCE, DISTANCES_MAPPER } from 'modules/search/constants'
 import { NEAR_BY_ME } from 'modules/search/locale'
 import { DistanceFilterType } from 'modules/search/types'
 
@@ -24,7 +24,7 @@ const DistanceFilter = () => {
 	const passQuery = usePassQuery()
 	const { distance } = useQuery()
 
-	const distanceMapper: Record<DistanceFilterType, string> = {
+	const distanceDisplayNameMapper: Record<DistanceFilterType, string> = {
 		500: I18n.t(NEAR_BY_ME),
 		1000: I18n.t(KM, { distance: 1 }),
 		2000: I18n.t(KM, { distance: 2 }),
@@ -43,11 +43,11 @@ const DistanceFilter = () => {
 		<Gap $type="vertical" $size={spaces(8)}>
 			<Text size={fontSizes(16)}>{I18n.t(LOCALE_DISTANCE_FILTER)}</Text>
 			<DropDown defaultValue={distance || DEFAULT_DISTANCE} onChange={onDistanceChange}>
-				<DropDownItem value={500} name={distanceMapper[500]} />
-				<DropDownItem value={1000} name={distanceMapper[1000]} />
-				<DropDownItem value={2000} name={distanceMapper[2000]} />
-				<DropDownItem value={3000} name={distanceMapper[3000]} />
-				<DropDownItem value={5000} name={distanceMapper[5000]} />
+				<DropDownItem value={DISTANCES_MAPPER[500]} name={distanceDisplayNameMapper[500]} />
+				<DropDownItem value={DISTANCES_MAPPER[1000]} name={distanceDisplayNameMapper[1000]} />
+				<DropDownItem value={DISTANCES_MAPPER[2000]} name={distanceDisplayNameMapper[2000]} />
+				<DropDownItem value={DISTANCES_MAPPER[3000]} name={distanceDisplayNameMapper[3000]} />
+				<DropDownItem value={DISTANCES_MAPPER[5000]} name={distanceDisplayNameMapper[5000]} />
 			</DropDown>
 		</Gap>
 	)

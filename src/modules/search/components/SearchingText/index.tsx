@@ -4,19 +4,19 @@ import useI18n from 'core/locale/hooks/useI18n'
 import useQuery from 'core/router/hooks/useQuery'
 
 import Text from 'common/components/Text'
+import { DomainValue } from 'common/constants/business'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
 import filterArrayExistingValue from 'common/utils/filterArrayExistingValue'
 
 import { ATTRACTION, HOTEL, FOOD, TRIP } from 'modules/place/locale'
-import { PlaceDomain } from 'modules/search/constants'
 import { LOCATION_SUFFIX_TEXT } from 'modules/search/locale'
 
-const PLACE_TITLE: Record<PlaceDomain, string[]> = {
-	attraction: ATTRACTION,
-	hotel: HOTEL,
-	food: FOOD,
-	trip: TRIP,
+const PLACE_TITLE: Partial<Record<DomainValue, string[]>> = {
+	[DomainValue.ATTRACTION]: ATTRACTION,
+	[DomainValue.HOTEL]: HOTEL,
+	[DomainValue.FOOD]: FOOD,
+	[DomainValue.TRIP]: TRIP,
 }
 
 const SearchingText = () => {

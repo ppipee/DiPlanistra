@@ -1,4 +1,4 @@
-import { Review } from 'common/types/wongnai/review'
+import { Review } from 'modules/place/types/review'
 
 export const REVIEWS = ([
 	{

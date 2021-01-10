@@ -1,3 +1,4 @@
+import { DomainValue } from 'common/constants/business'
 import { ALL_VALUE } from 'common/constants/selector'
 
 import { DistanceFilterType } from './types'
@@ -16,9 +17,24 @@ export const PLACE_DOMAIN_VALUE: Record<PlaceDomain, number> = {
 	trip: 99,
 }
 
+export const DISTANCE_KM = 0.62
 export const DEFAULT_DISTANCE: DistanceFilterType = 500
-export const DEFAULT_RATING = ALL_VALUE
-export const DEFAULT_PLACE_DOMAIN = PlaceDomain.Attraction
+export const DEFAULT_CATEGORIES = ALL_VALUE
+export const DEFAULT_RATING = -1
+export const DEFAULT_PLACE_DOMAIN = DomainValue.ATTRACTION
+
+export const DISTANCES_MAPPER = {
+	500: DISTANCE_KM * 0.5,
+	1000: DISTANCE_KM * 1,
+	2000: DISTANCE_KM * 2,
+	3000: DISTANCE_KM * 3,
+	5000: DISTANCE_KM * 5,
+}
+
+export const RATING_VALUE = {
+	'3.5': '1',
+	'4.0': '2',
+}
 
 export enum FoodCategory {
 	Nationality = 'nationality',
