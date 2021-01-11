@@ -11,10 +11,11 @@ import PhoneIcon from 'common/components/icons/PhoneIcon'
 import TwitterIcon from 'common/components/icons/TwitterIcon'
 import ResponsiveBlock from 'common/components/ResponsiveBlock'
 import Text from 'common/components/Text'
-import { PLACE_HIGHLIGHT } from 'common/mocks/placeHighlight'
 import { gray, green, main, yellow } from 'common/styles/colors'
 import useFontSizeResponsive from 'common/styles/hooks/useFontSizeResponsive'
 import spaces from 'common/styles/mixins/spaces'
+
+import { usePlaceStore } from 'modules/place/stores/PlaceStore/context'
 
 import { CONTACT_TITLE } from './locale'
 
@@ -24,7 +25,9 @@ const SOCIAL_ICON_SIZE = 52
 const PlaceContact = () => {
 	const I18n = useI18n()
 	const { titleSize, detailSize } = useFontSizeResponsive()
-	const contact = PLACE_HIGHLIGHT.contact
+	const place = usePlaceStore((store) => store.place)
+
+	const contact = place.contact
 
 	return (
 		<ResponsiveBlock $padding={spaces(16)} $paddingMobile={spaces(12)}>

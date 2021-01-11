@@ -106,7 +106,7 @@ const PlaceFacilities = ({ facilities }: Props) => {
 					const { fontProps, iconProps } = getFacilitiesStatus(status)
 
 					return (
-						<Gap $size={spaces(4)} key={`facility-${facility}`}>
+						<Gap $size={spaces(4)} key={`facility-${facility}`} $alignCenter>
 							<FacilityIcon {...iconProps} />
 							<Text size={detailSize} {...fontProps}>
 								{I18n.t(FACILITY_TEXTS[facility])}

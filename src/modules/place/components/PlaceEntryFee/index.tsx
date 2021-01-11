@@ -6,13 +6,13 @@ import Flex from 'common/components/Flex'
 import Gap from 'common/components/Gap'
 import ResponsiveBlock from 'common/components/ResponsiveBlock'
 import Text from 'common/components/Text'
-import { PLACE_HIGHLIGHT } from 'common/mocks/placeHighlight'
 import { gray } from 'common/styles/colors'
 import useFontSizeResponsive from 'common/styles/hooks/useFontSizeResponsive'
 import spaces from 'common/styles/mixins/spaces'
 import convertCurrency from 'common/utils/convertCurrency'
 
 import { ADULT, ADULT_ENTRY_FEE, CHILD, CHILD_ENTRY_FEE } from 'modules/place/locale'
+import { usePlaceStore } from 'modules/place/stores/PlaceStore/context'
 
 import { ENTRY_FEE_TITLE } from './locale'
 import { EntryContainer } from './styled'
@@ -20,8 +20,9 @@ import { EntryContainer } from './styled'
 const PlaceEntryFee = () => {
 	const I18n = useI18n()
 	const { titleSize, detailSize } = useFontSizeResponsive()
+	const place = usePlaceStore((store) => store.place)
 
-	const entryFee = PLACE_HIGHLIGHT.attractionInformation?.entryFee
+	const entryFee = place.attractionInformation?.entryFee
 	const currency = convertCurrency(entryFee.currency) ? I18n.t(convertCurrency(entryFee.currency)) : entryFee.currency
 
 	if (!entryFee) return null

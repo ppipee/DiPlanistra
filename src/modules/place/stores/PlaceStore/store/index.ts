@@ -2,7 +2,6 @@ import { action, observable, runInAction } from 'mobx'
 
 import loading from 'core/api/annotations/loading'
 import FetchStateStore from 'core/api/stores/FetchStateStore'
-import { MountParams } from 'core/mobx/types'
 
 import { Page } from 'common/types/wongnai/page'
 
@@ -20,11 +19,6 @@ class PlaceStore extends FetchStateStore {
 	@observable
 	reviews: Review[]
 
-	async onMount({ params: { placeId } }: MountParams) {
-		this.getPlace(placeId)
-		this.getPlaceReviews(placeId)
-	}
-
 	@action
 	onUnMount() {
 		this.place = undefined
@@ -32,7 +26,7 @@ class PlaceStore extends FetchStateStore {
 		this.reviewsPage = undefined
 	}
 
-	@action
+	@action.bound
 	@loading
 	async getPlace(placeId: string) {
 		const place = await getPlace(placeId)
@@ -44,7 +38,7 @@ class PlaceStore extends FetchStateStore {
 		}
 	}
 
-	@action
+	@action.bound
 	@loading
 	async getPlaceReviews(placeId: string) {
 		const reviewsPage = await getPlaceReviews(placeId, {

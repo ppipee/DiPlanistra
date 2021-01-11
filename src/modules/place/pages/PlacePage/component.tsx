@@ -19,6 +19,7 @@ import PlaceHeader from 'modules/place/components/PlaceHeader'
 import PlaceReviewer from 'modules/place/components/PlaceReviewer'
 import PlaceTraveling from 'modules/place/components/PlaceTraveling'
 import PlaceWorkingHour from 'modules/place/components/PlaceWorkingHour'
+import useGetPlace from 'modules/place/hooks/useGetPlace'
 import NearbyPositionStoreConfig from 'modules/place/stores/NearbyPositionStore'
 import PlaceStoreConfig from 'modules/place/stores/PlaceStore'
 import { usePlaceStore } from 'modules/place/stores/PlaceStore/context'
@@ -29,16 +30,16 @@ import { Container } from './styled'
 const PlacePageComponent = () => {
 	const { isDesktop } = useResponsive()
 
-	const { isLoading, isFresh, place } = usePlaceStore((store) => ({
+	const { isLoading, isFresh } = usePlaceStore((store) => ({
 		isLoading: store.isLoading,
 		isFresh: store.isFresh,
-		place: store.place,
 	}))
+	const { place } = useGetPlace()
 
 	if (isLoading || isFresh) return null
 
 	const facilities: FacilitiesProps = {
-		wifi: isNil(place.wifi) ? null : true,
+		wifi: isNil(place?.wifi) ? null : true,
 		attractionRestaurant: isNil(place.attractionInformation?.attractionRestaurant) ? null : true,
 		parkingType: isNil(place.parkingType) ? null : true,
 		toilet: place.attractionInformation?.toilet,

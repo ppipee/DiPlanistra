@@ -3,16 +3,17 @@ import React, { useCallback } from 'react'
 import { Badge } from 'common/components/Badge'
 import { BadgeVariant } from 'common/components/Badge/types'
 import Flex from 'common/components/Flex'
-import { PLACE_HIGHLIGHT } from 'common/mocks/placeHighlight'
 import { green, main } from 'common/styles/colors'
 
+import { usePlaceStore } from 'modules/place/stores/PlaceStore/context'
 import getCategoryTag from 'modules/place/utils/getCategoryTags'
 
 import { BadgeWrapper } from './styled'
 
 const PlaceTags = () => {
-	const categories = PLACE_HIGHLIGHT.categories
-	const favoriteTags = {}
+	const place = usePlaceStore((store) => store.place)
+	const categories = place?.categories || []
+	const favoriteTags = { ห้างสรรพสินค้า: true }
 	const categoryTags = getCategoryTag(categories)
 
 	const categoryVariant = useCallback(

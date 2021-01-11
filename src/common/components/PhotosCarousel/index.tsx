@@ -3,6 +3,7 @@ import React, { useCallback, useState } from 'react'
 import { white } from 'common/styles/colors'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import fontSizes from 'common/styles/mixins/fontSizes'
+import LinkToPlace from 'common/utils/url/LinkToPlace'
 
 import { PlacePreview } from 'modules/place/types/place'
 
@@ -32,7 +33,9 @@ const PhotosCarousel = ({ places, defaultIndex = 0, ...props }: Props) => {
 			<Carousel afterChange={afterChange} {...props} autoplay arrows={isDesktop} dots={isDesktop}>
 				{places.map((place, index) => (
 					<div key={index}>
-						<PhotoWrapper src={place.defaultPhoto.largeUrl} />
+						<LinkToPlace placeId={place.publicId}>
+							<PhotoWrapper src={place.defaultPhoto.largeUrl} />
+						</LinkToPlace>
 					</div>
 				))}
 			</Carousel>

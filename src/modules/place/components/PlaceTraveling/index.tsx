@@ -6,11 +6,11 @@ import Gap from 'common/components/Gap'
 import LocationIcon from 'common/components/icons/LocationIcon'
 import ResponsiveBlock from 'common/components/ResponsiveBlock'
 import Text from 'common/components/Text'
-import { PLACE_HIGHLIGHT } from 'common/mocks/placeHighlight'
 import { red } from 'common/styles/colors'
 import useFontSizeResponsive from 'common/styles/hooks/useFontSizeResponsive'
 import spaces from 'common/styles/mixins/spaces'
 
+import { usePlaceStore } from 'modules/place/stores/PlaceStore/context'
 import getAddress from 'modules/place/utils/getAddress'
 
 import PlaceMap from '../PlaceMap'
@@ -23,13 +23,14 @@ const ICON_SIZE = 24
 const PlaceTraveling = () => {
 	const I18n = useI18n()
 	const { titleSize, detailSize } = useFontSizeResponsive()
+	const { lat, lng, contact } = usePlaceStore((store) => store.place)
 
 	const coordinate = {
-		lat: PLACE_HIGHLIGHT.lat,
-		lng: PLACE_HIGHLIGHT.lng,
+		lat,
+		lng,
 	}
 
-	const address = getAddress(PLACE_HIGHLIGHT.contact)
+	const address = getAddress(contact)
 
 	return (
 		<ResponsiveBlock $padding={spaces(16)} $paddingMobile={spaces(12)}>
