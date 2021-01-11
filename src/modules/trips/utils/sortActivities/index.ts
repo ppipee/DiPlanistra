@@ -7,7 +7,7 @@ function convertHourToNumber(hour: string) {
 }
 
 export default function sortActivities(activities: ActivityPlan[]) {
-	if (isEmpty(activities) || activities.length < 2) return [...activities]
+	if (isEmpty(activities)) return [...activities]
 
 	return activities.sort((a, b) => convertHourToNumber(a.hour.from) - convertHourToNumber(b.hour.from))
 }

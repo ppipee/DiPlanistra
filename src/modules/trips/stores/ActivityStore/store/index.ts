@@ -93,6 +93,7 @@ class ActivityStore {
 		}
 	}
 
+	@action.bound
 	async deleteActivity() {
 		const { plannerDay } = this.plannerInfo
 
