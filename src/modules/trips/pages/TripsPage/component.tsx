@@ -13,14 +13,14 @@ import CountDownCover from 'modules/trips/components/CountDownCover'
 import CreatePlanner from 'modules/trips/components/CreatePlanner'
 import TripTicket from 'modules/trips/components/TripTicket'
 import { TRIP_PATH } from 'modules/trips/routes/paths'
-import TripStoreConfig from 'modules/trips/stores/TripStore'
-import { useTripStore } from 'modules/trips/stores/TripStore/context'
+import TripStoreConfig from 'modules/trips/stores/TripsStore'
+import { useTripsStore } from 'modules/trips/stores/TripsStore/context'
 
 import { MainContainer, TabContainer, Container } from './styled'
 
 const TripsPageComponent = () => {
 	const { isDesktop } = useResponsive()
-	const { trips, isLoading, isFresh } = useTripStore((store) => ({
+	const { trips, isLoading, isFresh } = useTripsStore((store) => ({
 		trips: store.trips,
 		isLoading: store.isLoading,
 		isFresh: store.isFresh,

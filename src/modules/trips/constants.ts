@@ -1,4 +1,5 @@
 import { PlannerInfo } from './types/planner'
+import { PlannerMode } from './types/store'
 
 export const DEFAULT_PLANNER_DAY = 0
 export const DEFAULT_PLANNER_INFO: PlannerInfo = {
@@ -7,3 +8,5 @@ export const DEFAULT_PLANNER_INFO: PlannerInfo = {
 	description: '',
 	activities: [],
 }
+
+export const DEFAULT_PLANNER_MODE = PlannerMode.View

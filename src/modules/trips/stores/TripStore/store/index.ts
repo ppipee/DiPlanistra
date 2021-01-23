@@ -1,45 +1,30 @@
-import { action, observable, runInAction } from 'mobx'
+import { action, observable } from 'mobx'
 
-import actionLoading from 'core/api/annotations/actionLoading'
-import loading from 'core/api/annotations/loading'
-import FetchStateStore from 'core/api/stores/FetchStateStore'
+import { MountParams } from 'core/mobx/types'
 
-import { getPlanners, createPlanner } from 'modules/trips/api'
-import { PlannerPreview, InitPlanner } from 'modules/trips/types/planner'
+import PlannerApiStore from 'modules/trips/stores/PlannerApiStore/store'
+import PlannerStore from 'modules/trips/stores/PlannerStore/store'
 
-class TripStore extends FetchStateStore {
+type Stores = {
+	plannerApiStore: PlannerApiStore
+	plannerStore: PlannerStore
+}
+
+class TripStore {
 	@observable
-	trips: PlannerPreview[]
+	plannerApiStore: PlannerApiStore
 
-	async onMount() {
-		this.getTrips()
+	@action
+	onInit({ plannerApiStore }: Stores) {
+		this.plannerApiStore = plannerApiStore
 	}
 
-	@action.bound
-	@loading
-	async getTrips() {
-		const trips = await getPlanners()
-
-		if (!this.error) {
-			runInAction(async () => {
-				this.trips = trips
-			})
-		}
+	onMount({ params: { tripId } }: MountParams) {
+		this.plannerApiStore.getTrip(tripId)
 	}
 
-	@action.bound
-	@actionLoading
-	async createPlanner(data: InitPlanner) {
-		const trip = await createPlanner(data)
-
-		if (!this.error) {
-			runInAction(() => {
-				this.trips = [...this.trips, trip]
-			})
-			return trip
-		}
-		return null
-	}
+	@action
+	onUnMount() {}
 }
 
 export default TripStore

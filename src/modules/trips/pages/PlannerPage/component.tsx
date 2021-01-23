@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+
+import { useParams } from 'react-router-dom'
 
 import asRoute from 'core/router/hoc/asRoute'
+import { Params } from 'core/router/types'
 
 import Block from 'common/components/Block'
 import ContentContainer from 'common/components/ContentContainer'
@@ -27,9 +30,18 @@ import { MainContainer, SubContainer, ButtonContainer } from './styled'
 
 const PlannerPageComponent = () => {
 	const { isDesktop } = useResponsive()
+	const { plannerId } = useParams<Params>()
 	const showActivityEditor = useActivityStore((store) => store.showActivityEditor)
 	const isOpenSetting = usePlannerSettingStore((store) => store.isOpenSetting)
-	const { isLoading, isFresh } = usePlannerApiStore((store) => ({ isLoading: store.isLoading, isFresh: store.isFresh }))
+	const { isLoading, isFresh, getPlanner } = usePlannerApiStore((store) => ({
+		isLoading: store.isLoading,
+		isFresh: store.isFresh,
+		getPlanner: store.getPlanner,
+	}))
+
+	useEffect(() => {
+		getPlanner(plannerId)
+	}, [])
 
 	if (isLoading || isFresh) return null
 	return (

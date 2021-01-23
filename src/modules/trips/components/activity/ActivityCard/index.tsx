@@ -14,18 +14,19 @@ import { CardContainer } from './styled'
 
 type Props = {
 	activityPlan: ActivityPlan
+	isEditMode: boolean
 }
 
-const ActivityCard = ({ activityPlan }: Props) => {
+const ActivityCard = ({ activityPlan, isEditMode }: Props) => {
 	return (
-		<CardContainer>
+		<CardContainer $isEditMode={isEditMode}>
 			<Gap $type="vertical" $size={spaces(16)}>
 				<Gap $type="vertical" $size={spaces(8)} $responsive>
 					<ActivityHeader activityPlan={activityPlan} />
 					<ActivityPlace place={activityPlan.place} />
 					{activityPlan.memo && <ActivityMemo memo={activityPlan.memo} />}
 				</Gap>
-				<ActivityController activityId={activityPlan.id} />
+				<ActivityController activityPlan={activityPlan} />
 			</Gap>
 		</CardContainer>
 	)

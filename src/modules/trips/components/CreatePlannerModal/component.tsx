@@ -16,7 +16,7 @@ import spaces from 'common/styles/mixins/spaces'
 
 import { TRIP_NAME } from 'modules/trips/locale'
 import { TRIP_PATH } from 'modules/trips/routes/paths'
-import { useTripStore } from 'modules/trips/stores/TripStore/context'
+import { useTripsStore } from 'modules/trips/stores/TripsStore/context'
 
 type Props = {
 	close: () => void
@@ -28,7 +28,7 @@ const CreatePlannerModalComponent = ({ close }: Props) => {
 	const [date, setDate] = useState<CalenderDateProps>({})
 	const { keyword: plannerName, onChange } = useOnChange()
 
-	const { isLoading, createPlanner } = useTripStore((store) => ({
+	const { isLoading, createPlanner } = useTripsStore((store) => ({
 		isLoading: store.isActionLoading['createPlanner'],
 		createPlanner: store.createPlanner,
 	}))

@@ -6,6 +6,7 @@ import { media } from 'common/styles/utils/viewport'
 
 export const FooterContainer = styled(ContentContainer)`
 	width: 100%;
+	background: transparent;
 	box-sizing: border-box;
 	position: relative;
 	padding: ${spaces(32)} ${spaces(16)} ${spaces(24)};

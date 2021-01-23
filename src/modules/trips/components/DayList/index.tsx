@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ComponentType } from 'react'
 
 import { isEmpty } from 'lodash'
 
@@ -18,7 +18,7 @@ import ActivityEmpty from '../activity/ActivityEmpty'
 import AddPlaceButton from '../AddPlaceButton'
 import DayHeader from '../DayHeader'
 
-import { ActivityCardsContainer } from './styled'
+import { ViewerContainer, EditorContainer } from './styled'
 
 type Props = {
 	planner: PlannerInfo
@@ -34,28 +34,35 @@ const DayList = ({ planner }: Props) => {
 
 	const { isOpen, toggle } = useToggle()
 
-	const [shouldShowPlanner, setOpen] =
-		mode === PlannerMode.Edit ? [plannerDay === planner.day, () => setPlannerDay(planner.day)] : [isOpen, toggle]
+	const isEditMode = mode === PlannerMode.Edit
+	const [shouldShowPlanner, setOpen] = isEditMode
+		? [plannerDay === planner.day, () => setPlannerDay(planner.day)]
+		: [isOpen, toggle]
+
+	const ActivityCardsContainer = (isEditMode ? EditorContainer : ViewerContainer) as ComponentType
 
 	return (
 		<Gap $type="vertical" $size={spaces(16)}>
-			<DayHeader onClick={setOpen} isOpen={shouldShowPlanner} day={planner.day} title={planner.title} />
+			<DayHeader
+				isEditMode={isEditMode}
+				onClick={setOpen}
+				isOpen={shouldShowPlanner}
+				day={planner.day}
+				title={planner.title}
+			/>
 			{shouldShowPlanner && (
 				<Collapse>
 					{!isEmpty(activities) ? (
 						<BaseContainer $padding={`0 ${spaces(16)}`} $paddingMobile={`0 ${spaces(8)}`}>
-							<ActivityCardsContainer
-								$padding={`${spaces(16)} ${spaces(16)} ${spaces(20)}`}
-								$paddingMobile={`${spaces(12)} ${spaces(12)} ${spaces(20)}`}
-								$spacingTop={spaces(16)}
-								$spacingBottom={spaces(12)}
-							>
+							<ActivityCardsContainer>
 								{activities.map((activity) => (
-									<ActivityCard activityPlan={activity} key={activity.id} />
+									<ActivityCard isEditMode={isEditMode} activityPlan={activity} key={activity.id} />
 								))}
-								<div>
-									<AddPlaceButton />
-								</div>
+								{isEditMode && (
+									<div>
+										<AddPlaceButton />
+									</div>
+								)}
 							</ActivityCardsContainer>
 						</BaseContainer>
 					) : (

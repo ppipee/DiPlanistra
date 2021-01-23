@@ -74,7 +74,7 @@ export const ACTIVITY_PLACE = ({
 } as unknown) as ActivityPlace
 
 const PLANNER = ({
-	id: '5fd509de0689ed3536711d86',
+	id: '5ffb56b3ba57cd8115138fe4',
 	name: 'testPlanner',
 	startDate: '2020-12-11T07:41:46.169Z',
 	endDate: '2020-12-13T07:41:46.169Z',

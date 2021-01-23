@@ -1,3 +1,3 @@
 export const PLACE_PATH = '/places'
 
-export const PLACE_ROUTE = '/places/:placeId'
+export const PLACE_ROUTE = `${PLACE_PATH}/:placeId`

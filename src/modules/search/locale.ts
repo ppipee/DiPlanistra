@@ -1,5 +1,5 @@
-export const LOCATION_SUFFIX_TEXT = ['ใกล้', 'Near']
-export const NEAR_BY_ME = ['ใกล้ฉัน', 'Near by me']
+export const LOCATION_SUFFIX_TEXT = ['ใกล้', 'Nearby']
+export const NEAR_BY_ME = ['ใกล้ฉัน', 'Nearby me']
 export const LOCALE_PLACE = ['สถานที่', 'Place']
 
 export const LOCALE_NATIONAL_FOOD = ['สัญชาติอาหาร', 'Nationality']

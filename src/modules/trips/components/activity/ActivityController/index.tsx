@@ -1,26 +1,43 @@
 import React, { useCallback } from 'react'
 
+import { Link } from 'react-router-dom'
+
+import useI18n from 'core/locale/hooks/useI18n'
+
+import Button from 'common/components/Button'
 import Flex from 'common/components/Flex'
 import Gap from 'common/components/Gap'
 import EditIcon from 'common/components/icons/EditIcon'
-import Text from 'common/components/Text'
-import { red } from 'common/styles/colors'
+import { LOCALE_EDIT } from 'common/locale'
+import { main, red } from 'common/styles/colors'
 import spaces from 'common/styles/mixins/spaces'
 
+import { PLACE_PATH } from 'modules/place/routes/paths'
 import usePlannerMode from 'modules/trips/hooks/usePlannerMode'
 import useSetActivityMode from 'modules/trips/hooks/useSetActivityMode'
 import { useActivityStore } from 'modules/trips/stores/ActivityStore/context'
+import { ActivityPlan } from 'modules/trips/types/planner'
 import { PlannerMode } from 'modules/trips/types/store'
 
+import NavigateButton from '../NavigateButton'
+
+import { DETAIL } from './locale'
 import { EditButton } from './styled'
 
 const ICON_SIZE = 18
 
 type Props = {
-	activityId: string
+	activityPlan: ActivityPlan
 }
 
-const ActivityController = ({ activityId }: Props) => {
+const ActivityController = ({ activityPlan }: Props) => {
+	const {
+		id: activityId,
+		place: { coordinate, publicId },
+	} = activityPlan
+
+	const I18n = useI18n()
+
 	const plannerMode = usePlannerMode()
 	const selectActivity = useActivityStore((store) => store.selectActivity)
 	const { setUpdaterMode } = useSetActivityMode()
@@ -36,14 +53,27 @@ const ActivityController = ({ activityId }: Props) => {
 				<EditButton $variant="outlined" $color={red[500]} $border="curve" $size="small" onClick={setActivity}>
 					<Gap $size={spaces(4)} $alignCenter>
 						<EditIcon size={ICON_SIZE} />
-						<Text>แก้ไข</Text>
+						<span>{I18n.t(LOCALE_EDIT)}</span>
 					</Gap>
 				</EditButton>
 			</Flex>
 		)
 	}
 	if (plannerMode === PlannerMode.View) {
-		return <div>ดูสถานที่/ดูเส้นทาง</div>
+		return (
+			<Gap $size={spaces(8)}>
+				<Flex $alignItems="stretch" $direction="column" $responsive>
+					<Link to={`${PLACE_PATH}/${publicId}`}>
+						<Button $variant="outlined" $responsive $color={main[500]} $border="curve" $size="small">
+							{I18n.t(DETAIL)}
+						</Button>
+					</Link>
+				</Flex>
+				<Flex $alignItems="stretch" $direction="column" $responsive>
+					<NavigateButton coordinate={coordinate} />
+				</Flex>
+			</Gap>
+		)
 	}
 
 	return null

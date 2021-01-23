@@ -1,4 +1,5 @@
-// eslint-disable-next-line import/no-cycle
+import { Location } from 'history'
+
 import { Params, Query } from 'core/router/types'
 
 export type DefaultMethodStore = {
@@ -16,6 +17,7 @@ export type DefaultMethodStore = {
 export interface MountParams {
 	params: Params
 	query: Query
+	location: Location
 }
 
 export type Store = Record<string, any>

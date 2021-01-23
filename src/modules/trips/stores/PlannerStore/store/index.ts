@@ -1,8 +1,11 @@
 import { action, computed, observable } from 'mobx'
 
-import { DEFAULT_PLANNER_DAY } from 'modules/trips/constants'
+import { MountParams } from 'core/mobx/types'
+
+import { DEFAULT_PLANNER_DAY, DEFAULT_PLANNER_MODE } from 'modules/trips/constants'
 import PlannerApiStore from 'modules/trips/stores/PlannerApiStore/store'
 import { PlannerMode } from 'modules/trips/types/store'
+import definePlannerMode from 'modules/trips/utils/definePlannerMode'
 
 type Stores = {
 	plannerApiStore: PlannerApiStore
@@ -13,7 +16,7 @@ class PlannerStore {
 	plannerApiStore: PlannerApiStore
 
 	@observable
-	mode = PlannerMode.Edit
+	mode = DEFAULT_PLANNER_MODE
 
 	@observable
 	plannerDay = DEFAULT_PLANNER_DAY
@@ -21,6 +24,11 @@ class PlannerStore {
 	@action
 	onInit({ plannerApiStore }: Stores) {
 		this.plannerApiStore = plannerApiStore
+	}
+
+	@action
+	onMount({ location }: MountParams) {
+		this.mode = definePlannerMode(location.pathname)
 	}
 
 	@action
@@ -32,6 +40,11 @@ class PlannerStore {
 	@action.bound
 	setPlannerDay(day: number) {
 		this.plannerDay = this.plannerDay === day ? DEFAULT_PLANNER_DAY : day
+	}
+
+	@action.bound
+	async setPlannerPrivacy(isPublic: boolean) {
+		await this.plannerApiStore.updatePlanner({ isPublic })
 	}
 
 	@computed

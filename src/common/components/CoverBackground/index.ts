@@ -33,7 +33,7 @@ function applyHeight({ $height }: CoverBackgroundProps) {
 
 const CoverBackground = styled.div<CoverBackgroundProps>`
 	width: 100%;
-	background: linear-gradient(180deg, ${main[700]} 0%, ${green[500]} 166.19%);
+	background: linear-gradient(180deg, ${main[500]} 0%, ${green[500]} 166.19%);
 	width: ${({ $width }) => $width || '100%'};
 
 	${({ $shadow }) => ($shadow ? blockShadow : '')}

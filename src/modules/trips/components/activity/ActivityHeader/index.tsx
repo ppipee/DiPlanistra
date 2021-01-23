@@ -22,8 +22,8 @@ const ActivityHeader = ({ activityPlan }: Props) => {
 	const shopStatus = place?.workingHoursStatus && I18n.t(place.workingHoursStatus.open ? OPENED_STATUS : CLOSED_STATUS)
 
 	return (
-		<Gap $size={spaces(8)} $responsive $alignCenter>
-			<Text color={gray[700]} whiteSpace="nowrap" size={fontSizes(16)}>{`${hour.from} - ${hour.to}`}</Text>
+		<Gap $size={spaces(8)} $responsive $wrap="wrap">
+			<Text color={gray[700]} whiteSpace="nowrap" size={fontSizes(18)}>{`${hour.from} - ${hour.to}`}</Text>
 			<Text weight="bold">
 				<Text color={black} size={fontSizes(18)}>
 					{place.name}

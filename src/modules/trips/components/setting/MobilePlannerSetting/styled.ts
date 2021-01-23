@@ -21,7 +21,7 @@ export const ArrowWrapper = styled.div`
 export const NavBar = styled(BaseContainer)`
 	display: flex;
 	height: ${NAV_HEIGHT};
-	background: linear-gradient(180deg, ${main[700]} 0%, ${green[500]} 166.19%);
+	background: linear-gradient(180deg, ${main[500]} 0%, ${green[500]} 166.19%);
 `
 
 export const ContainerWrapper = styled.div`
