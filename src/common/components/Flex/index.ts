@@ -1,21 +1,16 @@
+import { Property } from 'csstype'
 import styled from 'styled-components'
 import { css } from 'styled-components'
 
-export type JustifyContentType = 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around'
-
-export type AlignItemsType = 'flex-start' | 'flex-end' | 'center' | 'stretch'
-
-export type DirectionType = 'row' | 'row-reverse' | 'column' | 'column-reverse'
-
 export interface FlexProps {
-	$justifyContent?: JustifyContentType | 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'space-around'
-	$alignItems?: AlignItemsType | 'flex-start' | 'flex-end' | 'center' | 'stretch'
-	$direction?: DirectionType | 'row' | 'row-reverse' | 'column' | 'column-reverse'
-	$wrap?: 'nowrap' | 'wrap'
+	$justifyContent?: Property.JustifyContent
+	$alignItems?: Property.AlignItems
+	$direction?: Property.FlexDirection
+	$wrap?: Property.FlexWrap
 	$margin?: string
 	$padding?: string
 	$responsive?: boolean
-	$grow?: string
+	$grow?: Property.FlexGrow
 }
 
 function defineProps({

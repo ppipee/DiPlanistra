@@ -34,7 +34,7 @@ const ActivityMobileEditorComponent = () => {
 						</Flex>
 					</BaseContainer>
 				</CoverBackground>
-				<EditorContainer $justifyContent="space-between" $direction="column" $grow="1" $alignItems="stretch">
+				<EditorContainer $justifyContent="space-between" $direction="column" $grow={1} $alignItems="stretch">
 					<Gap $padding={spaces(16)} $size={spaces(12)} $responsive>
 						<ActivityEditor />
 					</Gap>

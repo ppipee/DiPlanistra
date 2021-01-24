@@ -14,7 +14,7 @@ enum ButtonHeight {
 	Large = '40px',
 }
 
-function applySize({ $size }: ButtonProps) {
+function applySize({ $size = ButtonSizes.Default }: ButtonProps) {
 	let defaultStyle = css`
 		padding: 0 ${spaces(16)};
 		height: ${ButtonHeight.Large};
@@ -32,12 +32,22 @@ function applySize({ $size }: ButtonProps) {
 	return defaultStyle
 }
 
-function applyVariant({ $color, $secondaryColor, $variant }: ButtonProps) {
+function applyVariant({ $color, $secondaryColor, $variant = ButtonVariants.Filled }: ButtonProps) {
 	if ($variant === ButtonVariants.Outlined) {
 		return css`
 			background: ${white};
 			color: ${$color};
 			border: 1px solid ${$color};
+			transition: background 0.2s;
+
+			svg {
+				color: ${$color};
+			}
+		`
+	} else if ($variant === ButtonVariants.Text) {
+		return css`
+			background: ${white};
+			color: ${$color};
 			transition: background 0.2s;
 
 			svg {
@@ -72,7 +82,7 @@ function applyResponsive({ $responsive }: ButtonProps) {
 	`
 }
 
-function applyBorderRadius({ $border }: ButtonProps) {
+function applyBorderRadius({ $border = ButtonBorders.Default }: ButtonProps) {
 	if ($border === ButtonBorders.Curve) {
 		return css`
 			border-radius: ${Borders.Curve};
@@ -84,7 +94,7 @@ function applyBorderRadius({ $border }: ButtonProps) {
 	`
 }
 
-function applyShadow({ $shadow }: ButtonProps) {
+function applyShadow({ $shadow = true }: ButtonProps) {
 	const style = css`
 		&:hover {
 			box-shadow: 0px 3px 3px ${getColorWithAlpha(black, 0.1)};
@@ -131,7 +141,11 @@ function applyHover() {
 	`
 }
 
-const Button = styled.div<ButtonProps>`
+const Button = styled.button<ButtonProps>`
+	border: none;
+	outline: none;
+	box-shadow: none;
+
 	box-sizing: border-box;
 	cursor: pointer;
 	display: flex;
@@ -145,12 +159,5 @@ const Button = styled.div<ButtonProps>`
 	${applyHover}
 	${applyShadow};
 `
-
-Button.defaultProps = {
-	$size: ButtonSizes.Default,
-	$variant: ButtonVariants.Filled,
-	$border: ButtonBorders.Default,
-	$shadow: true,
-}
 
 export default Button

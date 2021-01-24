@@ -1,4 +1,6 @@
-export interface ButtonProps {
+import { HTMLAttributes } from 'react'
+
+export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
 	$size?: SizeType
 	$variant?: VariantType
 	$responsive?: boolean
@@ -16,11 +18,12 @@ export enum ButtonSizes {
 	Default = 'default',
 }
 
-type VariantType = ButtonVariants | 'outlined' | 'filled'
+type VariantType = ButtonVariants | 'outlined' | 'filled' | 'text'
 
 export enum ButtonVariants {
 	Outlined = 'outlined',
 	Filled = 'filled',
+	Text = 'text',
 }
 
 type BorderType = ButtonBorders | 'default' | 'curve'

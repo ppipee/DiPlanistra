@@ -1,7 +1,6 @@
 import React, { ReactText, useCallback, useEffect, useState } from 'react'
 
 import { isEmpty } from 'lodash'
-import { useGeolocation } from 'react-use'
 
 import useI18n from 'core/locale/hooks/useI18n'
 import useQuery from 'core/router/hooks/useQuery'
@@ -27,7 +26,6 @@ import { DropDownWrapper, InputWrapper } from './styled'
 const SearchInput = () => {
 	const I18n = useI18n()
 	const { domain: domainQuery } = useQuery()
-	const { latitude, longitude } = useGeolocation()
 	const passQuery = usePassQuery()
 	const [domain, setDomain] = useState(+domainQuery || DEFAULT_PLACE_DOMAIN)
 	const { keyword, onChange } = useOnChange()
@@ -48,10 +46,6 @@ const SearchInput = () => {
 
 	const onEnter = useOnEnter([onSubmit])
 
-	const setCurrentLocation = useCallback(() => {
-		passQuery({ params: { lat: latitude, lng: longitude } })
-	}, [latitude, longitude])
-
 	useEffect(() => {
 		if (!domainQuery) return
 
@@ -70,9 +64,8 @@ const SearchInput = () => {
 			</DropDownWrapper>
 			<InputWrapper>
 				<InputField
-					$prefixIcon={SearchIcon}
+					$suffixIcon={SearchIcon}
 					$iconColor={white}
-					$onPrefixClick={setCurrentLocation}
 					value={keyword}
 					onChange={onChange}
 					onKeyPress={onEnter}

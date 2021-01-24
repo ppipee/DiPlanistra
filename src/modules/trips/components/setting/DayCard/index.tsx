@@ -43,7 +43,7 @@ const DayCard = ({ day, title }: Props) => {
 							{day}
 						</Text>
 					</DayWrapper>
-					<Flex $grow="1" $direction="column" $alignItems="stretch">
+					<Flex $grow={1} $direction="column" $alignItems="stretch">
 						<Text as="div" size={fontSizes(16)} color={black} ellipsis={1}>
 							{isEditMode ? <FieldStyles value={dayTitle} onChange={onChange} /> : dayTitle}
 						</Text>

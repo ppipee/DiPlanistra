@@ -26,7 +26,7 @@ const DayHeader = ({ day, isOpen, onClick, isEditMode, title = '' }: Props) => {
 					{day}
 				</Text>
 			</CircleBlock>
-			<Flex $grow="1" $alignItems="center">
+			<Flex $grow={1} $alignItems="center">
 				{!isEmpty(title) ? title : `Day-${day}`}
 			</Flex>
 		</HeaderContainer>

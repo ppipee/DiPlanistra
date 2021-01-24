@@ -5,7 +5,7 @@ import CalendarIcon from 'common/components/icons/CalendarIcon'
 import { gray } from 'common/styles/colors'
 
 const BaseDateInput = (props: InputFormProps) => {
-	return <InputForm readOnly $prefixIcon={CalendarIcon} color={gray[500]} {...props} />
+	return <InputForm readOnly $suffixIcon={CalendarIcon} color={gray[500]} {...props} />
 }
 
 export default BaseDateInput

@@ -6,6 +6,34 @@ import { shadow } from 'common/styles/shadows'
 
 import { FieldProps } from './types'
 
+const applyStyle = ({ fieldStyle }: FieldProps) => {
+	if (!fieldStyle) return null
+
+	const { $background, $borderColor, $borderRadius, $color } = fieldStyle
+
+	return css`
+		${$borderRadius &&
+		css`
+			border-radius: ${$borderRadius};
+		`}
+
+		${$borderColor &&
+		css`
+			border-color: ${$borderColor};
+		`}
+
+		${$background &&
+		css`
+			background: ${$background};
+		`}
+
+		${$color &&
+		css`
+			color: ${$color};
+		`}
+	`
+}
+
 const validatingState = ({ variant }: FieldProps) => {
 	let borderColor = gray[200]
 
@@ -58,6 +86,7 @@ const FieldStyles = styled.input<FieldProps>`
 
 	${validatingState}
 	${applyBorder}
+	${applyStyle}
 `
 
 export default FieldStyles

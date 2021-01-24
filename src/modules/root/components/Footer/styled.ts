@@ -8,8 +8,9 @@ export const FooterContainer = styled(ContentContainer)`
 	width: 100%;
 	background: transparent;
 	box-sizing: border-box;
-	position: relative;
-	padding: ${spaces(32)} ${spaces(16)} ${spaces(24)};
+	padding: ${spaces(20)} ${spaces(16)};
+	position: absolute;
+	bottom: 0;
 
 	${media.md`
 	  padding: ${spaces(16)};

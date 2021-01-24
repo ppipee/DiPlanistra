@@ -13,13 +13,13 @@ export const InputFieldStyles = styled(FieldStyles)<InputFieldProps>`
 	${({ $prefix, $prefixIcon }) =>
 		($prefix || $prefixIcon) &&
 		css`
-			padding-right: ${spaces(40)};
+			padding-left: ${spaces(40)};
 		`}
 
 	${({ $suffix, $suffixIcon }) =>
 		($suffix || $suffixIcon) &&
 		css`
-			padding-left: ${spaces(40)};
+			padding-right: ${spaces(40)};
 		`}
 `
 
@@ -30,9 +30,12 @@ export const InputContainer = styled.label`
 
 export const PrefixWrapper = styled.div<ExtendsProps>`
 	position: absolute;
-	right: 12px;
+	left: 12px;
+	right: auto;
 	top: 50%;
 	transform: translateY(-50%);
+	display: flex;
+	align-items: center;
 
 	${({ $clickable }) =>
 		$clickable &&
@@ -41,13 +44,14 @@ export const PrefixWrapper = styled.div<ExtendsProps>`
 		`}
 
 	& > * {
-		display: block;
-		margin: auto;
+		display: inline-block;
+		margin: auto 0;
 	}
 `
 
 export const SuffixWrapper = styled(PrefixWrapper)`
-	left: 12px;
+	right: 12px;
+	left: auto;
 `
 
 export const InputWrapper = styled.label<InputFieldProps>`

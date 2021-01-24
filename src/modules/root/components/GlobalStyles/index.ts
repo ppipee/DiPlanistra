@@ -7,7 +7,6 @@ const GlobalStyles = createGlobalStyle`
 	${setup}
 
 	body {
-		box-sizing: border-box;
 		padding: 0;
 		margin: 0;
 		font-family: 'DB Heavent Now', sans-serif;
@@ -15,11 +14,12 @@ const GlobalStyles = createGlobalStyle`
 		background-color: ${gray[50]};
 		min-height:100vh;
 	}
-	
-	input,textarea {
+
+	* {
+		box-sizing: border-box;
 		font-family: 'DB Heavent Now', sans-serif;
 	}
-
+	
 	#root{
 		min-height:100vh;
 	}
