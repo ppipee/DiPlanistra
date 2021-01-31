@@ -19,7 +19,7 @@ function asRoute<Props>(Component: ComponentType<Props>, { stores: storeMapper }
 
 		if (!isInitialized) return null
 
-		return <div>{combineContextProviders(storeContextValues, <Component {...props} />)}</div>
+		return <>{combineContextProviders(storeContextValues, <Component {...props} />)}</>
 	}
 
 	return WrappedRoute

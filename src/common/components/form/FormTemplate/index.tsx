@@ -27,7 +27,7 @@ const FormTemplate = ({ children, className, errMsg = '', label = '', variant = 
 					default: { duration: 0.1 },
 				}}
 			>
-				<ErrorText className="heading4">{errMsg}</ErrorText>
+				<ErrorText>{errMsg}</ErrorText>
 			</motion.div>
 		)}
 	</FieldContainer>

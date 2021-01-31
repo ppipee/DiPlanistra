@@ -15,7 +15,8 @@ export const MainContainer = styled.div`
 	flex: 1;
 	display: flex;
 	align-items: stretch;
-	height: calc(100% + ${FOOTER_HEIGHT});
+	/* height: calc(100% + ${FOOTER_HEIGHT}); */
+	/* padding-bottom: ${FOOTER_HEIGHT}; */
 
 	& > * {
 		width: 100%;

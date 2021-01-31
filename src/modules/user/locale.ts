@@ -11,8 +11,9 @@ export const REGISTER = ['ลงทะเบียน', 'Register']
 export const GO_TO_LOGIN = ['งั้นเข้าสู่ระบบเลย', 'Login']
 export const GO_TO_REGISTER = ['งั้นสมัครเลย', 'Register']
 
-export const DONT_HAVE_A_ACCOUNT = ['คุณไม่ใช่สมาชิกใช่มั้ยคะ? ', 'Don’t have a account?']
+export const DONT_HAVE_AN_ACCOUNT = ['คุณไม่ใช่สมาชิกใช่มั้ยคะ? ', 'Don’t have a account?']
 export const ALREADY_MEMBER = ['เป็นสมาชิกแล้ว? ', 'Already a member?']
 
+export const EMAIL = ['อีเมล์', 'Email']
 export const USERNAME = ['ชื่อบัญชี', 'Username']
 export const PASSWORD = ['รหัสผ่าน', 'Password']

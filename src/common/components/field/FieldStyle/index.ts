@@ -12,6 +12,8 @@ const applyStyle = ({ fieldStyle }: FieldProps) => {
 	const { $background, $borderColor, $borderRadius, $color } = fieldStyle
 
 	return css`
+		border-style: solid;
+
 		${$borderRadius &&
 		css`
 			border-radius: ${$borderRadius};
@@ -30,23 +32,24 @@ const applyStyle = ({ fieldStyle }: FieldProps) => {
 		${$color &&
 		css`
 			color: ${$color};
+
+			&::placeholder {
+				color: ${$color};
+			}
 		`}
 	`
 }
 
 const validatingState = ({ variant }: FieldProps) => {
-	let borderColor = gray[200]
-
 	if (variant === 'success') {
-		borderColor = green[300]
+		return css`
+			border: ${green[300]};
+		`
 	} else if (variant === 'error') {
-		borderColor = red[700]
+		return css`
+			border-color: ${red[700]};
+		`
 	}
-
-	return css`
-		border-color: ${borderColor};
-		border-style: solid;
-	`
 }
 
 const applyBorder = ({ borderVariant = 'outlined' }: FieldProps) => {
@@ -84,9 +87,9 @@ const FieldStyles = styled.input<FieldProps>`
 		border-color: ${gray[100]};
 	}
 
-	${validatingState}
 	${applyBorder}
 	${applyStyle}
+	${validatingState}
 `
 
 export default FieldStyles
