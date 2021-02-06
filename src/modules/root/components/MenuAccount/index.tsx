@@ -25,7 +25,6 @@ const MenuAccount = () => {
 		<Gap $size={spaces(4)} $alignCenter>
 			{user ? (
 				<>
-					{' '}
 					<AccountIcon size={ICON_SIZE} color={white} />
 					<Text size={fontSizes(16)}>{user.name}</Text>
 				</>
