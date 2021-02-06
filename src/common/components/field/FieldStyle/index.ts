@@ -50,6 +50,8 @@ const validatingState = ({ variant }: FieldProps) => {
 			border-color: ${red[700]};
 		`
 	}
+
+	return null
 }
 
 const applyBorder = ({ borderVariant = 'outlined' }: FieldProps) => {
