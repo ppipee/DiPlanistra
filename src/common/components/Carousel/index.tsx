@@ -2,6 +2,8 @@ import React from 'react'
 
 import { SlickBaseStyle, SlickStyle } from './styled'
 import { CarouselProps } from './types'
+// import 'slick-carousel/slick/slick.css'
+// import 'slick-carousel/slick/slick-theme.css'
 
 const DEFAULT_SPEED = 500
 const DEFAULT_AUTO_SPEED = 5000
@@ -23,8 +25,6 @@ Carousel.defaultProps = {
 	autoplaySpeed: DEFAULT_AUTO_SPEED,
 	slidesToShow: 1,
 	slidesToScroll: 1,
-	slickSheet: require('slick-carousel/slick/slick.css'),
-	slickThemeSheet: require('slick-carousel/slick/slick-theme.css'),
 }
 
 export default Carousel

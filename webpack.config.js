@@ -6,6 +6,8 @@ const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { RetryChunkLoadPlugin } = require('webpack-retry-chunk-load-plugin')
 
+const bootstrapPostCss = () => [require('precss'), require('autoprefixer')]
+
 function generateRequiredPaths(rootPath) {
 	const src = path.resolve(rootPath, 'src')
 	const build = path.resolve(rootPath, 'build')
@@ -91,18 +93,40 @@ const client = (config, { target, dev }, webpack, pathConfig) => {
 		config.plugins.push(new webpack.WatchIgnorePlugin(['./build/public/loadable-stats.json']))
 
 		config.module.rules.push({
-			test: /\.css?$/,
+			test: /\.scss?$/,
 			exclude: /node_modules/,
-			use: [{ loader: 'style-loader' }, cacheLoader, cssLoader],
+			use: [
+				{ loader: 'style-loader' },
+				cacheLoader,
+				cssLoader,
+				{
+					loader: 'postcss-loader',
+					options: {
+						plugins: bootstrapPostCss,
+					},
+				},
+				{ loader: 'sass-loader' },
+			],
 		})
 	} else {
 		config.plugins.push(new webpack.optimize.ModuleConcatenationPlugin())
 		config.plugins.push(new BrotliPlugin({ test: /\.(css|js)$/ }))
 		config.profile = true
 		config.module.rules.push({
-			test: /\.css?$/,
+			test: /\.scss?$/,
 			exclude: /node_modules/,
-			use: [MiniCssExtractPlugin.loader, cacheLoader, cssLoader],
+			use: [
+				MiniCssExtractPlugin.loader,
+				cacheLoader,
+				cssLoader,
+				{
+					loader: 'postcss-loader',
+					options: {
+						plugins: bootstrapPostCss,
+					},
+				},
+				{ loader: 'sass-loader' },
+			],
 		})
 
 		config.output.publicPath = process.env.PUBLIC_PATH || '/'
