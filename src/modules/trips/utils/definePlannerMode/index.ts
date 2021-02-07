@@ -2,7 +2,7 @@ import { DEFAULT_PLANNER_MODE } from 'modules/trips/constants'
 import { PlannerMode } from 'modules/trips/types/store'
 
 export default function definePlannerMode(pathname: string) {
-	const plannerPathRegex = /^\/planner\/\w+$/
+	const plannerPathRegex = /^\/me\/planners\/\w+$/
 	const isPlannerPath = plannerPathRegex.test(pathname)
 
 	if (isPlannerPath) {

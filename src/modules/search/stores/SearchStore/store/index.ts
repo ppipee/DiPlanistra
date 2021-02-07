@@ -3,7 +3,6 @@ import { action, observable, runInAction } from 'mobx'
 import actionLoading from 'core/api/annotations/actionLoading'
 import loading from 'core/api/annotations/loading'
 import FetchStateStore from 'core/api/stores/FetchStateStore'
-import { MountParams } from 'core/mobx/types'
 import { Query } from 'core/router/types'
 
 import getPageParams from 'common/stores/PageStore/utils/getPageParams'
@@ -19,10 +18,6 @@ class SearchStore extends FetchStateStore {
 
 	@observable
 	categories: Category[] = []
-
-	onMount({ query }: MountParams) {
-		// this.getPlaces(query)
-	}
 
 	@action.bound
 	@loading

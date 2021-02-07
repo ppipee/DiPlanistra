@@ -12,8 +12,8 @@ import useResponsive from 'common/styles/hooks/useResponsive'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
 
-import { FAVORITES_PATH } from 'modules/favorites/routes/paths'
 import { HOME_PATH } from 'modules/home/routes/paths'
+import { FAVORITE_PLACES_ROUTE } from 'modules/place/routes/paths'
 import { NAV_ICON_SIZE } from 'modules/root/constants'
 import { TRIP_PATH } from 'modules/trips/routes/paths'
 
@@ -35,7 +35,7 @@ const LinkNavigates = () => {
 						{isDesktop && <span>Trip</span>}
 					</Gap>
 				</Link>
-				<Link to={FAVORITES_PATH}>
+				<Link to={FAVORITE_PLACES_ROUTE}>
 					<Gap $size={spaces(4)} $alignCenter>
 						<HeartIcon size={NAV_ICON_SIZE} color={white} />
 						{isDesktop && <span>Favorite</span>}

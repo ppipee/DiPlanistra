@@ -5,6 +5,7 @@ import SeparatorContainer from 'common/components/SeparatorContainer'
 import { gray } from 'common/styles/colors'
 
 import { PlaceSelectorProps } from 'modules/trips/components/PlaceSelector'
+import { ActivityPlace } from 'modules/trips/types/planner'
 
 import PlaceItem from '../PlaceItem'
 
@@ -12,6 +13,7 @@ import { PlaceListContainer } from './styled'
 
 interface Props extends PlaceSelectorProps {
 	close: () => void
+	places: ActivityPlace[]
 }
 
 const PlaceList = ({ placeSelectedIndex, places, setPlace, close }: Props) => {

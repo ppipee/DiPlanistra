@@ -18,7 +18,7 @@ import { useTripsStore } from 'modules/trips/stores/TripsStore/context'
 
 import { MainContainer, TabContainer, Container } from './styled'
 
-const TripsPageComponent = () => {
+const PlannersComponent = () => {
 	const { isDesktop } = useResponsive()
 	const { trips, isLoading, isFresh } = useTripsStore((store) => ({
 		trips: store.trips,
@@ -54,7 +54,7 @@ const TripsPageComponent = () => {
 	)
 }
 
-export default asRoute(TripsPageComponent, {
+export default asRoute(PlannersComponent, {
 	stores: {
 		tripStore: TripStoreConfig,
 	},

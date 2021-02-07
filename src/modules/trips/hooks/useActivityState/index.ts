@@ -3,16 +3,17 @@ import { useCallback, useState } from 'react'
 import useOnChange from 'common/hooks/useOnChange'
 import setPrefixToDigi from 'common/utils/setPrefixToDigi'
 
+import { useFavoritePlaceStore } from 'modules/place/stores/FavoritePlaceStore/context'
 import { useActivityStore } from 'modules/trips/stores/ActivityStore/context'
 
 export default function useActivityState() {
 	const [placeSelectedIndex, setPlaceIndex] = useState<number>(-1)
-	const { setActivity, favoritePlaces, ...activityInfo } = useActivityStore((store) => ({
+	const { setActivity, ...activityInfo } = useActivityStore((store) => ({
 		memo: store.memo,
 		activityHour: store.hour,
 		setActivity: store.setActivity,
-		favoritePlaces: store.favoritePlaces,
 	}))
+	const favoritePlaces = useFavoritePlaceStore((store) => store.favoritePlaces)
 
 	const setTime = useCallback(
 		(time: Date, stateKey: 'to' | 'from') => {

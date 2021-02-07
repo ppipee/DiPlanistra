@@ -50,6 +50,7 @@ export interface PlacePreview {
 	hours?: Hour[]
 	categories: Category[]
 	attractionInformation?: AttractionInformation
+	isFavorite?: boolean
 }
 
 export interface PlaceStatistic {

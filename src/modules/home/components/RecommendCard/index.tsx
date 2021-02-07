@@ -4,19 +4,19 @@ import { Shadow } from 'common/components/BlockShadow/types'
 
 import PlaceDetailCard from 'modules/place/components/PlaceDetailCard'
 import { PlacePreview } from 'modules/place/types/place'
+import { ActivityPlace } from 'modules/trips/types/planner'
 
 import { CardContainer, CardImage, CardDetailWrapper } from './styled'
 
 type Props = {
 	place: PlacePreview
-	favorite?: boolean
 }
 
-const RecommendCard = ({ place, favorite }: Props) => (
+const RecommendCard = ({ place }: Props) => (
 	<CardContainer $variant={Shadow.Hard}>
 		<CardImage src={place.defaultPhoto.smallUrl} />
 		<CardDetailWrapper>
-			<PlaceDetailCard place={place} favorite={favorite} />
+			<PlaceDetailCard place={place as ActivityPlace & PlacePreview} />
 		</CardDetailWrapper>
 	</CardContainer>
 )

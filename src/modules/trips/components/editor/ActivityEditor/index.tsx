@@ -24,8 +24,7 @@ const TEXT_AREA_ROWS = 5
 
 const ActivityEditor = () => {
 	const I18n = useI18n()
-	const { favoritePlaces, activityMode } = useActivityStore((store) => ({
-		favoritePlaces: store.favoritePlaces || [],
+	const { activityMode } = useActivityStore((store) => ({
 		activityMode: store.mode,
 	}))
 	const { activityHour, setTime, placeSelectedIndex, setPlace, memo, onMemoChange } = useActivityState()
@@ -47,7 +46,7 @@ const ActivityEditor = () => {
 				</Gap>
 				<Gap $size={spaces(8)} $type="vertical">
 					<span>{`${I18n.t(LOCALE_PLACE)} :`}</span>
-					<PlaceSelector places={favoritePlaces} placeSelectedIndex={placeSelectedIndex} setPlace={setPlace} />
+					<PlaceSelector placeSelectedIndex={placeSelectedIndex} setPlace={setPlace} />
 				</Gap>
 				<Gap $size={spaces(8)} $type="vertical">
 					<span>{`${I18n.t(LOCALE_MEMO)} :`}</span>

@@ -11,6 +11,7 @@ import Gap from 'common/components/Gap'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
 
+import FavoritePlaceStoreConfig from 'modules/place/stores/FavoritePlaceStore'
 import ActivityDesktopEditor from 'modules/trips/components/editor/ActivityDesktopEditor'
 import ActivityMobileEditor from 'modules/trips/components/editor/ActivityMobileEditor'
 import PlannerCover from 'modules/trips/components/PlannerCover'
@@ -81,5 +82,6 @@ export default asRoute(PlannerPageComponent, {
 		plannerStore: PlannerStoreConfig,
 		activityStore: ActivityStoreConfig,
 		plannerSettingStore: PlannerSettingStoreConfig,
+		favoritePlaceStore: FavoritePlaceStoreConfig,
 	},
 })

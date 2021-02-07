@@ -4,7 +4,6 @@ import { MountParams } from 'core/mobx/types'
 
 import { DEFAULT_PLANNER_DAY, DEFAULT_PLANNER_MODE } from 'modules/trips/constants'
 import PlannerApiStore from 'modules/trips/stores/PlannerApiStore/store'
-import { PlannerMode } from 'modules/trips/types/store'
 import definePlannerMode from 'modules/trips/utils/definePlannerMode'
 
 type Stores = {
@@ -34,7 +33,7 @@ class PlannerStore {
 	@action
 	onUnMount() {
 		this.plannerDay = DEFAULT_PLANNER_DAY
-		this.mode = PlannerMode.Edit
+		this.mode = DEFAULT_PLANNER_MODE
 	}
 
 	@action.bound

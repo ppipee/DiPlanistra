@@ -24,7 +24,7 @@ const RecommendForYou = () => {
 			<CardsContainer $size={spaces(4)}>
 				{PLACE_HIGHLIGHTS.map((place) => (
 					<LinkToPlace placeId={place.publicId} key={`recommend-place-${place.publicId}`}>
-						<RecommendCard place={place} favorite />
+						<RecommendCard place={place} />
 					</LinkToPlace>
 				))}
 			</CardsContainer>

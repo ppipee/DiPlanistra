@@ -14,6 +14,7 @@ import spaces from 'common/styles/mixins/spaces'
 import { CLOSED_STATUS, OPENED_STATUS } from 'modules/place/locale'
 import { Place } from 'modules/place/types/place'
 
+import FavoritePlaceIcon from '../FavoritePlaceIcon'
 import PlaceTags from '../PlaceTags'
 
 import { Container, CoverPhoto } from './styled'
@@ -36,25 +37,28 @@ const PlaceHeader = ({ place }: Props) => {
 		<div>
 			{coverPhoto && isDesktop && <CoverPhoto src={coverPhoto} />}
 			<Container>
-				<Gap $size={spaces(8)} $type="vertical">
-					<div>
-						<Text size={highlightSize} ellipsis={2}>
-							{place.displayName}
-						</Text>
-						<Gap $size={spaces(4)} $alignCenter>
-							{!isNil(workingHourStatus) && (
-								<Text color={workingHourStatus ? green[500] : red[500]} size={titleSize}>
-									{shopStatus}
-								</Text>
-							)}
-							{shopMessage && (
-								<Text color={gray[500]} size={detailSize}>
-									{shopMessage}
-								</Text>
-							)}
-						</Gap>
-					</div>
-					<PlaceTags />
+				<Gap $size={spaces(8)}>
+					<Gap $size={spaces(8)} $type="vertical" $responsive>
+						<div>
+							<Text size={highlightSize} ellipsis={2}>
+								{place.displayName}
+							</Text>
+							<Gap $size={spaces(4)} $alignCenter>
+								{!isNil(workingHourStatus) && (
+									<Text color={workingHourStatus ? green[500] : red[500]} size={titleSize}>
+										{shopStatus}
+									</Text>
+								)}
+								{shopMessage && (
+									<Text color={gray[500]} size={detailSize}>
+										{shopMessage}
+									</Text>
+								)}
+							</Gap>
+						</div>
+						<PlaceTags />
+					</Gap>
+					<FavoritePlaceIcon isFavorite={place.isFavorite} publicId={place.publicId} size={28} />
 				</Gap>
 			</Container>
 		</div>

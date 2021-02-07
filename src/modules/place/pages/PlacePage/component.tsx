@@ -20,6 +20,7 @@ import PlaceReviewer from 'modules/place/components/PlaceReviewer'
 import PlaceTraveling from 'modules/place/components/PlaceTraveling'
 import PlaceWorkingHour from 'modules/place/components/PlaceWorkingHour'
 import useGetPlace from 'modules/place/hooks/useGetPlace'
+import FavoritePlaceStoreConfig from 'modules/place/stores/FavoritePlaceStore'
 import NearbyPositionStoreConfig from 'modules/place/stores/NearbyPositionStore'
 import PlaceStoreConfig from 'modules/place/stores/PlaceStore'
 import { usePlaceStore } from 'modules/place/stores/PlaceStore/context'
@@ -88,5 +89,6 @@ export default asRoute(PlacePageComponent, {
 	stores: {
 		nearbyPositionStore: NearbyPositionStoreConfig,
 		placeStore: PlaceStoreConfig,
+		favoritePlaceStore: FavoritePlaceStoreConfig,
 	},
 })

@@ -1,14 +1,14 @@
 import PlannerPage from '../pages/PlannerPage'
+import PlannersPage from '../pages/PlannersPage'
 import TripPage from '../pages/TripPage'
-import TripsPage from '../pages/TripsPage'
 
-import { TRIP_ROUTE, PLANNER_ROUTE, TRIP_PATH } from './paths'
+import { TRIP_ROUTE, PLANNER_ROUTE, PLANNERS_ROUTE } from './paths'
 
 const tripsRoutes = [
 	{
-		path: TRIP_PATH,
+		path: PLANNERS_ROUTE,
 		exact: true,
-		component: TripsPage,
+		component: PlannersPage,
 	},
 	{
 		path: PLANNER_ROUTE,
