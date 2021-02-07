@@ -58,7 +58,7 @@ const PlaceHeader = ({ place }: Props) => {
 						</div>
 						<PlaceTags />
 					</Gap>
-					<FavoritePlaceIcon isFavorite={place.isFavorite} publicId={place.publicId} />
+					<FavoritePlaceIcon isFavorite={place.isFavorite} publicId={place.publicId} size={28} />
 				</Gap>
 			</Container>
 		</div>
