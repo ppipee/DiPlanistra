@@ -12,9 +12,10 @@ export interface GapProps {
 	$padding?: string
 }
 
-export enum GapTypeProps {
-	Vertical = 'vertical',
-	Horizontal = 'horizontal',
-}
+export const GapTypeProps = {
+	Vertical: 'vertical',
+	Horizontal: 'horizontal',
+	Grid: 'grid',
+} as const
 
-export type GapType = GapTypeProps | 'vertical' | 'horizontal'
+export type GapType = typeof GapTypeProps[keyof typeof GapTypeProps]

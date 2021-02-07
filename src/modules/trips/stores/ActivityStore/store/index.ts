@@ -1,8 +1,6 @@
 import { action, computed, observable } from 'mobx'
 
-import { PLACE_HIGHLIGHTS } from 'common/mocks/plcaeHighlights'
-
-import { PlacePreview } from 'modules/place/types/place'
+import FavoritePlaceStore from 'modules/place/stores/FavoritePlaceStore/store'
 import PlannerApiStore from 'modules/trips/stores/PlannerApiStore/store'
 import PlannerStore from 'modules/trips/stores/PlannerStore/store'
 import { ActivityHour } from 'modules/trips/types/planner'
@@ -21,6 +19,9 @@ class ActivityStore {
 	plannerStore: PlannerStore
 
 	@observable
+	favoritePlaceStore: FavoritePlaceStore
+
+	@observable
 	mode = EditorMode.View
 
 	@observable
@@ -36,15 +37,7 @@ class ActivityStore {
 	memo = ''
 
 	@observable
-	favoritePlaces: PlacePreview[]
-
-	@observable
 	activityId: string
-
-	@action
-	onMount() {
-		this.favoritePlaces = PLACE_HIGHLIGHTS as any // remove
-	}
 
 	@action
 	onInit({ plannerApiStore, plannerStore }: Stores) {

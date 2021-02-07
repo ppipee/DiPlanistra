@@ -14,14 +14,13 @@ import { gray } from 'common/styles/colors'
 import spaces from 'common/styles/mixins/spaces'
 import ZIndexes from 'common/styles/mixins/zIndexes'
 
-import { PlacePreview } from 'modules/place/types/place'
+import useMountFavoritePlaces from 'modules/place/hooks/useMountFavoritePlaces'
 
 import PlaceList from './components/PlaceList'
 import PlacePreviewCard from './components/PlacePreviewCard'
 import { ArrowContainer, PlaceSelectedContainer } from './styled'
 
 export type PlaceSelectorProps = {
-	places: PlacePreview[]
 	setPlace: (placeIndex: number) => void
 	placeSelectedIndex: number
 }
@@ -30,10 +29,14 @@ const ICON_ARROW_SIZE = 24
 
 const PlaceSelector = (props: PlaceSelectorProps) => {
 	const { isOpen, open, close } = useSwitch()
+	const { isLoading, isFresh, favoritePlaces } = useMountFavoritePlaces()
+
+	if (isLoading || isFresh) return null
+
 	const { placeSelectedIndex } = props
 
 	const placeSelected =
-		isNumber(placeSelectedIndex) && placeSelectedIndex >= 0 ? props.places[props.placeSelectedIndex] : null
+		isNumber(placeSelectedIndex) && placeSelectedIndex >= 0 ? favoritePlaces[props.placeSelectedIndex] : null
 
 	return (
 		<div>
@@ -56,7 +59,7 @@ const PlaceSelector = (props: PlaceSelectorProps) => {
 			{isOpen && (
 				<Position $position="relative" $scale="full" $zIndex={ZIndexes.DropDown}>
 					<Collapse duration={0.2}>
-						<PlaceList close={close} {...props} />
+						<PlaceList close={close} places={favoritePlaces} {...props} />
 					</Collapse>
 				</Position>
 			)}

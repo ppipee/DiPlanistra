@@ -15,7 +15,7 @@ import { LOCALE_CANCEL, LOCALE_SAVE } from 'common/locale'
 import spaces from 'common/styles/mixins/spaces'
 
 import { TRIP_NAME } from 'modules/trips/locale'
-import { TRIP_PATH } from 'modules/trips/routes/paths'
+import { PLANNER_PATH } from 'modules/trips/routes/paths'
 import { useTripsStore } from 'modules/trips/stores/TripsStore/context'
 
 type Props = {
@@ -48,7 +48,7 @@ const CreatePlannerModalComponent = ({ close }: Props) => {
 		})
 
 		if (planner) {
-			history.push(`${TRIP_PATH}/${planner.id}`)
+			history.push(`${PLANNER_PATH}/${planner.id}`)
 			close()
 		}
 	}, [date, plannerName, isLoading])

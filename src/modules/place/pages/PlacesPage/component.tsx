@@ -11,6 +11,7 @@ import spaces from 'common/styles/mixins/spaces'
 import LinkToPlace from 'common/utils/url/LinkToPlace'
 
 import PlaceCard from 'modules/place/components/PlaceCard'
+import FavoritePlaceStoreConfig from 'modules/place/stores/FavoritePlaceStore'
 import PlacesFilter from 'modules/search/components/PlacesFilter'
 import SearchingText from 'modules/search/components/SearchingText'
 import SearchStoreConfig from 'modules/search/stores/SearchStore'
@@ -66,5 +67,6 @@ const PlacesPageComponent = () => {
 export default asRoute(PlacesPageComponent, {
 	stores: {
 		searchStore: SearchStoreConfig,
+		favoritePlaceStore: FavoritePlaceStoreConfig,
 	},
 })

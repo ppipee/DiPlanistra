@@ -48,9 +48,21 @@ export const verticalStyle = ({ $responsive: responsive, $size: size }: GapProps
 	}
 `
 
+export const gridStyle = ({ $size: size, $responsive: responsive }: GapProps) => css`
+	${responsive &&
+	css`
+		width: 100%;
+	`};
+
+	> * {
+		margin: calc(${size} / 2);
+	}
+`
+
 const STYLE_MAPPER = {
 	horizontal: horizontalStyle,
 	vertical: verticalStyle,
+	grid: gridStyle,
 }
 
 const Gap = styled.div<GapProps>`

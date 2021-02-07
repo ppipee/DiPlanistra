@@ -11,8 +11,8 @@ import fontSizes from 'common/styles/mixins/fontSizes'
 import lineHeights from 'common/styles/mixins/lineHeights'
 import spaces from 'common/styles/mixins/spaces'
 
-import { PlacePreview } from 'modules/place/types/place'
 import getCategoryTag from 'modules/place/utils/getCategoryTags'
+import { ActivityPlace } from 'modules/trips/types/planner'
 
 import { PlaceImage } from './styled'
 
@@ -20,10 +20,10 @@ const ICON_SIZE = 16
 const BLOCK_ICON_SIZE = '18px'
 
 type Props = {
-	place: PlacePreview
+	place: ActivityPlace
 }
 const PlacePreviewCard = ({ place }: Props) => {
-	const { defaultPhoto, rating, categories, displayName } = place
+	const { defaultPhoto, rating, categories, name } = place
 
 	const categoryTags = getCategoryTag(categories)
 
@@ -40,7 +40,7 @@ const PlacePreviewCard = ({ place }: Props) => {
 						ellipsis={2}
 						whiteSpace="initial"
 					>
-						{displayName}
+						{name}
 					</Text>
 					<Rating rating={rating} />
 				</div>

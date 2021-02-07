@@ -7,8 +7,6 @@ import useI18n from 'core/locale/hooks/useI18n'
 import Flex from 'common/components/Flex'
 import Gap from 'common/components/Gap'
 import ClockIcon from 'common/components/icons/ClockIcon'
-import HeartEmptyIcon from 'common/components/icons/HeartEmptyIcon'
-import HeartIcon from 'common/components/icons/HeartIcon'
 import TagIcon from 'common/components/icons/TagIcon'
 import Rating from 'common/components/Rating'
 import Text from 'common/components/Text'
@@ -24,29 +22,34 @@ import { CLOSED_STATUS, ENTRY_FEE, OPENED_STATUS, REVIEW_UNIT } from 'modules/pl
 import { PlacePreview } from 'modules/place/types/place'
 import getCategoryTag from 'modules/place/utils/getCategoryTags'
 import getWorkingHour from 'modules/place/utils/getWorkingHour'
+import { ActivityPlace } from 'modules/trips/types/planner'
+
+import FavoritePlaceIcon from '../FavoritePlaceIcon'
 
 import { CardDetail, CardTitle } from './styled'
 
 type Props = {
-	place: PlacePreview
-	favorite?: boolean
+	place: PlacePreview & ActivityPlace
 	showDistance?: boolean
 }
 
-const FAV_ICON_SIZE = 20
 const ICON_SIZE = 16
 
-const PlaceDetailCard = ({ place, favorite, showDistance }: Props) => {
+const PlaceDetailCard = ({ place, showDistance }: Props) => {
 	const I18n = useI18n()
 
 	const {
+		name,
 		displayName,
 		rating,
-		statistic: { numberOfReviews },
+		statistic,
 		workingHoursStatus,
 		categories,
 		attractionInformation,
+		numberOfReviews: reviewNumbers,
 	} = place
+
+	const numberOfReviews = statistic?.numberOfReviews || reviewNumbers
 
 	const entryFee = attractionInformation?.entryFee
 
@@ -61,7 +64,6 @@ const PlaceDetailCard = ({ place, favorite, showDistance }: Props) => {
 	const shopStatus = I18n.t(workingHoursStatus?.open ? OPENED_STATUS : CLOSED_STATUS)
 	const workingHour = !isEmpty(place.hours) && getWorkingHour(place.hours)
 	const categoryTags = getCategoryTag(categories)
-	const FavIcon = favorite ? HeartIcon : HeartEmptyIcon
 	const distance = place.distance ? I18n.t(KM, { distance: convertDistanceToKM(place.distance) }) : null
 
 	return (
@@ -71,7 +73,7 @@ const PlaceDetailCard = ({ place, favorite, showDistance }: Props) => {
 					<Flex $justifyContent="space-between" $responsive>
 						<Flex $direction="column">
 							<CardTitle size={fontSizes(16)} ellipsis={2} margin={`0 ${spaces(4)} 0 0`}>
-								{displayName}
+								{displayName || name}
 							</CardTitle>
 							<Gap $size={spaces(4)} $alignCenter>
 								{rating && <Rating rating={rating} />}
@@ -79,7 +81,7 @@ const PlaceDetailCard = ({ place, favorite, showDistance }: Props) => {
 							</Gap>
 						</Flex>
 						<Gap $size={spaces(4)} $type="vertical">
-							<FavIcon cursor="pointer" size={FAV_ICON_SIZE} color={favorite ? red[500] : gray[200]} />
+							<FavoritePlaceIcon isFavorite={place.isFavorite} publicId={place.publicId} />
 							{showDistance && distance && (
 								<Text size={fontSizes(12)} color={gray[700]} whiteSpace="nowrap">
 									{distance}

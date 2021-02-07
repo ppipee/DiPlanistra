@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { PlacePreview } from 'modules/place/types/place'
+import { ActivityPlace } from 'modules/trips/types/planner'
 
 import PlacePreviewCard from '../PlacePreviewCard'
 
 import { PlaceItemContainer } from './styled'
 
 type Props = {
-	place: PlacePreview
+	place: ActivityPlace
 	isSelected: boolean
 }
 

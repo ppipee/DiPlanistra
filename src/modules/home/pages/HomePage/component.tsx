@@ -13,6 +13,7 @@ import NearbyMe from 'modules/home/components/NearbyMe'
 import RecommendForYou from 'modules/home/components/RecommendForYou'
 import HomeStoreConfig from 'modules/home/stores/HomeStore'
 import { useHomeStore } from 'modules/home/stores/HomeStore/context'
+import FavoritePlaceStoreConfig from 'modules/place/stores/FavoritePlaceStore'
 import NearbyPositionStoreConfig from 'modules/place/stores/NearbyPositionStore'
 
 const HomePageComponent = () => {
@@ -41,5 +42,6 @@ export default asRoute(HomePageComponent, {
 	stores: {
 		homeStore: HomeStoreConfig,
 		nearbyPositionStore: NearbyPositionStoreConfig,
+		favoritePlaceStore: FavoritePlaceStoreConfig,
 	},
 })

@@ -20,6 +20,7 @@ export interface Planner extends InitPlanner {
 	isPublic?: boolean
 	createAt?: Date
 	updateAt?: Date
+	isOwner?: boolean
 }
 
 export type PlannerPreview = Omit<Planner, 'planners' | 'style'>
@@ -47,6 +48,7 @@ export interface EditActivity {
 }
 
 export interface ActivityPlace {
+	id?: string
 	publicId: string
 	name: string
 	coordinate: LatLng
@@ -57,6 +59,8 @@ export interface ActivityPlace {
 	priceRange?: number // phase3
 	workingHoursStatus: WorkingHourStatus
 	entryFee?: AttractionInformation['entryFee']
+	isFavorite?: boolean
+	numberOfReviews: number
 }
 
 export interface ActivityHour {
