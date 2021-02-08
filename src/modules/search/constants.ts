@@ -22,6 +22,7 @@ export const DEFAULT_DISTANCE: DistanceFilterType = 500
 export const DEFAULT_CATEGORIES = ALL_VALUE
 export const DEFAULT_RATING = -1
 export const DEFAULT_PLACE_DOMAIN = DomainValue.ATTRACTION
+export const DEFAULT_REGIONS = 9681
 
 export const DISTANCES_MAPPER = {
 	500: DISTANCE_KM * 0.5,

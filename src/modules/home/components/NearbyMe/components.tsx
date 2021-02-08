@@ -4,6 +4,7 @@ import { useCallback } from 'react'
 import { useGeolocation } from 'react-use'
 
 import useI18n from 'core/locale/hooks/useI18n'
+import useQuery from 'core/router/hooks/useQuery'
 
 import { DomainValue } from 'common/constants/business'
 
@@ -16,6 +17,7 @@ const DISTANCE = DISTANCE_KM * 10
 
 const NearbyMeComponent = () => {
 	const I18n = useI18n()
+	const { regions } = useQuery()
 	const { latitude, longitude } = useGeolocation()
 	const { nearbyMe, getNearbyPosition, isLoading } = useNearbyPositionStore((store) => ({
 		nearbyMe: store.nearbyPosition,
@@ -25,9 +27,9 @@ const NearbyMeComponent = () => {
 
 	const getNearbyMe = useCallback(
 		(domain?: DomainValue) => {
-			getNearbyPosition(domain, latitude, longitude, DISTANCE)
+			getNearbyPosition(domain, latitude, longitude, DISTANCE, regions)
 		},
-		[latitude, longitude],
+		[latitude, longitude, regions],
 	)
 
 	useEffect(() => {

@@ -8,7 +8,7 @@ import { DomainValue } from 'common/constants/business'
 
 import { getPlaces } from 'modules/place/api'
 import { NearbyPositionType } from 'modules/place/types/store'
-import { DISTANCE_KM } from 'modules/search/constants'
+import { DEFAULT_REGIONS, DISTANCE_KM } from 'modules/search/constants'
 import { DEFAULT_PLACE_DOMAIN } from 'modules/search/constants'
 
 class NearbyPositionStore extends FetchStateStore {
@@ -37,10 +37,11 @@ class NearbyPositionStore extends FetchStateStore {
 		lat: number,
 		lng: number,
 		distance = DISTANCE_KM * 5,
+		regions: string | number = DEFAULT_REGIONS,
 	) {
 		if (!isEmpty(this.nearbyPosition[domain])) return
 
-		const placesPage = await getPlaces({ lat, lng, domain, distance })
+		const placesPage = await getPlaces({ lat, lng, domain, distance, regions })
 
 		if (!this.error) {
 			const places = placesPage.page.entities

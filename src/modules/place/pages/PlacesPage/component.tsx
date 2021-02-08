@@ -22,7 +22,7 @@ import { ContainerWrapper } from './styled'
 const PlacesPageComponent = () => {
 	const { isDesktop } = useResponsive()
 
-	const { distance, domain, rating, categories, search } = useQuery()
+	const { distance, domain, rating, categories, search, regions } = useQuery()
 	const { places, isLoading, isFresh, getPlaces } = useSearchStore((store) => ({
 		places: store.places,
 		isLoading: store.isLoading,
@@ -31,8 +31,8 @@ const PlacesPageComponent = () => {
 	}))
 
 	useEffect(() => {
-		getPlaces({ distance, domain, rating, categories, search })
-	}, [distance, domain, rating, categories, search])
+		getPlaces({ distance, domain, rating, categories, search, regions })
+	}, [distance, domain, rating, categories, search, regions])
 
 	if (isFresh) return null
 

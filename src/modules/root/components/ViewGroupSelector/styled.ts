@@ -13,11 +13,11 @@ export const DropDownWrapper = styled.div`
 		& > :first-child {
 			background-color: ${getColorWithAlpha(white, 0.3)};
 			border-color: transparent;
-		}
-	}
 
-	svg {
-		color: ${white} !important;
+			svg {
+				color: ${white} !important;
+			}
+		}
 	}
 `
 
