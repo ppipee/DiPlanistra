@@ -15,7 +15,9 @@ const DropDownItem = ({ setItem, value, active, children, name, center = false }
 	return (
 		<ItemWrapper $active={active} onClick={onClickItem} $alignCenter $justifyCenter={center} $size={spaces(8)}>
 			{children}
-			<Text color={active ? gray[700] : gray[900]}>{name}</Text>
+			<Text color={active ? gray[700] : gray[900]} ellipsis={1}>
+				{name}
+			</Text>
 		</ItemWrapper>
 	)
 }

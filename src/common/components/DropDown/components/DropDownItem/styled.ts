@@ -11,9 +11,9 @@ type ItemWrapperProps = {
 }
 
 export const ItemWrapper = styled(Gap)<ItemWrapperProps>`
-	height: ${ITEM_HEIGHT};
+	min-height: ${ITEM_HEIGHT};
 	width: inherit;
-	padding: 0 ${spaces(12)};
+	padding: ${spaces(8)} ${spaces(12)};
 	box-sizing: border-box;
 	cursor: pointer;
 

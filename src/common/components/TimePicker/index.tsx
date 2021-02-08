@@ -11,7 +11,7 @@ import Gap from '../Gap'
 
 import { HOURS_PICKER, MINUTES_PICKER } from './constant'
 
-const MAX_HEIGHT = '300px'
+const MAX_ROW = 8
 
 type Props = {
 	setTime: (time: Date) => void
@@ -53,7 +53,7 @@ const TimePicker = ({ setTime, time: defaultTime }: Props) => {
 				value={hour}
 				onChange={setHour}
 				withOutlined={false}
-				maxHeight={MAX_HEIGHT}
+				maxRow={MAX_ROW}
 				placeholder="hour"
 				variant="small"
 				displayCenter
@@ -67,7 +67,7 @@ const TimePicker = ({ setTime, time: defaultTime }: Props) => {
 				value={minute}
 				onChange={setMinute}
 				withOutlined={false}
-				maxHeight={MAX_HEIGHT}
+				maxRow={MAX_ROW}
 				placeholder="minute"
 				variant="small"
 				displayCenter

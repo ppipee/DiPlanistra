@@ -55,7 +55,14 @@ const SearchInput = () => {
 	return (
 		<Gap $size={spaces(2)}>
 			<DropDownWrapper>
-				<DropDown value={domain} defaultValue={domain} onChange={onDomainChange}>
+				<DropDown
+					value={domain}
+					defaultValue={domain}
+					onChange={onDomainChange}
+					withOutlined
+					displayCenter
+					border="curve"
+				>
 					<DropDownItem value={DomainValue.ATTRACTION} name={I18n.t(ATTRACTION)} />
 					<DropDownItem value={DomainValue.FOOD} name={I18n.t(FOOD)} />
 					<DropDownItem value={DomainValue.HOTEL} name={I18n.t(HOTEL)} />

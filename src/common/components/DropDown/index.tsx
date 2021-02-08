@@ -12,18 +12,19 @@ import Overlay from '../Overlay'
 
 import { DropDownItemProps } from './components/DropDownItem/types'
 import { DropDownContainer, DisplayText, DropDownWrapper, DropDownItemContainer } from './styled'
-import { DropdownVariant, DropdownVariants } from './types'
+import { DropdownVariant, DropdownVariants, DropdownBorderTypes, DropdownBorders } from './types'
 
 type Props = {
 	children: ReactElement<DropDownItemProps> | ReactElement<DropDownItemProps>[]
 	value?: ReactText
 	defaultValue?: ReactText
 	onChange?: (value: ReactText) => void
-	maxHeight?: string
+	maxRow?: number
 	withOutlined?: boolean
 	placeholder?: string
 	variant?: DropdownVariant
 	displayCenter?: boolean
+	border?: DropdownBorderTypes
 }
 
 const GAP_SIZE: Record<DropdownVariants, AvailableSpaceSizes> = {
@@ -41,10 +42,11 @@ const DropDown = ({
 	defaultValue,
 	onChange,
 	value,
-	maxHeight,
+	maxRow,
 	withOutlined,
 	placeholder,
 	displayCenter,
+	border = DropdownBorders.Default,
 	variant = DropdownVariants.Default,
 }: Props) => {
 	const [dropDownValue, setValue] = useState<ReactText>(defaultValue)
@@ -60,7 +62,7 @@ const DropDown = ({
 		(value: ReactText) => {
 			setValue(value)
 			close()
-			onChange && onChange(value)
+			onChange?.(value)
 		},
 		[onChange],
 	)
@@ -88,14 +90,21 @@ const DropDown = ({
 				onClick={toggle}
 				$withOutlined={withOutlined}
 				$variant={variant}
+				$border={border}
 			>
-				<DisplayText as="div" size={fontSizes(16)} textAlign={displayCenter ? 'center' : 'left'}>
+				<DisplayText as="div" size={fontSizes(16)} textAlign={displayCenter ? 'center' : 'left'} ellipsis={1}>
 					{items[dropDownValue] || placeholder || 'select...'}
 				</DisplayText>
 				<ArrowDownIcon size={ICON_SIZE[variant]} color={black} />
 			</DropDownContainer>
 			{isOpen && (
-				<DropDownItemContainer $variant={variant} $maxHeight={maxHeight} $direction="column">
+				<DropDownItemContainer
+					$border={border}
+					$variant={variant}
+					$maxRow={maxRow}
+					$direction="column"
+					$alignItems="stretch"
+				>
 					{ItemComponents}
 				</DropDownItemContainer>
 			)}

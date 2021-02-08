@@ -9,7 +9,7 @@ import Flex from '../Flex'
 import Gap from '../Gap'
 import Text from '../Text'
 
-import { DropdownVariant, DropdownVariants } from './types'
+import { DropdownBorderTypes, DropdownVariant, DropdownVariants } from './types'
 
 const DROP_DOWN_HEIGHT: Record<DropdownVariants, string> = {
 	small: '32px',
@@ -17,16 +17,23 @@ const DROP_DOWN_HEIGHT: Record<DropdownVariants, string> = {
 }
 
 const MIN_WIDTH = '50px'
+const ROW_HEIGHT = '40px'
 
 type DropDownProps = {
 	$isOpen: boolean
 	$withOutlined?: boolean
 	$variant: DropdownVariant
+	$border: DropdownBorderTypes
 }
 
 type ItemContainerProps = {
 	$variant: DropdownVariant
-	$maxHeight?: string
+	$maxRow?: number
+	$border: 'curve' | 'default'
+}
+
+type DropdownWrapperProps = {
+	$fitContent?: boolean
 }
 
 function applyVariant({ $variant }: DropDownProps) {
@@ -35,21 +42,14 @@ function applyVariant({ $variant }: DropDownProps) {
 	`
 }
 
-function applyContainerStyles({ $isOpen, $withOutlined }: DropDownProps) {
+function applyContainerStyles({ $isOpen, $withOutlined, $border }: DropDownProps) {
 	let styles = css``
-
-	if ($isOpen) {
-		styles = css`
-			${styles}
-			border-radius: ${Borders.Normal} ${Borders.Normal} 0 0;
-		`
-	}
 
 	if ($withOutlined) {
 		styles = css`
 			${styles}
 			padding: 0 ${spaces(12)};
-			border-radius: ${Borders.Normal};
+			border-radius: ${$border === 'curve' ? '20px' : Borders.Normal};
 			border: 1px solid ${gray[200]};
 		`
 	} else {
@@ -60,6 +60,14 @@ function applyContainerStyles({ $isOpen, $withOutlined }: DropDownProps) {
 		`
 	}
 
+	if ($isOpen) {
+		styles = css`
+			${styles}
+			border-bottom-left-radius:0;
+			border-bottom-right-radius: 0;
+		`
+	}
+
 	return styles
 }
 
@@ -67,12 +75,13 @@ export const DropDownContainer = styled(Gap)<DropDownProps>`
 	width: inherit;
 	box-sizing: border-box;
 	cursor: pointer;
+	transition: 0.1s border-radius ease;
 
 	${applyVariant}
 	${applyContainerStyles}
 `
 
-export const DropDownWrapper = styled(Flex)`
+export const DropDownWrapper = styled(Flex)<DropdownWrapperProps>`
 	position: relative;
 	width: 100%;
 	min-width: ${MIN_WIDTH};
@@ -91,7 +100,10 @@ export const DropDownItemContainer = styled(Flex)<ItemContainerProps>`
 	transition: all 0.2s;
 
 	overflow-y: auto;
-	max-height: ${({ $maxHeight = 'auto' }) => $maxHeight};
+	${({ $maxRow = 10 }) =>
+		css`
+			max-height: calc(${$maxRow} * ${ROW_HEIGHT});
+		`};
 
 	& > *:not(:last-child) {
 		border-bottom: 1px solid ${gray[200]};
