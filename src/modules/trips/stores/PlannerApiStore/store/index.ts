@@ -5,8 +5,6 @@ import actionLoading from 'core/api/annotations/actionLoading'
 import loading from 'core/api/annotations/loading'
 import FetchStateStore from 'core/api/stores/FetchStateStore'
 
-import { MOCK_TRIP } from 'common/mocks/trip'
-
 import { createActivity, deleteActivity, getPlanner, updateActivity, updatePlanner } from 'modules/trips/api'
 import { EditActivity, Planner } from 'modules/trips/types/planner'
 
@@ -91,12 +89,6 @@ class PlannerApiStore extends FetchStateStore {
 				this.planner = { ...this.planner, planners }
 			})
 		}
-	}
-
-	@action.bound
-	@loading
-	async getTrip(tripId: string) {
-		this.planner = MOCK_TRIP
 	}
 }
 

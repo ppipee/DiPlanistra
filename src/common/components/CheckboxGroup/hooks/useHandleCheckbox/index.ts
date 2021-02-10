@@ -10,8 +10,14 @@ export default function useHandleCheckbox(
 	const handleCheckbox = useCallback(
 		(value: string, values: string[]) => {
 			if (allValue && (value === allValue || [...checkboxValues, value].length === values.length)) {
-				setValue([allValue])
-				actions.map((action) => action(allValue, values))
+				if (checkboxValues.includes(allValue)) {
+					// uncheck all value
+					setValue([])
+					actions.map((action) => action(allValue, []))
+				} else {
+					setValue([allValue])
+					actions.map((action) => action(allValue, values))
+				}
 			} else {
 				let newValues: string[]
 				if (checkboxValues.includes(allValue)) {

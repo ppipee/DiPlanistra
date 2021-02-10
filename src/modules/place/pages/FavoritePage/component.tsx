@@ -3,6 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import asRoute from 'core/router/hoc/asRoute'
+import withAuth from 'core/router/hoc/withAuth'
 
 import ResponsiveBlock from 'common/components/ResponsiveBlock'
 import spaces from 'common/styles/mixins/spaces'
@@ -34,8 +35,10 @@ const FavoritePlacesPageComponent = () => {
 	)
 }
 
-export default asRoute(FavoritePlacesPageComponent, {
-	stores: {
-		favoritePlaceStore: FavoritePlaceStoreConfig,
-	},
-})
+export default withAuth(
+	asRoute(FavoritePlacesPageComponent, {
+		stores: {
+			favoritePlaceStore: FavoritePlaceStoreConfig,
+		},
+	}),
+)

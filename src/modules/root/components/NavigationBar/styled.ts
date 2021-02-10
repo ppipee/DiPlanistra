@@ -22,6 +22,7 @@ export const NavContainer = styled(ContentContainer)`
 	height: 100%;
 	display: flex;
 	color: ${white};
+	padding: 0 ${spaces(24)};
 
 	${media.md`
 		padding: 0 ${spaces(16)};

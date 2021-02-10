@@ -1,7 +1,5 @@
 import React, { ReactText, useCallback, useEffect, useState } from 'react'
 
-import { isEmpty } from 'lodash'
-
 import useI18n from 'core/locale/hooks/useI18n'
 import useQuery from 'core/router/hooks/useQuery'
 
@@ -39,8 +37,6 @@ const SearchInput = () => {
 	)
 
 	const onSubmit = useCallback(() => {
-		if (isEmpty(keyword)) return
-
 		passQuery({ params: { search: keyword, domain }, targetUrl: PLACE_PATH })
 	}, [keyword, passQuery, domain])
 
@@ -76,6 +72,7 @@ const SearchInput = () => {
 					value={keyword}
 					onChange={onChange}
 					onKeyPress={onEnter}
+					$onSuffixClick={onSubmit}
 				/>
 			</InputWrapper>
 		</Gap>

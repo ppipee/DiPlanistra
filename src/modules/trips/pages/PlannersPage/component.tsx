@@ -3,6 +3,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import asRoute from 'core/router/hoc/asRoute'
+import withAuth from 'core/router/hoc/withAuth'
 
 import Gap from 'common/components/Gap'
 import StickyContainer from 'common/components/StickyContainer'
@@ -54,8 +55,10 @@ const PlannersComponent = () => {
 	)
 }
 
-export default asRoute(PlannersComponent, {
-	stores: {
-		tripStore: TripStoreConfig,
-	},
-})
+export default withAuth(
+	asRoute(PlannersComponent, {
+		stores: {
+			tripStore: TripStoreConfig,
+		},
+	}),
+)

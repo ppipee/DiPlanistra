@@ -25,7 +25,7 @@ const Footer = () => {
 
 	return (
 		<FooterContainer>
-			<Text size={fontSizes(14)} color={gray[700]}>
+			<Text className="footer-color" size={fontSizes(14)} color={gray[700]}>
 				<Flex $justifyContent="center" $alignItems="center" $direction="column">
 					<Gap $size={spaces(8)} $alignCenter>
 						<ClickableBlock onClick={setTH}>TH</ClickableBlock>

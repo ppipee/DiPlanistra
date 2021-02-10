@@ -3,14 +3,23 @@ import { createGlobalStyle, css } from 'styled-components'
 
 type Props = {
 	$background?: Property.Background
+	$footerColor?: string
 }
 
 export const BackgroundPage = createGlobalStyle<Props>`
-	.background-color{
-		${({ $background }) =>
-			$background &&
-			css`
+	${({ $background }) =>
+		$background &&
+		css`
+			.background-color {
 				background: ${$background};
-			`};
-	}
+			}
+		`};
+			
+	${({ $footerColor }) =>
+		$footerColor &&
+		css`
+			.footer-color {
+				color: ${$footerColor};
+			}
+		`};
 `

@@ -6,6 +6,7 @@ const userEndpoint = {
 
 	login: () => '/users/login',
 	register: () => '/users/register',
+	me: () => '/me',
 }
 
 export default userEndpoint

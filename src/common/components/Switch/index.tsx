@@ -11,8 +11,8 @@ type Props = {
 }
 
 const Switch = ({ onEnable, onDisable, defaultValue }: Props) => {
-	const [firstAction, setFirstAction] = useState(defaultValue || false)
-	const { toggle, isOpen } = useToggle()
+	const [firstAction, setFirstAction] = useState(false)
+	const { toggle, isOpen } = useToggle(defaultValue || false)
 
 	useEffect(() => {
 		if (!firstAction) return

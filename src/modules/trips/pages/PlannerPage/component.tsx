@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
 import asRoute from 'core/router/hoc/asRoute'
+import withAuth from 'core/router/hoc/withAuth'
 import { Params } from 'core/router/types'
 
 import Block from 'common/components/Block'
@@ -76,12 +77,14 @@ const PlannerPageComponent = () => {
 	)
 }
 
-export default asRoute(PlannerPageComponent, {
-	stores: {
-		plannerApiStore: PlannerApiStoreConfig,
-		plannerStore: PlannerStoreConfig,
-		activityStore: ActivityStoreConfig,
-		plannerSettingStore: PlannerSettingStoreConfig,
-		favoritePlaceStore: FavoritePlaceStoreConfig,
-	},
-})
+export default withAuth(
+	asRoute(PlannerPageComponent, {
+		stores: {
+			plannerApiStore: PlannerApiStoreConfig,
+			plannerStore: PlannerStoreConfig,
+			activityStore: ActivityStoreConfig,
+			plannerSettingStore: PlannerSettingStoreConfig,
+			favoritePlaceStore: FavoritePlaceStoreConfig,
+		},
+	}),
+)

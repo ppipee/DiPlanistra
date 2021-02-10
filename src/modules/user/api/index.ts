@@ -17,3 +17,9 @@ export const register = (registerData: RegisterDataTypes) =>
 		path: userEndpoint.register(),
 		params: registerData,
 	})
+
+export const getMe = () =>
+	apiClient.fetch<User>({
+		method: 'get',
+		path: userEndpoint.me(),
+	})

@@ -15,7 +15,7 @@ import spaces from 'common/styles/mixins/spaces'
 import { HOME_PATH } from 'modules/home/routes/paths'
 import { FAVORITE_PLACES_ROUTE } from 'modules/place/routes/paths'
 import { NAV_ICON_SIZE } from 'modules/root/constants'
-import { TRIP_PATH } from 'modules/trips/routes/paths'
+import { PLANNER_PATH } from 'modules/trips/routes/paths'
 
 const LinkNavigates = () => {
 	const { isDesktop } = useResponsive()
@@ -29,7 +29,7 @@ const LinkNavigates = () => {
 						{isDesktop && <span>Home</span>}
 					</Gap>
 				</Link>
-				<Link to={TRIP_PATH}>
+				<Link to={PLANNER_PATH}>
 					<Gap $size={spaces(4)} $alignCenter>
 						<PlanIcon size={NAV_ICON_SIZE} color={white} />
 						{isDesktop && <span>Trip</span>}

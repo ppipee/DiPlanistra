@@ -21,7 +21,7 @@ const CheckboxGroup = ({
 	allValue = ALL_VALUE,
 	label,
 }: CheckboxGroupProps) => {
-	const radioValues = children.map((option) => option.props.value)
+	const radioValues = children.length > 0 ? children.map((option) => option.props.value) : [allValue]
 
 	const I18n = useI18n()
 	const checkActiveState = useCallback(
@@ -42,7 +42,7 @@ const CheckboxGroup = ({
 		<Gap $type={type} $size={spaces(4)}>
 			{withAllSelector && (
 				<Checkbox
-					checked={checkActiveState(allValue) || radioValues.length === values.length}
+					checked={checkActiveState(allValue) || (radioValues.length !== 0 && radioValues.length === values.length)}
 					onChange={selectRadio}
 					label={label || I18n.t(LOCALE_ALL)}
 					value={allValue}

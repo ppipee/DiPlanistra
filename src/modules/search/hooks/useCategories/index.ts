@@ -17,8 +17,14 @@ export default function useCategories() {
 	}))
 
 	useEffect(() => {
-		if (domain) {
-			isNumber(+domain) ? getCategories(+domain as DomainValue) : getCategories()
+		if (!domain) {
+			getCategories()
+		}
+	}, [])
+
+	useEffect(() => {
+		if (domain && isNumber(+domain)) {
+			getCategories(+domain as DomainValue)
 		}
 	}, [domain])
 

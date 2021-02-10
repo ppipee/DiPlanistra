@@ -20,11 +20,8 @@ class TripStore {
 	}
 
 	onMount({ params: { tripId } }: MountParams) {
-		this.plannerApiStore.getTrip(tripId)
+		this.plannerApiStore.getPlanner(tripId)
 	}
-
-	@action
-	onUnMount() {}
 }
 
 export default TripStore

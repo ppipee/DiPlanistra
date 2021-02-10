@@ -2,7 +2,6 @@ import React from 'react'
 
 import useLocale from 'core/locale/hooks/useLocale'
 
-import Flex from 'common/components/Flex'
 import Gap from 'common/components/Gap'
 import Text from 'common/components/Text'
 import { white } from 'common/styles/colors'
@@ -15,6 +14,8 @@ import { usePlannerStore } from 'modules/trips/stores/PlannerStore/context'
 import EditTripButton from '../setting/EditTripButton'
 import PrivacyButton from '../setting/PrivacyButton'
 import SharingButton from '../setting/SharingButton'
+
+import { ControllerContainer } from './styled'
 
 const DATE_FORMAT = 'D MMM YYYY'
 
@@ -30,14 +31,14 @@ const TripHeader = () => {
 	const displayDateRange = `${startDate} - ${endDate}`
 
 	return (
-		<Gap $type="vertical" $size={spaces(24)} $alignItems="stretch">
-			<Flex $justifyContent="space-between">
-				<PrivacyButton />
+		<Gap $type="vertical" $size={spaces(48)} $alignItems="stretch">
+			<ControllerContainer $justifyContent="space-between">
+				{planner.isOwner ? <PrivacyButton /> : <span />}
 				<Gap $size={spaces(4)}>
 					<EditTripButton />
 					<SharingButton />
 				</Gap>
-			</Flex>
+			</ControllerContainer>
 			<Gap $type="vertical" $size={spaces(4)}>
 				<Text color={white} size={largeSize}>
 					{planner.name}

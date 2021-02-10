@@ -43,11 +43,11 @@ const DistanceFilter = () => {
 		<Gap $type="vertical" $size={spaces(8)}>
 			<Text size={fontSizes(16)}>{I18n.t(LOCALE_DISTANCE_FILTER)}</Text>
 			<DropDown defaultValue={distance || DEFAULT_DISTANCE} onChange={onDistanceChange}>
-				<DropDownItem value={DISTANCES_MAPPER[500]} name={distanceDisplayNameMapper[500]} />
-				<DropDownItem value={DISTANCES_MAPPER[1000]} name={distanceDisplayNameMapper[1000]} />
-				<DropDownItem value={DISTANCES_MAPPER[2000]} name={distanceDisplayNameMapper[2000]} />
-				<DropDownItem value={DISTANCES_MAPPER[3000]} name={distanceDisplayNameMapper[3000]} />
-				<DropDownItem value={DISTANCES_MAPPER[5000]} name={distanceDisplayNameMapper[5000]} />
+				<DropDownItem value={DISTANCES_MAPPER[500].toFixed(2)} name={distanceDisplayNameMapper[500]} />
+				<DropDownItem value={DISTANCES_MAPPER[1000].toFixed(2)} name={distanceDisplayNameMapper[1000]} />
+				<DropDownItem value={DISTANCES_MAPPER[2000].toFixed(2)} name={distanceDisplayNameMapper[2000]} />
+				<DropDownItem value={DISTANCES_MAPPER[3000].toFixed(2)} name={distanceDisplayNameMapper[3000]} />
+				<DropDownItem value={DISTANCES_MAPPER[5000].toFixed(2)} name={distanceDisplayNameMapper[5000]} />
 			</DropDown>
 		</Gap>
 	)
