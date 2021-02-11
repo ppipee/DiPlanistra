@@ -15,7 +15,7 @@ export const register = (registerData: RegisterDataTypes) =>
 	apiClient.fetch<{ user: User; token: string }>({
 		method: 'post',
 		path: userEndpoint.register(),
-		params: registerData,
+		body: registerData,
 	})
 
 export const getMe = () =>

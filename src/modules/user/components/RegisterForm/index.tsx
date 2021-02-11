@@ -34,7 +34,7 @@ const RegisterForm = () => {
 	const { handleSubmit, register: ref, reset, errors, getValues, watch } = useForm<RegisterDataTypes>({
 		resolver: yupResolver(registerValidateSchema),
 	})
-	const { email } = getValues()
+	const { name } = getValues()
 
 	const submit = useCallback(
 		async (data: RegisterDataTypes) => {
@@ -61,24 +61,24 @@ const RegisterForm = () => {
 			<form onSubmit={handleSubmit(submit)}>
 				<Gap $size={spaces(24)} $type="vertical">
 					<Gap $size={spaces(16)} $type="vertical">
-						{email && (
+						<RegisterField
+							placeholder={I18n.t(USERNAME)}
+							$prefixIcon={UserIcon}
+							name="name"
+							ref={ref}
+							errMsg={errors.name?.message}
+							variant={errors.name ? 'error' : 'default'}
+						/>
+						{name && (
 							<RegisterField
-								placeholder={I18n.t(USERNAME)}
-								$prefixIcon={UserIcon}
-								name="name"
+								placeholder={I18n.t(EMAIL)}
+								$prefixIcon={EmailIcon}
+								name="email"
 								ref={ref}
-								errMsg={errors.name?.message}
-								variant={errors.name ? 'error' : 'default'}
+								errMsg={errors.email?.message}
+								variant={errors.email ? 'error' : 'default'}
 							/>
 						)}
-						<RegisterField
-							placeholder={I18n.t(EMAIL)}
-							$prefixIcon={EmailIcon}
-							name="email"
-							ref={ref}
-							errMsg={errors.email?.message}
-							variant={errors.email ? 'error' : 'default'}
-						/>
 						<RegisterField
 							placeholder={I18n.t(PASSWORD)}
 							$prefixIcon={LockIcon}
