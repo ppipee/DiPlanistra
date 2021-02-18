@@ -14,8 +14,8 @@ import PlaceCard from 'modules/place/components/PlaceCard'
 import FavoritePlaceStoreConfig from 'modules/place/stores/FavoritePlaceStore'
 import PlacesFilter from 'modules/search/components/PlacesFilter'
 import SearchingText from 'modules/search/components/SearchingText'
-import SearchStoreConfig from 'modules/search/stores/SearchStore'
-import { useSearchStore } from 'modules/search/stores/SearchStore/context'
+import SearchPlaceStoreConfig from 'modules/search/stores/SearchPlaceStore'
+import { useSearchPlaceStore } from 'modules/search/stores/SearchPlaceStore/context'
 
 import { ContainerWrapper } from './styled'
 
@@ -23,7 +23,7 @@ const PlacesPageComponent = () => {
 	const { isDesktop } = useResponsive()
 
 	const { distance, domain, rating, categories, search, regions } = useQuery()
-	const { places, isLoading, isFresh, getPlaces } = useSearchStore((store) => ({
+	const { places, isLoading, isFresh, getPlaces } = useSearchPlaceStore((store) => ({
 		places: store.places,
 		isLoading: store.isLoading,
 		isFresh: store.isFresh,
@@ -66,7 +66,7 @@ const PlacesPageComponent = () => {
 
 export default asRoute(PlacesPageComponent, {
 	stores: {
-		searchStore: SearchStoreConfig,
+		searchPlaceStore: SearchPlaceStoreConfig,
 		favoritePlaceStore: FavoritePlaceStoreConfig,
 	},
 })

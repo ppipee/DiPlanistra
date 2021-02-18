@@ -6,11 +6,11 @@ import useQuery from 'core/router/hooks/useQuery'
 
 import { DomainValue } from 'common/constants/business'
 
-import { useSearchStore } from 'modules/search/stores/SearchStore/context'
+import { useSearchPlaceStore } from 'modules/search/stores/SearchPlaceStore/context'
 
 export default function useCategories() {
 	const { domain } = useQuery()
-	const { categories, isCategoriesLoading, getCategories } = useSearchStore((store) => ({
+	const { categories, isCategoriesLoading, getCategories } = useSearchPlaceStore((store) => ({
 		categories: store.categories,
 		isCategoriesLoading: store.isActionLoading['getCategories'],
 		getCategories: store.getCategories,

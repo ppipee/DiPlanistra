@@ -76,3 +76,24 @@ export const deleteDayPlanner = (plannerId: string, day: number) =>
 			day,
 		},
 	})
+
+export const getBookmarkTrips = () =>
+	apiClient.fetch<{ bookmarks: PlannerPreview[] }>({
+		method: 'get',
+		path: plannerEndpoints.bookmarks(),
+	})
+
+export const bookmarkTrip = (plannerId: string) =>
+	apiClient.fetch<{ bookmarks: PlannerPreview[] }>({
+		method: 'post',
+		path: plannerEndpoints.bookmarks(),
+		body: {
+			plannerId,
+		},
+	})
+
+export const unlikeTrip = (plannerId: string) =>
+	apiClient.fetch<{ bookmarks: PlannerPreview[] }>({
+		method: 'delete',
+		path: plannerEndpoints.bookmark(plannerId),
+	})

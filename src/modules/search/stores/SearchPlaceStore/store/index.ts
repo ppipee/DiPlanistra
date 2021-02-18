@@ -12,7 +12,7 @@ import { Category, PlacePreview } from 'modules/place/types/place'
 import { getCategories } from 'modules/search/api'
 import { DEFAULT_PLACE_DOMAIN } from 'modules/search/constants'
 
-class SearchStore extends FetchStateStore {
+class SearchPlaceStore extends FetchStateStore {
 	@observable
 	places: PlacePreview[]
 
@@ -45,4 +45,4 @@ class SearchStore extends FetchStateStore {
 	}
 }
 
-export default SearchStore
+export default SearchPlaceStore

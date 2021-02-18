@@ -17,10 +17,13 @@ export interface Planner extends InitPlanner {
 	writer: string // should replace with User
 	rating: number
 	shared: number
-	isPublic?: boolean
-	createAt?: Date
-	updateAt?: Date
-	isOwner?: boolean
+	isPublic: boolean
+	createAt: Date
+	updateAt: Date
+	isOwner: boolean
+	isBookmark: boolean
+	numberOfViews: number
+	numberOfBookmarks: number
 }
 
 export type PlannerPreview = Omit<Planner, 'planners' | 'style'>
@@ -37,7 +40,8 @@ export interface ActivityPlan {
 	hour: ActivityHour
 	place: ActivityPlace
 	memo?: string
-	distance?: number
+	distance?: string
+	duration?: string
 }
 
 export interface EditActivity {

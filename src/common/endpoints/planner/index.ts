@@ -6,6 +6,9 @@ const plannerEndpoints = {
 
 	plannerActivities: (plannerId: ReactText) => `/planners/${plannerId}/activities`,
 	plannerActivity: (plannerId: ReactText, activityId: ReactText) => `/planners/${plannerId}/activities/${activityId}`,
+
+	bookmarks: () => '/bookmarks',
+	bookmark: (plannerId: ReactText) => `/bookmarks/${plannerId}`,
 }
 
 export default plannerEndpoints
