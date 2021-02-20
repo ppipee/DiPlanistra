@@ -9,7 +9,8 @@
 		"test": "razzle test --env=jsdom",
 		"lint": "eslint --ext .tsx,.ts,.js --quiet",
 		"lint:fix": "eslint --ext .tsx,.ts,.js --quiet --fix",
-		"type-check": "tsc --noEmit"
+		"type-check": "tsc --noEmit",
+		"release": "standard-version --no-verify"
 	},
 	"main": "index.js",
 	"dependencies": {
@@ -111,7 +112,7 @@
 		"prettier": "2.2.1",
 		"razzle-plugin-bundle-analyzer": "^1.2.0",
 		"razzle-plugin-typescript": "^3.3.7",
-		"standard-version": "^9.0.0",
+		"standard-version": "9.1.1",
 		"style-loader": "^1.2.1",
 		"timemachine": "^0.3.2",
 		"ts-loader": "^8.0.11",
