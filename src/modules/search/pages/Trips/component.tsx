@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { isEmpty } from 'lodash'
+
 import asRoute from 'core/router/hoc/asRoute'
 
 import Gap from 'common/components/Gap'
@@ -12,6 +14,7 @@ import spaces from 'common/styles/mixins/spaces'
 import { ContainerWrapper, Container } from 'modules/place/pages/PlacesPage/styled'
 import DomainSelector from 'modules/search/components/DomainSelector'
 import SearchingText from 'modules/search/components/SearchingText'
+import TripSortBy from 'modules/search/components/TripSortBy'
 import useMountTrips from 'modules/search/hooks/useMountTrips/index'
 import SearchTripStoreConfig from 'modules/search/stores/SearchTripStore'
 import FavoriteTripStoreConfig from 'modules/trip/stores/FavoriteTripStore'
@@ -33,13 +36,16 @@ const TripsPageComponent = () => {
 								<ResponsiveBlock $padding={spaces(12)}>
 									<DomainSelector />
 								</ResponsiveBlock>
+								<ResponsiveBlock $padding={spaces(12)}>
+									<TripSortBy />
+								</ResponsiveBlock>
 							</Gap>
 						</StickyContainer>
 					</ContainerWrapper>
 				)}
 				<ContainerWrapper type="main">
 					<Gap $type="vertical" $size={spaces(12)}>
-						{!isLoading
+						{!isLoading && !isEmpty(trips)
 							? trips.map((trip) => (
 									<LinkToTrip key={`trip-card-${trip.id}`} tripId={trip.id}>
 										<TripCard trip={trip} />

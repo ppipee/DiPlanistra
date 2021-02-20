@@ -23,6 +23,7 @@ export const DEFAULT_CATEGORIES = ALL_VALUE
 export const DEFAULT_RATING = -1
 export const DEFAULT_PLACE_DOMAIN = DomainValue.ATTRACTION
 export const DEFAULT_REGIONS = 9681
+export const DEFAULT_TRIP_SORT_BY = ''
 
 export const DISTANCES_MAPPER = {
 	500: DISTANCE_KM * 0.5,
@@ -30,6 +31,11 @@ export const DISTANCES_MAPPER = {
 	2000: DISTANCE_KM * 2,
 	3000: DISTANCE_KM * 3,
 	5000: DISTANCE_KM * 5,
+}
+
+export enum TRIP_SORT_BY_VALUE {
+	'view' = 'view',
+	'like' = 'bookmark',
 }
 
 export const RATING_VALUE = {

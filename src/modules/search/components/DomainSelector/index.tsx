@@ -17,7 +17,7 @@ import { EVENTS_ROUTE } from 'modules/event/routes/path'
 import { ATTRACTION, EVENT, FOOD, HOTEL, TRIP } from 'modules/place/locale'
 import { PLACES_ROUTE } from 'modules/place/routes/paths'
 import { DEFAULT_PLACE_DOMAIN } from 'modules/search/constants'
-import { LOCALE_PLACE } from 'modules/search/locale'
+import { LOCALE_DOMAIN } from 'modules/search/locale'
 import { TRIPS_ROUTE } from 'modules/trip/routes/paths'
 
 const DomainSelector = () => {
@@ -44,7 +44,7 @@ const DomainSelector = () => {
 
 	return (
 		<Gap $type="vertical" $size={spaces(8)}>
-			<Text size={fontSizes(16)}>{I18n.t(LOCALE_PLACE)}</Text>
+			<Text size={fontSizes(16)}>{I18n.t(LOCALE_DOMAIN)}</Text>
 			<RadioGroup onChange={onChange} value={radioValue}>
 				<Radio label={I18n.t(TRIP)} value={DomainValue.TRIP} />
 				<Radio label={I18n.t(ATTRACTION)} value={DomainValue.ATTRACTION} />

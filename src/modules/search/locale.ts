@@ -1,6 +1,7 @@
 export const LOCATION_SUFFIX_TEXT = ['ใกล้', 'Nearby']
 export const NEAR_BY_ME = ['ใกล้ฉัน', 'Nearby me']
 export const LOCALE_PLACE = ['สถานที่', 'Place']
+export const LOCALE_DOMAIN = ['ประเภท', 'Category']
 
 export const LOCALE_NATIONAL_FOOD = ['สัญชาติอาหาร', 'Nationality']
 export const LOCALE_FOOD_TYPE = ['ประเภทอาหาร', 'Food type']
