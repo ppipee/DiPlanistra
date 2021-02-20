@@ -15,7 +15,7 @@ import spaces from 'common/styles/mixins/spaces'
 import { HOME_PATH } from 'modules/home/routes/paths'
 import { FAVORITE_PLACES_ROUTE } from 'modules/place/routes/paths'
 import { NAV_ICON_SIZE } from 'modules/root/constants'
-import { PLANNER_PATH } from 'modules/trips/routes/paths'
+import { PLANNER_PATH } from 'modules/trip/routes/paths'
 
 const LinkNavigates = () => {
 	const { isDesktop } = useResponsive()

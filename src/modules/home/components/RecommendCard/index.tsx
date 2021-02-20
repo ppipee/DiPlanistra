@@ -4,7 +4,7 @@ import { Shadow } from 'common/components/BlockShadow/types'
 
 import PlaceDetailCard from 'modules/place/components/PlaceDetailCard'
 import { PlacePreview } from 'modules/place/types/place'
-import { ActivityPlace } from 'modules/trips/types/planner'
+import { ActivityPlace } from 'modules/trip/types/planner'
 
 import { CardContainer, CardImage, CardDetailWrapper } from './styled'
 

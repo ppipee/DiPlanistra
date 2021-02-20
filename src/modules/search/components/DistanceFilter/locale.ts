@@ -1,1 +1,1 @@
-export const LOCALE_DISTANCE_FILTER = ['ระยะทาง', 'Distance']
+export const LOCALE_DISTANCE_FILTER = ['ระยะ', 'Distance']

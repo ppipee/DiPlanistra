@@ -3,10 +3,10 @@ import React from 'react'
 import useI18n from 'core/locale/hooks/useI18n'
 
 import Text from 'common/components/Text'
+import LinkToPlace from 'common/components/url/LinkToPlace'
 import { PLACE_HIGHLIGHTS } from 'common/mocks/plcaeHighlights'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
-import LinkToPlace from 'common/utils/url/LinkToPlace'
 
 import RecommendCard from '../RecommendCard'
 

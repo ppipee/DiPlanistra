@@ -14,6 +14,14 @@ export const DAY = [
     other {days}}`,
 ]
 
+export const NIGHT = [
+	'{night} คืน',
+	`{night} {night,plural,
+    =0 {night}
+    =1 {night}
+    other {nights}}`,
+]
+
 export const LOCALE_ALL = ['ทั้งหมด', 'All']
 
 export const KM = ['{distance} กม.', '{distance} km.']

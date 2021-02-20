@@ -5,7 +5,7 @@ import ResponsiveBlock from 'common/components/ResponsiveBlock'
 import spaces from 'common/styles/mixins/spaces'
 
 import { PlacePreview } from 'modules/place/types/place'
-import { ActivityPlace } from 'modules/trips/types/planner'
+import { ActivityPlace } from 'modules/trip/types/planner'
 
 import PlaceDetailCard from '../PlaceDetailCard'
 

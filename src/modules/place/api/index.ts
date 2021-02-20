@@ -6,7 +6,7 @@ import placeEndpoints from 'common/endpoints/place'
 import { Page } from 'common/types/wongnai/page'
 
 import { Place, PlacePreview } from 'modules/place/types/place'
-import { ActivityPlace } from 'modules/trips/types/planner'
+import { ActivityPlace } from 'modules/trip/types/planner'
 
 import { Review } from '../types/review'
 

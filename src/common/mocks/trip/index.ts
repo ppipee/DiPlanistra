@@ -1,4 +1,4 @@
-import { Planner } from 'modules/trips/types/planner'
+import { Planner } from 'modules/trip/types/planner'
 
 export const MOCK_TRIP = ({
 	id: '5ffb56b3ba57cd8115138fe4',
