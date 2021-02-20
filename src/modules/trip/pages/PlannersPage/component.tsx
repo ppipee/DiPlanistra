@@ -14,14 +14,14 @@ import CountDownCover from 'modules/trip/components/CountDownCover'
 import CreatePlanner from 'modules/trip/components/CreatePlanner'
 import TripTicket from 'modules/trip/components/TripTicket'
 import { TRIP_PATH } from 'modules/trip/routes/paths'
-import TripStoreConfig from 'modules/trip/stores/TripsStore'
-import { useTripsStore } from 'modules/trip/stores/TripsStore/context'
+import PlannerStoreConfig from 'modules/trip/stores/PlannersStore'
+import { usePlannersStoreStore } from 'modules/trip/stores/PlannersStore/context'
 
 import { MainContainer, TabContainer, Container } from './styled'
 
 const PlannersComponent = () => {
 	const { isDesktop } = useResponsive()
-	const { trips, isLoading, isFresh } = useTripsStore((store) => ({
+	const { trips, isLoading, isFresh } = usePlannersStoreStore((store) => ({
 		trips: store.trips,
 		isLoading: store.isLoading,
 		isFresh: store.isFresh,
@@ -58,7 +58,7 @@ const PlannersComponent = () => {
 export default withAuth(
 	asRoute(PlannersComponent, {
 		stores: {
-			tripStore: TripStoreConfig,
+			plannersStore: PlannerStoreConfig,
 		},
 	}),
 )

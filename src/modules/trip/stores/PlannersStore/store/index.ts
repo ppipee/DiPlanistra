@@ -7,7 +7,7 @@ import FetchStateStore from 'core/api/stores/FetchStateStore'
 import { getPlanners, createPlanner } from 'modules/trip/api'
 import { PlannerPreview, InitPlanner } from 'modules/trip/types/planner'
 
-class TripsStore extends FetchStateStore {
+class PlannersStore extends FetchStateStore {
 	@observable
 	trips: PlannerPreview[]
 
@@ -32,14 +32,8 @@ class TripsStore extends FetchStateStore {
 	async createPlanner(data: InitPlanner) {
 		const trip = await createPlanner(data)
 
-		if (!this.error) {
-			runInAction(() => {
-				this.trips = [...this.trips, trip]
-			})
-			return trip
-		}
-		return null
+		return !this.error ? trip : null
 	}
 }
 
-export default TripsStore
+export default PlannersStore
