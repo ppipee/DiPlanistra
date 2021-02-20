@@ -1,9 +1,9 @@
 import React, { useCallback, useState } from 'react'
 
+import LinkToPlace from 'common/components/url/LinkToPlace'
 import { white } from 'common/styles/colors'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import fontSizes from 'common/styles/mixins/fontSizes'
-import LinkToPlace from 'common/utils/url/LinkToPlace'
 
 import { PlacePreview } from 'modules/place/types/place'
 

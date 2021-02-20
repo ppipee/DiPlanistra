@@ -1,8 +1,8 @@
 import React, { memo, useEffect } from 'react'
 
 import useHorizontalTabContext from 'common/components/HorizontalTab/hooks/useHorizontalTabContext'
+import LinkToPlace from 'common/components/url/LinkToPlace'
 import { DomainValue } from 'common/constants/business'
-import LinkToPlace from 'common/utils/url/LinkToPlace'
 
 import { PlacePreview } from 'modules/place/types/place'
 import { NearbyPositionType } from 'modules/place/types/store'

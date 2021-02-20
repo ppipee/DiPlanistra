@@ -22,7 +22,7 @@ import { CLOSED_STATUS, ENTRY_FEE, OPENED_STATUS, REVIEW_UNIT } from 'modules/pl
 import { PlacePreview } from 'modules/place/types/place'
 import getCategoryTag from 'modules/place/utils/getCategoryTags'
 import getWorkingHour from 'modules/place/utils/getWorkingHour'
-import { ActivityPlace } from 'modules/trips/types/planner'
+import { ActivityPlace } from 'modules/trip/types/planner'
 
 import FavoritePlaceIcon from '../FavoritePlaceIcon'
 

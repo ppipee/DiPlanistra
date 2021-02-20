@@ -5,7 +5,7 @@ import loading from 'core/api/annotations/loading'
 import FetchStateStore from 'core/api/stores/FetchStateStore'
 
 import { getFavoritePlaces, saveFavoritePlace, removeFavoritePlace } from 'modules/place/api'
-import { ActivityPlace } from 'modules/trips/types/planner'
+import { ActivityPlace } from 'modules/trip/types/planner'
 
 class FavoritePlaceStore extends FetchStateStore {
 	@observable

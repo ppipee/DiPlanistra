@@ -1,6 +1,6 @@
 import HomeRoute from 'modules/home/routes'
 import PlaceRoute from 'modules/place/routes'
-import TripsRoutes from 'modules/trips/routes'
+import TripsRoutes from 'modules/trip/routes'
 import UserRoute from 'modules/user/routes'
 
 import RootPage from '../pages/RootPage'

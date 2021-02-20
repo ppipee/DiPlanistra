@@ -1,4 +1,4 @@
-import { Planner, ActivityPlace } from 'modules/trips/types/planner'
+import { Planner, ActivityPlace } from 'modules/trip/types/planner'
 
 export const ACTIVITY_PLACE = ({
 	publicId: '587657ci',
