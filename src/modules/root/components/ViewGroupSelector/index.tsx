@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { omit } from 'lodash'
+import { useLocation } from 'react-router-dom'
 import { useGeolocation } from 'react-use'
 
 import useI18n from 'core/locale/hooks/useI18n'
@@ -11,6 +12,7 @@ import DropDownItem from 'common/components/DropDown/components/DropDownItem'
 import MyLocationIcon from 'common/components/icons/MyLocationIcon'
 import usePassQuery from 'common/hooks/usePassQuery'
 import { red } from 'common/styles/colors'
+import isSearchPath from 'common/utils/url/isSearchPath'
 
 import { DEFAULT_REGIONS } from 'modules/search/constants'
 import { NEAR_BY_ME } from 'modules/search/locale'
@@ -24,8 +26,15 @@ const ViewGroupSelector = () => {
 	const I18n = useI18n()
 	const passQuery = usePassQuery()
 	const query = useQuery()
+	const location = useLocation()
 	const [city, setCity] = useState<string | number>(query.regions || DEFAULT_REGIONS)
 	const { latitude, longitude } = useGeolocation()
+
+	useEffect(() => {
+		if (!query.regions && isSearchPath(location.pathname)) {
+			passQuery({ params: { regions: DEFAULT_REGIONS } })
+		}
+	}, [location.pathname])
 
 	const onViewGroupChange = (value: string | number) => {
 		setCity(value)

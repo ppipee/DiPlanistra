@@ -6,7 +6,7 @@ import searchEndpoints from 'common/endpoints/search'
 
 import { City } from 'modules/home/types'
 import { Category } from 'modules/place/types/place'
-import { PlannerPreview } from 'modules/trips/types/planner'
+import { PlannerPreview } from 'modules/trip/types/planner'
 
 import { SearchTripsQueries } from '../types'
 

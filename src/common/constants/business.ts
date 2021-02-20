@@ -4,6 +4,7 @@ export enum DomainValue {
 	BEAUTY = 2,
 	HOTEL = 3,
 	ATTRACTION = 4,
+	EVENT = 90,
 	TRIP = 99,
 }
 

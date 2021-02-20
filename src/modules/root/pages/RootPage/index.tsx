@@ -4,6 +4,8 @@ import { RouteConfigComponentProps, renderRoutes } from 'react-router-config'
 
 import asRoute from 'core/router/hoc/asRoute'
 
+import { MixinsGlobalStyles } from 'common/styles/mixins'
+
 import Footer from 'modules/root/components/Footer'
 import GlobalStyles from 'modules/root/components/GlobalStyles'
 import NavigationBar from 'modules/root/components/NavigationBar'
@@ -15,6 +17,7 @@ const RootPage = ({ route: { routes } }: RouteConfigComponentProps) => (
 	<RootContainer className="background-color">
 		<NavigationBar />
 		<GlobalStyles />
+		<MixinsGlobalStyles />
 		<MainContainer>{renderRoutes(routes)}</MainContainer>
 		<Footer />
 	</RootContainer>

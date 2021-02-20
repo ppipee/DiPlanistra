@@ -3,8 +3,8 @@ import React, { useEffect } from 'react'
 import asRoute from 'core/router/hoc/asRoute'
 import useQuery from 'core/router/hooks/useQuery'
 
-import ContentContainer from 'common/components/ContentContainer'
 import Gap from 'common/components/Gap'
+import ResponsiveBlock from 'common/components/ResponsiveBlock'
 import StickyContainer from 'common/components/StickyContainer'
 import LinkToPlace from 'common/components/url/LinkToPlace'
 import useResponsive from 'common/styles/hooks/useResponsive'
@@ -12,12 +12,13 @@ import spaces from 'common/styles/mixins/spaces'
 
 import PlaceCard from 'modules/place/components/PlaceCard'
 import FavoritePlaceStoreConfig from 'modules/place/stores/FavoritePlaceStore'
+import DomainSelector from 'modules/search/components/DomainSelector'
 import PlacesFilter from 'modules/search/components/PlacesFilter'
 import SearchingText from 'modules/search/components/SearchingText'
 import SearchPlaceStoreConfig from 'modules/search/stores/SearchPlaceStore'
 import { useSearchPlaceStore } from 'modules/search/stores/SearchPlaceStore/context'
 
-import { ContainerWrapper } from './styled'
+import { ContainerWrapper, Container } from './styled'
 
 const PlacesPageComponent = () => {
 	const { isDesktop } = useResponsive()
@@ -37,13 +38,18 @@ const PlacesPageComponent = () => {
 	if (isFresh) return null
 
 	return (
-		<ContentContainer>
+		<Container>
 			<SearchingText />
 			<Gap $size={spaces(16)}>
 				{isDesktop && (
 					<ContainerWrapper type="filter">
 						<StickyContainer>
-							<PlacesFilter />
+							<Gap $type="vertical" $size={spaces(12)}>
+								<ResponsiveBlock $padding={spaces(12)}>
+									<DomainSelector />
+								</ResponsiveBlock>
+								<PlacesFilter />
+							</Gap>
 						</StickyContainer>
 					</ContainerWrapper>
 				)}
@@ -60,7 +66,7 @@ const PlacesPageComponent = () => {
 				</ContainerWrapper>
 				{isDesktop && <ContainerWrapper type="sub" />}
 			</Gap>
-		</ContentContainer>
+		</Container>
 	)
 }
 

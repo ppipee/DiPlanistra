@@ -2,6 +2,7 @@ import { LatLng } from 'common/types/wongnai/common'
 import { BasicPhoto } from 'common/types/wongnai/image'
 
 import { AttractionInformation, Category, WorkingHourStatus } from 'modules/place/types/place'
+import { User } from 'modules/user/types'
 
 export interface InitPlanner {
 	name: string
@@ -14,7 +15,7 @@ export interface Planner extends InitPlanner {
 	dateLength: number
 	planners: PlannerInfo[]
 	style: PlannerStyle
-	writer: string // should replace with User
+	writer: User
 	rating: number
 	shared: number
 	isPublic: boolean

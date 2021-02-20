@@ -15,9 +15,11 @@ import usePassQuery from 'common/hooks/usePassQuery'
 import { white } from 'common/styles/colors'
 import spaces from 'common/styles/mixins/spaces'
 
-import { ATTRACTION, HOTEL, FOOD, TRIP } from 'modules/place/locale'
-import { PLACE_PATH } from 'modules/place/routes/paths'
+import { EVENTS_ROUTE } from 'modules/event/routes/path'
+import { ATTRACTION, HOTEL, FOOD, TRIP, EVENT } from 'modules/place/locale'
+import { PLACES_ROUTE } from 'modules/place/routes/paths'
 import { DEFAULT_PLACE_DOMAIN } from 'modules/search/constants'
+import { TRIPS_ROUTE } from 'modules/trip/routes/paths'
 
 import { DropDownWrapper, InputWrapper } from './styled'
 
@@ -37,7 +39,15 @@ const SearchInput = () => {
 	)
 
 	const onSubmit = useCallback(() => {
-		passQuery({ params: { search: keyword, domain }, targetUrl: PLACE_PATH })
+		let targetUrl = PLACES_ROUTE
+
+		if (domain === DomainValue.TRIP) {
+			targetUrl = TRIPS_ROUTE
+		} else if (domain === DomainValue.EVENT) {
+			targetUrl = EVENTS_ROUTE
+		}
+
+		passQuery({ params: { search: keyword, domain }, targetUrl })
 	}, [keyword, passQuery, domain])
 
 	const onEnter = useOnEnter([onSubmit])
@@ -59,10 +69,11 @@ const SearchInput = () => {
 					displayCenter
 					border="curve"
 				>
+					<DropDownItem value={DomainValue.TRIP} name={I18n.t(TRIP)} />
 					<DropDownItem value={DomainValue.ATTRACTION} name={I18n.t(ATTRACTION)} />
 					<DropDownItem value={DomainValue.FOOD} name={I18n.t(FOOD)} />
 					<DropDownItem value={DomainValue.HOTEL} name={I18n.t(HOTEL)} />
-					<DropDownItem value={DomainValue.TRIP} name={I18n.t(TRIP)} />
+					<DropDownItem value={DomainValue.EVENT} name={I18n.t(EVENT)} />
 				</DropDown>
 			</DropDownWrapper>
 			<InputWrapper>

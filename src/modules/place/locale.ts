@@ -2,6 +2,7 @@ export const ATTRACTION = ['ที่เที่ยว', 'Attraction']
 export const FOOD = ['อาหาร', 'Food']
 export const HOTEL = ['ที่พัก', 'Hotel']
 export const TRIP = ['ทริป', 'Trip']
+export const EVENT = ['อีเว้นต์', 'Event']
 
 export const REVIEW_UNIT = [
 	'{review} รีวิว',

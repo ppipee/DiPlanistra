@@ -27,7 +27,7 @@ const SearchingText = () => {
 	const domainText = domain ? I18n.t(PLACE_TITLE[domain]) : ''
 
 	return (
-		<Text as="div" size={fontSizes(20)} margin={`${spaces(16)} 0 ${spaces(20)}`}>
+		<Text as="div" size={fontSizes(20)} margin={`${spaces(16)} ${spaces(12)} ${spaces(20)}`}>
 			{filterArrayExistingValue([domainText, searchText, nearbyText]).join(' ')}
 		</Text>
 	)

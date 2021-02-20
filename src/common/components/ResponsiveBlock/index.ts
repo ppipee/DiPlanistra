@@ -1,8 +1,7 @@
 import styled, { css } from 'styled-components'
 
+import Block from 'common/components/Block'
 import { media } from 'common/styles/utils/viewport'
-
-import Block from '../Block'
 
 import { ResponsiveBlockProps, Variant } from './types'
 

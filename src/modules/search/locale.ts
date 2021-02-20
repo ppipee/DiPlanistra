@@ -26,3 +26,19 @@ export const LOCALE_LOCAL = ['วิถีชีวิตและชุมช�
 export const LOCALE_AMUSEMENT = ['สวนสัตว์ สวนน้ำ และสวนสนุก', 'Zoo/Amusement Park']
 export const LOCALE_NATURE = ['ท่องเที่ยวทางธรรมชาติ', 'Natural Site']
 export const LOCALE_TRANSPORTATION = ['การเดินทาง', 'Transportation']
+
+export const LOCALE_VIEW = [
+	'{view} วิว',
+	`{view} {view,plural,
+    =0 {view}
+    =1 {view}
+    other {views}}`,
+]
+
+export const LOCALE_LIKE = [
+	'{like} ไลค์',
+	`{like} {like,plural,
+    =0 {like}
+    =1 {like}
+    other {likes}}`,
+]

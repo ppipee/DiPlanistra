@@ -34,6 +34,7 @@ class FetchStateStore {
 
 	@action.bound
 	setError(error: Error) {
+		this.loadedTimes++
 		this.state = FetchState.Error
 		this.error = error
 	}
