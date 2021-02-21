@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/ppipee/di-planistra/compare/v1.0.0...v1.2.0) (2021-02-21)
+
+
+### Features
+
+* add search and fav event ([656f85b](https://github.com/ppipee/di-planistra/commit/656f85b77df1468a316a6964e95e4a5850f1d337))
+* add sortby of trip searching ([3e956d9](https://github.com/ppipee/di-planistra/commit/3e956d9c8734cdbd116f93f9f3fb69a4309b699c))
+* add trips page ([d7cf164](https://github.com/ppipee/di-planistra/commit/d7cf1646904f0d946155b499019fabb904c58843))
+* init search trips strore and update planner type ([8f5406c](https://github.com/ppipee/di-planistra/commit/8f5406cde47933abdc9d157e011d4ea67bff3885))
+
+
+### Bug Fixes
+
+* change path ([eee4685](https://github.com/ppipee/di-planistra/commit/eee4685600fb26146e81650116e1058cc8f5b518))
+* change store name ([599dd8c](https://github.com/ppipee/di-planistra/commit/599dd8c91303b1c0398a5ec45d6f693d90dd32d4))
+
 ## [1.1.0](https://github.com/ppipee/di-planistra/compare/v1.0.0...v1.1.0) (2021-02-20)
 
 
