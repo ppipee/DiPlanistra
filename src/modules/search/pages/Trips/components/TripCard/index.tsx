@@ -13,7 +13,7 @@ import useFontSizeResponsive from 'common/styles/hooks/useFontSizeResponsive'
 import spaces from 'common/styles/mixins/spaces'
 
 import BookmarkTripIcon from 'modules/search/components/BookmarkTripIcon'
-import { LOCALE_VIEW, LOCALE_LIKE } from 'modules/search/locale'
+import { LOCALE_VIEW, LOCALE_SHARE } from 'modules/search/locale'
 import { PlannerPreview } from 'modules/trip/types/planner'
 
 import { DATE } from '../../locale'
@@ -67,7 +67,7 @@ const TripCard = ({ trip }: Props) => {
 						<span>{summaryDate}</span>
 						<Gap $size={spaces(4)}>
 							<span>{I18n.t(LOCALE_VIEW, { view: trip.numberOfViews })}</span>
-							<span>{I18n.t(LOCALE_LIKE, { like: trip.numberOfBookmarks })}</span>
+							<span>{I18n.t(LOCALE_SHARE, { share: trip.numberOfBookmarks })}</span>
 							<span>-</span>
 							<span>{trip.writer.name}</span>
 						</Gap>

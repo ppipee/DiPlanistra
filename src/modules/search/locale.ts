@@ -36,10 +36,10 @@ export const LOCALE_VIEW = [
     other {views}}`,
 ]
 
-export const LOCALE_LIKE = [
-	'{like} ไลค์',
-	`{like} {like,plural,
-    =0 {like}
-    =1 {like}
-    other {likes}}`,
+export const LOCALE_SHARE = [
+	'{share} แชร์',
+	`{share} {share,plural,
+    =0 {share}
+    =1 {share}
+    other {shares}}`,
 ]

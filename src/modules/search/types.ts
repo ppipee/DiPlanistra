@@ -5,3 +5,10 @@ export interface SearchTripsQueries {
 	sortby?: 'view' | 'bookmark'
 	search?: string
 }
+
+export interface SearchEventQueries {
+	latitude?: string
+	longitude?: string
+	regions?: string
+	sortby?: 'distance' | 'date'
+}

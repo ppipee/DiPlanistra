@@ -1,5 +1,6 @@
 import apiClient from 'core/api'
 
+import meEndpoint from 'common/endpoints/me'
 import plannerEndpoints from 'common/endpoints/planner'
 
 import { EditActivity, InitPlanner, Planner, PlannerPreview } from 'modules/trip/types/planner'
@@ -80,13 +81,13 @@ export const deleteDayPlanner = (plannerId: string, day: number) =>
 export const getBookmarkTrips = () =>
 	apiClient.fetch<{ bookmarks: PlannerPreview[] }>({
 		method: 'get',
-		path: plannerEndpoints.bookmarks(),
+		path: meEndpoint.bookmarks(),
 	})
 
 export const bookmarkTrip = (plannerId: string) =>
 	apiClient.fetch<{ bookmarks: PlannerPreview[] }>({
 		method: 'post',
-		path: plannerEndpoints.bookmarks(),
+		path: meEndpoint.bookmarks(),
 		body: {
 			plannerId,
 		},
@@ -95,5 +96,5 @@ export const bookmarkTrip = (plannerId: string) =>
 export const unlikeTrip = (plannerId: string) =>
 	apiClient.fetch<{ bookmarks: PlannerPreview[] }>({
 		method: 'delete',
-		path: plannerEndpoints.bookmark(plannerId),
+		path: meEndpoint.bookmark(plannerId),
 	})

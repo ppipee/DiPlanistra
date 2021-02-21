@@ -1,8 +1,12 @@
-import { ReactText } from 'react'
-
 const meEndpoint = {
 	favoritePlaces: () => '/me/favoritePlaces',
-	favoritePlace: (publicId: ReactText) => `/me/favoritePlaces/${publicId}`,
+	favoritePlace: (publicId: string) => `/me/favoritePlaces/${publicId}`,
+
+	bookmarks: () => 'me/bookmarks',
+	bookmark: (plannerId: string) => `me/bookmarks/${plannerId}`,
+
+	events: () => 'me/events',
+	event: (eventId: string) => `me/events/${eventId}`,
 }
 
 export default meEndpoint
