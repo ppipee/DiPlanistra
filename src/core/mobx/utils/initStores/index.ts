@@ -1,3 +1,5 @@
+import { omit } from 'lodash'
+
 import { StoreMapper } from 'core/mobx/types'
 
 export default function initStores(stores: StoreMapper) {
@@ -6,7 +8,7 @@ export default function initStores(stores: StoreMapper) {
 		const onInit = store.onInit
 
 		if (onInit) {
-			store.onInit(stores)
+			store.onInit(omit(stores, [storeKey]))
 		}
 	})
 }
