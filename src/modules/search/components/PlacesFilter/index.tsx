@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 
 import Gap from 'common/components/Gap'
 import ResponsiveBlock from 'common/components/ResponsiveBlock'
@@ -20,4 +20,4 @@ const PlacesFilter = () => {
 	)
 }
 
-export default PlacesFilter
+export default memo(PlacesFilter)

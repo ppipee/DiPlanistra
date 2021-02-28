@@ -64,7 +64,7 @@ const PlacesPageComponent = () => {
 							: null}
 					</Gap>
 				</ContainerWrapper>
-				{isDesktop && <ContainerWrapper type="sub" />}
+				{/* {isDesktop && <ContainerWrapper type="sub" />} */}
 			</Gap>
 		</Container>
 	)

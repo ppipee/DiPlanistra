@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react'
+import React, { memo, useCallback, useMemo } from 'react'
 
-import { isEmpty } from 'lodash'
+import { isArray, isEmpty } from 'lodash'
 
 import useQuery from 'core/router/hooks/useQuery'
 
@@ -17,15 +17,30 @@ type Props = {
 
 const PlaceCategoryFilter = ({ category }: Props) => {
 	const { categories: query } = useQuery()
-	const categoriesQuery = query ? [...query] : []
+
+	const queries = !query ? [] : isArray(query) ? [...query] : [query]
+
+	const categoriesQuery = useMemo(
+		() =>
+			queries.filter((query) =>
+				[category.id, ...category.categories.map((category) => category.id)]
+					.map((category) => category.toString())
+					.includes(query),
+			),
+		[queries, category],
+	)
+
 	const passQuery = usePassQuery()
 
 	const passCategories = useCallback(
-		(categories: string, moreCategories: string[]) => {
-			const params = { categories: moreCategories }
+		(category: string, oldCategories: string[], categories: string[]) => {
+			const newCategories = queries.filter((categoryQuery) => !oldCategories.includes(categoryQuery))
+
+			const params = { categories: [...new Set([...newCategories, ...categories])] }
+
 			passQuery({ params })
 		},
-		[passQuery],
+		[passQuery, categoriesQuery],
 	)
 	const allValue = category.id.toString()
 
@@ -53,4 +68,4 @@ const PlaceCategoryFilter = ({ category }: Props) => {
 	)
 }
 
-export default PlaceCategoryFilter
+export default memo(PlaceCategoryFilter)
