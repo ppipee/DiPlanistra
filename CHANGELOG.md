@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/ppipee/di-planistra/compare/v1.2.0...v1.3.0) (2021-02-28)
+
+
+### Features
+
+* add recommend place ([6621110](https://github.com/ppipee/di-planistra/commit/66211102357b6754d8301ed0d1283d88457b0f9e))
+* update new design of modal ([6ae9924](https://github.com/ppipee/di-planistra/commit/6ae992418c1a2904a392164a3115433c098d7763))
+
+
+### Bug Fixes
+
+* fix place filter ([3364f56](https://github.com/ppipee/di-planistra/commit/3364f569a61921b067369e361f031ddb5e322ee5))
+* fix state error ([dfb5e80](https://github.com/ppipee/di-planistra/commit/dfb5e803c7d6b124aec6be3beb32fa574dd5bbd5))
+* fix user type ([03473c4](https://github.com/ppipee/di-planistra/commit/03473c4b6fc763c6013a912627c619cec1ca2943))
+
 ## [1.2.0](https://github.com/ppipee/di-planistra/compare/v1.0.0...v1.2.0) (2021-02-21)
 
 
