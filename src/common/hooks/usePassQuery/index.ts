@@ -24,7 +24,7 @@ export default function usePassQuery() {
 
 			history.push(url)
 		},
-		[history, query],
+		[history.location.pathname, query],
 	)
 
 	return passQuery

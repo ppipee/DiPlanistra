@@ -3,6 +3,7 @@ enum Borders {
 	Default = '4px',
 	Normal = '6px',
 	Large = '8px',
+	Big = '12px',
 	Extra = '16px',
 	Curve = '50px',
 	Circle = '50%',

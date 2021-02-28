@@ -28,6 +28,8 @@ export const KM = ['{distance} กม.', '{distance} km.']
 
 export const LOCALE_SAVE = ['บันทึก', 'Save']
 export const LOCALE_CANCEL = ['ยกเลิก', 'Cancel']
+export const LOCALE_CLOSE = ['ปิด', 'Close']
+export const LOCALE_CONFIRM = ['ยืนยัน', 'Confirm']
 
 export const LOCALE_MEMO = ['บันทึก', 'Memo']
 

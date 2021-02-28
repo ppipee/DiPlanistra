@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useCallback } from 'react'
+import React, { ChangeEvent, useCallback, useMemo } from 'react'
 
 import useI18n from 'core/locale/hooks/useI18n'
 
@@ -21,7 +21,16 @@ const CheckboxGroup = ({
 	allValue = ALL_VALUE,
 	label,
 }: CheckboxGroupProps) => {
-	const radioValues = children.length > 0 ? children.map((option) => option.props.value) : [allValue]
+	// const radioValues = useMemo(() => {
+	// 	const childValues = children.map((option) => option.props.value)
+
+	// 	return allValue ? [allValue, ...childValues] : childValues
+	// }, [allValue, children])
+
+	const radioValues = useMemo(() => (children.length > 0 ? children.map((option) => option.props.value) : [allValue]), [
+		allValue,
+		children,
+	])
 
 	const I18n = useI18n()
 	const checkActiveState = useCallback(
@@ -39,16 +48,20 @@ const CheckboxGroup = ({
 	)
 
 	return (
-		<Gap $type={type} $size={spaces(4)}>
+		<Gap $type="vertical" $size={spaces(4)}>
 			{withAllSelector && (
 				<Checkbox
-					checked={checkActiveState(allValue) || (radioValues.length !== 0 && radioValues.length === values.length)}
+					checked={checkActiveState(allValue) || radioValues.length === values.length}
 					onChange={selectRadio}
 					label={label || I18n.t(LOCALE_ALL)}
 					value={allValue}
 				/>
 			)}
-			<SubGroupContainer $type={type} $size={spaces(4)} $withHeader={withAllSelector}>
+			<SubGroupContainer
+				$type={type}
+				$size={type === GapTypeProps.Vertical ? spaces(4) : spaces(12)}
+				$withHeader={withAllSelector}
+			>
 				{children.map((option) => ({
 					...option,
 					props: {

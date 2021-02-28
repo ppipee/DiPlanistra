@@ -49,7 +49,8 @@ export const verticalStyle = ({ $responsive: responsive, $size: size }: GapProps
 `
 
 export const gridStyle = ({ $size: size, $responsive: responsive }: GapProps) => css`
-	margin: -calc(${size} / 2);
+	margin: calc(-${size} / 2);
+	flex-wrap: wrap;
 
 	${responsive &&
 	css`

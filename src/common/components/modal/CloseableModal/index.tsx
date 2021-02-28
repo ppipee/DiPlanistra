@@ -30,7 +30,7 @@ const CloseableModal = ({ onClose, title, children, width, closeWithOverlay = tr
 	return (
 		<>
 			<Fade>
-				<Modal $width={width}>
+				<Modal width={width}>
 					<div>
 						<Gap $size={spaces(8)}>
 							{title && (

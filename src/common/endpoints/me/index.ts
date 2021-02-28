@@ -7,6 +7,8 @@ const meEndpoint = {
 
 	events: () => 'me/events',
 	event: (eventId: string) => `me/events/${eventId}`,
+
+	categories: () => 'me/categories',
 }
 
 export default meEndpoint

@@ -42,7 +42,7 @@ const ConfirmableModal = ({
 }: Props) => {
 	return (
 		<>
-			<Modal $width={width}>
+			<Modal width={width}>
 				<div>
 					<Gap $size={spaces(8)}>
 						{title && (

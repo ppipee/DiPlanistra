@@ -2,27 +2,35 @@ import { useCallback, useState } from 'react'
 
 export default function useHandleCheckbox(
 	defaultValue: string[],
-	actions: ((value: string, values?: string[]) => void)[] = [],
+	actions: ((value: string, oldValue: string[], values?: string[]) => void)[] = [],
 	allValue?: string,
 ) {
 	const [checkboxValues, setValue] = useState(defaultValue)
 
 	const handleCheckbox = useCallback(
 		(value: string, values: string[]) => {
-			if (allValue && (value === allValue || [...checkboxValues, value].length === values.length)) {
+			const allValueState = allValue ? [allValue] : values
+
+			if (allValue && (value === allValue || [...checkboxValues, value].length - 1 === values.length)) {
+				// values-1 cuz values includes all value
+
 				if (checkboxValues.includes(allValue)) {
 					// uncheck all value
+					actions.map((action) => action(allValue, allValueState, []))
 					setValue([])
-					actions.map((action) => action(allValue, []))
 				} else {
+					// check all value
+					actions.map((action) => action(allValue, checkboxValues, allValueState))
 					setValue([allValue])
-					actions.map((action) => action(allValue, values))
 				}
 			} else {
 				let newValues: string[]
+				let oldValues: string[]
+
 				if (checkboxValues.includes(allValue)) {
 					// after checked all
 					newValues = [value]
+					oldValues = allValueState
 				} else if (checkboxValues.includes(value)) {
 					// unchecked
 					const valueIndex = checkboxValues.indexOf(value)
@@ -32,8 +40,8 @@ export default function useHandleCheckbox(
 					newValues = [...checkboxValues, value]
 				}
 
+				actions.map((action) => action(value, oldValues || checkboxValues, newValues))
 				setValue(newValues)
-				actions.map((action) => action(value, newValues))
 			}
 		},
 		[checkboxValues, ...actions],
