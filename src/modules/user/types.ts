@@ -1,4 +1,13 @@
-export interface User {
+import { ActivityPlace } from 'modules/trip/types/planner'
+
+export interface User extends BaseUser {
+	favoritePlaces?: ActivityPlace[] // should be string but make the DDOS to target server
+	events?: string[]
+	bookmark?: string[]
+	placeCategories?: number[]
+}
+
+export interface BaseUser {
 	id: string
 	name: string
 	email: string
@@ -15,4 +24,4 @@ export interface LoginDataTypes {
 	password: string
 }
 
-export type RegisterDataTypes = Omit<LoginDataTypes & User, 'id' | 'role'>
+export type RegisterDataTypes = Omit<LoginDataTypes & BaseUser, 'id' | 'role'>

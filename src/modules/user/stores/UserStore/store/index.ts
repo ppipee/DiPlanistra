@@ -8,7 +8,7 @@ import setUserToken from 'core/api/utils/setUserToken'
 import { getMe, login, register } from 'modules/user/api'
 import { LoginDataTypes, RegisterDataTypes, User } from 'modules/user/types'
 
-class LoginStore extends FetchStateStore {
+class UserStore extends FetchStateStore {
 	@observable
 	user: User
 
@@ -59,4 +59,4 @@ class LoginStore extends FetchStateStore {
 	}
 }
 
-export default LoginStore
+export default UserStore

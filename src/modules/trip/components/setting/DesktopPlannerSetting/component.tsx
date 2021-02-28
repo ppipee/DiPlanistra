@@ -24,7 +24,7 @@ const DesktopPlannerSettingComponent = () => {
 
 	return (
 		<>
-			<ModalTemplate $width="auto">
+			<ModalTemplate width="auto">
 				<Block $padding={spaces(16)}>
 					<Flex $justifyContent="flex-end">
 						<ClickableIcon icon={CloseIcon} size={ICON_SIZE} color={gray[900]} onClick={closeSetting} />
