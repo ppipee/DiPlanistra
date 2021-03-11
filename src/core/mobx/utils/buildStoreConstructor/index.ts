@@ -1,14 +1,14 @@
-import { Store } from 'core/mobx/types'
+import { StoreConstructorMapper } from 'core/mobx/types'
 import { RouteStoreMapper } from 'core/router/types'
 
-export default function buildStores(storeMapper: RouteStoreMapper) {
+export default function buildStoreConstructor(storeMapper: RouteStoreMapper) {
 	const storeConstructor = Object.keys(storeMapper).reduce((stores, storeKey) => {
 		const StoreClass = storeMapper[storeKey].store
 
-		stores[storeKey] = new StoreClass()
+		stores[storeKey] = StoreClass
 
 		return stores
-	}, {} as Record<string, Store>)
+	}, {} as StoreConstructorMapper)
 
 	return storeConstructor
 }

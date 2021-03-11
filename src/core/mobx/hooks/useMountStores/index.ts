@@ -5,20 +5,22 @@ import { useLocation, useParams } from 'react-router-dom'
 import { Store } from 'core/mobx/types'
 import useQuery from 'core/router/hooks/useQuery'
 
-export default function useMountStores(stores: Record<string, Store>) {
+export default function useMountStores() {
 	const params = useParams()
 	const query = useQuery()
 	const location = useLocation()
 
-	const mountStores = useCallback(() => {
-		Object.values(stores).forEach((store) => {
-			const onMount = store.onMount
+	const mountStores = useCallback(async (stores: Record<string, Store>) => {
+		await Promise.all(
+			Object.values(stores).map((store) => {
+				const onMount = store.onMount
 
-			if (onMount) {
-				store.onMount({ params, query, location })
-			}
-		})
-	}, [stores])
+				if (onMount) {
+					store.onMount({ params, query, location })
+				}
+			}),
+		)
+	}, [])
 
 	return mountStores
 }
