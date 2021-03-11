@@ -1,3 +1,4 @@
+import { DomainValue } from 'common/constants/business'
 import { NameValue, IdName } from 'common/types/wongnai/common'
 import { BasicPhoto } from 'common/types/wongnai/image'
 
@@ -43,6 +44,7 @@ export interface PlacePreview {
 	defaultPhoto: BasicPhoto
 	coverPhoto?: BasicPhoto
 	rating?: number
+	domain: Domain
 	distance?: number
 	statistic: PlaceStatistic
 	priceRange: NameValue<number>
@@ -107,4 +109,9 @@ export interface Contact {
 	twitter?: string
 	facebookHomepage?: string
 	homepage?: string // phase3
+}
+
+export interface Domain {
+	name: string
+	value: DomainValue
 }

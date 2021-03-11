@@ -81,7 +81,7 @@ const PlaceDetailCard = ({ place, showDistance }: Props) => {
 							</Gap>
 						</Flex>
 						<Gap $size={spaces(4)} $type="vertical">
-							<FavoritePlaceIcon isFavorite={place.isFavorite} publicId={place.publicId} />
+							<FavoritePlaceIcon isFavorite={place.isFavorite} publicId={place.publicId} domain={place.domain.value} />
 							{showDistance && distance && (
 								<Text size={fontSizes(12)} color={gray[700]} whiteSpace="nowrap">
 									{distance}

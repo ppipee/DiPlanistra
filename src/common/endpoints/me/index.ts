@@ -1,4 +1,6 @@
 const meEndpoint = {
+	favorite: () => '/me/favorite',
+
 	favoritePlaces: () => '/me/favoritePlaces',
 	favoritePlace: (publicId: string) => `/me/favoritePlaces/${publicId}`,
 

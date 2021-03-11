@@ -1,17 +1,17 @@
-import React, { ReactNode, ReactText, useState } from 'react'
+import React, { ReactNode, ReactText, useState, HTMLAttributes } from 'react'
 
 import HorizontalTabContext from 'common/components/HorizontalTab/context'
 import { TabProps } from 'common/components/HorizontalTab/types'
 
 import TabsContainer from '../TabsContainer'
 
-type Props = {
+interface Props extends HTMLAttributes<HTMLDivElement> {
 	children: ReactNode
 	tabs: TabProps[]
 	defaultValue?: number
 }
 
-const TabsProvider = ({ children, tabs, defaultValue = 0 }: Props) => {
+const TabsProvider = ({ children, tabs, defaultValue = 0, ...props }: Props) => {
 	const [activeIndex, setIndex] = useState(defaultValue)
 	const [activeTab, setTab] = useState<ReactText>(tabs[defaultValue].value)
 
@@ -25,7 +25,7 @@ const TabsProvider = ({ children, tabs, defaultValue = 0 }: Props) => {
 				setIndex,
 			}}
 		>
-			<TabsContainer tabs={tabs} />
+			<TabsContainer tabs={tabs} {...props} />
 			{children}
 		</HorizontalTabContext.Provider>
 	)

@@ -16,7 +16,6 @@ import useCategoriesSelectorModalState from 'modules/home/hooks/useCategoriesSel
 import HomeStoreConfig from 'modules/home/stores/HomeStore'
 import { useHomeStore } from 'modules/home/stores/HomeStore/context'
 import WelcomeStoreConfig from 'modules/home/stores/WelcomeStore'
-import FavoritePlaceStoreConfig from 'modules/place/stores/FavoritePlaceStore'
 import NearbyPositionStoreConfig from 'modules/place/stores/NearbyPositionStore'
 
 const HomePageComponent = () => {
@@ -47,7 +46,6 @@ export default asRoute(HomePageComponent, {
 	stores: {
 		homeStore: HomeStoreConfig,
 		nearbyPositionStore: NearbyPositionStoreConfig,
-		favoritePlaceStore: FavoritePlaceStoreConfig,
 		welcomeStore: WelcomeStoreConfig,
 	},
 })

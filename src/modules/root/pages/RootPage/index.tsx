@@ -6,6 +6,8 @@ import asRoute from 'core/router/hoc/asRoute'
 
 import { MixinsGlobalStyles } from 'common/styles/mixins'
 
+import FavoriteEventStoreConfig from 'modules/event/stores/FavoriteEventStore'
+import FavoritePlaceStoreConfig from 'modules/place/stores/FavoritePlaceStore'
 import Footer from 'modules/root/components/Footer'
 import GlobalStyles from 'modules/root/components/GlobalStyles'
 import NavigationBar from 'modules/root/components/NavigationBar'
@@ -26,5 +28,7 @@ const RootPage = ({ route: { routes } }: RouteConfigComponentProps) => (
 export default asRoute(RootPage, {
 	stores: {
 		userStore: UserStoreConfig,
+		favoritePlaceStore: FavoritePlaceStoreConfig,
+		favoriteEventStore: FavoriteEventStoreConfig,
 	},
 })

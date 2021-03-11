@@ -33,10 +33,10 @@ const NearbyMeComponent = () => {
 	)
 
 	useEffect(() => {
-		if (latitude || !longitude) return
+		if (!latitude || !longitude) return
 
 		getNearbyMe()
-	}, [latitude || !longitude])
+	}, [latitude, longitude])
 
 	if (!latitude || !longitude) return null
 

@@ -13,7 +13,7 @@ export default class HomeStore extends FetchStateStore {
 	@observable
 	placesHighlight: PlacePreview[]
 
-	onMount() {
+	async onMount() {
 		this.getPlacesHighlight()
 	}
 
@@ -21,11 +21,11 @@ export default class HomeStore extends FetchStateStore {
 	@loading
 	async getPlacesHighlight() {
 		const pageParams = getPageParams({ size: 10, sort: 1 })
-		const placeHighlight = await getPlaces({ domain: DomainValue.ATTRACTION, ...pageParams })
+		const placesHighlight = await getPlaces({ domain: DomainValue.ATTRACTION, ...pageParams })
 
 		if (!this.error) {
 			runInAction(() => {
-				this.placesHighlight = placeHighlight.page?.entities
+				this.placesHighlight = placesHighlight.page?.entities
 			})
 		}
 	}

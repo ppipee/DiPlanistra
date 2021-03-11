@@ -1,26 +1,21 @@
 import styled from 'styled-components'
 
-import ContentContainer from 'common/components/ContentContainer'
-import spaces from 'common/styles/mixins/spaces'
+import { CONTENT_WIDTH, MEDIUM_CONTENT_WIDTH } from 'common/components/ContentContainer'
+import { white } from 'common/styles/colors'
 import { media } from 'common/styles/utils/viewport'
 
-export const Container = styled(ContentContainer)`
-	padding: ${spaces(16)} 0 ${spaces(24)};
-	display: flex;
-	align-items: stretch;
+import Tabs from 'modules/place/components/FavoriteTabs'
 
-	${media.md`
-  	padding: ${spaces(8)} 0 ${spaces(16)};
-  `}
-`
+export const FavoriteTabs = styled(Tabs)`
+	background-color: ${white};
 
-export const FavoriteCardsList = styled.div`
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-gap: ${spaces(16)};
+	& > div {
+		max-width: ${CONTENT_WIDTH};
+		margin: 0 auto;
+		width: 100%;
 
-	${media.md`
-		grid-template-columns: 1fr;
-		grid-gap: ${spaces(10)};
-	`}
+		${media.md`
+		max-width: ${MEDIUM_CONTENT_WIDTH};
+	`};
+	}
 `

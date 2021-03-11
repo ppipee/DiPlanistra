@@ -12,4 +12,5 @@ export const Container = styled(Gap)`
 	border-bottom: 1px solid ${gray[100]};
 	padding: 0 ${spaces(12)};
 	box-sizing: border-box;
+	overflow-x: auto;
 `

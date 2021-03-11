@@ -1,7 +1,7 @@
 import { LatLng } from 'common/types/wongnai/common'
 import { BasicPhoto } from 'common/types/wongnai/image'
 
-import { AttractionInformation, Category, WorkingHourStatus } from 'modules/place/types/place'
+import { AttractionInformation, Category, Domain, WorkingHourStatus } from 'modules/place/types/place'
 import { BaseUser } from 'modules/user/types'
 
 export interface InitPlanner {
@@ -65,6 +65,7 @@ export interface ActivityPlace {
 	id?: string
 	publicId: string
 	name: string
+	domain: Domain
 	coordinate: LatLng
 	defaultPhoto: BasicPhoto
 	mainPhoto: BasicPhoto

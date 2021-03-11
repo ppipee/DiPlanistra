@@ -1,10 +1,12 @@
 import apiClient from 'core/api'
 import { Params } from 'core/router/types'
 
+import { DomainValue } from 'common/constants/business'
 import meEndpoint from 'common/endpoints/me'
 import placeEndpoints from 'common/endpoints/place'
 import { Page } from 'common/types/wongnai/page'
 
+import { EventPreview } from 'modules/event/types'
 import { Place, PlacePreview } from 'modules/place/types/place'
 import { ActivityPlace } from 'modules/trip/types/planner'
 
@@ -30,10 +32,13 @@ export const getPlaceReviews = (publicId: string, params?: Params) =>
 		params,
 	})
 
-export const getFavoritePlaces = () =>
-	apiClient.fetch<{ favoritePlaces: ActivityPlace[] }>({
+export const getFavorite = (domain?: DomainValue) =>
+	apiClient.fetch<{ favoritePlaces?: ActivityPlace[]; events?: EventPreview[] }>({
 		method: 'get',
-		path: meEndpoint.favoritePlaces(),
+		path: meEndpoint.favorite(),
+		params: {
+			domain,
+		},
 	})
 
 export const removeFavoritePlace = (publicId: string) =>
