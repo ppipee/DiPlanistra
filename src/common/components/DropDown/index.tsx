@@ -70,6 +70,12 @@ const DropDown = ({
 		[onChange],
 	)
 
+	useEffect(() => {
+		if (dropDownValue !== defaultValue) {
+			setValue(defaultValue)
+		}
+	}, [defaultValue, dropDownValue])
+
 	const arrayChildren = !isArray(children) ? [children] : children
 	const items = useMemo(
 		() => arrayChildren.reduce((items, options) => ({ ...items, [options.props.value]: options.props.name }), {}),

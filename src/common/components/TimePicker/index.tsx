@@ -1,6 +1,4 @@
-import React, { useCallback } from 'react'
-
-import { isNumber } from 'lodash'
+import React, { useEffect, useState } from 'react'
 
 import spaces from 'common/styles/mixins/spaces'
 import setPrefixToDigi from 'common/utils/setPrefixToDigi'
@@ -19,40 +17,31 @@ type Props = {
 	row?: number
 }
 
-const TimePicker = ({ setTime, time: defaultTime, row = MAX_ROW }: Props) => {
-	const time = defaultTime || new Date()
-	const hour = defaultTime?.getHours().toString()
-	const minute = defaultTime?.getMinutes().toString()
+const TimePicker = ({ setTime, time, row = MAX_ROW }: Props) => {
+	const defaultHour = time?.getHours().toString()
+	const defaultMinute = time?.getMinutes().toString()
 
-	const setHour = useCallback(
-		(hour: string | number) => {
-			if (isNumber(+hour)) {
-				const newTime = time
+	const [minute, setMinute] = useState<string | number>(defaultMinute)
+	const [hour, setHour] = useState<string | number>(defaultHour)
 
-				newTime.setHours(+hour)
-				setTime(newTime)
-			}
-		},
-		[time],
-	)
+	useEffect(() => {
+		if (minute && hour) {
+			const newTime = time || new Date()
 
-	const setMinute = useCallback(
-		(minute: string | number) => {
-			if (isNumber(+minute)) {
-				const newTime = time
-
-				newTime.setMinutes(+minute)
-				setTime(newTime)
-			}
-		},
-		[time],
-	)
+			newTime.setHours(Number(hour))
+			newTime.setMinutes(Number(minute))
+			setTime(newTime)
+			setHour(null)
+			setMinute(null)
+		}
+	}, [time, minute, hour])
 
 	return (
 		<Gap $size={spaces(4)} $alignCenter $responsive>
 			<DropDown
 				value={hour}
 				onChange={setHour}
+				defaultValue={defaultHour}
 				withOutlined={false}
 				maxRow={row}
 				placeholder="hour"
@@ -67,6 +56,7 @@ const TimePicker = ({ setTime, time: defaultTime, row = MAX_ROW }: Props) => {
 			<DropDown
 				value={minute}
 				onChange={setMinute}
+				defaultValue={defaultMinute}
 				withOutlined={false}
 				maxRow={row}
 				placeholder="minute"
