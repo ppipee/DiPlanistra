@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/ppipee/di-planistra/compare/v1.3.0...v1.4.0) (2021-03-13)
+
+
+### Features
+
+* add domain selector at planner editor ([654485a](https://github.com/ppipee/di-planistra/commit/654485acf5e46ea3e5cc02476f48268d00b3f935))
+* improve route store to get stores from parent ([7e4e675](https://github.com/ppipee/di-planistra/commit/7e4e6752737c3c5b6e695d649b029b3ec391c876))
+* update fav place selector ([d1a64c7](https://github.com/ppipee/di-planistra/commit/d1a64c74296025670335aeff09c3cdf04a664985))
+
+
+### Bug Fixes
+
+* remove time-picker autoset ([0cc7291](https://github.com/ppipee/di-planistra/commit/0cc7291e8f44f6ff19851538f37bff59bfd4d833))
+
 ## [1.3.0](https://github.com/ppipee/di-planistra/compare/v1.2.0...v1.3.0) (2021-02-28)
 
 
