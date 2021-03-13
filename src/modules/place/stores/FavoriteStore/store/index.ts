@@ -62,6 +62,11 @@ class FavoriteStore extends FetchStateStore {
 		}
 	}
 
+	@action
+	onUnMount() {
+		this.domain = DomainValue.ATTRACTION
+	}
+
 	@action.bound
 	unlike() {
 		if (this.domain === DomainValue.EVENT) {

@@ -1,6 +1,9 @@
 import { action, computed, observable } from 'mobx'
 
+import { DomainValue } from 'common/constants/business'
+
 import FavoritePlaceStore from 'modules/place/stores/FavoritePlaceStore/store'
+import { DEFAULT_PLACE_DOMAIN } from 'modules/search/constants'
 import PlannerApiStore from 'modules/trip/stores/PlannerApiStore/store'
 import PlannerStore from 'modules/trip/stores/PlannerStore/store'
 import { ActivityHour } from 'modules/trip/types/planner'
@@ -32,6 +35,9 @@ class ActivityStore {
 		from: '',
 		to: '',
 	}
+
+	@observable
+	domain = DEFAULT_PLACE_DOMAIN
 
 	@observable
 	memo = ''
@@ -109,6 +115,11 @@ class ActivityStore {
 	@action.bound
 	setActivityMode(mode: EditorMode) {
 		this.mode = mode
+	}
+
+	@action.bound
+	setDomain(domain: DomainValue) {
+		this.domain = domain
 	}
 
 	@computed

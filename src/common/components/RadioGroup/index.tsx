@@ -3,7 +3,7 @@ import React, { ChangeEvent, useCallback } from 'react'
 import { isEqual } from 'lodash'
 
 import Gap from 'common/components/Gap'
-import spaces from 'common/styles/mixins/spaces'
+import { Spaces } from 'common/styles/mixins/spaces'
 
 import { GapTypeProps } from '../Gap/types'
 
@@ -11,7 +11,7 @@ import { RadioGroupProps } from './types'
 
 // all of value must be string or number only!
 
-const RadioGroup = ({ type = GapTypeProps.Vertical, value, children, onChange }: RadioGroupProps) => {
+const RadioGroup = ({ type = GapTypeProps.Vertical, value, children, onChange, size = Spaces[4] }: RadioGroupProps) => {
 	const checkActiveState = useCallback((radioValue?: string | number) => isEqual(value, radioValue), [value])
 
 	const selectRadio = useCallback(
@@ -28,7 +28,7 @@ const RadioGroup = ({ type = GapTypeProps.Vertical, value, children, onChange }:
 	)
 
 	return (
-		<Gap $type={type} $size={spaces(4)}>
+		<Gap $type={type} $size={size}>
 			{children.map((option) => ({
 				...option,
 				props: {

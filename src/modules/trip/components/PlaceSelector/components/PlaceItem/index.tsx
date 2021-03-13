@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { EventPreview } from 'modules/event/types'
 import { ActivityPlace } from 'modules/trip/types/planner'
 
 import PlacePreviewCard from '../PlacePreviewCard'
@@ -7,7 +8,7 @@ import PlacePreviewCard from '../PlacePreviewCard'
 import { PlaceItemContainer } from './styled'
 
 type Props = {
-	place: ActivityPlace
+	place: ActivityPlace & EventPreview
 	isSelected: boolean
 }
 

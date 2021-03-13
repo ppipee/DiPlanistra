@@ -12,7 +12,7 @@ import Gap from 'common/components/Gap'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
 
-import FavoritePlaceStoreConfig from 'modules/place/stores/FavoritePlaceStore'
+import FavoriteStoreConfig from 'modules/place/stores/FavoriteStore'
 import ActivityDesktopEditor from 'modules/trip/components/editor/ActivityDesktopEditor'
 import ActivityMobileEditor from 'modules/trip/components/editor/ActivityMobileEditor'
 import PlannerCover from 'modules/trip/components/PlannerCover'
@@ -84,7 +84,7 @@ export default withAuth(
 			plannerStore: PlannerStoreConfig,
 			activityStore: ActivityStoreConfig,
 			plannerSettingStore: PlannerSettingStoreConfig,
-			favoritePlaceStore: FavoritePlaceStoreConfig,
+			favoriteStore: FavoriteStoreConfig,
 		},
 	}),
 )

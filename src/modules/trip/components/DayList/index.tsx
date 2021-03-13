@@ -25,16 +25,17 @@ type Props = {
 }
 
 const DayList = ({ planner }: Props) => {
+	const activities = usePlannerActivities(planner.day)
 	const { setPlannerDay, plannerDay, mode } = usePlannerStore((store) => ({
 		plannerDay: store.plannerDay,
 		mode: store.mode,
 		setPlannerDay: store.setPlannerDay,
 	}))
-	const activities = usePlannerActivities(planner.day)
 
 	const { isOpen, toggle } = useToggle()
 
 	const isEditMode = mode === PlannerMode.Edit
+
 	const [shouldShowPlanner, setOpen] = isEditMode
 		? [plannerDay === planner.day, () => setPlannerDay(planner.day)]
 		: [isOpen, toggle]

@@ -2,6 +2,8 @@ import React from 'react'
 
 import { isNumber } from 'lodash'
 
+import useI18n from 'core/locale/hooks/useI18n'
+
 import Collapse from 'common/components/animation/Collapse'
 import ClickableBlock from 'common/components/ClickableBlock'
 import Flex from 'common/components/Flex'
@@ -14,10 +16,14 @@ import { gray } from 'common/styles/colors'
 import spaces from 'common/styles/mixins/spaces'
 import ZIndexes from 'common/styles/mixins/zIndexes'
 
-import useMountFavoritePlaces from 'modules/place/hooks/useMountFavoritePlaces'
+import { EventPreview } from 'modules/event/types'
+import useMountFavorite from 'modules/place/hooks/useMountFavorite'
+import useDomainSelector from 'modules/trip/hooks/useDomainSelector'
+import { ActivityPlace } from 'modules/trip/types/planner'
 
 import PlaceList from './components/PlaceList'
 import PlacePreviewCard from './components/PlacePreviewCard'
+import { SELECTOR_PLACEHOLDER } from './locale'
 import { ArrowContainer, PlaceSelectedContainer } from './styled'
 
 export type PlaceSelectorProps = {
@@ -28,15 +34,19 @@ export type PlaceSelectorProps = {
 const ICON_ARROW_SIZE = 24
 
 const PlaceSelector = (props: PlaceSelectorProps) => {
+	const I18n = useI18n()
 	const { isOpen, open, close } = useSwitch()
-	const { isLoading, isFresh, favoritePlaces } = useMountFavoritePlaces()
+	const { domain } = useDomainSelector()
+	const { isLoading, isFresh, favorites } = useMountFavorite(domain)
 
 	if (isLoading || isFresh) return null
 
 	const { placeSelectedIndex } = props
 
 	const placeSelected =
-		isNumber(placeSelectedIndex) && placeSelectedIndex >= 0 ? favoritePlaces[props.placeSelectedIndex] : null
+		isNumber(placeSelectedIndex) && placeSelectedIndex >= 0
+			? (favorites[props.placeSelectedIndex] as ActivityPlace & EventPreview)
+			: null
 
 	return (
 		<div>
@@ -47,7 +57,7 @@ const PlaceSelector = (props: PlaceSelectorProps) => {
 							<PlacePreviewCard place={placeSelected} />
 						) : (
 							<Text as="div" margin="auto" color={gray[300]}>
-								{'Select Place'}
+								{I18n.t(SELECTOR_PLACEHOLDER)}
 							</Text>
 						)}
 					</PlaceSelectedContainer>
@@ -59,7 +69,7 @@ const PlaceSelector = (props: PlaceSelectorProps) => {
 			{isOpen && (
 				<Position $position="relative" $scale="full" $zIndex={ZIndexes.DropDown}>
 					<Collapse duration={0.2}>
-						<PlaceList close={close} places={favoritePlaces} {...props} />
+						<PlaceList close={close} places={favorites} domain={domain} {...props} />
 					</Collapse>
 				</Position>
 			)}

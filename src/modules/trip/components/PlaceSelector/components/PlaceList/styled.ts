@@ -3,8 +3,10 @@ import styled from 'styled-components'
 import Block from 'common/components/Block'
 import { gray } from 'common/styles/colors'
 import Borders from 'common/styles/mixins/borders'
+import { media } from 'common/styles/utils/viewport'
 
-const MAX_HEIGHT = '320px'
+const MAX_HEIGHT = '360px'
+const MAX_MOBILE = '220px'
 
 export const PlaceListContainer = styled(Block)`
 	position: absolute;
@@ -15,4 +17,8 @@ export const PlaceListContainer = styled(Block)`
 
 	overflow-y: auto;
 	max-height: ${MAX_HEIGHT};
+
+	${media.sm`
+		max-height:${MAX_MOBILE};
+	`}
 `

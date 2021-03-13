@@ -8,4 +8,5 @@ export interface RadioGroupProps {
 	children: ReactElement<RadioProps & { value: string | number }>[]
 	onChange: (value: string | number) => void
 	value: string | number
+	size?: string
 }

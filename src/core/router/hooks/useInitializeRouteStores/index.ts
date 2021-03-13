@@ -39,7 +39,9 @@ function useInitializeRouteStores(storeMapper: StoreConstructorMapper) {
 		}
 
 		return () => {
-			unMountStores(stores)
+			if (isInitialized && isInitStore) {
+				unMountStores(stores)
+			}
 		}
 	}, [isInitialized, isInitStore])
 

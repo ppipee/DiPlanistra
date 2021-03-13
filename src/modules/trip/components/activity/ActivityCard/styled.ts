@@ -9,8 +9,6 @@ type Props = {
 	$isEditMode: boolean
 }
 
-const CARD_MAX_WIDTH = '600px'
-
 function applyCardStyle({ $isEditMode }: Props) {
 	if ($isEditMode) return ''
 
@@ -26,7 +24,6 @@ function applyCardStyle({ $isEditMode }: Props) {
 
 export const CardContainer = styled.div`
 	width: 100%;
-	max-width: ${CARD_MAX_WIDTH};
 
 	${applyCardStyle}
 `

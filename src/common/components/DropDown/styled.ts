@@ -24,6 +24,7 @@ type DropDownProps = {
 	$withOutlined?: boolean
 	$variant: DropdownVariant
 	$border: DropdownBorderTypes
+	$disabled?: boolean
 }
 
 type ItemContainerProps = {
@@ -42,7 +43,7 @@ function applyVariant({ $variant }: DropDownProps) {
 	`
 }
 
-function applyContainerStyles({ $isOpen, $withOutlined, $border }: DropDownProps) {
+function applyContainerStyles({ $isOpen, $withOutlined, $border, $disabled }: DropDownProps) {
 	let styles = css``
 
 	if ($withOutlined) {
@@ -65,6 +66,15 @@ function applyContainerStyles({ $isOpen, $withOutlined, $border }: DropDownProps
 			${styles}
 			border-bottom-left-radius:0;
 			border-bottom-right-radius: 0;
+		`
+	}
+
+	if ($disabled) {
+		styles = css`
+			${styles}
+			border:none;
+			user-select: none;
+			pointer-events: none;
 		`
 	}
 

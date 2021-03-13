@@ -1,4 +1,4 @@
-import React, { ReactElement, ReactText, useCallback, useEffect, useMemo, useState } from 'react'
+import React, { HTMLAttributes, ReactElement, ReactText, useCallback, useEffect, useMemo, useState } from 'react'
 
 import { isArray } from 'lodash'
 
@@ -25,7 +25,8 @@ type Props = {
 	variant?: DropdownVariant
 	displayCenter?: boolean
 	border?: DropdownBorderTypes
-}
+	disabled?: boolean
+} & Omit<HTMLAttributes<HTMLDivElement>, 'children' | 'onChange'>
 
 const GAP_SIZE: Record<DropdownVariants, AvailableSpaceSizes> = {
 	small: 4,
@@ -46,8 +47,10 @@ const DropDown = ({
 	withOutlined,
 	placeholder,
 	displayCenter,
+	disabled,
 	border = DropdownBorders.Default,
 	variant = DropdownVariants.Default,
+	...props
 }: Props) => {
 	const [dropDownValue, setValue] = useState<ReactText>(defaultValue)
 	const { isOpen, close, toggle } = useToggle()
@@ -91,13 +94,15 @@ const DropDown = ({
 				$withOutlined={withOutlined}
 				$variant={variant}
 				$border={border}
+				$disabled={disabled}
+				{...props}
 			>
 				<DisplayText as="div" size={fontSizes(16)} textAlign={displayCenter ? 'center' : 'left'} ellipsis={1}>
 					{items[dropDownValue] || placeholder || 'select...'}
 				</DisplayText>
-				<ArrowDownIcon size={ICON_SIZE[variant]} color={black} />
+				{!disabled && <ArrowDownIcon size={ICON_SIZE[variant]} color={black} />}
 			</DropDownContainer>
-			{isOpen && (
+			{isOpen && !disabled && (
 				<DropDownItemContainer
 					$border={border}
 					$variant={variant}
@@ -108,7 +113,7 @@ const DropDown = ({
 					{ItemComponents}
 				</DropDownItemContainer>
 			)}
-			<Overlay isOpen={isOpen} onClick={close} transparent />
+			<Overlay isOpen={isOpen && !disabled} onClick={close} transparent />
 		</DropDownWrapper>
 	)
 }

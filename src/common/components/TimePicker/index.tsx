@@ -16,9 +16,10 @@ const MAX_ROW = 8
 type Props = {
 	setTime: (time: Date) => void
 	time: Date
+	row?: number
 }
 
-const TimePicker = ({ setTime, time: defaultTime }: Props) => {
+const TimePicker = ({ setTime, time: defaultTime, row = MAX_ROW }: Props) => {
 	const time = defaultTime || new Date()
 	const hour = defaultTime?.getHours().toString()
 	const minute = defaultTime?.getMinutes().toString()
@@ -53,7 +54,7 @@ const TimePicker = ({ setTime, time: defaultTime }: Props) => {
 				value={hour}
 				onChange={setHour}
 				withOutlined={false}
-				maxRow={MAX_ROW}
+				maxRow={row}
 				placeholder="hour"
 				variant="small"
 				displayCenter
@@ -67,7 +68,7 @@ const TimePicker = ({ setTime, time: defaultTime }: Props) => {
 				value={minute}
 				onChange={setMinute}
 				withOutlined={false}
-				maxRow={MAX_ROW}
+				maxRow={row}
 				placeholder="minute"
 				variant="small"
 				displayCenter
