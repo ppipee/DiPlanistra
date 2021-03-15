@@ -1,1 +1,1 @@
-export const LOCALE_SEE_TRIP = ['ดูทริป', 'Trip Overview']
+export const LOCALE_SEE_TRIP = ['ถัดไป', 'Next']

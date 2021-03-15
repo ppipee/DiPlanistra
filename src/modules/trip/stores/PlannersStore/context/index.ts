@@ -2,10 +2,10 @@ import { createContext } from 'react'
 
 import createUseStoreSelector from 'core/mobx/utils/createUseStoreSelector'
 
-import PlannersStoreStore from '../store'
+import PlannersStore from '../store'
 
-const PlannersStoreStoreContext = createContext<PlannersStoreStore>(null)
+const PlannersStoreContext = createContext<PlannersStore>(null)
 
-export const usePlannersStoreStore = createUseStoreSelector(PlannersStoreStoreContext)
+export const usePlannersStore = createUseStoreSelector(PlannersStoreContext)
 
-export default PlannersStoreStoreContext
+export default PlannersStoreContext

@@ -1,4 +1,6 @@
 enum ZIndexes {
+	HighPriorityModal = 500,
+	HighPriorityModalOverlay = 499,
 	NormalPriorityModal = 100,
 	ModalOverlay = 99,
 	TransparentOverlay = 5,

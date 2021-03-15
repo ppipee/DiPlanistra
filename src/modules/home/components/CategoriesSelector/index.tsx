@@ -20,7 +20,6 @@ const CategoriesSelector = ({ onClose }: Props) => {
 
 	const { newCategories } = useWelcomeStore((store) => ({
 		newCategories: store.newCategories,
-		isLoading: store.isActionLoading['newCategories'],
 	}))
 
 	const selectCategory = useCallback(

@@ -9,6 +9,7 @@ import { Params } from 'core/router/types'
 import Block from 'common/components/Block'
 import ContentContainer from 'common/components/ContentContainer'
 import Gap from 'common/components/Gap'
+import LoadingModal from 'common/components/LoadingModal'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
 
@@ -20,6 +21,8 @@ import PlannerList from 'modules/trip/components/PlannerList'
 import DesktopPlannerSettingComponent from 'modules/trip/components/setting/DesktopPlannerSetting/component'
 import MobilePlannerSetting from 'modules/trip/components/setting/MobilePlannerSetting'
 import TripOverviewButton from 'modules/trip/components/TripOverviewButton'
+import useDeleteActivity from 'modules/trip/hooks/useDeleteActivity'
+import useUpdateActivity from 'modules/trip/hooks/useUpdateActivity'
 import ActivityStoreConfig from 'modules/trip/stores/ActivityStore'
 import { useActivityStore } from 'modules/trip/stores/ActivityStore/context'
 import PlannerApiStoreConfig from 'modules/trip/stores/PlannerApiStore'
@@ -33,13 +36,20 @@ import { MainContainer, SubContainer, ButtonContainer } from './styled'
 const PlannerPageComponent = () => {
 	const { isDesktop } = useResponsive()
 	const { plannerId } = useParams<Params>()
+
 	const showActivityEditor = useActivityStore((store) => store.showActivityEditor)
 	const isOpenSetting = usePlannerSettingStore((store) => store.isOpenSetting)
+
 	const { isLoading, isFresh, getPlanner } = usePlannerApiStore((store) => ({
 		isLoading: store.isLoading,
 		isFresh: store.isFresh,
 		getPlanner: store.getPlanner,
 	}))
+
+	const { isLoading: isActivityUpdating } = useUpdateActivity()
+	const { isLoading: isActivityDeleting } = useDeleteActivity()
+
+	const isModalLoading = isActivityUpdating || isActivityDeleting
 
 	useEffect(() => {
 		getPlanner(plannerId)
@@ -73,6 +83,7 @@ const PlannerPageComponent = () => {
 			{!isDesktop && showActivityEditor && <ActivityMobileEditor />}
 			{!isDesktop && isOpenSetting && <MobilePlannerSetting />}
 			{isDesktop && isOpenSetting && <DesktopPlannerSettingComponent />}
+			{isModalLoading && <LoadingModal />}
 		</>
 	)
 }
