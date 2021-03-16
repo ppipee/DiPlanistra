@@ -32,7 +32,7 @@ const RegisterPageComponent = () => {
 				<BackgroundPage $background={white} />
 				<Gap $size={spaces(64)} $type="vertical" $responsive>
 					<HeaderBackground $alignItems="center" $justifyContent="center">
-						<Logo src={DiPlanistraLogo} />
+						<Logo src={DiPlanistraLogo} loading="eager" />
 					</HeaderBackground>
 					<RegisterForm />
 					<Text as="div" size={detailSize} margin={'auto 0 0'} weight="bold">

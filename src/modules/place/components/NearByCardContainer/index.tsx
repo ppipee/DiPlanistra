@@ -9,6 +9,7 @@ import { NearbyPositionType } from 'modules/place/types/store'
 
 import NearByCard from '../NearByCard'
 
+import NearByCardContainerLoading from './loading'
 import { Container, CardWrapper } from './styled'
 
 type Props = {
@@ -24,7 +25,7 @@ const NearByCardContainer = ({ nearbyPlace, loading, getPlaces }: Props) => {
 		getPlaces(activeTab as DomainValue)
 	}, [activeTab])
 
-	if (loading) return null
+	if (loading) return <NearByCardContainerLoading />
 
 	const places: PlacePreview[] = nearbyPlace[activeTab]
 

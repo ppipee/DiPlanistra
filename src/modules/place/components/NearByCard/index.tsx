@@ -29,7 +29,7 @@ const NearByCard = ({ place }: Props) => {
 		<PlaceContainer>
 			<Gap $type="vertical" $size={isDesktop ? spaces(4) : spaces(8)} $alignCenter $responsive>
 				<div>
-					<PlaceImage src={place.defaultPhoto.smallUrl} />
+					<PlaceImage src={place.defaultPhoto.smallUrl} loading="lazy" />
 					{isNumber(place.distance) && (
 						<DistanceWrapper $alignItems="center" $padding={`${spaces(8)}`}>
 							<Text color={white} size={isDesktop ? fontSizes(12) : fontSizes(10)}>

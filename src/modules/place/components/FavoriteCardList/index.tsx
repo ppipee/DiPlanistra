@@ -15,6 +15,7 @@ import { PLACE_PATH } from 'modules/place/routes/paths'
 import EventCard from 'modules/search/pages/Events/components/EventCard'
 import { ActivityPlace } from 'modules/trip/types/planner'
 
+import FavoriteCardListLoading from './loading'
 import { ListContainer, Container } from './styled'
 
 const FavoriteCardList = () => {
@@ -23,7 +24,7 @@ const FavoriteCardList = () => {
 
 	const { isFresh, isLoading, favorites } = useMountFavorite(domain)
 
-	if ((isFresh && !favorites) || isLoading) return null
+	if ((isFresh && !favorites) || isLoading) return <FavoriteCardListLoading />
 
 	return (
 		<Container>

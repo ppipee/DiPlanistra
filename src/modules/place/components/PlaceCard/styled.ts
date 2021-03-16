@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import ResponsiveBlock from 'common/components/ResponsiveBlock'
+import Skeleton from 'common/components/Skeleton'
 import Borders from 'common/styles/mixins/borders'
 import { media } from 'common/styles/utils/viewport'
 
@@ -35,4 +37,26 @@ export const PlaceCoverImage = styled.img`
 	${media.md`
 		border-radius: 0;
 	`}
+`
+
+export const PlaceDetailWrapper = styled(ResponsiveBlock)`
+	flex: 1;
+`
+
+export const PlaceCoverImageLoading = styled(Skeleton).attrs({ height: IMG_COVER_HEIGHT, width: '100%' })`
+	display: block;
+	border-radius: ${Borders.Large} ${Borders.Large} 0 0;
+
+	${media.md`
+		border-radius: 0;
+	`}
+`
+
+export const PlaceImageLoading = styled(Skeleton).attrs({
+	height: IMG_DEFAULT_SIZE,
+	width: IMG_DEFAULT_SIZE,
+})`
+	display: block;
+	object-fit: cover;
+	border-radius: ${Borders.Default};
 `

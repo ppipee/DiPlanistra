@@ -27,10 +27,11 @@ const PlacePreviewCard = ({ place }: Props) => {
 	const { defaultPhoto, rating, categories, name, thumbnailUrl, introduction } = place
 
 	const categoryTags = getCategoryTag(categories)
+	const imagePreview = defaultPhoto?.smallUrl || thumbnailUrl
 
 	return (
 		<Gap $size={spaces(8)}>
-			{(defaultPhoto?.smallUrl || thumbnailUrl) && <PlaceImage src={defaultPhoto?.smallUrl || thumbnailUrl} />}
+			{imagePreview && <PlaceImage src={imagePreview} loading="lazy" />}
 			<Flex $direction="column" $justifyContent="space-between">
 				<div>
 					<div>

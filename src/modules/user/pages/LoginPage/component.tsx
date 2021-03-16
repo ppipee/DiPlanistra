@@ -35,7 +35,7 @@ const LoginPageComponent = () => {
 			<div>
 				<BackgroundPage $background={`linear-gradient(191.27deg, ${main[500]} 24.41%, ${green[500]} 119.19%)`} />
 				<Flex $direction="column" $alignItems="center" $justifyContent="center" $responsive>
-					<Logo src={DiPlanistraLogo} />
+					<Logo src={DiPlanistraLogo} loading="eager" />
 					<Container $direction="column" $alignItems="stretch">
 						<LoginForm />
 						<Text as="div" color={white} size={detailSize} margin={`${spaces(24)} 0 0`}>

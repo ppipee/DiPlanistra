@@ -12,6 +12,7 @@ import { useUserStore } from 'modules/user/stores/UserStore/context'
 
 import RecommendCard from '../RecommendCard'
 
+import RecommendForYouLoading from './loading'
 import { RECOMMEND_TITLE } from './locale'
 import { RecommendContainer, CardsContainer } from './styled'
 
@@ -28,13 +29,15 @@ const RecommendForYou = () => {
 				{I18n.t(RECOMMEND_TITLE)}
 			</Text>
 			<CardsContainer $size={spaces(4)}>
-				{!isLoading && recommendPlaces
-					? recommendPlaces.map((place) => (
-							<LinkToPlace placeId={place.publicId} key={`recommend-place-${place.publicId}`}>
-								<RecommendCard place={place} />
-							</LinkToPlace>
-					  ))
-					: null}
+				{!isLoading && recommendPlaces ? (
+					recommendPlaces.map((place) => (
+						<LinkToPlace placeId={place.publicId} key={`recommend-place-${place.publicId}`}>
+							<RecommendCard place={place} />
+						</LinkToPlace>
+					))
+				) : (
+					<RecommendForYouLoading />
+				)}
 			</CardsContainer>
 		</RecommendContainer>
 	)

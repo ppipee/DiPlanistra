@@ -13,6 +13,7 @@ export const CardContainer = styled(ResponsiveBlock)`
 	display: flex;
 	align-items: stretch;
 	flex-direction: column;
+	height: 100%;
 `
 
 export const ImageCover = styled.img`
@@ -43,6 +44,17 @@ export const CardHeader = styled.div`
 
 	${media.md`
 	  padding: ${Spaces[8]} ${Spaces[12]};
+    border-radius: 0;
+  `}
+`
+
+export const ImageCoverLoading = styled.div`
+	height: ${IMG_HEIGHT};
+	border-radius: ${Borders.Large} ${Borders.Large} 0 0;
+	display: flex;
+
+	${media.md`
+  	height: ${IMG_MOBILE_HEIGHT};
     border-radius: 0;
   `}
 `

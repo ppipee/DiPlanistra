@@ -35,7 +35,7 @@ const ActivityPlace = ({ place }: Props) => {
 
 	return (
 		<Gap $size={spaces(10)} $responsive>
-			<PlaceImage src={defaultPhoto.smallUrl} />
+			<PlaceImage src={defaultPhoto.smallUrl} loading="lazy" />
 			<Flex $direction="column" $justifyContent="space-between" $responsive>
 				<Gap $size={spaces(4)} $alignCenter $wrap="wrap">
 					{rating && <Rating rating={rating} />}

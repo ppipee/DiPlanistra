@@ -35,7 +35,7 @@ const PlaceHeader = ({ place }: Props) => {
 
 	return (
 		<div>
-			{coverPhoto && isDesktop && <CoverPhoto src={coverPhoto} />}
+			{coverPhoto && isDesktop && <CoverPhoto src={coverPhoto} loading="lazy" />}
 			<Container>
 				<Gap $size={spaces(8)}>
 					<Gap $size={spaces(8)} $type="vertical" $responsive>

@@ -27,7 +27,7 @@ const EventCard = ({ event }: Props) => {
 	return (
 		<CardContainer>
 			{event.thumbnailUrl ? (
-				<ImageCover src={event.thumbnailUrl} />
+				<ImageCover src={event.thumbnailUrl} loading="lazy" />
 			) : (
 				<CardHeader>
 					<Gap $size={Spaces[8]}>

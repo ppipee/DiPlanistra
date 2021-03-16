@@ -15,7 +15,7 @@ const AccountPhoto = ({ imageUrl, defaultColor = black }: Props) => {
 		return <AccountIcon size={PHOTO_SIZE} color={defaultColor} />
 	}
 
-	return <ProfilePhoto src={imageUrl} />
+	return <ProfilePhoto src={imageUrl} loading="eager" />
 }
 
 export default AccountPhoto

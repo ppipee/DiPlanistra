@@ -7,8 +7,9 @@ import Borders from 'common/styles/mixins/borders'
 import getColorWithAlpha from 'common/styles/utils/getColorWithAlpha'
 import { media } from 'common/styles/utils/viewport'
 
-const MOBILE_SIZE = '114px'
-const DESKTOP_SIZE = '154px'
+export const MOBILE_SIZE = '114px'
+export const DESKTOP_SIZE = '154px'
+
 const DISTANCE_TAG_HEIGHT = '20px'
 
 export const PlaceContainer = styled.div`

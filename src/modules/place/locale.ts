@@ -50,3 +50,5 @@ export const ENTRY_FEE = [
     other {Fee: {fee}{currency} /person}
     }`,
 ]
+
+export const PLACE_EMPTY = ['ไม่เจอสถานที่ที่ค้นหา', 'Not found place']

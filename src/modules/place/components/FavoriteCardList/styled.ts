@@ -5,7 +5,7 @@ import spaces from 'common/styles/mixins/spaces'
 import { media } from 'common/styles/utils/viewport'
 
 export const Container = styled(ContentContainer)`
-	padding: ${spaces(16)} 0 ${spaces(24)};
+	padding: ${spaces(8)} 0 ${spaces(24)};
 	display: flex;
 	align-items: stretch;
 

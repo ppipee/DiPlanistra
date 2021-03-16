@@ -71,7 +71,7 @@ const ReviewCard = ({ review }: Props) => {
 					{!isEmpty(previewPhotos) && (
 						<Gap $size={spaces(10)}>
 							{previewPhotos.map((photo) => (
-								<PreviewPhoto src={photo.thumbnailUrl} key={photo.photoId} />
+								<PreviewPhoto src={photo.thumbnailUrl} key={photo.photoId} loading="lazy" />
 							))}
 						</Gap>
 					)}
