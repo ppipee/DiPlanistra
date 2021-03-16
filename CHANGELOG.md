@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/ppipee/di-planistra/compare/v1.4.0...v1.4.1) (2021-03-16)
+
+
+### Features
+
+* add loading modal ([958da4d](https://github.com/ppipee/di-planistra/commit/958da4dcd7d978848aa4512d66bbf9122b5ce46a))
+* add loading skeleton ([74212a1](https://github.com/ppipee/di-planistra/commit/74212a197372063dd64de2487c8a1a0aa2022a7f))
+* add planner skeleton ([3e94b65](https://github.com/ppipee/di-planistra/commit/3e94b651670e2e3999ae9fd1f025fbd90a00fcc7))
+
 ## [1.4.0](https://github.com/ppipee/di-planistra/compare/v1.3.0...v1.4.0) (2021-03-13)
 
 
