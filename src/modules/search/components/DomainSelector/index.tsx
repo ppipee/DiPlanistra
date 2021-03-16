@@ -35,7 +35,7 @@ const DomainSelector = () => {
 				targetUrl = EVENTS_ROUTE
 			}
 
-			passQuery({ params: { domain: domainValue }, targetUrl })
+			passQuery({ params: { domain: domainValue }, targetUrl, withOldQuery: false })
 		},
 		[passQuery],
 	)

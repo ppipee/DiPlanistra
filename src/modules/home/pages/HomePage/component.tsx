@@ -33,13 +33,13 @@ const HomePageComponent = () => {
 		isFresh: store.isFresh,
 	}))
 
-	if (isFresh || isLoading) return null
+	if (isFresh) return null
 
 	return (
 		<>
 			<ContentContainer>
 				<Gap $type="vertical" $size={isDesktop ? spaces(24) : '0'}>
-					<PhotosCarousel places={placesHighlight} dotColor={white} arrows={false} />
+					{!isLoading && placesHighlight && <PhotosCarousel places={placesHighlight} dotColor={white} arrows={false} />}
 					<RecommendForYou />
 					<NearbyMe />
 				</Gap>

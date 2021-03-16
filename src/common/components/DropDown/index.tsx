@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, ReactElement, ReactText, useCallback, useEffect, useMemo, useState } from 'react'
 
-import { isArray } from 'lodash'
+import { isArray, isEmpty } from 'lodash'
 
 import ArrowDownIcon from 'common/components/icons/ArrowDownIcon'
 import useToggle from 'common/hooks/useToggle'
@@ -71,7 +71,7 @@ const DropDown = ({
 	)
 
 	useEffect(() => {
-		if (dropDownValue !== defaultValue) {
+		if (dropDownValue !== defaultValue && !isEmpty(defaultValue)) {
 			setValue(defaultValue)
 		}
 	}, [defaultValue, dropDownValue])
