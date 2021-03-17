@@ -30,7 +30,7 @@ const PhotosCarousel = ({ places, defaultIndex = 0, ...props }: Props) => {
 
 	return (
 		<CarouselContainer>
-			<Carousel afterChange={afterChange} {...props} autoplay arrows={isDesktop} dots={isDesktop}>
+			<Carousel afterChange={afterChange} {...props} autoplay arrows={false} dots={isDesktop}>
 				{places.map((place, index) => (
 					<div key={index}>
 						<LinkToPlace placeId={place.publicId}>

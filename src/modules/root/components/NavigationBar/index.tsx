@@ -1,10 +1,13 @@
 import React from 'react'
 
+import { Link } from 'react-router-dom'
+
 import Gap from 'common/components/Gap'
-import Text from 'common/components/Text'
+import DiPlanistraLogo from 'common/images/di-planistra-logo.svg'
 import useResponsive from 'common/styles/hooks/useResponsive'
-import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
+
+import { HOME_PATH } from 'modules/home/routes/paths'
 
 import LinkNavigates from '../LinkNavigates'
 // import LocationInput from '../LocationInput'
@@ -13,7 +16,7 @@ import MobileMenuBar from '../MobileMenuBar'
 import SearchInput from '../SearchInput'
 import ViewGroupSelector from '../ViewGroupSelector'
 
-import { NavTemplate, NavWrapper, NavContainer, SearchContainer } from './styled'
+import { NavTemplate, NavWrapper, NavContainer, SearchContainer, Logo } from './styled'
 
 const NavigationBar = () => {
 	const { isDesktop } = useResponsive()
@@ -23,7 +26,9 @@ const NavigationBar = () => {
 			<NavWrapper>
 				<NavContainer>
 					<Gap $alignCenter $size={spaces(20)} $responsive>
-						<Text size={fontSizes(20)}>Di Planis</Text>
+						<Link to={HOME_PATH}>
+							<Logo src={DiPlanistraLogo} />
+						</Link>
 						{isDesktop && (
 							<SearchContainer $size={spaces(10)} $justifyCenter>
 								<ViewGroupSelector />

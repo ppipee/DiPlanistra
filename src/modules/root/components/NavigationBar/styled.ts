@@ -8,6 +8,8 @@ import spaces from 'common/styles/mixins/spaces'
 import ZIndexes from 'common/styles/mixins/zIndexes'
 import { media } from 'common/styles/utils/viewport'
 
+const LOGO_HEIGHT = '22px'
+
 export const NavTemplate = styled.div`
 	width: 100%;
 	height: ${NAV_HEIGHT};
@@ -31,4 +33,8 @@ export const NavContainer = styled(ContentContainer)`
 
 export const SearchContainer = styled(Gap)`
 	flex: 1;
+`
+
+export const Logo = styled.img`
+	height: ${LOGO_HEIGHT};
 `
