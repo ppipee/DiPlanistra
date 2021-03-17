@@ -4,7 +4,7 @@ import { CONTENT_WIDTH, MEDIUM_CONTENT_WIDTH } from 'common/components/ContentCo
 import { white } from 'common/styles/colors'
 import { media } from 'common/styles/utils/viewport'
 
-import Tabs from 'modules/place/components/FavoriteTabs'
+import Tabs from 'modules/place/components/DomainTabs'
 
 export const FavoriteTabs = styled(Tabs)`
 	background-color: ${white};

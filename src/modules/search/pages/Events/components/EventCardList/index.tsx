@@ -8,6 +8,7 @@ import Gap from 'common/components/Gap'
 import Text from 'common/components/Text'
 import { gray } from 'common/styles/colors'
 import useResponsive from 'common/styles/hooks/useResponsive'
+import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
 
 import useMountEvents from 'modules/search/hooks/useMountEvents'
@@ -26,7 +27,7 @@ const EventCardList = () => {
 
 	if (isEmpty(events)) {
 		return (
-			<Text as="div" color={gray[500]} textAlign="center">
+			<Text as="div" className="margin-top-48" color={gray[500]} textAlign="center" size={fontSizes(24)}>
 				{I18n.t(EVENT_EMPTY)}
 			</Text>
 		)

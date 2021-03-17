@@ -8,6 +8,7 @@ import Gap from 'common/components/Gap'
 import Text from 'common/components/Text'
 import LinkToTrip from 'common/components/url/LinkToTrip'
 import { gray } from 'common/styles/colors'
+import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
 
 import useMountTrips from 'modules/search/hooks/useMountTrips'
@@ -25,7 +26,7 @@ const TripCardList = () => {
 
 	if (isEmpty(trips)) {
 		return (
-			<Text as="div" color={gray[500]} textAlign="center">
+			<Text as="div" className="margin-top-48" color={gray[500]} textAlign="center" size={fontSizes(24)}>
 				{I18n.t(EMPTY_TRIP)}
 			</Text>
 		)

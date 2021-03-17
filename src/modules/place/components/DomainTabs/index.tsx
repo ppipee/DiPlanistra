@@ -6,6 +6,7 @@ import CameraIcon from 'common/components/icons/CameraIcon'
 import EventIcon from 'common/components/icons/EventIcon'
 import FoodIcon from 'common/components/icons/FoodIcon'
 import HotelIcon from 'common/components/icons/HotelIcon'
+import PlanIcon from 'common/components/icons/PlanIcon'
 import Text from 'common/components/Text'
 import { DomainValue } from 'common/constants/business'
 import { gray } from 'common/styles/colors'
@@ -16,9 +17,11 @@ const ICON_SIZE = 24
 
 interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'defaultValue'> {
 	children: ReactNode
+	domain?: DomainValue
+	showTrip?: boolean
 }
 
-const FavoriteTab = ({ children, ...props }: Props) => {
+const DomainTabs = ({ children, domain, showTrip, ...props }: Props) => {
 	const tabs = [
 		{
 			tab: (
@@ -58,11 +61,31 @@ const FavoriteTab = ({ children, ...props }: Props) => {
 		},
 	]
 
+	if (showTrip) {
+		tabs.push({
+			tab: (
+				<Gap $size={spaces(4)} $alignCenter>
+					<PlanIcon size={ICON_SIZE} color={gray[700]} />
+					<Text size={fontSizes(16)}>Trip</Text>
+				</Gap>
+			),
+			value: DomainValue.TRIP,
+		})
+	}
+
+	const domainMapper = {
+		[DomainValue.ATTRACTION]: 0,
+		[DomainValue.HOTEL]: 1,
+		[DomainValue.FOOD]: 2,
+		[DomainValue.EVENT]: 3,
+		[DomainValue.TRIP]: 4,
+	}
+
 	return (
-		<TabsProvider tabs={tabs} {...props}>
+		<TabsProvider tabs={tabs} defaultValue={domainMapper[domain]} {...props}>
 			{children}
 		</TabsProvider>
 	)
 }
 
-export default FavoriteTab
+export default DomainTabs

@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { range } from 'lodash'
-
 import Gap from 'common/components/Gap'
 import ResponsiveBlock from 'common/components/ResponsiveBlock'
 import spaces from 'common/styles/mixins/spaces'
@@ -27,17 +25,5 @@ const PlaceCardLoading = ({ isHighlight }: Props) => {
 		</PlaceCardContainer>
 	)
 }
-
-export const PlaceCardsLoading = () => (
-	<>
-		{range(3).map((i) => (
-			<>
-				<PlaceCardLoading key={`place-card-${i}-0`} isHighlight />
-				<PlaceCardLoading key={`place-card-${i}-1`} isHighlight />
-				<PlaceCardLoading key={`place-card-${i}-2`} />
-			</>
-		))}
-	</>
-)
 
 export default PlaceCardLoading
