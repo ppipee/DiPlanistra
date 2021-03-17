@@ -16,6 +16,7 @@ import spaces from 'common/styles/mixins/spaces'
 import FavoriteStoreConfig from 'modules/place/stores/FavoriteStore'
 import ActivityDesktopEditor from 'modules/trip/components/editor/ActivityDesktopEditor'
 import ActivityMobileEditor from 'modules/trip/components/editor/ActivityMobileEditor'
+import PlannerBottomBar from 'modules/trip/components/PlannerBottomBar'
 import PlannerCover from 'modules/trip/components/PlannerCover'
 import PlannerList from 'modules/trip/components/PlannerList'
 import DesktopPlannerSettingComponent from 'modules/trip/components/setting/DesktopPlannerSetting/component'
@@ -70,7 +71,7 @@ const PlannerPageComponent = () => {
 						<MainContainer $padding={`0 ${spaces(32)}`} $paddingMobile={`0 ${spaces(16)}`}>
 							<PlannerList />
 						</MainContainer>
-						{isDesktop && (
+						{isDesktop ? (
 							<SubContainer>
 								<Gap $size={spaces(16)} $type="vertical" $justifyContent="space-between" $responsive>
 									{showActivityEditor && <ActivityDesktopEditor />}
@@ -81,6 +82,8 @@ const PlannerPageComponent = () => {
 									</Block>
 								</Gap>
 							</SubContainer>
+						) : (
+							<PlannerBottomBar />
 						)}
 					</Gap>
 				</ContentContainer>

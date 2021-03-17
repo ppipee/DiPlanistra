@@ -8,6 +8,7 @@ import Gap from 'common/components/Gap'
 import useToggle from 'common/hooks/useToggle'
 import spaces from 'common/styles/mixins/spaces'
 
+import { PlannerState } from 'modules/trip/constants'
 import usePlannerActivities from 'modules/trip/hooks/usePlannerActivities'
 import { usePlannerStore } from 'modules/trip/stores/PlannerStore/context'
 import { PlannerInfo } from 'modules/trip/types/planner'
@@ -26,10 +27,11 @@ type Props = {
 
 const DayList = ({ planner }: Props) => {
 	const activities = usePlannerActivities(planner.day)
-	const { setPlannerDay, plannerDay, mode } = usePlannerStore((store) => ({
+	const { setPlannerDay, plannerDay, mode, state } = usePlannerStore((store) => ({
 		plannerDay: store.plannerDay,
 		mode: store.mode,
 		setPlannerDay: store.setPlannerDay,
+		state: store.planner.state,
 	}))
 
 	const { isOpen, toggle } = useToggle()
@@ -41,6 +43,10 @@ const DayList = ({ planner }: Props) => {
 		: [isOpen, toggle]
 
 	const ActivityCardsContainer = (isEditMode ? EditorContainer : ViewerContainer) as ComponentType
+
+	if (isEmpty(planner.activities) && state === PlannerState.Travel) {
+		return null
+	}
 
 	return (
 		<Gap $type="vertical" $size={spaces(16)}>
