@@ -10,3 +10,10 @@ export const DEFAULT_PLANNER_INFO: PlannerInfo = {
 }
 
 export const DEFAULT_PLANNER_MODE = PlannerMode.View
+
+export const PlannerState = {
+	Plan: 1,
+	Travel: 2,
+} as const
+
+export type PlannerState = typeof PlannerState[keyof typeof PlannerState]

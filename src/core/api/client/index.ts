@@ -1,4 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
+import { cacheAdapterEnhancer } from 'axios-extensions'
+import { isNil } from 'lodash'
 
 import { RequestType } from 'core/api/constants'
 import { ClientConfig, RequestConfig } from 'core/api/types'
@@ -39,6 +41,7 @@ class APIClient {
 		params,
 		path,
 		retryTimes,
+		cacheEnabled,
 		type = RequestType.Json,
 	}: RequestConfig<Headers, Body, Params>) {
 		const request: AxiosRequestConfig = {
@@ -51,6 +54,12 @@ class APIClient {
 				...params,
 			},
 			url: path,
+		}
+
+		if (!isNil(cacheEnabled)) {
+			request.adapter = cacheAdapterEnhancer(request.adapter || axios.defaults.adapter, {
+				enabledByDefault: cacheEnabled,
+			})
 		}
 
 		if (verifyUpdatingRequirement(method, request)) {

@@ -4,6 +4,8 @@ import { BasicPhoto } from 'common/types/wongnai/image'
 import { AttractionInformation, Category, Domain, WorkingHourStatus } from 'modules/place/types/place'
 import { BaseUser } from 'modules/user/types'
 
+import { PlannerState } from '../constants'
+
 export interface InitPlanner {
 	name: string
 	startDate: Date
@@ -25,6 +27,7 @@ export interface Planner extends InitPlanner {
 	isBookmark: boolean
 	numberOfViews: number
 	numberOfBookmarks: number
+	state: PlannerState
 }
 
 export interface PlannerPreview extends Omit<Planner, 'planners'> {

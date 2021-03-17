@@ -12,6 +12,7 @@ import spaces from 'common/styles/mixins/spaces'
 
 import PlannerList from 'modules/trip/components/PlannerList'
 import TripHeader from 'modules/trip/components/TripHeader'
+import useAnalyzePlannerState from 'modules/trip/hooks/useAnalyzePlannerState'
 import ActivityStoreConfig from 'modules/trip/stores/ActivityStore'
 import PlannerApiStoreConfig from 'modules/trip/stores/PlannerApiStore'
 import { usePlannerApiStore } from 'modules/trip/stores/PlannerApiStore/context'
@@ -19,14 +20,17 @@ import PlannerStoreConfig from 'modules/trip/stores/PlannerStore'
 import TripStoreConfig from 'modules/trip/stores/TripStore'
 
 const TripPageComponent = () => {
-	const { isLoading, isPlannerUpdating } = usePlannerApiStore((store) => ({
+	useAnalyzePlannerState()
+
+	const { isLoading, isPlannerUpdating, planner } = usePlannerApiStore((store) => ({
 		isLoading: store.isLoading || store.isFresh,
 		isPlannerUpdating: store.isActionLoading['updatePlanner'],
+		planner: store.planner,
 	}))
 
 	const isModalLoading = isPlannerUpdating
 
-	if (isLoading) return null
+	if (isLoading || !planner) return null
 
 	return (
 		<>

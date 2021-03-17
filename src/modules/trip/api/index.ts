@@ -13,6 +13,7 @@ export const getPlanners = () =>
 
 export const getPlanner = (plannerId: string) =>
 	apiClient.fetch<Planner>({
+		cacheEnabled: false,
 		method: 'get',
 		path: plannerEndpoints.planner(plannerId),
 	})

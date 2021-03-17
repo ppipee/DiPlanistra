@@ -21,8 +21,10 @@ import PlannerList from 'modules/trip/components/PlannerList'
 import DesktopPlannerSettingComponent from 'modules/trip/components/setting/DesktopPlannerSetting/component'
 import MobilePlannerSetting from 'modules/trip/components/setting/MobilePlannerSetting'
 import TripOverviewButton from 'modules/trip/components/TripOverviewButton'
+import useAnalyzePlannerState from 'modules/trip/hooks/useAnalyzePlannerState'
 import useDeleteActivity from 'modules/trip/hooks/useDeleteActivity'
 import useUpdateActivity from 'modules/trip/hooks/useUpdateActivity'
+import useUpdatePlannerState from 'modules/trip/hooks/useUpdatePlannerState'
 import ActivityStoreConfig from 'modules/trip/stores/ActivityStore'
 import { useActivityStore } from 'modules/trip/stores/ActivityStore/context'
 import PlannerApiStoreConfig from 'modules/trip/stores/PlannerApiStore'
@@ -34,6 +36,8 @@ import PlannerStoreConfig from 'modules/trip/stores/PlannerStore'
 import { MainContainer, SubContainer, ButtonContainer } from './styled'
 
 const PlannerPageComponent = () => {
+	useAnalyzePlannerState()
+
 	const { isDesktop } = useResponsive()
 	const { plannerId } = useParams<Params>()
 
@@ -48,8 +52,9 @@ const PlannerPageComponent = () => {
 
 	const { isLoading: isActivityUpdating } = useUpdateActivity()
 	const { isLoading: isActivityDeleting } = useDeleteActivity()
+	const { isLoading: isStateUpdating } = useUpdatePlannerState()
 
-	const isModalLoading = isActivityUpdating || isActivityDeleting
+	const isModalLoading = isActivityUpdating || isActivityDeleting || isStateUpdating
 
 	useEffect(() => {
 		getPlanner(plannerId)

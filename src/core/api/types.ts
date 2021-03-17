@@ -23,6 +23,7 @@ export interface RequestConfig<Headers extends object, Body extends object, Para
 	params?: Params
 	retryTimes?: number
 	type?: RequestType
+	cacheEnabled?: boolean
 }
 
 export type APIClientMiddlewareConfig = Omit<ClientConfig, 'locale'>
