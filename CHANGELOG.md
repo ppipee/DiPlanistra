@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.2](https://github.com/ppipee/di-planistra/compare/v1.4.1...v1.4.2) (2021-03-17)
+
+
+### Features
+
+* add planner state ([749290d](https://github.com/ppipee/di-planistra/commit/749290dd667639450b53231718f6c51605671e64))
+* add trip overview mobile ([3ac6eec](https://github.com/ppipee/di-planistra/commit/3ac6eec12be2f0ab694fc63ebc01ba3dca366946))
+
+
+### Bug Fixes
+
+* improve ux and perf ([612e4a3](https://github.com/ppipee/di-planistra/commit/612e4a37615ef5d56589167df028f7c3a140ec35))
+
 ### [1.4.1](https://github.com/ppipee/di-planistra/compare/v1.4.0...v1.4.1) (2021-03-16)
 
 
