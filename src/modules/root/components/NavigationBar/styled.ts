@@ -37,4 +37,5 @@ export const SearchContainer = styled(Gap)`
 
 export const Logo = styled.img`
 	height: ${LOGO_HEIGHT};
+	display: block;
 `

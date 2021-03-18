@@ -8,7 +8,6 @@ import Gap from 'common/components/Gap'
 import Text from 'common/components/Text'
 import { gray, green, red } from 'common/styles/colors'
 import useFontSizeResponsive from 'common/styles/hooks/useFontSizeResponsive'
-import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
 
 import { CLOSED_STATUS, OPENED_STATUS } from 'modules/place/locale'
@@ -25,7 +24,6 @@ type Props = {
 
 const PlaceHeader = ({ place }: Props) => {
 	const I18n = useI18n()
-	const { isDesktop } = useResponsive()
 	const { highlightSize, detailSize, titleSize } = useFontSizeResponsive()
 
 	const workingHourStatus = place.workingHoursStatus?.open
@@ -35,7 +33,7 @@ const PlaceHeader = ({ place }: Props) => {
 
 	return (
 		<div>
-			{coverPhoto && isDesktop && <CoverPhoto src={coverPhoto} loading="lazy" />}
+			{coverPhoto && <CoverPhoto src={coverPhoto} loading="lazy" />}
 			<Container>
 				<Gap $size={spaces(8)}>
 					<Gap $size={spaces(8)} $type="vertical" $responsive>

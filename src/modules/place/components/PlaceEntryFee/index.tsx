@@ -21,11 +21,12 @@ const PlaceEntryFee = () => {
 	const I18n = useI18n()
 	const { titleSize, detailSize } = useFontSizeResponsive()
 	const place = usePlaceStore((store) => store.place)
-
 	const entryFee = place.attractionInformation?.entryFee
-	const currency = convertCurrency(entryFee.currency) ? I18n.t(convertCurrency(entryFee.currency)) : entryFee.currency
 
 	if (!entryFee) return null
+
+	const currency = convertCurrency(entryFee.currency) ? I18n.t(convertCurrency(entryFee.currency)) : entryFee.currency
+
 	return (
 		<ResponsiveBlock $padding={spaces(16)} $paddingMobile={spaces(12)}>
 			<Gap $type="vertical" $size={spaces(8)}>

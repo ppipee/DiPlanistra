@@ -21,4 +21,8 @@ export const CoverPhoto = styled.img`
 	width: 100%;
 	height: ${PHOTO_COVER_HEIGHT};
 	object-fit: cover;
+
+	${media.md`
+		height: 100vw;
+	`}
 `
