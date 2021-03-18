@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.3](https://github.com/ppipee/di-planistra/compare/v1.4.2...v1.4.3) (2021-03-18)
+
+
+### Features
+
+* add domain tab for mobile search ([6e1c8dc](https://github.com/ppipee/di-planistra/commit/6e1c8dcdcab15aee142122d484949a901dc29b0a))
+* add filter modal and fix bug checkbox ([847cc6e](https://github.com/ppipee/di-planistra/commit/847cc6e8da42c504aa608ceff7b9cffafc3adb4f))
+* add mobile search and improve ui ([98eaa90](https://github.com/ppipee/di-planistra/commit/98eaa90b0ca43f335c11bdd3eab2f6df951ba7a1))
+* add trip tabs and add query to fav tab ([062fdbd](https://github.com/ppipee/di-planistra/commit/062fdbd0f44d53991acf1594d36ae5dbdc724464))
+
+
+### Bug Fixes
+
+* fix currency is undefined ([8dcbfdd](https://github.com/ppipee/di-planistra/commit/8dcbfdd071b3f2846c4911ba5d3e18712b20762d))
+
 ### [1.4.2](https://github.com/ppipee/di-planistra/compare/v1.4.1...v1.4.2) (2021-03-17)
 
 
