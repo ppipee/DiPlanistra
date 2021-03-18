@@ -5,14 +5,16 @@ import { Link } from 'react-router-dom'
 import Gap from 'common/components/Gap'
 import DiPlanistraLogo from 'common/images/di-planistra-logo.svg'
 import useResponsive from 'common/styles/hooks/useResponsive'
-import spaces from 'common/styles/mixins/spaces'
+import { Spaces } from 'common/styles/mixins/spaces'
 
 import { HOME_PATH } from 'modules/home/routes/paths'
+import { useMobileSearchInputStore } from 'modules/search/stores/MobileSearchInputStore/context'
 
+import DomainSelector from '../DomainSelector'
 import LinkNavigates from '../LinkNavigates'
-// import LocationInput from '../LocationInput'
 import MenuAccount from '../MenuAccount'
 import MobileMenuBar from '../MobileMenuBar'
+import MobileSearch from '../MobileSearch'
 import SearchInput from '../SearchInput'
 import ViewGroupSelector from '../ViewGroupSelector'
 
@@ -20,19 +22,23 @@ import { NavTemplate, NavWrapper, NavContainer, SearchContainer, Logo } from './
 
 const NavigationBar = () => {
 	const { isDesktop } = useResponsive()
+	const isMobileSearchOpen = useMobileSearchInputStore((store) => store.isOpen)
 
 	return (
 		<>
 			<NavWrapper>
 				<NavContainer>
-					<Gap $alignCenter $size={spaces(20)} $responsive>
+					<Gap $alignCenter $size={isDesktop ? Spaces[20] : Spaces[8]} $responsive>
 						<Link to={HOME_PATH}>
 							<Logo src={DiPlanistraLogo} />
 						</Link>
 						{isDesktop && (
-							<SearchContainer $size={spaces(10)} $justifyCenter>
+							<SearchContainer $size={Spaces[10]} $justifyCenter>
 								<ViewGroupSelector />
-								<SearchInput />
+								<Gap $size={Spaces[2]}>
+									<DomainSelector />
+									<SearchInput />
+								</Gap>
 							</SearchContainer>
 						)}
 						<LinkNavigates />
@@ -41,6 +47,7 @@ const NavigationBar = () => {
 				</NavContainer>
 			</NavWrapper>
 			<NavTemplate />
+			{!isDesktop && isMobileSearchOpen && <MobileSearch />}
 		</>
 	)
 }

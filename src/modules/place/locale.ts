@@ -4,6 +4,12 @@ export const HOTEL = ['ที่พัก', 'Hotel']
 export const TRIP = ['ทริป', 'Trip']
 export const EVENT = ['อีเว้นต์', 'Event']
 
+export const ATTRACTION_TITLE = ['สถานที่ท่องเที่ยว', 'Attraction']
+export const FOOD_TITLE = ['ร้านอาหาร', 'Food']
+export const HOTEL_TITLE = ['ที่พัก', 'Hotel']
+export const TRIP_TITLE = ['ทริป', 'Trip']
+export const EVENT_TITLE = ['งานอีเว้นต์', 'Event']
+
 export const REVIEW_UNIT = [
 	'{review} รีวิว',
 	`{review} {review,plural,

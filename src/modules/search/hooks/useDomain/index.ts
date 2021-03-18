@@ -20,7 +20,7 @@ export default function useDomain() {
 				targetUrl = EVENTS_ROUTE
 			}
 
-			passQuery({ params: { domain: domainValue }, targetUrl, withOldQuery: false })
+			passQuery({ params: { domain: domainValue }, targetUrl, without: ['categories', 'rating', 'distance'] })
 		},
 		[passQuery],
 	)

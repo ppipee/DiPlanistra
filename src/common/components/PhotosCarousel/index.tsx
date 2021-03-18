@@ -34,7 +34,7 @@ const PhotosCarousel = ({ places, defaultIndex = 0, ...props }: Props) => {
 				{places.map((place, index) => (
 					<div key={index}>
 						<LinkToPlace placeId={place.publicId}>
-							<PhotoWrapper src={place.defaultPhoto.largeUrl} loading="lazy" />
+							<PhotoWrapper src={place.defaultPhoto.largeUrl} />
 						</LinkToPlace>
 					</div>
 				))}

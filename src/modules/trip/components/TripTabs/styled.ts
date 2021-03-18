@@ -12,7 +12,7 @@ export const Tabs = styled(TabsProvider)`
 	margin-bottom: ${Spaces[32]};
 
 	${media.md`
-	  margin-bottom: ${Spaces[24]};
+	  margin-bottom: ${Spaces[16]};
   `}
 
 	& > div {

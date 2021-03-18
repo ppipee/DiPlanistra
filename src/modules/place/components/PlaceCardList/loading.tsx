@@ -8,9 +8,9 @@ const PlaceCardListLoading = () => (
 	<>
 		{range(3).map((i) => (
 			<>
-				<PlaceCardLoading key={`place-card-${i}-0`} isHighlight />
-				<PlaceCardLoading key={`place-card-${i}-1`} isHighlight />
-				<PlaceCardLoading key={`place-card-${i}-2`} />
+				<PlaceCardLoading key={`place-card-loading-${3 * i + 1}`} isHighlight />
+				<PlaceCardLoading key={`place-card-loading-${3 * i + 2}`} isHighlight />
+				<PlaceCardLoading key={`place-card-loading-${3 * i + 3}`} />
 			</>
 		))}
 	</>

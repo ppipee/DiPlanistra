@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 
-import { white } from 'common/styles/colors'
+import { gray, white } from 'common/styles/colors'
 import Borders from 'common/styles/mixins/borders'
 import getColorWithAlpha from 'common/styles/utils/getColorWithAlpha'
 
-export const InputWrapper = styled.div`
+export const DesktopInputWrapper = styled.div`
 	input {
 		color: ${white};
 		border-color: transparent;
@@ -13,22 +13,9 @@ export const InputWrapper = styled.div`
 	}
 `
 
-const DROP_DOWN_WIDTH = '140px'
-
-export const DropDownWrapper = styled.div`
-	width: ${DROP_DOWN_WIDTH};
-	& > div {
-		color: ${white};
-
-		& > :first-child {
-			background-color: ${getColorWithAlpha(white, 0.3)};
-			border-color: transparent;
-			border-top-right-radius: 0px;
-			border-bottom-right-radius: 0px;
-		}
-	}
-
-	svg {
-		color: ${white} !important;
+export const MobileInputWrapper = styled.div`
+	input {
+		border-radius: ${Borders.Normal};
+		border: 1px solid ${gray[200]};
 	}
 `

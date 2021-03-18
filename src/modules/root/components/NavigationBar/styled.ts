@@ -17,6 +17,8 @@ export const NavTemplate = styled.div`
 `
 export const NavWrapper = styled(NavTemplate)`
 	position: fixed;
+	top: 0;
+	left: 0;
 	z-index: ${ZIndexes.Nav};
 `
 

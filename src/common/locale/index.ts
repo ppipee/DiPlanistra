@@ -38,3 +38,5 @@ export const LOCALE_END_TIME = ['ถึง', 'End Time']
 
 export const LOCALE_EDIT = ['แก้ไข', 'Edit']
 export const LOCALE_ADD = ['เพิ่ม', 'Add']
+
+export const LOCALE_SEARCH = ['ค้นหา', 'Search']

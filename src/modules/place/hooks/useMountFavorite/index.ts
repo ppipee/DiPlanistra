@@ -18,7 +18,7 @@ export default function useMountFavorite(domain?: DomainValue) {
 	useEffect(() => {
 		if (domain) {
 			setDomain(domain)
-			passQuery({ params: { domain: String(domain) } })
+			passQuery({ params: { category: String(domain) } })
 		}
 	}, [domain, passQuery])
 

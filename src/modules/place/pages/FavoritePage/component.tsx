@@ -12,11 +12,11 @@ import FavoriteStoreConfig from 'modules/place/stores/FavoriteStore'
 import { FavoriteTabs } from './styled'
 
 const FavoritePlacesPageComponent = () => {
-	const { domain } = useQuery()
+	const { category } = useQuery()
 
 	return (
 		<div>
-			<FavoriteTabs domain={Number(domain) || DomainValue.ATTRACTION}>
+			<FavoriteTabs domain={Number(category) || DomainValue.ATTRACTION}>
 				<FavoriteCardList />
 			</FavoriteTabs>
 		</div>

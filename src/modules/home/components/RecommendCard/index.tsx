@@ -16,7 +16,7 @@ const RecommendCard = ({ place }: Props) => (
 	<CardContainer $variant={Shadow.Hard}>
 		<CardImage src={place.defaultPhoto.smallUrl} />
 		<CardDetailWrapper>
-			<PlaceDetailCard place={place as ActivityPlace & PlacePreview} />
+			<PlaceDetailCard place={place as ActivityPlace & PlacePreview} hideEntryFee />
 		</CardDetailWrapper>
 	</CardContainer>
 )

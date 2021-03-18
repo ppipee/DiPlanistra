@@ -1,5 +1,6 @@
 import { useCallback } from 'react'
 
+import { omit } from 'lodash'
 import { useHistory } from 'react-router-dom'
 
 import useQuery from 'core/router/hooks/useQuery'
@@ -10,6 +11,7 @@ interface PassQueryProps {
 	params: Record<string, string | number | boolean | (string | number | boolean)[]>
 	targetUrl?: string
 	withOldQuery?: boolean
+	without?: string[]
 }
 
 export default function usePassQuery() {
@@ -17,8 +19,12 @@ export default function usePassQuery() {
 	const history = useHistory()
 
 	const passQuery = useCallback(
-		({ params, targetUrl, withOldQuery = true }: PassQueryProps) => {
-			const newQuery = withOldQuery ? { ...query, ...params } : params
+		({ params, targetUrl, withOldQuery = true, without }: PassQueryProps) => {
+			let newQuery = withOldQuery ? { ...query, ...params } : params
+
+			if (without) {
+				newQuery = omit(newQuery, without)
+			}
 
 			const url = buildUrlWithParams(targetUrl || history.location.pathname, newQuery)
 

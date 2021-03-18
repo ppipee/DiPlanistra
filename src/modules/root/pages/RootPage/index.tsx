@@ -11,6 +11,7 @@ import FavoritePlaceStoreConfig from 'modules/place/stores/FavoritePlaceStore'
 import Footer from 'modules/root/components/Footer'
 import GlobalStyles from 'modules/root/components/GlobalStyles'
 import NavigationBar from 'modules/root/components/NavigationBar'
+import MobileSearchInputStoreConfig from 'modules/search/stores/MobileSearchInputStore'
 import UserStoreConfig from 'modules/user/stores/UserStore'
 
 import { RootContainer, MainContainer } from './styled'
@@ -30,5 +31,6 @@ export default asRoute(RootPage, {
 		userStore: UserStoreConfig,
 		favoritePlaceStore: FavoritePlaceStoreConfig,
 		favoriteEventStore: FavoriteEventStoreConfig,
+		mobileSearchInputStore: MobileSearchInputStoreConfig,
 	},
 })

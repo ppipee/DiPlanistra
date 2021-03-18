@@ -13,7 +13,8 @@ export const Container = styled(ContentContainer)`
 	min-height: calc(100vh - ${NAV_HEIGHT} - ${FOOTER_HEIGHT} - ${TAB_HEIGHT});
 
 	${media.md`
-  	padding: ${spaces(8)} 0 ${spaces(16)};
+  	padding: 0 0 ${spaces(16)};
+		margin-top: ${spaces(4)};
   `}
 `
 

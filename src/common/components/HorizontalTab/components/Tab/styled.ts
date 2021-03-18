@@ -16,6 +16,7 @@ export const TabContainer = styled.div<TabStyleProps>`
 	position: relative;
 	transition: color 0.2s;
 	cursor: pointer;
+	user-select: none;
 
 	&:hover {
 		color: ${main[500]};
@@ -70,5 +71,6 @@ export const TabLine = styled.div<TabStyleProps>`
 `
 
 export const TabElement = styled(Flex)`
+	user-select: none;
 	height: 100%;
 `

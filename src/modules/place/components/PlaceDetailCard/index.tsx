@@ -12,6 +12,7 @@ import Rating from 'common/components/Rating'
 import Text from 'common/components/Text'
 import { KM } from 'common/locale'
 import { gray, green, red } from 'common/styles/colors'
+import useFontSizeResponsive from 'common/styles/hooks/useFontSizeResponsive'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
 import convertCurrency from 'common/utils/convertCurrency'
@@ -31,12 +32,14 @@ import { CardDetail, CardTitle } from './styled'
 type Props = {
 	place: PlacePreview & ActivityPlace
 	showDistance?: boolean
+	hideEntryFee?: boolean
 }
 
 const ICON_SIZE = 16
 
-const PlaceDetailCard = ({ place, showDistance }: Props) => {
+const PlaceDetailCard = ({ place, showDistance, hideEntryFee }: Props) => {
 	const I18n = useI18n()
+	const { detailSize, subDetailSize } = useFontSizeResponsive()
 
 	const {
 		name,
@@ -58,8 +61,8 @@ const PlaceDetailCard = ({ place, showDistance }: Props) => {
 		(convertCurrency(entryFee.currency) ? I18n.t(convertCurrency(entryFee.currency)) : entryFee.currency)
 	const reviewAndPriceRange = filterArrayExistingValue([
 		numberOfReviews ? `${I18n.t(REVIEW_UNIT, { review: numberOfReviews })}` : null,
-		entryFee ? `${I18n.t(ENTRY_FEE, { fee: entryFee.adult, currency })}` : null,
-	]).join(' | ')
+		entryFee && !hideEntryFee ? `${I18n.t(ENTRY_FEE, { fee: entryFee.adult, currency })}` : null,
+	]).join('  |  ')
 
 	const shopStatus = I18n.t(workingHoursStatus?.open ? OPENED_STATUS : CLOSED_STATUS)
 	const workingHour = !isEmpty(place.hours) && getWorkingHour(place.hours)
@@ -67,51 +70,51 @@ const PlaceDetailCard = ({ place, showDistance }: Props) => {
 	const distance = place.distance ? I18n.t(KM, { distance: convertDistanceToKM(place.distance) }) : null
 
 	return (
-		<CardDetail>
-			<Text as="div" size={fontSizes(14)}>
-				<Gap $size={spaces(8)} $type="vertical">
-					<Flex $justifyContent="space-between" $responsive>
-						<Flex $direction="column">
-							<CardTitle size={fontSizes(16)} ellipsis={2} margin={`0 ${spaces(4)} 0 0`}>
-								{displayName || name}
-							</CardTitle>
-							<Gap $size={spaces(4)} $alignCenter>
-								{rating && <Rating rating={rating} />}
-								{(numberOfReviews || entryFee) && <Text color={gray[700]}>{reviewAndPriceRange}</Text>}
-							</Gap>
-						</Flex>
-						<Gap $size={spaces(4)} $type="vertical">
-							<FavoritePlaceIcon isFavorite={place.isFavorite} publicId={place.publicId} domain={place.domain.value} />
-							{showDistance && distance && (
-								<Text size={fontSizes(12)} color={gray[700]} whiteSpace="nowrap">
-									{distance}
-								</Text>
-							)}
-						</Gap>
-					</Flex>
-					<div>
-						<Gap $size={spaces(8)} $alignCenter>
-							{workingHour && (
-								<Gap $size={spaces(4)} $alignCenter>
-									<ClockIcon size={ICON_SIZE} color={gray[700]} />
-									<span>{workingHour}</span>
-								</Gap>
-							)}
-							{workingHoursStatus && (
-								<Text size={fontSizes(14)} color={workingHoursStatus.open ? green[500] : red[500]}>
-									{shopStatus}
-								</Text>
-							)}
-						</Gap>
-						{categoryTags && (
-							<Gap $size={spaces(4)} $alignCenter>
-								<TagIcon size={ICON_SIZE} color={gray[700]} />
-								<Text ellipsis={1}>{categoryTags.join(', ')}</Text>
-							</Gap>
+		<CardDetail $size={spaces(8)} $type="vertical" $justifyContent="space-between">
+			<Flex $justifyContent="space-between" $responsive>
+				<Flex $direction="column">
+					<CardTitle size={detailSize} ellipsis={2} margin={`0 ${spaces(4)} 0 0`}>
+						{displayName || name}
+					</CardTitle>
+					<Gap $size={spaces(4)} $alignCenter $type="grid">
+						{rating && <Rating rating={rating} />}
+						{(numberOfReviews || entryFee) && (
+							<Text whiteSpace="pre" color={gray[700]}>
+								{reviewAndPriceRange}
+							</Text>
 						)}
-					</div>
+					</Gap>
+				</Flex>
+				<Gap $size={spaces(4)} $type="vertical">
+					<FavoritePlaceIcon isFavorite={place.isFavorite} publicId={place.publicId} domain={place.domain.value} />
+					{showDistance && distance && (
+						<Text size={fontSizes(12)} color={gray[700]} whiteSpace="nowrap">
+							{distance}
+						</Text>
+					)}
 				</Gap>
-			</Text>
+			</Flex>
+			<div>
+				<Gap $size={spaces(8)} $alignCenter>
+					{workingHour && (
+						<Gap $size={spaces(4)} $alignCenter>
+							<ClockIcon size={ICON_SIZE} color={gray[700]} />
+							<span>{workingHour}</span>
+						</Gap>
+					)}
+					{workingHoursStatus && (
+						<Text size={subDetailSize} color={workingHoursStatus.open ? green[500] : red[500]}>
+							{shopStatus}
+						</Text>
+					)}
+				</Gap>
+				{categoryTags && (
+					<Gap $size={spaces(4)} $alignCenter>
+						<TagIcon size={ICON_SIZE} color={gray[700]} />
+						<Text ellipsis={1}>{categoryTags.join(', ')}</Text>
+					</Gap>
+				)}
+			</div>
 		</CardDetail>
 	)
 }

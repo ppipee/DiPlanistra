@@ -8,6 +8,7 @@ import { DomainValue } from 'common/constants/business'
 import FavoriteEventStore from 'modules/event/stores/FavoriteEventStore/store'
 import { getFavorite } from 'modules/place/api'
 import FavoritePlaceStore from 'modules/place/stores/FavoritePlaceStore/store'
+import { DEFAULT_PLACE_DOMAIN } from 'modules/search/constants'
 
 type Stores = {
 	favoritePlaceStore: FavoritePlaceStore
@@ -16,7 +17,7 @@ type Stores = {
 
 class FavoriteStore extends FetchStateStore {
 	@observable
-	domain = DomainValue.ATTRACTION
+	domain = DEFAULT_PLACE_DOMAIN
 
 	@observable
 	favoritePlaceStore: FavoritePlaceStore
@@ -64,7 +65,7 @@ class FavoriteStore extends FetchStateStore {
 
 	@action
 	onUnMount() {
-		this.domain = DomainValue.ATTRACTION
+		this.domain = DEFAULT_PLACE_DOMAIN
 	}
 
 	@action.bound

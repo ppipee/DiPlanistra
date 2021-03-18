@@ -9,13 +9,14 @@ import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
 import filterArrayExistingValue from 'common/utils/filterArrayExistingValue'
 
-import { ATTRACTION, HOTEL, FOOD, TRIP } from 'modules/place/locale'
+import { ATTRACTION, HOTEL, FOOD, TRIP, EVENT } from 'modules/place/locale'
 import { LOCATION_SUFFIX_TEXT } from 'modules/search/locale'
 
 const PLACE_TITLE: Partial<Record<DomainValue, string[]>> = {
 	[DomainValue.ATTRACTION]: ATTRACTION,
 	[DomainValue.HOTEL]: HOTEL,
 	[DomainValue.FOOD]: FOOD,
+	[DomainValue.EVENT]: EVENT,
 	[DomainValue.TRIP]: TRIP,
 }
 

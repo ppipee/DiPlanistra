@@ -7,10 +7,10 @@ import useI18n from 'core/locale/hooks/useI18n'
 import useQuery from 'core/router/hooks/useQuery'
 import { Params } from 'core/router/types'
 
-import { DomainValue } from 'common/constants/business'
 import usePassQuery from 'common/hooks/usePassQuery'
 
 import { CATEGORY_TITLES_LOCALE } from 'modules/place/constants'
+import { DEFAULT_PLACE_DOMAIN } from 'modules/search/constants'
 
 import CategoriesModal from '../CategoriesModal'
 
@@ -20,7 +20,7 @@ type Props = {
 
 const PlaceCategoriesSelector = ({ onClose }: Props) => {
 	const I18n = useI18n()
-	const { domain = DomainValue.ATTRACTION } = useParams<Params>()
+	const { domain = DEFAULT_PLACE_DOMAIN } = useParams<Params>()
 
 	const passQuery = usePassQuery()
 	const { categories: query } = useQuery()

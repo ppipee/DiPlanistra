@@ -12,13 +12,14 @@ import DropDownItem from 'common/components/DropDown/components/DropDownItem'
 import MyLocationIcon from 'common/components/icons/MyLocationIcon'
 import usePassQuery from 'common/hooks/usePassQuery'
 import { red } from 'common/styles/colors'
+import useResponsive from 'common/styles/hooks/useResponsive'
 import isSearchPath from 'common/utils/url/isSearchPath'
 
 import { DEFAULT_REGIONS } from 'modules/search/constants'
 import { NEAR_BY_ME } from 'modules/search/locale'
 
 import { CITIES } from './constant'
-import { DropDownWrapper } from './styled'
+import { DropdownDesktopWrapper, DropdownMobileWrapper } from './styled'
 
 const NEAR_ME_VALUE = 0
 
@@ -29,6 +30,7 @@ const ViewGroupSelector = () => {
 	const location = useLocation()
 	const [city, setCity] = useState<string | number>(query.regions || DEFAULT_REGIONS)
 	const { latitude, longitude } = useGeolocation()
+	const { isDesktop } = useResponsive()
 
 	useEffect(() => {
 		if (!query.regions && isSearchPath(location.pathname)) {
@@ -45,9 +47,11 @@ const ViewGroupSelector = () => {
 		passQuery({ params: { ...oldQuery, ...valueQuery }, withOldQuery: false })
 	}
 
+	const Wrapper = isDesktop ? DropdownDesktopWrapper : DropdownMobileWrapper
+
 	return (
-		<DropDownWrapper>
-			<DropDown value={city} onChange={onViewGroupChange} withOutlined border="curve">
+		<Wrapper>
+			<DropDown value={city} onChange={onViewGroupChange} withOutlined border={isDesktop ? 'curve' : 'default'}>
 				{[
 					<DropDownItem key={0} value={NEAR_ME_VALUE} name={I18n.t(NEAR_BY_ME)}>
 						<MyLocationIcon color={red[500]} size={24} />
@@ -55,7 +59,7 @@ const ViewGroupSelector = () => {
 					...CITIES.map((city) => <DropDownItem key={city.id} value={city.id} name={city.name} />),
 				]}
 			</DropDown>
-		</DropDownWrapper>
+		</Wrapper>
 	)
 }
 
