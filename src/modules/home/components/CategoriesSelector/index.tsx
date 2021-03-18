@@ -5,8 +5,7 @@ import useI18n from 'core/locale/hooks/useI18n'
 import { DomainValue } from 'common/constants/business'
 
 import { useWelcomeStore } from 'modules/home/stores/WelcomeStore/context'
-
-import CategoriesModal from '../CategoriesModal'
+import CategoriesModal from 'modules/search/components/CategoriesModal'
 
 import { SELECT_FAVORITE_CATEGORY_TEXT } from './locale'
 

@@ -12,7 +12,7 @@ import { ListContainer, Container } from './styled'
 const FavoriteCardListLoading = () => {
 	return (
 		<Container>
-			<ResponsiveBlock $padding={spaces(24)} $paddingMobile={spaces(16)}>
+			<ResponsiveBlock $padding={spaces(24)} $paddingMobile="0">
 				<ListContainer>
 					{range(6).map((i) => (
 						<PlaceCardLoading isHighlight key={`place-card-${i}`} />

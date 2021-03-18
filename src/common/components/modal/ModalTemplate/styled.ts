@@ -16,7 +16,7 @@ export const BaseModalWrapper = styled(Position)<ModalProps>`
 	width: ${MODAL_WIDTH};
 	background: linear-gradient(to left, ${main[500]} 0%, ${green[500]} 100%);
 	padding-top: ${Spaces[10]};
-	border-radius: ${Borders.Big};
+	border-radius: ${Borders.Large};
 
 	${media.md`
   	border-radius: ${Borders.Large};

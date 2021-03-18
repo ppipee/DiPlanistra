@@ -13,17 +13,18 @@ import { Category } from 'modules/place/types/place'
 
 type Props = {
 	category: Category
+	hideAllValue?: boolean
 }
 
-const PlaceCategoryFilter = ({ category }: Props) => {
+const PlaceCategoryFilter = ({ category, hideAllValue }: Props) => {
 	const { categories: query } = useQuery()
 
-	const queries = !query ? [] : isArray(query) ? [...query] : [query]
+	const queries = !query ? [] : isArray(query) ? query : [query]
 
 	const categoriesQuery = useMemo(
 		() =>
 			queries.filter((query) =>
-				[category.id, ...category.categories.map((category) => category.id)]
+				[...(category?.id ? [category.id] : []), ...category.categories.map((category) => category.id)]
 					.map((category) => category.toString())
 					.includes(query),
 			),
@@ -42,7 +43,7 @@ const PlaceCategoryFilter = ({ category }: Props) => {
 		},
 		[passQuery, categoriesQuery],
 	)
-	const allValue = category.id.toString()
+	const allValue = hideAllValue ? null : category.id.toString()
 
 	const { onChange, checkboxValues } = useHandleCheckbox(categoriesQuery, [passCategories], allValue)
 
@@ -53,7 +54,7 @@ const PlaceCategoryFilter = ({ category }: Props) => {
 			key={`place-category-filter-${category.id}`}
 			onChange={onChange}
 			values={checkboxValues}
-			withAllSelector
+			withAllSelector={!hideAllValue}
 			allValue={allValue}
 			label={category.name}
 		>

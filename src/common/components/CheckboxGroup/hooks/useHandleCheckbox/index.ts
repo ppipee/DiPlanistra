@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 export default function useHandleCheckbox(
 	defaultValue: string[],
@@ -6,6 +6,16 @@ export default function useHandleCheckbox(
 	allValue?: string,
 ) {
 	const [checkboxValues, setValue] = useState(defaultValue)
+
+	useEffect(() => {
+		setValue(defaultValue)
+	}, [defaultValue])
+
+	useEffect(() => {
+		return () => {
+			setValue([])
+		}
+	}, [])
 
 	const handleCheckbox = useCallback(
 		(value: string, values: string[]) => {

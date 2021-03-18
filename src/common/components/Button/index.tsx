@@ -87,6 +87,10 @@ function applyBorderRadius({ $border = ButtonBorders.Default }: ButtonProps) {
 		return css`
 			border-radius: ${Borders.Curve};
 		`
+	} else if ($border === ButtonBorders.Circle) {
+		return css`
+			border-radius: ${Borders.Circle};
+		`
 	}
 
 	return css`

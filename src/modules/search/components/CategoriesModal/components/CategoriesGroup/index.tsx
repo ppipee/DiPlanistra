@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useMemo } from 'react'
 
 import { isEmpty } from 'lodash'
 
@@ -6,8 +6,8 @@ import Checkbox from 'common/components/Checkbox'
 import CheckboxGroup from 'common/components/CheckboxGroup'
 import useHandleCheckbox from 'common/components/CheckboxGroup/hooks/useHandleCheckbox'
 
-import { useCategoriesContext } from 'modules/home/components/CategoriesModal/context'
 import { Category } from 'modules/place/types/place'
+import { useCategoriesContext } from 'modules/search/components/CategoriesModal/context'
 
 type Props = {
 	category: Category
@@ -15,8 +15,15 @@ type Props = {
 
 const CategoriesGroup = ({ category }: Props) => {
 	const { categoriesSelected, selectCategory } = useCategoriesContext()
-	const categoriesQuery = categoriesSelected ? [...categoriesSelected] : []
-
+	const categoriesQuery = useMemo(
+		() =>
+			categoriesSelected.filter((query) =>
+				[...(category?.id ? [category.id] : []), ...category.categories.map((category) => category.id)]
+					.map((category) => category.toString())
+					.includes(query),
+			),
+		[categoriesSelected, category],
+	)
 	const allValue = category.id.toString()
 
 	const { onChange, checkboxValues } = useHandleCheckbox(categoriesQuery, [selectCategory], allValue)

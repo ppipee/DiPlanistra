@@ -28,7 +28,7 @@ const FavoriteCardList = () => {
 
 	return (
 		<Container>
-			<ResponsiveBlock $padding={spaces(24)} $paddingMobile={spaces(16)}>
+			<ResponsiveBlock $padding={spaces(24)} $paddingMobile="0">
 				<ListContainer>
 					{domain !== DomainValue.EVENT
 						? ((favorites as ActivityPlace[]) || []).map((favoritePlace) => (

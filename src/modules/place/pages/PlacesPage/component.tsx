@@ -13,8 +13,11 @@ import PlaceCardList from 'modules/place/components/PlaceCardList'
 import FavoritePlaceStoreConfig from 'modules/place/stores/FavoritePlaceStore'
 import DomainSelector from 'modules/search/components/DomainSelector'
 import DomainTabsMobile from 'modules/search/components/DomainTabsMobile'
+import PlaceCategoriesSelector from 'modules/search/components/PlaceCategoriesSelector'
 import PlacesFilter from 'modules/search/components/PlacesFilter'
 import SearchingText from 'modules/search/components/SearchingText'
+import CategoryModalStoreConfig from 'modules/search/stores/CategoryModalStore'
+import { useCategoryModalStore } from 'modules/search/stores/CategoryModalStore/context'
 import SearchPlaceStoreConfig from 'modules/search/stores/SearchPlaceStore'
 import { useSearchPlaceStore } from 'modules/search/stores/SearchPlaceStore/context'
 
@@ -26,6 +29,10 @@ const PlacesPageComponent = () => {
 	const { distance, domain, rating, categories, search, regions } = useQuery()
 	const { getPlaces } = useSearchPlaceStore((store) => ({
 		getPlaces: store.getPlaces,
+	}))
+	const { isCategoryModalOpen, closeCategoryModal } = useCategoryModalStore((store) => ({
+		isCategoryModalOpen: store.isOpen,
+		closeCategoryModal: store.close,
 	}))
 
 	useEffect(() => {
@@ -55,6 +62,7 @@ const PlacesPageComponent = () => {
 					{/* {isDesktop && <ContainerWrapper type="sub" />} */}
 				</Gap>
 			</DomainTabsMobile>
+			{isCategoryModalOpen && <PlaceCategoriesSelector onClose={closeCategoryModal} />}
 		</Container>
 	)
 }
@@ -63,5 +71,6 @@ export default asRoute(PlacesPageComponent, {
 	stores: {
 		searchPlaceStore: SearchPlaceStoreConfig,
 		favoritePlaceStore: FavoritePlaceStoreConfig,
+		categoryModalStore: CategoryModalStoreConfig,
 	},
 })

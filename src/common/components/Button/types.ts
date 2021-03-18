@@ -11,24 +11,25 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	$border?: BorderType
 }
 
-type SizeType = ButtonSizes | 'small' | 'default'
+type SizeType = typeof ButtonSizes[keyof typeof ButtonSizes]
 
-export enum ButtonSizes {
-	Small = 'small',
-	Default = 'default',
-}
+export const ButtonSizes = {
+	Small: 'small',
+	Default: 'default',
+} as const
 
-type VariantType = ButtonVariants | 'outlined' | 'filled' | 'text'
+type VariantType = typeof ButtonVariants[keyof typeof ButtonVariants]
 
-export enum ButtonVariants {
-	Outlined = 'outlined',
-	Filled = 'filled',
-	Text = 'text',
-}
+export const ButtonVariants = {
+	Outlined: 'outlined',
+	Filled: 'filled',
+	Text: 'text',
+} as const
 
-type BorderType = ButtonBorders | 'default' | 'curve'
+export const ButtonBorders = {
+	Default: 'default',
+	Curve: 'curve',
+	Circle: 'circle',
+} as const
 
-export enum ButtonBorders {
-	Default = 'default',
-	Curve = 'curve',
-}
+type BorderType = typeof ButtonBorders[keyof typeof ButtonBorders]
