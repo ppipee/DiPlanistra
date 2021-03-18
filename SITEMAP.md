@@ -20,7 +20,8 @@
 
 ##### Planner
 
-- /me/planners
+- /me/planners?trip=my-trips
+- /me/planners?trip=social-trips
 - /me/planners/:plannerId
 
 #### Favorite

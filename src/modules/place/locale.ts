@@ -52,3 +52,6 @@ export const ENTRY_FEE = [
 ]
 
 export const PLACE_EMPTY = ['ไม่เจอสถานที่ที่ค้นหา', 'Not found place']
+
+export const FAVORITE_PLACE_EMPTY = ['ไม่มีสถานที่ที่บันทึกไว้', 'Not found Favorite Place']
+export const FAVORITE_EVENT_EMPTY = ['ไม่มีอีเว้นต์ที่บันทึกไว้', 'Not found Favorite Event']

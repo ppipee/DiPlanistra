@@ -1,10 +1,12 @@
 import { useEffect } from 'react'
 
 import { DomainValue } from 'common/constants/business'
+import usePassQuery from 'common/hooks/usePassQuery'
 
 import { useFavoriteStore } from 'modules/place/stores/FavoriteStore/context'
 
 export default function useMountFavorite(domain?: DomainValue) {
+	const passQuery = usePassQuery()
 	const { getFavorite, setDomain, favorites, ...storeProps } = useFavoriteStore((store) => ({
 		getFavorite: store.getFavorite,
 		setDomain: store.setDomain,
@@ -16,8 +18,9 @@ export default function useMountFavorite(domain?: DomainValue) {
 	useEffect(() => {
 		if (domain) {
 			setDomain(domain)
+			passQuery({ params: { domain: String(domain) } })
 		}
-	}, [domain])
+	}, [domain, passQuery])
 
 	useEffect(() => {
 		if (!favorites) {

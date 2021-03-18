@@ -1,10 +1,9 @@
 import styled from 'styled-components'
 
 import Gap from 'common/components/Gap'
+import { TAB_HEIGHT } from 'common/components/HorizontalTab/constants'
 import { gray } from 'common/styles/colors'
 import spaces from 'common/styles/mixins/spaces'
-
-const TAB_HEIGHT = '44px'
 
 export const Container = styled(Gap)`
 	height: ${TAB_HEIGHT};

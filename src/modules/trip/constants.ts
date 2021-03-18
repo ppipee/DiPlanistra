@@ -17,3 +17,10 @@ export const PlannerState = {
 } as const
 
 export type PlannerState = typeof PlannerState[keyof typeof PlannerState]
+
+export const TripCategory = {
+	MyTrip: 'my-trips',
+	SocialTrip: 'social-trips',
+} as const
+
+export type TripCategory = typeof TripCategory[keyof typeof TripCategory]

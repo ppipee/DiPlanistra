@@ -1,13 +1,16 @@
 import styled from 'styled-components'
 
 import ContentContainer from 'common/components/ContentContainer'
+import { TAB_HEIGHT } from 'common/components/HorizontalTab/constants'
+import { FOOTER_HEIGHT, NAV_HEIGHT } from 'common/styles/constants'
 import spaces from 'common/styles/mixins/spaces'
 import { media } from 'common/styles/utils/viewport'
 
 export const Container = styled(ContentContainer)`
-	padding: ${spaces(8)} 0 ${spaces(24)};
+	margin: ${spaces(8)} auto ${spaces(24)};
 	display: flex;
 	align-items: stretch;
+	min-height: calc(100vh - ${NAV_HEIGHT} - ${FOOTER_HEIGHT} - ${TAB_HEIGHT});
 
 	${media.md`
   	padding: ${spaces(8)} 0 ${spaces(16)};

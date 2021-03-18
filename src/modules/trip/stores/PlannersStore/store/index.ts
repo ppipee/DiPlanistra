@@ -11,10 +11,6 @@ class PlannersStore extends FetchStateStore {
 	@observable
 	trips: PlannerPreview[]
 
-	async onMount() {
-		this.getTrips()
-	}
-
 	@action.bound
 	@loading
 	async getTrips() {
