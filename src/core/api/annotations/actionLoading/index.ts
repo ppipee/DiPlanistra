@@ -18,6 +18,7 @@ function actionLoading<Target extends FetchStateStore, Args extends any[]>(
 			return result
 		} catch (error) {
 			this.setError(error)
+			this.actionDone(methodName)
 
 			throw error
 		}

@@ -66,6 +66,7 @@ class ActivityStore {
 		this.placeId = activity.place.publicId
 		this.hour = activity.hour
 		this.memo = activity.memo
+		this.domain = activity.place.domain.value
 	}
 
 	@action.bound

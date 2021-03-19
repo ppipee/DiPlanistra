@@ -39,13 +39,13 @@ const PlaceSelector = (props: PlaceSelectorProps) => {
 	const { domain } = useDomainSelector()
 	const { isLoading, isFresh, favorites } = useMountFavorite(domain)
 
-	if (isLoading || isFresh) return null
+	if (isLoading || isFresh || !favorites) return null
 
 	const { placeSelectedIndex } = props
 
 	const placeSelected =
 		isNumber(placeSelectedIndex) && placeSelectedIndex >= 0
-			? (favorites[props.placeSelectedIndex] as ActivityPlace & EventPreview)
+			? (favorites[placeSelectedIndex] as ActivityPlace & EventPreview)
 			: null
 
 	return (
@@ -69,7 +69,7 @@ const PlaceSelector = (props: PlaceSelectorProps) => {
 			{isOpen && (
 				<Position $position="relative" $scale="full" $zIndex={ZIndexes.DropDown}>
 					<Collapse duration={0.2}>
-						<PlaceList close={close} places={favorites} domain={domain} {...props} />
+						<PlaceList close={close} places={favorites} {...props} />
 					</Collapse>
 				</Position>
 			)}

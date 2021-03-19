@@ -25,16 +25,14 @@ const TimePicker = ({ setTime, time, row = MAX_ROW }: Props) => {
 	const [hour, setHour] = useState<string | number>(defaultHour)
 
 	useEffect(() => {
-		if (minute && hour) {
+		if (minute && hour && (minute !== defaultMinute || hour !== defaultHour)) {
 			const newTime = time || new Date()
 
 			newTime.setHours(Number(hour))
 			newTime.setMinutes(Number(minute))
 			setTime(newTime)
-			setHour(null)
-			setMinute(null)
 		}
-	}, [time, minute, hour])
+	}, [time, minute, hour, defaultMinute, defaultHour])
 
 	return (
 		<Gap $size={spaces(4)} $alignCenter $responsive>

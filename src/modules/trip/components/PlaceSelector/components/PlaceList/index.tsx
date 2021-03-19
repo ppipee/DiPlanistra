@@ -2,7 +2,6 @@ import React, { useCallback } from 'react'
 
 import ClickableBlock from 'common/components/ClickableBlock'
 import SeparatorContainer from 'common/components/SeparatorContainer'
-import { DomainValue } from 'common/constants/business'
 import { gray } from 'common/styles/colors'
 
 import { EventPreview } from 'modules/event/types'
@@ -16,11 +15,10 @@ import { PlaceListContainer } from './styled'
 interface Props extends PlaceSelectorProps {
 	close: () => void
 	places: (ActivityPlace & EventPreview)[]
-	domain: DomainValue
 }
 
-const PlaceList = ({ placeSelectedIndex, places, domain, setPlace, close }: Props) => {
-	const selectPlace = useCallback((placeIndex) => {
+const PlaceList = ({ placeSelectedIndex, places, setPlace, close }: Props) => {
+	const selectPlace = useCallback((placeIndex: number) => {
 		setPlace(placeIndex)
 		close()
 	}, [])
@@ -29,7 +27,10 @@ const PlaceList = ({ placeSelectedIndex, places, domain, setPlace, close }: Prop
 		<PlaceListContainer>
 			<SeparatorContainer $color={gray[200]}>
 				{places.map((place, index) => (
-					<ClickableBlock onClick={() => selectPlace(index)} key={`place-selector-item-${place.id}`}>
+					<ClickableBlock
+						onClick={() => selectPlace(index)}
+						key={`place-selector-item-${place.publicId || place.eventId}`}
+					>
 						<PlaceItem place={place} isSelected={placeSelectedIndex === index} />
 					</ClickableBlock>
 				))}

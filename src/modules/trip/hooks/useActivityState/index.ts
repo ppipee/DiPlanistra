@@ -1,5 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 
+import { isNil } from 'lodash'
+
 import { DomainValue } from 'common/constants/business'
 import useOnChange from 'common/hooks/useOnChange'
 import setPrefixToDigi from 'common/utils/setPrefixToDigi'
@@ -57,25 +59,30 @@ export default function useActivityState() {
 
 	useEffect(() => {
 		if (!favoritePlaces) return
+
 		if (placeSelectedIndex === -1) {
-			const index = favoritePlaces.findIndex((place) => place.publicId === placeId || place.eventId === placeId)
+			const index = favoritePlaces.findIndex(
+				(place) => !isNil(placeId) && (place.publicId === placeId || place.eventId === placeId),
+			)
 
 			setPlaceIndex(index)
 			return
 		}
 
-		const placeSelected = favoritePlaces[placeSelectedIndex]
-
-		if (placeId !== placeSelected.eventId && domain === DomainValue.EVENT) {
+		if (placeId && domain === DomainValue.EVENT) {
 			const index = favoritePlaces.findIndex((place) => place.eventId === placeId)
 
 			setPlaceIndex(index)
-		} else if (placeId !== placeSelected.publicId && domain !== DomainValue.EVENT) {
+		} else if (placeId && domain !== DomainValue.EVENT) {
 			const index = favoritePlaces.findIndex((place) => place.publicId === placeId)
 
 			setPlaceIndex(index)
 		}
-	}, [placeId, favoritePlaces, domain])
+	}, [placeId, favoritePlaces, domain, placeSelectedIndex])
+
+	useEffect(() => {
+		setPlaceIndex(-1)
+	}, [domain])
 
 	return { setPlace, onMemoChange, setTime, placeSelectedIndex, ...activityInfo }
 }

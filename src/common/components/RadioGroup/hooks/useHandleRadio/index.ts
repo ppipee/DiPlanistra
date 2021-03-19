@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 
 export default function useHandleRadio(
 	defaultValue: string | number,
@@ -14,6 +14,10 @@ export default function useHandleRadio(
 		},
 		[...actions],
 	)
+
+	useEffect(() => {
+		setValue(defaultValue)
+	}, [defaultValue])
 
 	return { radioValue, setValue, onChange: handleRadio }
 }

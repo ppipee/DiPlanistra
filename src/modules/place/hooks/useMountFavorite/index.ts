@@ -24,9 +24,9 @@ export default function useMountFavorite(domain?: DomainValue) {
 
 	useEffect(() => {
 		if (!favorites) {
-			getFavorite()
+			getFavorite(domain)
 		}
-	}, [favorites])
+	}, [favorites, domain])
 
 	return { favorites, ...storeProps }
 }

@@ -2,7 +2,6 @@ import React from 'react'
 
 import useI18n from 'core/locale/hooks/useI18n'
 
-import Flex from 'common/components/Flex'
 import Gap from 'common/components/Gap'
 import IconBlock from 'common/components/IconBlock'
 import TagIcon from 'common/components/icons/TagIcon'
@@ -16,7 +15,7 @@ import { ENTRY_FEE } from 'modules/place/locale'
 import getCategoryTag from 'modules/place/utils/getCategoryTags'
 import { ActivityPlace } from 'modules/trip/types/planner'
 
-import { PlaceImage } from './styled'
+import { PlaceImage, DetailContainer } from './styled'
 
 type Props = {
 	place: ActivityPlace
@@ -31,15 +30,19 @@ const ActivityPlace = ({ place }: Props) => {
 	const { categories, defaultPhoto, rating, entryFee } = place
 
 	const categoryTags = getCategoryTag(categories)
-	const currency = convertCurrency(entryFee.currency) ? I18n.t(convertCurrency(entryFee.currency)) : entryFee.currency
+	const currency = !entryFee?.currency
+		? null
+		: convertCurrency(entryFee.currency)
+		? I18n.t(convertCurrency(entryFee.currency))
+		: entryFee.currency
 
 	return (
 		<Gap $size={spaces(10)} $responsive>
 			<PlaceImage src={defaultPhoto.smallUrl} loading="lazy" />
-			<Flex $direction="column" $justifyContent="space-between" $responsive>
+			<DetailContainer $direction="column" $justifyContent="space-between" $responsive>
 				<Gap $size={spaces(4)} $alignCenter $wrap="wrap">
 					{rating && <Rating rating={rating} />}
-					{entryFee && <Text color={gray[700]}>{I18n.t(ENTRY_FEE, { fee: entryFee.adult, currency })}</Text>}
+					{currency && <Text color={gray[700]}>{I18n.t(ENTRY_FEE, { fee: entryFee.adult, currency })}</Text>}
 				</Gap>
 				{categoryTags && (
 					<Gap $size={spaces(4)}>
@@ -47,7 +50,7 @@ const ActivityPlace = ({ place }: Props) => {
 						<Text color={gray[700]}>{categoryTags.join(', ')}</Text>
 					</Gap>
 				)}
-			</Flex>
+			</DetailContainer>
 		</Gap>
 	)
 }
