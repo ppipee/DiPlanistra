@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.5](https://github.com/ppipee/di-planistra/compare/v1.4.4...v1.4.5) (2021-03-19)
+
+
+### Bug Fixes
+
+* fix bug when planner ([187f5e1](https://github.com/ppipee/di-planistra/commit/187f5e17f3d34b7219e850647f6bddaaac834903))
+
 ### [1.4.4](https://github.com/ppipee/di-planistra/compare/v1.4.3...v1.4.4) (2021-03-19)
 
 
