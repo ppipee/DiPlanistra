@@ -7,8 +7,6 @@ import * as RangePickerPanelType from '.'
 
 describe('Test RangePickerPanel', () => {
 	const useDateRangeContextSpy = jest.fn()
-	const overlaySpy = jest.fn()
-	const closeSpy = jest.fn()
 
 	jest.doMock('common/components/DateRangePicker/context', () => ({
 		useDateRangeContext: useDateRangeContextSpy,
@@ -19,12 +17,6 @@ describe('Test RangePickerPanel', () => {
 	jest.doMock('common/components/Calendar', () => (props: Record<string, any>) => (
 		<div {...props}>{props.children}</div>
 	))
-
-	jest.doMock('common/components/Overlay', () => (props: Record<string, any>) => {
-		overlaySpy(props)
-
-		return <div {...props}>{props.children}</div>
-	})
 
 	jest.doMock(
 		'common/components/DateRangePicker/components/RangePickerPanelHeader',
@@ -49,21 +41,5 @@ describe('Test RangePickerPanel', () => {
 
 		expect(useDateRangeContextSpy).toBeCalledTimes(1)
 		expect(container.firstChild).toMatchSnapshot()
-	})
-
-	it('should close DatePicker if overlay was clicked', () => {
-		useDateRangeContextSpy.mockReturnValue({
-			date: {
-				startDate: new Date(2020, 1, 1),
-				endDate: new Date(2020, 1, 1),
-			},
-		})
-
-		render(<RangePickerPanel />)
-
-		overlaySpy.mock.calls[0][0].onClick()
-
-		expect(closeSpy).toBeCalledTimes(1)
-		expect(useDateRangeContextSpy).toBeCalledTimes(1)
 	})
 })

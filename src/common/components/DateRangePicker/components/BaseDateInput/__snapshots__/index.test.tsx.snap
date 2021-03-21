@@ -9,12 +9,12 @@ exports[`BaseDateInput should render DateInput correctly 1`] = `
     class="styled__InputWrapper-iKRicm ioa-drU"
   >
     <input
-      class="FieldStyle__FieldStyles-fbzgYj styled__InputFieldStyles-fynRSb jIwVBV hHCFEf"
+      class="FieldStyle__FieldStyles-fbzgYj styled__InputFieldStyles-fynRSb fShvzC MhRQv"
       color="#7D8391"
       readonly=""
     />
     <div
-      class="styled__PrefixWrapper-ldLkys hLPhqp"
+      class="styled__PrefixWrapper-ldLkys styled__SuffixWrapper-cEJSDX bdkLXA foDIev"
     >
       <svg
         fill="none"

@@ -22,11 +22,11 @@ exports[`Test CalendarCell should render CalendarCell with currentDate date vari
   -webkit-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
   cursor: pointer;
-  color: #00A600;
+  color: #329D9C;
 }
 
 .c1:hover {
-  background-color: #CEF4CE;
+  background-color: #7CC0C6;
 }
 
 .c0 {
@@ -74,7 +74,7 @@ exports[`Test CalendarCell should render CalendarCell with currentMonth variant 
 }
 
 .c1:hover {
-  background-color: #CEF4CE;
+  background-color: #7CC0C6;
 }
 
 .c0 {
@@ -122,7 +122,7 @@ exports[`Test CalendarCell should render CalendarCell with hover and inBetween s
 }
 
 .c1:hover {
-  background-color: #CEF4CE;
+  background-color: #7CC0C6;
 }
 
 .c0 {
@@ -138,7 +138,7 @@ exports[`Test CalendarCell should render CalendarCell with hover and inBetween s
   width: 100%;
   position: absolute;
   height: inherit;
-  background-color: #EEFBEE;
+  background-color: #BFE7DF;
 }
 
 <div
@@ -178,7 +178,7 @@ exports[`Test CalendarCell should render CalendarCell with hover styled for firs
 }
 
 .c1:hover {
-  background-color: #CEF4CE;
+  background-color: #7CC0C6;
 }
 
 .c0 {
@@ -194,7 +194,7 @@ exports[`Test CalendarCell should render CalendarCell with hover styled for firs
   width: 100%;
   position: absolute;
   height: inherit;
-  background-color: #EEFBEE;
+  background-color: #BFE7DF;
   border-radius: 4px 0 0 4px;
 }
 
@@ -235,7 +235,7 @@ exports[`Test CalendarCell should render CalendarCell with hover styled for last
 }
 
 .c1:hover {
-  background-color: #CEF4CE;
+  background-color: #7CC0C6;
 }
 
 .c0 {
@@ -251,7 +251,7 @@ exports[`Test CalendarCell should render CalendarCell with hover styled for last
   width: 100%;
   position: absolute;
   height: inherit;
-  background-color: #EEFBEE;
+  background-color: #BFE7DF;
   border-radius: 0 4px 4px 0;
   width: calc(100% - 8px);
 }
@@ -293,7 +293,7 @@ exports[`Test CalendarCell should render CalendarCell with null value 1`] = `
 }
 
 .c1:hover {
-  background-color: #CEF4CE;
+  background-color: #7CC0C6;
 }
 
 .c0 {
@@ -343,7 +343,7 @@ exports[`Test CalendarCell should render CalendarCell with number value 1`] = `
 }
 
 .c1:hover {
-  background-color: #CEF4CE;
+  background-color: #7CC0C6;
 }
 
 .c0 {
@@ -387,11 +387,11 @@ exports[`Test CalendarCell should render CalendarCell with otherMonth variant 1`
   -webkit-transition: all 0.1s ease-in;
   transition: all 0.1s ease-in;
   cursor: pointer;
-  color: #9298A3;
+  color: #BEC1C8;
 }
 
 .c1:hover {
-  background-color: #CEF4CE;
+  background-color: #7CC0C6;
 }
 
 .c0 {

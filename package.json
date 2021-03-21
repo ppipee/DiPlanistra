@@ -6,7 +6,7 @@
 		"start": "razzle start --type=spa",
 		"dev": "NODE_ENV=development razzle start --type=spa",
 		"build": "NODE_ENV=production razzle build --type=spa",
-		"test": "razzle test --env=jsdom",
+		"test": "razzle test --ci --env=jsdom --coverage",
 		"lint": "eslint --ext .tsx,.ts,.js --quiet",
 		"lint:fix": "eslint --ext .tsx,.ts,.js --quiet --fix",
 		"type-check": "tsc --noEmit",

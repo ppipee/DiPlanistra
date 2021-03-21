@@ -2,7 +2,7 @@
 
 exports[`Test CardController should render CardController with active style 1`] = `
 <div
-  class="styled__Card-grAINz bMQvBF heading4 align-center"
+  class="styled__Card-grAINz jLQvDg heading4 align-center"
 >
   เมื่อวานนี้
 </div>

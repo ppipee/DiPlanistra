@@ -14,7 +14,7 @@ exports[`Test CalendarHeader should render CalendarHeader correctly 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 12px;
 }
 
 .c1 {
@@ -27,6 +27,10 @@ exports[`Test CalendarHeader should render CalendarHeader correctly 1`] = `
 }
 
 .c1 > svg {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin: auto;
 }
 
@@ -37,6 +41,10 @@ exports[`Test CalendarHeader should render CalendarHeader correctly 1`] = `
 }
 
 .c2 > svg {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin: auto;
 }
 
@@ -133,7 +141,7 @@ exports[`Test CalendarHeader should render CalendarHeader correctly in disable c
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-bottom: 32px;
+  margin-bottom: 12px;
 }
 
 .c1 {
@@ -148,6 +156,10 @@ exports[`Test CalendarHeader should render CalendarHeader correctly in disable c
 }
 
 .c1 > svg {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin: auto;
 }
 
@@ -160,6 +172,10 @@ exports[`Test CalendarHeader should render CalendarHeader correctly in disable c
 }
 
 .c2 > svg {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   margin: auto;
 }
 

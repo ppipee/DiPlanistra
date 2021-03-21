@@ -26,7 +26,7 @@ exports[`HeaderCalendarRow should render HeaderCalendarRow correctly 1`] = `
 }
 
 .c2:hover {
-  background-color: #CEF4CE;
+  background-color: #7CC0C6;
 }
 
 .c1 {

@@ -5,6 +5,5 @@ exports[`Test DateRangePicker should render DateRangePicker correctly 1`] = `
   date="Mock Date"
 >
   <div />
-  <div />
 </div>
 `;
