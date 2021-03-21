@@ -9,6 +9,7 @@ import StickyContainer from 'common/components/StickyContainer'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
 
+import ErrorPage from 'modules/notFound/pages/ErrorPage'
 import PlaceCardList from 'modules/place/components/PlaceCardList'
 import FavoritePlaceStoreConfig from 'modules/place/stores/FavoritePlaceStore'
 import DomainSelector from 'modules/search/components/DomainSelector'
@@ -16,6 +17,7 @@ import DomainTabsMobile from 'modules/search/components/DomainTabsMobile'
 import PlaceCategoriesSelector from 'modules/search/components/PlaceCategoriesSelector'
 import PlacesFilter from 'modules/search/components/PlacesFilter'
 import SearchingText from 'modules/search/components/SearchingText'
+import useSearchError from 'modules/search/hooks/useSearchError/index'
 import CategoryModalStoreConfig from 'modules/search/stores/CategoryModalStore'
 import { useCategoryModalStore } from 'modules/search/stores/CategoryModalStore/context'
 import SearchPlaceStoreConfig from 'modules/search/stores/SearchPlaceStore'
@@ -35,9 +37,13 @@ const PlacesPageComponent = () => {
 		closeCategoryModal: store.close,
 	}))
 
+	const error = useSearchError()
+
 	useEffect(() => {
 		getPlaces({ distance, domain, rating, categories, search, regions })
 	}, [distance, domain, rating, categories, search, regions])
+
+	if (error) return <ErrorPage errorMessage={error?.message} />
 
 	return (
 		<Container>

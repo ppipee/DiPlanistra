@@ -9,24 +9,33 @@ import LoadingModal from 'common/components/LoadingModal'
 import StickyContainer from 'common/components/StickyContainer'
 import spaces from 'common/styles/mixins/spaces'
 
+import ErrorPage from 'modules/notFound/pages/ErrorPage'
 import CountDownCover from 'modules/trip/components/CountDownCover'
 import CreatePlanner from 'modules/trip/components/CreatePlanner'
 import TripTabs from 'modules/trip/components/TripTabs'
 import TripTicketList from 'modules/trip/components/TripTicketList'
 import { TripCategory } from 'modules/trip/constants'
 import FavoriteTripStoreConfig from 'modules/trip/stores/FavoriteTripStore'
+import { useFavoriteTripStore } from 'modules/trip/stores/FavoriteTripStore/context'
 import PlannerStoreConfig from 'modules/trip/stores/PlannersStore'
 import { usePlannersStore } from 'modules/trip/stores/PlannersStore/context'
 
 import { MainContainer, Container } from './styled'
 
 const PlannersComponent = () => {
-	const { trips } = usePlannersStore((store) => ({
+	const { trips, errorPlanner } = usePlannersStore((store) => ({
 		trips: store.trips,
+		errorPlanner: store.error,
 	}))
+	const errorFavoriteTrip = useFavoriteTripStore((store) => store.error)
+
 	const { trip = TripCategory.MyTrip } = useQuery()
 
 	const isModalLoading = usePlannersStore((store) => store.isActionLoading['createPlanner'])
+
+	if (errorPlanner || errorFavoriteTrip) {
+		return <ErrorPage errorMessage={errorPlanner?.message || errorFavoriteTrip?.message} />
+	}
 
 	return (
 		<>

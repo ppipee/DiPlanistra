@@ -14,10 +14,12 @@ import CategoriesSelector from 'modules/home/components/CategoriesSelector'
 import NearbyMe from 'modules/home/components/NearbyMe'
 import RecommendForYou from 'modules/home/components/RecommendForYou'
 import useCategoriesSelectorModalState from 'modules/home/hooks/useCategoriesSelectorModalState/index'
+import useHomeError from 'modules/home/hooks/useHomeError'
 import HomeStoreConfig from 'modules/home/stores/HomeStore'
 import { useHomeStore } from 'modules/home/stores/HomeStore/context'
 import WelcomeStoreConfig from 'modules/home/stores/WelcomeStore'
 import { useWelcomeStore } from 'modules/home/stores/WelcomeStore/context'
+import ErrorPage from 'modules/notFound/pages/ErrorPage'
 import NearbyPositionStoreConfig from 'modules/place/stores/NearbyPositionStore'
 
 const HomePageComponent = () => {
@@ -33,6 +35,9 @@ const HomePageComponent = () => {
 		isFresh: store.isFresh,
 	}))
 
+	const error = useHomeError()
+
+	if (error) return <ErrorPage errorMessage={error?.message} />
 	if (isFresh) return null
 
 	return (

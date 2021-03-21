@@ -8,8 +8,11 @@ import ContentContainer from 'common/components/ContentContainer'
 import Gap from 'common/components/Gap'
 import LoadingModal from 'common/components/LoadingModal'
 import { green, main, white } from 'common/styles/colors'
+import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
 
+import ErrorPage from 'modules/notFound/pages/ErrorPage'
+import NotFoundPage from 'modules/notFound/pages/NotFoundPage'
 import PlannerList from 'modules/trip/components/PlannerList'
 import TripHeader from 'modules/trip/components/TripHeader'
 import useAnalyzePlannerState from 'modules/trip/hooks/useAnalyzePlannerState'
@@ -22,14 +25,19 @@ import TripStoreConfig from 'modules/trip/stores/TripStore'
 const TripPageComponent = () => {
 	useAnalyzePlannerState()
 
-	const { isLoading, isPlannerUpdating, planner } = usePlannerApiStore((store) => ({
+	const { isDesktop } = useResponsive()
+
+	const { isLoading, isPlannerUpdating, planner, error } = usePlannerApiStore((store) => ({
 		isLoading: store.isLoading || store.isFresh,
 		isPlannerUpdating: store.isActionLoading['updatePlanner'],
 		planner: store.planner,
+		error: store.error,
 	}))
 
 	const isModalLoading = isPlannerUpdating
 
+	if (error?.message.includes('403')) return <NotFoundPage />
+	if (error) return <ErrorPage errorMessage={error?.message} />
 	if (isLoading || !planner) return null
 
 	return (
@@ -41,7 +49,7 @@ const TripPageComponent = () => {
 				/>
 				<ContentContainer>
 					<BaseContainer $padding={`0 ${spaces(32)} ${spaces(64)}`} $paddingMobile={`0 ${spaces(16)} ${spaces(32)}`}>
-						<Gap $type="vertical" $size={spaces(32)}>
+						<Gap $type="vertical" $size={isDesktop ? spaces(64) : spaces(32)}>
 							<TripHeader />
 							<PlannerList />
 						</Gap>

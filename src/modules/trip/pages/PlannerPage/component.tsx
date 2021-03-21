@@ -13,6 +13,7 @@ import LoadingModal from 'common/components/LoadingModal'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
 
+import ErrorPage from 'modules/notFound/pages/ErrorPage'
 import FavoriteStoreConfig from 'modules/place/stores/FavoriteStore'
 import ActivityDesktopEditor from 'modules/trip/components/editor/ActivityDesktopEditor'
 import ActivityMobileEditor from 'modules/trip/components/editor/ActivityMobileEditor'
@@ -24,6 +25,7 @@ import MobilePlannerSetting from 'modules/trip/components/setting/MobilePlannerS
 import TripOverviewButton from 'modules/trip/components/TripOverviewButton'
 import useAnalyzePlannerState from 'modules/trip/hooks/useAnalyzePlannerState'
 import useDeleteActivity from 'modules/trip/hooks/useDeleteActivity'
+import useErrorPlannerPage from 'modules/trip/hooks/useErrorPlannerPage/index'
 import useUpdateActivity from 'modules/trip/hooks/useUpdateActivity'
 import useUpdatePlannerState from 'modules/trip/hooks/useUpdatePlannerState'
 import ActivityStoreConfig from 'modules/trip/stores/ActivityStore'
@@ -51,6 +53,8 @@ const PlannerPageComponent = () => {
 		getPlanner: store.getPlanner,
 	}))
 
+	const error = useErrorPlannerPage()
+
 	const { isLoading: isActivityUpdating } = useUpdateActivity()
 	const { isLoading: isActivityDeleting } = useDeleteActivity()
 	const { isLoading: isStateUpdating } = useUpdatePlannerState()
@@ -61,7 +65,9 @@ const PlannerPageComponent = () => {
 		getPlanner(plannerId)
 	}, [])
 
+	if (error) return <ErrorPage errorMessage={error?.message} />
 	if (isLoading || isFresh) return null
+
 	return (
 		<>
 			<Gap $type="vertical" $size={spaces(24)}>
@@ -74,12 +80,15 @@ const PlannerPageComponent = () => {
 						{isDesktop ? (
 							<SubContainer>
 								<Gap $size={spaces(16)} $type="vertical" $justifyContent="space-between" $responsive>
-									{showActivityEditor && <ActivityDesktopEditor />}
-									<Block>
-										<ButtonContainer $padding={spaces(8)}>
-											<TripOverviewButton />
-										</ButtonContainer>
-									</Block>
+									{showActivityEditor ? (
+										<ActivityDesktopEditor />
+									) : (
+										<Block>
+											<ButtonContainer $padding={spaces(8)}>
+												<TripOverviewButton />
+											</ButtonContainer>
+										</Block>
+									)}
 								</Gap>
 							</SubContainer>
 						) : (

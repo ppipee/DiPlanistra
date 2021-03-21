@@ -11,6 +11,7 @@ import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
 import filterObjectExistingValues from 'common/utils/filterObjectExistingValue'
 
+import ErrorPage from 'modules/notFound/pages/ErrorPage'
 import NearbyPlace from 'modules/place/components/NearbyPlace'
 import PlaceContact from 'modules/place/components/PlaceContact'
 import PlaceEntryFee from 'modules/place/components/PlaceEntryFee'
@@ -20,6 +21,7 @@ import PlaceReviewer from 'modules/place/components/PlaceReviewer'
 import PlaceTraveling from 'modules/place/components/PlaceTraveling'
 import PlaceWorkingHour from 'modules/place/components/PlaceWorkingHour'
 import useGetPlace from 'modules/place/hooks/useGetPlace'
+import usePlaceError from 'modules/place/hooks/usePlaceError'
 import NearbyPositionStoreConfig from 'modules/place/stores/NearbyPositionStore'
 import PlaceStoreConfig from 'modules/place/stores/PlaceStore'
 import { usePlaceStore } from 'modules/place/stores/PlaceStore/context'
@@ -35,6 +37,10 @@ const PlacePageComponent = () => {
 		isFresh: store.isFresh,
 	}))
 	const { place } = useGetPlace()
+
+	const error = usePlaceError()
+
+	if (error) return <ErrorPage errorMessage={error?.message} />
 
 	if (isLoading || isFresh) return null
 
