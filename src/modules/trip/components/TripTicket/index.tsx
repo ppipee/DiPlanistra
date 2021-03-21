@@ -12,6 +12,7 @@ import { gray, main, white } from 'common/styles/colors'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
+import { HOUR_MS } from 'common/utils/datetime/constants'
 import getDateTimeFormat from 'common/utils/datetime/getDateTimeFormat'
 
 import { PlannerPreview } from 'modules/trip/types/planner'
@@ -32,12 +33,14 @@ const TripTicket = ({ trip }: Props) => {
 	const { name, dateLength, id, startDate: _startDate, endDate: _endDate, isPublic, shared, rating } = trip
 	const startDate = getDateTimeFormat(_startDate, locale, DATE_FORMAT)
 	const endDate = getDateTimeFormat(_endDate, locale, DATE_FORMAT)
+
 	const stateText = isPublic ? 'public' : 'private'
+	const isExpired = new Date(_endDate).getTime() < new Date().getTime() + HOUR_MS * 7
 
 	return (
 		<TicketContainer>
 			<MainTicketArea $size={spaces(4)}>
-				<TicketDetail $direction="column" $justifyContent="space-between">
+				<TicketDetail $direction="column" $justifyContent="space-between" $expired={isExpired}>
 					<Text ellipsis={2} size={isDesktop ? fontSizes(18) : fontSizes(14)}>
 						{name}
 					</Text>
@@ -78,7 +81,7 @@ const TripTicket = ({ trip }: Props) => {
 				<IdText size={isDesktop ? fontSizes(12) : fontSizes(10)} color={gray[500]}>
 					{id.slice(0, 8)}
 				</IdText>
-				<TriangleIcon size={ICON_SIZE} color={main[500]} />
+				<TriangleIcon size={ICON_SIZE} color={isExpired ? gray[200] : main[500]} />
 			</SubTicketArea>
 		</TicketContainer>
 	)

@@ -6,14 +6,16 @@ import { TripCategory } from 'modules/trip/constants'
 import { useFavoriteTripStore } from 'modules/trip/stores/FavoriteTripStore/context'
 import { usePlannersStore } from 'modules/trip/stores/PlannersStore/context'
 
+import useTrips from '../useTrips'
+
 export default function useFetchTrip(trip: TripCategory) {
 	const passQuery = usePassQuery()
 
-	const { getTrips, isMyTripsLoading, trips } = usePlannersStore((store) => ({
+	const { getTrips, isMyTripsLoading } = usePlannersStore((store) => ({
 		getTrips: store.getTrips,
 		isMyTripsLoading: store.isLoading || store.isFresh,
-		trips: store.trips,
 	}))
+	const trips = useTrips()
 
 	const { getBookmarkTrips, isFavoriteTripsLoading, favoriteTrips } = useFavoriteTripStore((store) => ({
 		getBookmarkTrips: store.getBookmarkTrips,

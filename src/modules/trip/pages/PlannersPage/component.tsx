@@ -15,6 +15,7 @@ import CreatePlanner from 'modules/trip/components/CreatePlanner'
 import TripTabs from 'modules/trip/components/TripTabs'
 import TripTicketList from 'modules/trip/components/TripTicketList'
 import { TripCategory } from 'modules/trip/constants'
+import useTrips from 'modules/trip/hooks/useTrips'
 import FavoriteTripStoreConfig from 'modules/trip/stores/FavoriteTripStore'
 import { useFavoriteTripStore } from 'modules/trip/stores/FavoriteTripStore/context'
 import PlannerStoreConfig from 'modules/trip/stores/PlannersStore'
@@ -23,11 +24,9 @@ import { usePlannersStore } from 'modules/trip/stores/PlannersStore/context'
 import { MainContainer, Container } from './styled'
 
 const PlannersComponent = () => {
-	const { trips, errorPlanner } = usePlannersStore((store) => ({
-		trips: store.trips,
-		errorPlanner: store.error,
-	}))
+	const errorPlanner = usePlannersStore((store) => store.error)
 	const errorFavoriteTrip = useFavoriteTripStore((store) => store.error)
+	const trips = useTrips()
 
 	const { trip = TripCategory.MyTrip } = useQuery()
 

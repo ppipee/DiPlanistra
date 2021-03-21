@@ -16,6 +16,10 @@ const DESKTOP_TICKET_WIDTH = '436px'
 const MOBILE_TICKET_HEIGHT = '108px'
 const MOBILE_TICKET_WIDTH = '312px'
 
+type TicketProps = {
+	$expired?: boolean
+}
+
 export const TicketContainer = styled(Flex)`
 	box-sizing: border-box;
 	height: ${DESKTOP_TICKET_HEIGHT};
@@ -42,13 +46,16 @@ export const MainTicketArea = styled(Gap)`
 	`};
 `
 
-export const TicketDetail = styled(Flex)`
+export const TicketDetail = styled(Flex)<TicketProps>`
 	padding: ${spaces(12)} ${spaces(12)} ${spaces(12)} ${spaces(16)};
 	height: initial;
 	flex: 1;
 	border-radius: ${Borders.Default};
 	color: ${white};
-	background: linear-gradient(238.64deg, ${getColorWithAlpha(main[500], 0.8)} 13.57%, ${green[500]} 90.33%);
+	background: ${({ $expired }) =>
+		!$expired
+			? `linear-gradient(238.64deg, ${getColorWithAlpha(main[500], 0.8)} 13.57%, ${green[500]} 90.33%)`
+			: gray[200]};
 
 	${media.md`
 		padding: ${spaces(8)} ${spaces(8)} ${spaces(8)} ${spaces(12)};
