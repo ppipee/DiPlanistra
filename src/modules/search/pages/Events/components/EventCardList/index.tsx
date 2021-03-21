@@ -11,6 +11,7 @@ import useResponsive from 'common/styles/hooks/useResponsive'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
 
+import useDomainTabMobile from 'modules/search/hooks/useDomainTabMobile/index'
 import useMountEvents from 'modules/search/hooks/useMountEvents'
 import { EVENT_EMPTY } from 'modules/search/pages/Events/locale'
 
@@ -19,6 +20,8 @@ import EventCard from '../EventCard'
 import EventCardListLoading from './loading'
 
 const EventCardList = () => {
+	useDomainTabMobile()
+
 	const { isDesktop } = useResponsive()
 	const { isLoading, events } = useMountEvents()
 	const I18n = useI18n()

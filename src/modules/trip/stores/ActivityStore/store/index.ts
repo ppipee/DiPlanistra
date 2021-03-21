@@ -86,11 +86,17 @@ class ActivityStore {
 			placeId: this.placeId,
 		}
 
+		if (!this.hour || !this.placeId) return false
+
 		if (this.mode === EditorMode.Create) {
 			await this.plannerApiStore.createActivity(plannerDay, activityPlan)
 		} else {
 			await this.plannerApiStore.updateActivity(plannerDay, { ...activityPlan, id: this.activityId })
 		}
+
+		if (this.plannerApiStore.error) return false
+
+		return true
 	}
 
 	@action.bound

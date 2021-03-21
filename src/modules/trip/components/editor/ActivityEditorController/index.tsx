@@ -28,8 +28,11 @@ const ActivityEditorController = (props: Props) => {
 	const { setViewerMode } = useSetActivityMode()
 
 	const onSave = useCallback(async () => {
-		await saveActivity()
-		setViewerMode()
+		const success = await saveActivity()
+
+		if (success) {
+			setViewerMode()
+		}
 	}, [])
 
 	return (

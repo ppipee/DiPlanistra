@@ -14,9 +14,9 @@ import spaces from 'common/styles/mixins/spaces'
 
 import BookmarkTripIcon from 'modules/search/components/BookmarkTripIcon'
 import { LOCALE_VIEW, LOCALE_SHARE } from 'modules/search/locale'
+import { DATE } from 'modules/search/pages/Trips/locale'
+import convertIdsToRegionNames from 'modules/search/utils/convertIdsToRegionNames/index'
 import { PlannerPreview } from 'modules/trip/types/planner'
-
-import { DATE } from '../../locale'
 
 import { CardContent, CardHeader, FullText } from './styled'
 
@@ -35,6 +35,8 @@ const TripCard = ({ trip }: Props) => {
 			? `${I18n.t(DAY, { day: trip.dateLength })} ${I18n.t(NIGHT, { night: trip.dateLength - 1 })}`
 			: `${I18n.t(DAY, { day: trip.dateLength })}`
 
+	const regionNames = convertIdsToRegionNames(trip.regions)
+
 	return (
 		<ResponsiveBlock>
 			<CardHeader>
@@ -49,7 +51,7 @@ const TripCard = ({ trip }: Props) => {
 				<Gap $size={spaces(4)} className="margin-bottom-4" $alignItems="center">
 					<CityIcon size={ICON_SIZE} color={gray[700]} />
 					<FullText ellipsis={2} color={gray[700]} size={subDetailSize}>
-						{trip.name}
+						{regionNames}
 					</FullText>
 				</Gap>
 				<Text as="div" size={detailSize} ellipsis={1}>

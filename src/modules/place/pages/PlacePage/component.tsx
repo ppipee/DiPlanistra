@@ -46,13 +46,13 @@ const PlacePageComponent = () => {
 
 	const facilities: FacilitiesProps = {
 		wifi: isNil(place?.wifi) ? null : true,
-		attractionRestaurant: isNil(place.attractionInformation?.attractionRestaurant) ? null : true,
+		attractionRestaurant: isNil(place?.attractionInformation?.attractionRestaurant) ? null : true,
 		parkingType: isNil(place.parkingType) ? null : true,
-		toilet: place.attractionInformation?.toilet,
-		atm: place.attractionInformation?.atm,
-		souvenir: place.attractionInformation?.souvenir,
+		toilet: place?.attractionInformation?.toilet,
+		atm: place?.attractionInformation?.atm,
+		souvenir: place?.attractionInformation?.souvenir,
 		petFriendly: place.petFriendly,
-		wheelchairAccess: place.attractionInformation?.wheelchairAccess,
+		wheelchairAccess: place?.attractionInformation?.wheelchairAccess,
 		trueMoneyWallet: place.trueMoneyWallet,
 		creditCardAccept: place.creditCardAccepted,
 	}

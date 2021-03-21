@@ -16,7 +16,7 @@ import spaces from 'common/styles/mixins/spaces'
 import getDateTimeFormat from 'common/utils/datetime/getDateTimeFormat'
 
 import useSwitchPlannerSetting from 'modules/trip/hooks/useSwitchPlannerSetting'
-import { TRIP_PATH } from 'modules/trip/routes/paths'
+import { PLANNER_PATH } from 'modules/trip/routes/paths'
 import { usePlannerStore } from 'modules/trip/stores/PlannerStore/context'
 
 import { Container, ArrowWrapper, IconWrapper, Background } from './styled'
@@ -34,14 +34,13 @@ const PlannerCover = () => {
 	const startDate = getDateTimeFormat(planner.startDate, locale, DATE_FORMAT)
 	const endDate = getDateTimeFormat(planner.endDate, locale, DATE_FORMAT)
 	const displayDateRange = `${startDate} - ${endDate}`
-	const tripUrl = TRIP_PATH
 
 	return (
 		<Background $shadow>
 			<Container>
 				<Flex $responsive $direction="column" $justifyContent="space-between" $alignItems="stretch">
 					<Flex $responsive $justifyContent="space-between">
-						<Link to={tripUrl}>
+						<Link to={PLANNER_PATH}>
 							<ArrowWrapper>
 								<ClickableIcon icon={ArrowIcon} size={ICON_SIZE} color={white} />
 							</ArrowWrapper>

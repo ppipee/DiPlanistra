@@ -8,6 +8,7 @@ import Button from 'common/components/Button'
 import Gap from 'common/components/Gap'
 import NavigationIcon from 'common/components/icons/NavigationIcon'
 import { green, main, white } from 'common/styles/colors'
+import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
 import { LatLng } from 'common/types/wongnai/common'
 
@@ -21,6 +22,7 @@ type Props = {
 
 const NavigateButton = ({ coordinate }: Props) => {
 	const I18n = useI18n()
+	const { isDesktop } = useResponsive()
 	const { latitude, longitude } = useGeolocation()
 
 	const { lat, lng } = coordinate
@@ -31,7 +33,13 @@ const NavigateButton = ({ coordinate }: Props) => {
 
 	return (
 		<a href={navigateUrl} target="_blank" rel="noreferrer">
-			<Button $color={main[500]} $responsive $secondaryColor={green[500]} $border="curve" $size="small">
+			<Button
+				$color={main[500]}
+				$responsive
+				$secondaryColor={green[500]}
+				$border="curve"
+				$size={isDesktop ? 'default' : 'small'}
+			>
 				<Gap $size={spaces(4)} $alignCenter>
 					<NavigationIcon size={ICON_SIZE} color={white} />
 					<span>{I18n.t(DIRECTION)}</span>

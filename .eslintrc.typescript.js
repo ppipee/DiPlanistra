@@ -80,6 +80,7 @@ module.exports = {
 		'no-else-return': 'off',
 		'operator-linebreak': [0],
 		'implicit-arrow-linebreak': [0],
+		'no-extra-boolean-cast': [0],
 
 		// typescript
 		'@typescript-eslint/explicit-function-return-type': 'off',

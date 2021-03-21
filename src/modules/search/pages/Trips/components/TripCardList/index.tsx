@@ -11,6 +11,7 @@ import { gray } from 'common/styles/colors'
 import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
 
+import useDomainTabMobile from 'modules/search/hooks/useDomainTabMobile/index'
 import useMountTrips from 'modules/search/hooks/useMountTrips'
 import { EMPTY_TRIP } from 'modules/search/pages/Trips/locale'
 
@@ -19,6 +20,8 @@ import TripCard from '../TripCard'
 import TripCardListLoading from './loading'
 
 const TripCardList = () => {
+	useDomainTabMobile()
+
 	const { isLoading, trips } = useMountTrips()
 	const I18n = useI18n()
 

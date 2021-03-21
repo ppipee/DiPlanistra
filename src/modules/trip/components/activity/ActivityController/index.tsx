@@ -10,6 +10,7 @@ import Gap from 'common/components/Gap'
 import EditIcon from 'common/components/icons/EditIcon'
 import { LOCALE_EDIT } from 'common/locale'
 import { main, red } from 'common/styles/colors'
+import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
 
 import { PLACE_PATH } from 'modules/place/routes/paths'
@@ -37,6 +38,7 @@ const ActivityController = ({ activityPlan }: Props) => {
 	} = activityPlan
 
 	const I18n = useI18n()
+	const { isDesktop } = useResponsive()
 
 	const plannerMode = usePlannerMode()
 	const selectActivity = useActivityStore((store) => store.selectActivity)
@@ -64,7 +66,13 @@ const ActivityController = ({ activityPlan }: Props) => {
 			<Gap $size={spaces(8)}>
 				<Flex $alignItems="stretch" $direction="column" $responsive>
 					<Link to={`${PLACE_PATH}/${publicId}`}>
-						<Button $variant="outlined" $responsive $color={main[500]} $border="curve" $size="small">
+						<Button
+							$variant="outlined"
+							$responsive
+							$color={main[500]}
+							$border="curve"
+							$size={isDesktop ? 'default' : 'small'}
+						>
 							{I18n.t(DETAIL)}
 						</Button>
 					</Link>

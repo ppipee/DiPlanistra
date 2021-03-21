@@ -14,7 +14,7 @@ import { ME } from 'modules/user/locale'
 
 const DISTANCE = DISTANCE_KM * 10
 
-const NearbyMeComponent = () => {
+const NearbyMe = () => {
 	const I18n = useI18n()
 	const { latitude, longitude } = useGeolocation()
 	const { nearbyMe, getNearbyPosition, isLoading } = useNearbyPositionStore((store) => ({
@@ -41,4 +41,4 @@ const NearbyMeComponent = () => {
 	return <NearByPosition nearbyPlace={nearbyMe} nearby={I18n.t(ME)} loading={isLoading} getPlaces={getNearbyMe} />
 }
 
-export default NearbyMeComponent
+export default NearbyMe

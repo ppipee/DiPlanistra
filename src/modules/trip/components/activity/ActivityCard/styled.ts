@@ -5,6 +5,8 @@ import Borders from 'common/styles/mixins/borders'
 import spaces from 'common/styles/mixins/spaces'
 import { blockShadow } from 'common/styles/shadows'
 
+const MAX_CARD_WIDTH = '650px'
+
 type Props = {
 	$isEditMode: boolean
 }
@@ -24,6 +26,7 @@ function applyCardStyle({ $isEditMode }: Props) {
 
 export const CardContainer = styled.div`
 	width: 100%;
+	max-width: ${MAX_CARD_WIDTH};
 
 	${applyCardStyle}
 `
