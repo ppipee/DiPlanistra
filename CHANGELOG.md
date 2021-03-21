@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.6](https://github.com/ppipee/di-planistra/compare/v1.4.5...v1.4.6) (2021-03-21)
+
+
+### Features
+
+* add category tag highlight ([9f02ec9](https://github.com/ppipee/di-planistra/commit/9f02ec9b522c8b59d8fc2baf3c2b51e3044f00eb))
+* add not found page and error page ([075b4ce](https://github.com/ppipee/di-planistra/commit/075b4ce089b6f192e9b09e41cc5c67248cb1eb5e))
+
+
+### Bug Fixes
+
+* fix countdown trip not show ([7001fe6](https://github.com/ppipee/di-planistra/commit/7001fe683c5c51976e5a1f6e6033d89c496e5ecd))
+* fix test ([7e3f30b](https://github.com/ppipee/di-planistra/commit/7e3f30b277f01a65b36da5230b1c4514acb5e4b7))
+* improve ui ([ffd7f34](https://github.com/ppipee/di-planistra/commit/ffd7f3485f9adb2c1cc2b9768f967b8642c4615f))
+* rm region params when get neear place ([57e0c1c](https://github.com/ppipee/di-planistra/commit/57e0c1c992a97609067db5eae7fc7ba15d0e54c4))
+
 ### [1.4.5](https://github.com/ppipee/di-planistra/compare/v1.4.4...v1.4.5) (2021-03-19)
 
 

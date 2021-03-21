@@ -1,6 +1,6 @@
 {
 	"name": "di-planistra",
-	"version": "1.4.5",
+	"version": "1.4.6",
 	"license": "MIT",
 	"scripts": {
 		"start": "razzle start --type=spa",
