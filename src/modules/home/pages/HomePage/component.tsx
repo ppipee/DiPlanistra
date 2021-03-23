@@ -6,6 +6,7 @@ import ContentContainer from 'common/components/ContentContainer'
 import Gap from 'common/components/Gap'
 import LoadingModal from 'common/components/LoadingModal'
 import PhotosCarousel from 'common/components/PhotosCarousel'
+import { PLACE_HIGHLIGHTS } from 'common/mocks/plcaeHighlights'
 import { white } from 'common/styles/colors'
 import useResponsive from 'common/styles/hooks/useResponsive'
 import spaces from 'common/styles/mixins/spaces'
@@ -29,7 +30,7 @@ const HomePageComponent = () => {
 
 	const isModalLoading = isSelectingCategories
 
-	const { placesHighlight, isFresh, isLoading } = useHomeStore((store) => ({
+	const { placesHighlight = PLACE_HIGHLIGHTS, isFresh, isLoading } = useHomeStore((store) => ({
 		placesHighlight: store.placesHighlight,
 		isLoading: store.isLoading,
 		isFresh: store.isFresh,
@@ -42,13 +43,15 @@ const HomePageComponent = () => {
 
 	return (
 		<>
-			<ContentContainer>
-				<Gap $type="vertical" $size={isDesktop ? spaces(24) : '0'}>
-					{!isLoading && placesHighlight && <PhotosCarousel places={placesHighlight} dotColor={white} arrows={false} />}
-					<RecommendForYou />
-					<NearbyMe />
-				</Gap>
-			</ContentContainer>
+			<div>
+				{!isLoading && placesHighlight && <PhotosCarousel places={placesHighlight} dotColor={white} arrows={false} />}
+				<ContentContainer className={isDesktop ? 'margin-top-24' : ''}>
+					<Gap $type="vertical" $size={isDesktop ? spaces(24) : '0'}>
+						<RecommendForYou />
+						<NearbyMe />
+					</Gap>
+				</ContentContainer>
+			</div>
 			{isOpen && <CategoriesSelector onClose={close} />}
 			{isModalLoading && <LoadingModal />}
 		</>

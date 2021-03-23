@@ -58,10 +58,10 @@ const PlacePageComponent = () => {
 	}
 
 	return (
-		<ContentContainer>
-			<Gap $type="vertical" $size={isDesktop ? spaces(20) : '0'}>
-				<Gap $type="vertical" $size={isDesktop ? spaces(20) : spaces(10)}>
-					<PlaceHeader place={place} />
+		<Gap $type="vertical" $size={isDesktop ? spaces(20) : spaces(10)}>
+			<PlaceHeader place={place} />
+			<ContentContainer>
+				<Gap $type="vertical" $size={isDesktop ? spaces(20) : '0'}>
 					<Gap $size={spaces(16)}>
 						{isDesktop && (
 							<Container $isMain>
@@ -82,11 +82,11 @@ const PlacePageComponent = () => {
 							</StickyContainer>
 						</Container>
 					</Gap>
+					{!isDesktop && <PlaceReviewer />}
+					<NearbyPlace />
 				</Gap>
-				{!isDesktop && <PlaceReviewer />}
-				<NearbyPlace />
-			</Gap>
-		</ContentContainer>
+			</ContentContainer>
+		</Gap>
 	)
 }
 

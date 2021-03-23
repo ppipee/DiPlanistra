@@ -27,7 +27,9 @@ const PlaceContact = () => {
 	const { titleSize, detailSize } = useFontSizeResponsive()
 	const place = usePlaceStore((store) => store.place)
 
-	const contact = place.contact
+	const contact = place?.contact
+
+	if (!contact) return null
 
 	return (
 		<ResponsiveBlock $padding={spaces(16)} $paddingMobile={spaces(12)}>

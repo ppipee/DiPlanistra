@@ -13,7 +13,7 @@ import { BadgeWrapper } from './styled'
 const PlaceTags = () => {
 	const place = usePlaceStore((store) => store.place)
 	const categories = place?.categories || []
-	const favoriteCategories = useUserStore((store) => store.user.placeCategories)
+	const favoriteCategories = useUserStore((store) => store.user?.placeCategories || [])
 
 	const categoryVariant = useCallback(
 		(category: number) => {

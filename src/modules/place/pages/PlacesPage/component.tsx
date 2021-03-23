@@ -17,6 +17,7 @@ import DomainTabsMobile from 'modules/search/components/DomainTabsMobile'
 import PlaceCategoriesSelector from 'modules/search/components/PlaceCategoriesSelector'
 import PlacesFilter from 'modules/search/components/PlacesFilter'
 import SearchingText from 'modules/search/components/SearchingText'
+import { DEFAULT_PLACE_DOMAIN } from 'modules/search/constants'
 import useSearchError from 'modules/search/hooks/useSearchError/index'
 import CategoryModalStoreConfig from 'modules/search/stores/CategoryModalStore'
 import { useCategoryModalStore } from 'modules/search/stores/CategoryModalStore/context'
@@ -28,7 +29,7 @@ import { ContainerWrapper, Container } from './styled'
 const PlacesPageComponent = () => {
 	const { isDesktop } = useResponsive()
 
-	const { distance, domain, rating, categories, search, regions } = useQuery()
+	const { distance, domain: _domain = DEFAULT_PLACE_DOMAIN, rating, categories, search, regions } = useQuery()
 	const { getPlaces } = useSearchPlaceStore((store) => ({
 		getPlaces: store.getPlaces,
 	}))
@@ -36,6 +37,8 @@ const PlacesPageComponent = () => {
 		isCategoryModalOpen: store.isOpen,
 		closeCategoryModal: store.close,
 	}))
+
+	const domain = _domain as string
 
 	const error = useSearchError()
 

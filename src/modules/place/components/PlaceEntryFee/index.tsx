@@ -21,7 +21,7 @@ const PlaceEntryFee = () => {
 	const I18n = useI18n()
 	const { titleSize, detailSize } = useFontSizeResponsive()
 	const place = usePlaceStore((store) => store.place)
-	const entryFee = place.attractionInformation?.entryFee
+	const entryFee = place?.attractionInformation?.entryFee
 
 	if (!entryFee) return null
 

@@ -9,9 +9,10 @@ import { PlacePreview } from 'modules/place/types/place'
 
 import Carousel from '../Carousel'
 import { SlickProps } from '../Carousel/types'
+import ContentContainer from '../ContentContainer'
 import Text from '../Text'
 
-import { CarouselContainer, PhotoWrapper, PhotoTitleWrapper } from './styled'
+import { CarouselContainer, PhotoWrapper, Foreground, BackgroundCover, PhotoTitle, PhotoTitleWrapper } from './styled'
 
 interface Props extends SlickProps {
 	places?: PlacePreview[]
@@ -28,21 +29,36 @@ const PhotosCarousel = ({ places, defaultIndex = 0, ...props }: Props) => {
 
 	const title = places[slideNumber]?.displayName
 
+	const getImgSrc = useCallback(
+		(place: PlacePreview) => {
+			return isDesktop ? place.defaultPhoto.largeUrl : place.defaultPhoto.smallUrl || place.defaultPhoto.largeUrl
+		},
+		[isDesktop],
+	)
+
 	return (
 		<CarouselContainer>
 			<Carousel afterChange={afterChange} {...props} autoplay arrows={false} dots={isDesktop}>
 				{places.map((place, index) => (
 					<div key={index}>
 						<LinkToPlace placeId={place.publicId}>
-							<PhotoWrapper src={place.defaultPhoto.largeUrl} />
+							<BackgroundCover $imgSrc={getImgSrc(place)}>
+								<Foreground>
+									<ContentContainer>
+										<PhotoWrapper src={getImgSrc(place)} />
+									</ContentContainer>
+								</Foreground>
+							</BackgroundCover>
 						</LinkToPlace>
 					</div>
 				))}
 			</Carousel>
 			<PhotoTitleWrapper>
-				<Text ellipsis={1} color={white} size={fontSizes(20)}>
-					{title}
-				</Text>
+				<PhotoTitle>
+					<Text ellipsis={1} color={white} size={fontSizes(20)}>
+						{title}
+					</Text>
+				</PhotoTitle>
 			</PhotoTitleWrapper>
 		</CarouselContainer>
 	)

@@ -4,6 +4,7 @@ import { isNil } from 'lodash'
 
 import useI18n from 'core/locale/hooks/useI18n'
 
+import ContentContainer from 'common/components/ContentContainer'
 import Gap from 'common/components/Gap'
 import Text from 'common/components/Text'
 import { gray, green, red } from 'common/styles/colors'
@@ -16,7 +17,7 @@ import { Place } from 'modules/place/types/place'
 import FavoritePlaceIcon from '../FavoritePlaceIcon'
 import PlaceTags from '../PlaceTags'
 
-import { Container, CoverPhoto } from './styled'
+import { Container, CoverPhoto, ContainerWrapper, BlurBackground, Foreground } from './styled'
 
 type Props = {
 	place: Place
@@ -33,37 +34,47 @@ const PlaceHeader = ({ place }: Props) => {
 
 	return (
 		<div>
-			{coverPhoto && <CoverPhoto src={coverPhoto} loading="lazy" />}
-			<Container>
-				<Gap $size={spaces(8)}>
-					<Gap $size={spaces(8)} $type="vertical" $responsive>
-						<div>
-							<Text size={highlightSize} ellipsis={2}>
-								{place.displayName}
-							</Text>
-							<Gap $size={spaces(4)} $alignCenter>
-								{!isNil(workingHourStatus) && (
-									<Text color={workingHourStatus ? green[500] : red[500]} size={titleSize}>
-										{shopStatus}
-									</Text>
-								)}
-								{shopMessage && (
-									<Text color={gray[500]} size={detailSize}>
-										{shopMessage}
-									</Text>
-								)}
-							</Gap>
-						</div>
-						<PlaceTags />
+			{coverPhoto && (
+				<BlurBackground $imgSrc={coverPhoto}>
+					<Foreground>
+						<ContentContainer>
+							<CoverPhoto src={coverPhoto} loading="lazy" />
+						</ContentContainer>
+					</Foreground>
+				</BlurBackground>
+			)}
+			<ContainerWrapper>
+				<Container>
+					<Gap $size={spaces(8)}>
+						<Gap $size={spaces(8)} $type="vertical" $responsive>
+							<div>
+								<Text size={highlightSize} ellipsis={2}>
+									{place.displayName}
+								</Text>
+								<Gap $size={spaces(4)} $alignCenter>
+									{!isNil(workingHourStatus) && (
+										<Text color={workingHourStatus ? green[500] : red[500]} size={titleSize}>
+											{shopStatus}
+										</Text>
+									)}
+									{shopMessage && (
+										<Text color={gray[500]} size={detailSize}>
+											{shopMessage}
+										</Text>
+									)}
+								</Gap>
+							</div>
+							<PlaceTags />
+						</Gap>
+						<FavoritePlaceIcon
+							isFavorite={place.isFavorite}
+							publicId={place.publicId}
+							size={28}
+							domain={place.domain.value}
+						/>
 					</Gap>
-					<FavoritePlaceIcon
-						isFavorite={place.isFavorite}
-						publicId={place.publicId}
-						size={28}
-						domain={place.domain.value}
-					/>
-				</Gap>
-			</Container>
+				</Container>
+			</ContainerWrapper>
 		</div>
 	)
 }
