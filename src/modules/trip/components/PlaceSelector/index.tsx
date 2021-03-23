@@ -1,7 +1,5 @@
 import React from 'react'
 
-import { isNumber } from 'lodash'
-
 import useI18n from 'core/locale/hooks/useI18n'
 
 import Collapse from 'common/components/animation/Collapse'
@@ -43,10 +41,7 @@ const PlaceSelector = (props: PlaceSelectorProps) => {
 
 	const { placeSelectedIndex } = props
 
-	const placeSelected =
-		isNumber(placeSelectedIndex) && placeSelectedIndex >= 0
-			? (favorites[placeSelectedIndex] as ActivityPlace & EventPreview)
-			: null
+	const placeSelected = placeSelectedIndex >= 0 ? (favorites[placeSelectedIndex] as ActivityPlace & EventPreview) : null
 
 	return (
 		<div>

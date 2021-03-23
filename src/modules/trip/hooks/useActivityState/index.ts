@@ -60,15 +60,6 @@ export default function useActivityState() {
 	useEffect(() => {
 		if (!favoritePlaces) return
 
-		if (placeSelectedIndex === -1) {
-			const index = favoritePlaces.findIndex(
-				(place) => !isNil(placeId) && (place.publicId === placeId || place.eventId === placeId),
-			)
-
-			setPlaceIndex(index)
-			return
-		}
-
 		if (placeId && domain === DomainValue.EVENT) {
 			const index = favoritePlaces.findIndex((place) => place.eventId === placeId)
 
@@ -78,11 +69,21 @@ export default function useActivityState() {
 
 			setPlaceIndex(index)
 		}
-	}, [placeId, favoritePlaces, domain, placeSelectedIndex])
+	}, [placeId, favoritePlaces, domain])
 
 	useEffect(() => {
 		setPlaceIndex(-1)
 	}, [domain])
+
+	useEffect(() => {
+		if (placeSelectedIndex === -1 && !!favoritePlaces) {
+			const index = favoritePlaces.findIndex(
+				(place) => !isNil(placeId) && (place.publicId === placeId || place.eventId === placeId),
+			)
+
+			setPlaceIndex(index)
+		}
+	}, [favoritePlaces, placeSelectedIndex])
 
 	return { setPlace, onMemoChange, setTime, placeSelectedIndex, ...activityInfo }
 }
