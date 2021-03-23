@@ -9,13 +9,14 @@ const BALL_SIZE = '24px'
 
 type SwitchStateProps = {
 	$isOpen: boolean
+	$haveIcon?: boolean
 }
 
-function applyState({ $isOpen: isOpen }: SwitchStateProps) {
+function applyState({ $isOpen: isOpen, $haveIcon: haveIcon }: SwitchStateProps) {
 	if (isOpen) {
 		return css`
 			background-color: ${main[500]};
-			transform: translateX(calc(${BALL_SIZE} + 4px));
+			transform: translateX(calc(${BUTTON_WIDTH} - ${BALL_SIZE} - ${haveIcon ? '24px' : '0px'} - 8px));
 		`
 	}
 	return css`
@@ -23,13 +24,23 @@ function applyState({ $isOpen: isOpen }: SwitchStateProps) {
 	`
 }
 
-export const Container = styled.div`
+export const Container = styled.div<SwitchStateProps>`
 	cursor: pointer;
 	box-sizing: border-box;
 	width: ${BUTTON_WIDTH};
 	background-color: white;
 	border-radius: ${Borders.Curve};
 	padding: ${spaces(4)};
+	position: relative;
+
+	${({ $isOpen }) =>
+		$isOpen
+			? css`
+					color: ${main[500]};
+			  `
+			: css`
+					color: ${gray[200]};
+			  `}
 `
 
 export const Ball = styled.div`
