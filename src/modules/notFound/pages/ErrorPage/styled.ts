@@ -9,4 +9,5 @@ export const Container = styled(Flex).attrs({
 })`
 	width: 100%;
 	height: inherit;
+	min-height: 100vh;
 `

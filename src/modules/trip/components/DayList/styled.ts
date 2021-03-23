@@ -7,6 +7,9 @@ import Borders from 'common/styles/mixins/borders'
 import spaces from 'common/styles/mixins/spaces'
 import { blockShadow } from 'common/styles/shadows'
 
+const MAX_EDITOR_WIDTH = '700px'
+const MAX_VIEWVER_WIDTH = '650px'
+
 export const EditorContainer = styled(SeparatorContainer).attrs({
 	$spacingTop: spaces(16),
 	$spacingBottom: spaces(12),
@@ -15,6 +18,9 @@ export const EditorContainer = styled(SeparatorContainer).attrs({
 })`
 	background-color: ${white};
 	border-radius: ${Borders.Extra};
+	max-width: ${MAX_EDITOR_WIDTH};
+	width: 100%;
+	margin: 0 auto;
 
 	${blockShadow}
 `
@@ -24,5 +30,8 @@ export const ViewerContainer = styled(Gap).attrs({
 	$size: spaces(12),
 	$alignCenter: true,
 })`
+	width: 100%;
+	margin: 0 auto;
+	max-width: ${MAX_VIEWVER_WIDTH};
 	background-color: transparent;
 `

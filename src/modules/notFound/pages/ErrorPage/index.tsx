@@ -8,6 +8,7 @@ import Button from 'common/components/Button'
 import Text from 'common/components/Text'
 import { gray, main } from 'common/styles/colors'
 import fontSizes from 'common/styles/mixins/fontSizes'
+import { Spaces } from 'common/styles/mixins/spaces'
 
 import { BACK_TO_PREVIOUS } from 'modules/notFound/locale'
 
@@ -32,7 +33,7 @@ const ErrorPage = ({ errorMessage }: Props) => {
 				{I18n.t(ERROR_SOMETHING_WENT_WRONG)}
 			</Text>
 			{errorMessage && (
-				<Text className="margin-bottom-20 margin-top-12" as="div" color={gray[700]} size={fontSizes(16)}>
+				<Text as="div" margin={`${Spaces[12]} 0 ${Spaces[20]}`} color={gray[700]} size={fontSizes(16)}>
 					{errorMessage}
 				</Text>
 			)}

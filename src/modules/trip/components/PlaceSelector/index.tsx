@@ -39,7 +39,7 @@ const PlaceSelector = (props: PlaceSelectorProps) => {
 	const { domain } = useDomainSelector()
 	const { isLoading, isFresh, favorites } = useMountFavorite(domain)
 
-	if (isLoading || isFresh || !favorites) return null
+	if (isLoading || (isFresh && !favorites) || !favorites) return null
 
 	const { placeSelectedIndex } = props
 

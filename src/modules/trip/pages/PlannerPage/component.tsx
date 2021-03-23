@@ -77,7 +77,7 @@ const PlannerPageComponent = () => {
 						<MainContainer $padding={`0 ${spaces(32)}`} $paddingMobile={`0 ${spaces(16)}`}>
 							<PlannerList />
 						</MainContainer>
-						{isDesktop ? (
+						{isDesktop && (
 							<SubContainer>
 								<Gap $size={spaces(16)} $type="vertical" $justifyContent="space-between" $responsive>
 									{showActivityEditor ? (
@@ -91,12 +91,11 @@ const PlannerPageComponent = () => {
 									)}
 								</Gap>
 							</SubContainer>
-						) : (
-							<PlannerBottomBar />
 						)}
 					</Gap>
 				</ContentContainer>
 			</Gap>
+			{!isDesktop && <PlannerBottomBar />}
 			{!isDesktop && showActivityEditor && <ActivityMobileEditor />}
 			{!isDesktop && isOpenSetting && <MobilePlannerSetting />}
 			{isDesktop && isOpenSetting && <DesktopPlannerSettingComponent />}

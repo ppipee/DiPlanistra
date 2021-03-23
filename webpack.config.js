@@ -72,7 +72,7 @@ const client = (config, { target, dev }, webpack, pathConfig) => {
 
 	config.plugins.push(
 		new RetryChunkLoadPlugin({
-			maxRetries: 5,
+			maxRetries: 10,
 		}),
 	)
 

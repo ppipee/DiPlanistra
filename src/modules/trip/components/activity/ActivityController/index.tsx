@@ -8,14 +8,17 @@ import Button from 'common/components/Button'
 import Flex from 'common/components/Flex'
 import Gap from 'common/components/Gap'
 import EditIcon from 'common/components/icons/EditIcon'
+import Text from 'common/components/Text'
 import { LOCALE_EDIT } from 'common/locale'
-import { main, red } from 'common/styles/colors'
+import { gray, main, red } from 'common/styles/colors'
 import useResponsive from 'common/styles/hooks/useResponsive'
+import fontSizes from 'common/styles/mixins/fontSizes'
 import spaces from 'common/styles/mixins/spaces'
 
 import { PLACE_PATH } from 'modules/place/routes/paths'
 import usePlannerMode from 'modules/trip/hooks/usePlannerMode'
 import useSetActivityMode from 'modules/trip/hooks/useSetActivityMode'
+import { DISTANCE, DURATION } from 'modules/trip/locale'
 import { useActivityStore } from 'modules/trip/stores/ActivityStore/context'
 import { ActivityPlan } from 'modules/trip/types/planner'
 import { PlannerMode } from 'modules/trip/types/store'
@@ -35,6 +38,8 @@ const ActivityController = ({ activityPlan }: Props) => {
 	const {
 		id: activityId,
 		place: { coordinate, publicId },
+		duration,
+		distance,
 	} = activityPlan
 
 	const I18n = useI18n()
@@ -51,7 +56,13 @@ const ActivityController = ({ activityPlan }: Props) => {
 
 	if (plannerMode === PlannerMode.Edit) {
 		return (
-			<Flex $justifyContent="flex-end">
+			<Flex $justifyContent="space-between" $alignItems="flex-end">
+				{
+					<Text as="div" size={fontSizes(14)} color={gray[700]} className="margin-top-8">
+						{distance && <div>{`${I18n.t(DISTANCE)}: ${distance}`}</div>}
+						{duration && <div>{`${I18n.t(DURATION)}: ${duration}`}</div>}
+					</Text>
+				}
 				<EditButton $variant="outlined" $color={red[500]} $border="curve" $size="small" onClick={setActivity}>
 					<Gap $size={spaces(4)} $alignCenter>
 						<EditIcon size={ICON_SIZE} />
