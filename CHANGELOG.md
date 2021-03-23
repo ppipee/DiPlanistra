@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.9](https://github.com/ppipee/di-planistra/compare/v1.4.8...v1.4.9) (2021-03-23)
+
+
+### Bug Fixes
+
+* fix planner state and set url origin on shared modal ([2f318d5](https://github.com/ppipee/di-planistra/commit/2f318d52eaa3021c33d4489312b4703271bc855f))
+
 ### [1.4.8](https://github.com/ppipee/di-planistra/compare/v1.4.7...v1.4.8) (2021-03-23)
 
 
