@@ -3,7 +3,7 @@
 	"version": "1.4.7",
 	"license": "MIT",
 	"scripts": {
-		"start": "razzle start --type=spa",
+		"start": "NODE_ENV=production razzle start --type=spa",
 		"dev": "NODE_ENV=development razzle start --type=spa",
 		"build": "NODE_ENV=production razzle build --type=spa",
 		"test": "razzle test --ci --env=jsdom --coverage",

@@ -5,7 +5,7 @@ import useI18n from 'core/locale/hooks/useI18n'
 import Button from 'common/components/Button'
 import Gap from 'common/components/Gap'
 import { LOCALE_CANCEL, LOCALE_SAVE, LOCALE_ADD } from 'common/locale'
-import { main } from 'common/styles/colors'
+import { green, main } from 'common/styles/colors'
 import spaces from 'common/styles/mixins/spaces'
 
 import useSetActivityMode from 'modules/trip/hooks/useSetActivityMode'
@@ -41,7 +41,7 @@ const ActivityEditorController = (props: Props) => {
 				<Button $variant="outlined" $color={main[500]} onClick={resetActivity}>
 					{I18n.t(LOCALE_CANCEL)}
 				</Button>
-				<Button $responsive $color={main[500]} onClick={onSave}>
+				<Button $responsive $color={main[500]} $secondaryColor={green[500]} onClick={onSave}>
 					{I18n.t(activityMode === EditorMode.Create ? LOCALE_ADD : LOCALE_SAVE)}
 				</Button>
 			</Gap>
