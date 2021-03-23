@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.7](https://github.com/ppipee/di-planistra/compare/v1.4.6...v1.4.7) (2021-03-23)
+
+
+### Features
+
+* add distance and duration ([8072802](https://github.com/ppipee/di-planistra/commit/807280239b59919cac9b907ebea07b07c92c9e6a))
+* improve header to full width ([acb84da](https://github.com/ppipee/di-planistra/commit/acb84da83cc9b8d90966500d1ec33094e1eba66d))
+* update shared button ui ([0e43404](https://github.com/ppipee/di-planistra/commit/0e43404e7c68a1d0f45d0df1eca8fd8d747fe6f6))
+
+
+### Bug Fixes
+
+* fix place selector not show ([1f562fe](https://github.com/ppipee/di-planistra/commit/1f562fe603e6fd3dda1175120b4bd2e90f043c2a))
+
 ### [1.4.6](https://github.com/ppipee/di-planistra/compare/v1.4.5...v1.4.6) (2021-03-21)
 
 
