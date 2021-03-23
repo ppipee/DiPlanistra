@@ -32,7 +32,8 @@ const SharingModalComponent = ({ onClose }: Props) => {
 	const { name } = planner
 	const location = useLocation()
 
-	const origin = process.env.NODE_ENV === 'development' ? window.location.origin : 'https://planistra.netlify.app/'
+	// const origin = window.location.origin
+	const origin = 'https://planistra.netlify.app'
 	const url = `${origin}${location.pathname}`
 
 	const copyToClipboard = useCallback(() => {

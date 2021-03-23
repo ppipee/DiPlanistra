@@ -21,10 +21,12 @@ export default function useAnalyzePlannerState() {
 		if (isNil(planner?.state)) return
 		const { state, id } = planner
 
-		if (state === PlannerState.Plan && !isPlannerPath(pathname)) {
+		if (planner.isPublic && !planner.isOwner && !isTripPath(pathname)) {
+			history.push(`${TRIP_PATH}/${id}`)
+		} else if (state === PlannerState.Plan && !isPlannerPath(pathname) && planner.isOwner) {
 			history.push(`${PLANNER_PATH}/${id}`)
 		} else if (state === PlannerState.Travel && !isTripPath(pathname)) {
 			history.push(`${TRIP_PATH}/${id}`)
 		}
-	}, [planner?.state, pathname])
+	}, [planner, pathname])
 }
