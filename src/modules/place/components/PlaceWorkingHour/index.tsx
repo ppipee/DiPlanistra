@@ -37,7 +37,7 @@ const PlaceWorkingHour = ({ hours }: Props) => {
 			if (workingHour === null) {
 				return gray[200]
 			}
-			if (workingHour.day - 1 === today) {
+			if (workingHour?.day - 1 === today) {
 				return main[500]
 			}
 
