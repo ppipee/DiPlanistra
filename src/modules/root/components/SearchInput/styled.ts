@@ -14,8 +14,6 @@ export const DesktopInputWrapper = styled.div`
 `
 
 export const MobileInputWrapper = styled.div`
-	width: 100%;
-
 	input {
 		border-radius: ${Borders.Normal};
 		border: 1px solid ${gray[200]};
