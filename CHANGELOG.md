@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.11](https://github.com/ppipee/di-planistra/compare/v1.4.10...v1.4.11) (2021-03-24)
+
+
+### Bug Fixes
+
+* mobile input styled ([9b6b408](https://github.com/ppipee/di-planistra/commit/9b6b408e06565508997e0fee712c0f92532e2fee))
+
 ### [1.4.10](https://github.com/ppipee/di-planistra/compare/v1.4.9...v1.4.10) (2021-03-24)
 
 
